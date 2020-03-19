@@ -14,7 +14,8 @@
     "antd": "^3.26.13",
     "next": "^8.1.0",
     "react": "^16.13.0",
-    "react-dom": "^16.13.0"
+    "react-dom": "^16.13.0",
+    "styled-components": "^4.4.1"
   },
   "devDependencies": {
     "eslint": "^6.8.0",
