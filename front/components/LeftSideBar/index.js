@@ -1,7 +1,8 @@
 import React from "react";
+import { LeftSideBarWrapper } from "./style";
 
 const LeftSideBar = () => {
-  return <div>LeftSideBar</div>;
+  return <LeftSideBarWrapper>LeftSideBar</LeftSideBarWrapper>;
 };
 
 export default LeftSideBar;
