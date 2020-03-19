@@ -9,6 +9,9 @@
   "author": "palkim",
   "license": "MIT",
   "dependencies": {
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-react": "^7.19.0",
+    "eslint-plugin-react-hooks": "^2.5.0",
     "next": "^8.1.0",
     "react": "^16.13.0",
     "react-dom": "^16.13.0"
