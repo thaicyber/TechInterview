@@ -1,11 +1,11 @@
 import React from "react";
-import AppLayout from "../components/AppLayout";
 import GlobalStyles from "../styles/GlobalStyles";
+import NoneMemberLayout from "../containers/NoneMemberLayout";
 const Home = () => {
   return (
     <>
       <GlobalStyles />
-      <AppLayout></AppLayout>
+      <NoneMemberLayout />
     </>
   );
 };

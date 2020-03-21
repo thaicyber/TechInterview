@@ -93,10 +93,10 @@ module.exports =
 /************************************************************************/
 /******/ ({
 
-/***/ "./components/AppLayout/index.js":
-/*!***************************************!*\
-  !*** ./components/AppLayout/index.js ***!
-  \***************************************/
+/***/ "./components/Footer/index.js":
+/*!************************************!*\
+  !*** ./components/Footer/index.js ***!
+  \************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -104,50 +104,42 @@ module.exports =
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _Header__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Header */ "./components/Header/index.js");
-/* harmony import */ var _style__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./style */ "./components/AppLayout/style.js");
-var _jsxFileName = "/Users/kim/Desktop/projects/frank/front/components/AppLayout/index.js";
+/* harmony import */ var _style__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./style */ "./components/Footer/style.js");
+var _jsxFileName = "/Users/kim/Desktop/projects/frank/front/components/Footer/index.js";
 
 
 
-
-var AppLayout = function AppLayout() {
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_style__WEBPACK_IMPORTED_MODULE_2__["AppLayoutWrapper"], {
+var Footer = function Footer() {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_style__WEBPACK_IMPORTED_MODULE_1__["FooterWrapper"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 6
+      lineNumber: 5
     },
     __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Header__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 7
-    },
-    __self: this
-  }));
+  }, "Footer");
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (AppLayout);
+/* harmony default export */ __webpack_exports__["default"] = (Footer);
 
 /***/ }),
 
-/***/ "./components/AppLayout/style.js":
-/*!***************************************!*\
-  !*** ./components/AppLayout/style.js ***!
-  \***************************************/
-/*! exports provided: AppLayoutWrapper */
+/***/ "./components/Footer/style.js":
+/*!************************************!*\
+  !*** ./components/Footer/style.js ***!
+  \************************************/
+/*! exports provided: FooterWrapper */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppLayoutWrapper", function() { return AppLayoutWrapper; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FooterWrapper", function() { return FooterWrapper; });
 /* harmony import */ var _babel_runtime_corejs2_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/taggedTemplateLiteral */ "./node_modules/@babel/runtime-corejs2/helpers/esm/taggedTemplateLiteral.js");
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "styled-components");
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(styled_components__WEBPACK_IMPORTED_MODULE_1__);
 
 
 function _templateObject() {
-  var data = Object(_babel_runtime_corejs2_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0__["default"])(["\n  padding: 0px 160px;\n  grid-template-columns: 1fr 370px;\n  grid-template-rows: 55px;\n"]);
+  var data = Object(_babel_runtime_corejs2_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0__["default"])(["\n  /* mobile */\n  display: none;\n\n  @media (min-width: 1025px) {\n    display: block;\n    grid-column: 2 / 3;\n    grid-row: 3 / 4;\n    text-align: center;\n    position: fixed;\n    right: 150px;\n    left: 60%;\n    bottom: 150px;\n  }\n\n  @media (min-width: 1240px) {\n    grid-column: 2 / 3;\n    grid-row: 3 / 4;\n    text-align: center;\n  }\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -157,7 +149,177 @@ function _templateObject() {
 }
 
 
-var AppLayoutWrapper = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.div(_templateObject());
+var FooterWrapper = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.footer(_templateObject());
+
+/***/ }),
+
+/***/ "./components/Header/LogInOutBtn/index.js":
+/*!************************************************!*\
+  !*** ./components/Header/LogInOutBtn/index.js ***!
+  \************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _style__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./style */ "./components/Header/LogInOutBtn/style.js");
+var _jsxFileName = "/Users/kim/Desktop/projects/frank/front/components/Header/LogInOutBtn/index.js";
+
+
+
+var LogInOutBtn = function LogInOutBtn() {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_style__WEBPACK_IMPORTED_MODULE_1__["LogInOutBtnWrapper"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 6
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_style__WEBPACK_IMPORTED_MODULE_1__["Button"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 7
+    },
+    __self: this
+  }, "\uB85C\uADF8\uC778"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_style__WEBPACK_IMPORTED_MODULE_1__["Button"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 8
+    },
+    __self: this
+  }, "\uB85C\uADF8\uC544\uC6C3"));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (LogInOutBtn);
+
+/***/ }),
+
+/***/ "./components/Header/LogInOutBtn/style.js":
+/*!************************************************!*\
+  !*** ./components/Header/LogInOutBtn/style.js ***!
+  \************************************************/
+/*! exports provided: LogInOutBtnWrapper, Button */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LogInOutBtnWrapper", function() { return LogInOutBtnWrapper; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Button", function() { return Button; });
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/taggedTemplateLiteral */ "./node_modules/@babel/runtime-corejs2/helpers/esm/taggedTemplateLiteral.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "styled-components");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(styled_components__WEBPACK_IMPORTED_MODULE_1__);
+
+
+function _templateObject2() {
+  var data = Object(_babel_runtime_corejs2_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0__["default"])(["\n  width: 40%;\n  background-color: aquamarine;\n"]);
+
+  _templateObject2 = function _templateObject2() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject() {
+  var data = Object(_babel_runtime_corejs2_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0__["default"])(["\n  display: flex;\n  width: 100%;\n  justify-content: center;\n\n  @media (min-width: 600px) and (max-width: 1024px) {\n    display: flex;\n    padding: 0 25%;\n    justify-content: center;\n  }\n\n  @media (min-width: 1025px) {\n    margin-left: 0px;\n    display: flex;\n    width: 30%;\n  }\n\n  @media (min-width: 1240px) {\n    margin-left: 0px;\n  }\n"]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+
+var LogInOutBtnWrapper = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.div(_templateObject());
+var Button = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.button(_templateObject2());
+
+/***/ }),
+
+/***/ "./components/Header/SearchBarForm/index.js":
+/*!**************************************************!*\
+  !*** ./components/Header/SearchBarForm/index.js ***!
+  \**************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _style__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./style */ "./components/Header/SearchBarForm/style.js");
+var _jsxFileName = "/Users/kim/Desktop/projects/frank/front/components/Header/SearchBarForm/index.js";
+
+
+
+var SearchBarForm = function SearchBarForm() {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_style__WEBPACK_IMPORTED_MODULE_1__["SearchBarFormWrapper"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 5
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_style__WEBPACK_IMPORTED_MODULE_1__["SearchBarInput"], {
+    type: "search",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 6
+    },
+    __self: this
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_style__WEBPACK_IMPORTED_MODULE_1__["SearchBarInput"], {
+    type: "submit",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 7
+    },
+    __self: this
+  }));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (SearchBarForm);
+
+/***/ }),
+
+/***/ "./components/Header/SearchBarForm/style.js":
+/*!**************************************************!*\
+  !*** ./components/Header/SearchBarForm/style.js ***!
+  \**************************************************/
+/*! exports provided: SearchBarFormWrapper, SearchBarInput */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SearchBarFormWrapper", function() { return SearchBarFormWrapper; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SearchBarInput", function() { return SearchBarInput; });
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/taggedTemplateLiteral */ "./node_modules/@babel/runtime-corejs2/helpers/esm/taggedTemplateLiteral.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "styled-components");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(styled_components__WEBPACK_IMPORTED_MODULE_1__);
+
+
+function _templateObject2() {
+  var data = Object(_babel_runtime_corejs2_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0__["default"])(["\n  width: 40%;\n  background-color: gold;\n"]);
+
+  _templateObject2 = function _templateObject2() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject() {
+  var data = Object(_babel_runtime_corejs2_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0__["default"])(["\n  width: 80%;\n  margin-left: auto;\n\n  @media (min-width: 600px) and (max-width: 1024px) {\n    width: 500px;\n    margin-left: 0px;\n  }\n  @media (min-width: 1025px) {\n    width: 500px;\n    margin-left: 0px;\n  }\n\n  @media (min-width: 1240px) {\n    width: 520px;\n    margin-left: 0px;\n  }\n"]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+
+var SearchBarFormWrapper = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.div(_templateObject());
+var SearchBarInput = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.input(_templateObject2());
 
 /***/ }),
 
@@ -172,8 +334,8 @@ var AppLayoutWrapper = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _SearchBarForm__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../SearchBarForm */ "./components/SearchBarForm/index.js");
-/* harmony import */ var _HeaderLogInOut__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../HeaderLogInOut */ "./components/HeaderLogInOut/index.js");
+/* harmony import */ var _SearchBarForm__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SearchBarForm */ "./components/Header/SearchBarForm/index.js");
+/* harmony import */ var _LogInOutBtn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./LogInOutBtn */ "./components/Header/LogInOutBtn/index.js");
 /* harmony import */ var _style__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./style */ "./components/Header/style.js");
 var _jsxFileName = "/Users/kim/Desktop/projects/frank/front/components/Header/index.js";
 
@@ -194,13 +356,13 @@ var Header = function Header() {
       lineNumber: 9
     },
     __self: this
-  }, "F"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_SearchBarForm__WEBPACK_IMPORTED_MODULE_1__["default"], {
+  }, "Frank"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_SearchBarForm__WEBPACK_IMPORTED_MODULE_1__["default"], {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 10
     },
     __self: this
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_HeaderLogInOut__WEBPACK_IMPORTED_MODULE_2__["default"], {
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_LogInOutBtn__WEBPACK_IMPORTED_MODULE_2__["default"], {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 11
@@ -230,7 +392,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function _templateObject2() {
-  var data = Object(_babel_runtime_corejs2_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0__["default"])(["\n  flex-shrink: 0;\n  width: 40px;\n  background-color: blue;\n"]);
+  var data = Object(_babel_runtime_corejs2_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0__["default"])(["\n  width: 5%;\n  background-color: blue;\n"]);
 
   _templateObject2 = function _templateObject2() {
     return data;
@@ -240,7 +402,7 @@ function _templateObject2() {
 }
 
 function _templateObject() {
-  var data = Object(_babel_runtime_corejs2_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0__["default"])(["\n  display: flex;\n  flex-wrap: wrap;\n  /* &:nth-child(1) {\n    flex-shrink: 0;\n    width: 40px;\n  }\n  &:nth-child(2) {\n    flex-grow: 1;\n  }\n  &:nth-child(3) {\n    width: 370px;\n  } */\n"]);
+  var data = Object(_babel_runtime_corejs2_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0__["default"])(["\n  display: flex;\n  flex-wrap: wrap;\n  align-items: center;\n  position: fixed;\n  z-index: 1;\n  background-color: whitesmoke;\n  width: 100%;\n  padding: 0 1rem;\n  top: 0;\n\n  @media (min-width: 600px) and (max-width: 1024px) {\n    justify-content: center;\n  }\n\n  @media (min-width: 1025px) {\n    grid-column: 1 / 3;\n    grid-row: 1 / 2;\n    display: flex;\n    flex-wrap: nowrap;\n    justify-content: center;\n  }\n\n  @media (min-width: 1240px) {\n    grid-column: 1 / 3;\n    grid-row: 1 / 2;\n    display: flex;\n    justify-content: flex-start;\n  }\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -255,10 +417,10 @@ var Logo = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.div(_templat
 
 /***/ }),
 
-/***/ "./components/HeaderLogInOut/index.js":
-/*!********************************************!*\
-  !*** ./components/HeaderLogInOut/index.js ***!
-  \********************************************/
+/***/ "./components/PostCard/index.js":
+/*!**************************************!*\
+  !*** ./components/PostCard/index.js ***!
+  \**************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -266,102 +428,42 @@ var Logo = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.div(_templat
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _style__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./style */ "./components/HeaderLogInOut/style.js");
-var _jsxFileName = "/Users/kim/Desktop/projects/frank/front/components/HeaderLogInOut/index.js";
+/* harmony import */ var _style__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./style */ "./components/PostCard/style.js");
+var _jsxFileName = "/Users/kim/Desktop/projects/frank/front/components/PostCard/index.js";
 
 
 
-var HeaderLogInOut = function HeaderLogInOut() {
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_style__WEBPACK_IMPORTED_MODULE_1__["HeaderLogInOutWrapper"], {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 5
-    },
-    __self: this
-  }, "HeaderLogInOut");
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (HeaderLogInOut);
-
-/***/ }),
-
-/***/ "./components/HeaderLogInOut/style.js":
-/*!********************************************!*\
-  !*** ./components/HeaderLogInOut/style.js ***!
-  \********************************************/
-/*! exports provided: HeaderLogInOutWrapper */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HeaderLogInOutWrapper", function() { return HeaderLogInOutWrapper; });
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/taggedTemplateLiteral */ "./node_modules/@babel/runtime-corejs2/helpers/esm/taggedTemplateLiteral.js");
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "styled-components");
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(styled_components__WEBPACK_IMPORTED_MODULE_1__);
-
-
-function _templateObject() {
-  var data = Object(_babel_runtime_corejs2_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0__["default"])(["\n  width: 370px;\n  flex-shrink: 1;\n  background-color: purple;\n"]);
-
-  _templateObject = function _templateObject() {
-    return data;
-  };
-
-  return data;
-}
-
-
-var HeaderLogInOutWrapper = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.div(_templateObject());
-
-/***/ }),
-
-/***/ "./components/SearchBarForm/index.js":
-/*!*******************************************!*\
-  !*** ./components/SearchBarForm/index.js ***!
-  \*******************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _style__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./style */ "./components/SearchBarForm/style.js");
-var _jsxFileName = "/Users/kim/Desktop/projects/frank/front/components/SearchBarForm/index.js";
-
-
-
-var SearchBarForm = function SearchBarForm() {
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_style__WEBPACK_IMPORTED_MODULE_1__["SearchBarFormWrapper"], {
+var PostCard = function PostCard() {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_style__WEBPACK_IMPORTED_MODULE_1__["PostCardWrapper"], {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 4
     },
     __self: this
-  }, "SearchBarForm");
+  }, "PostCard");
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (SearchBarForm);
+/* harmony default export */ __webpack_exports__["default"] = (PostCard);
 
 /***/ }),
 
-/***/ "./components/SearchBarForm/style.js":
-/*!*******************************************!*\
-  !*** ./components/SearchBarForm/style.js ***!
-  \*******************************************/
-/*! exports provided: SearchBarFormWrapper */
+/***/ "./components/PostCard/style.js":
+/*!**************************************!*\
+  !*** ./components/PostCard/style.js ***!
+  \**************************************/
+/*! exports provided: PostCardWrapper */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SearchBarFormWrapper", function() { return SearchBarFormWrapper; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PostCardWrapper", function() { return PostCardWrapper; });
 /* harmony import */ var _babel_runtime_corejs2_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/taggedTemplateLiteral */ "./node_modules/@babel/runtime-corejs2/helpers/esm/taggedTemplateLiteral.js");
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "styled-components");
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(styled_components__WEBPACK_IMPORTED_MODULE_1__);
 
 
 function _templateObject() {
-  var data = Object(_babel_runtime_corejs2_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0__["default"])(["\n  width: 370px;\n  background-color: gray;\n"]);
+  var data = Object(_babel_runtime_corejs2_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0__["default"])(["\n  width: 100%;\n  padding: 1rem 1rem;\n  background-color: pink;\n  margin-top: 55px;\n  min-height: 350px;\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -371,7 +473,159 @@ function _templateObject() {
 }
 
 
-var SearchBarFormWrapper = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.div(_templateObject());
+var PostCardWrapper = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.div(_templateObject());
+
+/***/ }),
+
+/***/ "./components/RightSideBar/index.js":
+/*!******************************************!*\
+  !*** ./components/RightSideBar/index.js ***!
+  \******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _style__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./style */ "./components/RightSideBar/style.js");
+var _jsxFileName = "/Users/kim/Desktop/projects/frank/front/components/RightSideBar/index.js";
+
+
+
+var RightSideBar = function RightSideBar() {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_style__WEBPACK_IMPORTED_MODULE_1__["RightSideBarWrapper"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 5
+    },
+    __self: this
+  }, "RightSideBar");
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (RightSideBar);
+
+/***/ }),
+
+/***/ "./components/RightSideBar/style.js":
+/*!******************************************!*\
+  !*** ./components/RightSideBar/style.js ***!
+  \******************************************/
+/*! exports provided: RightSideBarWrapper */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RightSideBarWrapper", function() { return RightSideBarWrapper; });
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/taggedTemplateLiteral */ "./node_modules/@babel/runtime-corejs2/helpers/esm/taggedTemplateLiteral.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "styled-components");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(styled_components__WEBPACK_IMPORTED_MODULE_1__);
+
+
+function _templateObject() {
+  var data = Object(_babel_runtime_corejs2_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0__["default"])(["\n  display: none;\n  min-height: 400px;\n  background-color: green;\n\n  @media (min-width: 1025px) {\n    display: block;\n    position: fixed;\n    right: 150px;\n    top: 55px;\n    left: 60%;\n  }\n"]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+
+var RightSideBarWrapper = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.div(_templateObject());
+
+/***/ }),
+
+/***/ "./containers/NoneMemberLayout/index.js":
+/*!**********************************************!*\
+  !*** ./containers/NoneMemberLayout/index.js ***!
+  \**********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _style__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./style */ "./containers/NoneMemberLayout/style.js");
+/* harmony import */ var _components_Header__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../components/Header */ "./components/Header/index.js");
+/* harmony import */ var _components_RightSideBar__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/RightSideBar */ "./components/RightSideBar/index.js");
+/* harmony import */ var _components_Footer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../components/Footer */ "./components/Footer/index.js");
+/* harmony import */ var _components_PostCard__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../components/PostCard */ "./components/PostCard/index.js");
+var _jsxFileName = "/Users/kim/Desktop/projects/frank/front/containers/NoneMemberLayout/index.js";
+
+
+
+
+
+
+
+var NoneMemberLayout = function NoneMemberLayout() {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_style__WEBPACK_IMPORTED_MODULE_1__["NoneMemberLayoutWrapper"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 9
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Header__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 10
+    },
+    __self: this
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_PostCard__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 11
+    },
+    __self: this
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_RightSideBar__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 12
+    },
+    __self: this
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Footer__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 13
+    },
+    __self: this
+  }));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (NoneMemberLayout);
+
+/***/ }),
+
+/***/ "./containers/NoneMemberLayout/style.js":
+/*!**********************************************!*\
+  !*** ./containers/NoneMemberLayout/style.js ***!
+  \**********************************************/
+/*! exports provided: NoneMemberLayoutWrapper */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NoneMemberLayoutWrapper", function() { return NoneMemberLayoutWrapper; });
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/taggedTemplateLiteral */ "./node_modules/@babel/runtime-corejs2/helpers/esm/taggedTemplateLiteral.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "styled-components");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(styled_components__WEBPACK_IMPORTED_MODULE_1__);
+
+
+function _templateObject() {
+  var data = Object(_babel_runtime_corejs2_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0__["default"])(["\n  @media (min-width: 600px) and (max-width: 1024px) {\n    display: grid;\n    grid-template-columns: 600px;\n    justify-content: center;\n    padding: 0 1rem;\n  }\n\n  @media (min-width: 1025px) {\n    display: grid;\n    grid-template-columns: 600px 350px;\n    padding: 0 1rem;\n    justify-content: center;\n  }\n\n  @media (min-width: 1240px) {\n    display: grid;\n    grid-template-columns: 600px 350px;\n    padding: 0 150px;\n  }\n"]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+
+var NoneMemberLayoutWrapper = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.div(_templateObject());
 
 /***/ }),
 
@@ -438,21 +692,21 @@ function _taggedTemplateLiteral(strings, raw) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _components_AppLayout__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/AppLayout */ "./components/AppLayout/index.js");
-/* harmony import */ var _styles_GlobalStyles__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../styles/GlobalStyles */ "./styles/GlobalStyles.js");
+/* harmony import */ var _styles_GlobalStyles__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../styles/GlobalStyles */ "./styles/GlobalStyles.js");
+/* harmony import */ var _containers_NoneMemberLayout__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../containers/NoneMemberLayout */ "./containers/NoneMemberLayout/index.js");
 var _jsxFileName = "/Users/kim/Desktop/projects/frank/front/pages/index.js";
 
 
 
 
 var Home = function Home() {
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_styles_GlobalStyles__WEBPACK_IMPORTED_MODULE_2__["default"], {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_styles_GlobalStyles__WEBPACK_IMPORTED_MODULE_1__["default"], {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 7
     },
     __self: this
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_AppLayout__WEBPACK_IMPORTED_MODULE_1__["default"], {
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_containers_NoneMemberLayout__WEBPACK_IMPORTED_MODULE_2__["default"], {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 8
