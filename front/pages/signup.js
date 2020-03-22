@@ -37,60 +37,50 @@ const signup = () => {
   const [password, setPassword] = useInput("");
   const onSubmitSignup = e => {
     e.preventDefault();
-    console.log({
-      nickname,
-      email,
-      password
-    });
-    setNickname("");
-    setEmail("");
-    setPassword("");
   };
   return (
-    <>
-      <SignupWrapper>
-        <SignupContent>
-          <Form onSubmit={onSubmitSignup}>
-            <IdWrapper>
-              <Label htmlFor="user-nickname">닉네임</Label>
-              <Input
-                name="user-nickname"
-                required
-                onChange={setNickname}
-                placeholder="닉네임을 입력하세요."
-                value={nickname}
-              />
-            </IdWrapper>
-            <EmailWrapper>
-              <Label htmlFor="user-Email">이메일</Label>
-              <Input
-                name="user-Email"
-                required
-                onChange={setEmail}
-                placeholder="이메일을 입력하세요."
-                value={email}
-              />
-            </EmailWrapper>
-            <PasswordWrapper>
-              <Label htmlFor="user-Password">비밀번호</Label>
-              <Input
-                type="password"
-                name="user-Password"
-                required
-                onChange={setPassword}
-                placeholder="8자 이상 입력해주세요."
-                value={password}
-              />
-            </PasswordWrapper>
-            <BtnWrapper>
-              <AtdButton type="primary" htmlType="submit">
-                회원가입
-              </AtdButton>
-            </BtnWrapper>
-          </Form>
-        </SignupContent>
-      </SignupWrapper>
-    </>
+    <SignupWrapper>
+      <SignupContent>
+        <Form onSubmit={onSubmitSignup}>
+          <IdWrapper>
+            <Label htmlFor="user-nickname">닉네임</Label>
+            <Input
+              name="user-nickname"
+              required
+              onChange={setNickname}
+              placeholder="닉네임을 입력하세요."
+              value={nickname}
+            />
+          </IdWrapper>
+          <EmailWrapper>
+            <Label htmlFor="user-Email">이메일</Label>
+            <Input
+              name="user-Email"
+              required
+              onChange={setEmail}
+              placeholder="이메일을 입력하세요."
+              value={email}
+            />
+          </EmailWrapper>
+          <PasswordWrapper>
+            <Label htmlFor="user-Password">비밀번호</Label>
+            <Input
+              type="password"
+              name="user-Password"
+              required
+              onChange={setPassword}
+              placeholder="8자 이상 입력해주세요."
+              value={password}
+            />
+          </PasswordWrapper>
+          <BtnWrapper>
+            <AtdButton type="primary" htmlType="submit">
+              회원가입
+            </AtdButton>
+          </BtnWrapper>
+        </Form>
+      </SignupContent>
+    </SignupWrapper>
   );
 };
 

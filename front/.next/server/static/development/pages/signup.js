@@ -435,46 +435,38 @@ var signup = function signup() {
 
   var onSubmitSignup = function onSubmitSignup(e) {
     e.preventDefault();
-    console.log({
-      nickname: nickname,
-      email: email,
-      password: password
-    });
-    setNickname("");
-    setEmail("");
-    setPassword("");
   };
 
-  return react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_2___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(SignupWrapper, {
+  return react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(SignupWrapper, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 51
+      lineNumber: 42
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(SignupContent, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 52
+      lineNumber: 43
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(antd__WEBPACK_IMPORTED_MODULE_4__["Form"], {
     onSubmit: onSubmitSignup,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 53
+      lineNumber: 44
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(IdWrapper, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 54
+      lineNumber: 45
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(Label, {
     htmlFor: "user-nickname",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 55
+      lineNumber: 46
     },
     __self: this
   }, "\uB2C9\uB124\uC784"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(antd__WEBPACK_IMPORTED_MODULE_4__["Input"], {
@@ -485,20 +477,20 @@ var signup = function signup() {
     value: nickname,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 56
+      lineNumber: 47
     },
     __self: this
   })), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(EmailWrapper, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 64
+      lineNumber: 55
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(Label, {
     htmlFor: "user-Email",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 65
+      lineNumber: 56
     },
     __self: this
   }, "\uC774\uBA54\uC77C"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(antd__WEBPACK_IMPORTED_MODULE_4__["Input"], {
@@ -509,20 +501,20 @@ var signup = function signup() {
     value: email,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 66
+      lineNumber: 57
     },
     __self: this
   })), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(PasswordWrapper, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 74
+      lineNumber: 65
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(Label, {
     htmlFor: "user-Password",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 75
+      lineNumber: 66
     },
     __self: this
   }, "\uBE44\uBC00\uBC88\uD638"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(antd__WEBPACK_IMPORTED_MODULE_4__["Input"], {
@@ -534,13 +526,13 @@ var signup = function signup() {
     value: password,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 76
+      lineNumber: 67
     },
     __self: this
   })), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(BtnWrapper, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 85
+      lineNumber: 76
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(AtdButton, {
@@ -548,10 +540,10 @@ var signup = function signup() {
     htmlType: "submit",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 86
+      lineNumber: 77
     },
     __self: this
-  }, "\uD68C\uC6D0\uAC00\uC785"))))));
+  }, "\uD68C\uC6D0\uAC00\uC785")))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (signup);

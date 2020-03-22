@@ -23,5 +23,5 @@ export const LogInOutBtnWrapper = styled.div`
 `;
 
 export const AtdButton = styled(Button)`
-  width: 40%;
+  width: 100%;
 `;
