@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from "react";
-import NoneMemberLayout from "../containers/NoneMemberLayout";
 import styled from "styled-components";
-import { Form, Input } from "antd";
+import { Form, Input, Button } from "antd";
+import useInput from "../customHooks/useInput";
 
 const SignupWrapper = styled.div`
   display: flex;
@@ -25,29 +25,68 @@ const SignupContent = styled.div`
 `;
 const Label = styled.label``;
 const IdWrapper = styled.div``;
+const EmailWrapper = styled.div``;
+const PasswordWrapper = styled.div``;
+const BtnWrapper = styled.div``;
+const AtdButton = styled(Button)`
+  width: 100%;
+`;
 const signup = () => {
-  const [nickname, setNickname] = useState("");
-  const [email, setEmail] = useState("");
-  const onChangeNickname = useCallback(() => {}, [nickname]);
-  const onChangeEmail = useCallback(() => {}, [email]);
+  const [nickname, setNickname] = useInput("");
+  const [email, setEmail] = useInput("");
+  const [password, setPassword] = useInput("");
+  const onSubmitSignup = e => {
+    e.preventDefault();
+    console.log({
+      nickname,
+      email,
+      password
+    });
+    setNickname("");
+    setEmail("");
+    setPassword("");
+  };
   return (
     <>
       <SignupWrapper>
         <SignupContent>
-          <Form>
+          <Form onSubmit={onSubmitSignup}>
             <IdWrapper>
               <Label htmlFor="user-nickname">닉네임</Label>
               <Input
                 name="user-nickname"
                 required
-                onChange={onChangeNickname}
-                placeholder=""
+                onChange={setNickname}
+                placeholder="닉네임을 입력하세요."
+                value={nickname}
               />
             </IdWrapper>
-            <IdWrapper>
+            <EmailWrapper>
               <Label htmlFor="user-Email">이메일</Label>
-              <Input name="user-Email" required onChange={onChangeEmail} />
-            </IdWrapper>
+              <Input
+                name="user-Email"
+                required
+                onChange={setEmail}
+                placeholder="이메일을 입력하세요."
+                value={email}
+              />
+            </EmailWrapper>
+            <PasswordWrapper>
+              <Label htmlFor="user-Password">비밀번호</Label>
+              <Input
+                type="password"
+                name="user-Password"
+                required
+                onChange={setPassword}
+                placeholder="8자 이상 입력해주세요."
+                value={password}
+              />
+            </PasswordWrapper>
+            <BtnWrapper>
+              <AtdButton type="primary" htmlType="submit">
+                회원가입
+              </AtdButton>
+            </BtnWrapper>
           </Form>
         </SignupContent>
       </SignupWrapper>
