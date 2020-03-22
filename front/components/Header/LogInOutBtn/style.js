@@ -1,5 +1,5 @@
 import styled from "styled-components";
-
+import { Button } from "antd";
 export const LogInOutBtnWrapper = styled.div`
   display: flex;
   width: 100%;
@@ -22,7 +22,6 @@ export const LogInOutBtnWrapper = styled.div`
   }
 `;
 
-export const Button = styled.button`
+export const AtdButton = styled(Button)`
   width: 40%;
-  background-color: aquamarine;
 `;

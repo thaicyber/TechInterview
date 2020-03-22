@@ -1,11 +1,10 @@
 import React from "react";
-import { LogInOutBtnWrapper, Button } from "./style";
-
+import { LogInOutBtnWrapper, AtdButton } from "./style";
 const LogInOutBtn = () => {
   return (
     <LogInOutBtnWrapper>
-      <Button>로그인</Button>
-      <Button>로그아웃</Button>
+      <AtdButton>로그인</AtdButton>
+      <AtdButton type="primary">회원가입</AtdButton>
     </LogInOutBtnWrapper>
   );
 };

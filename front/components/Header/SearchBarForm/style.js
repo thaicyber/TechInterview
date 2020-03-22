@@ -1,6 +1,9 @@
 import styled from "styled-components";
+import { Input } from "antd";
+const { Search } = Input;
+import { Form } from "antd";
 
-export const SearchBarFormWrapper = styled.div`
+export const AtdForm = styled(Form)`
   width: 80%;
   margin-left: auto;
 
@@ -19,7 +22,6 @@ export const SearchBarFormWrapper = styled.div`
   }
 `;
 
-export const SearchBarInput = styled.input`
-  width: 40%;
-  background-color: gold;
+export const AtdInput = styled(Search)`
+  width: 100%;
 `;

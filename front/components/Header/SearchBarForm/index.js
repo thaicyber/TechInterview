@@ -1,11 +1,14 @@
 import React from "react";
-import { SearchBarFormWrapper, SearchBarInput } from "./style";
+import { AtdForm, AtdInput } from "./style";
+const onSubmitForm = e => {
+  e.preventDefault();
+  console.log("!!!!submit");
+};
 const SearchBarForm = () => {
   return (
-    <SearchBarFormWrapper>
-      <SearchBarInput type="search"></SearchBarInput>
-      <SearchBarInput type="submit"></SearchBarInput>
-    </SearchBarFormWrapper>
+    <AtdForm onSubmit={onSubmitForm}>
+      <AtdInput htmlType="submit" />
+    </AtdForm>
   );
 };
 

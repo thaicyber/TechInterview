@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const FooterWrapper = styled.footer`
   /* mobile */
   display: none;
+  border: 1px solid #3d3d3d;
 
   @media (min-width: 1025px) {
     display: block;
