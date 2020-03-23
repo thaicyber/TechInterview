@@ -4,11 +4,18 @@ import {
   UserSettingContent,
   TopContent,
   BottomContent,
+  TitleWrap,
   Title,
-  CancelWrap
+  CancelWrap,
+  AvatarWrap,
+  Avatar,
+  NicknameWrap,
+  Nickname
 } from "./style";
 import { CloseOutlined } from "@ant-design/icons";
+import { useSelector } from "react-redux";
 const UserSetting = ({ setAvatarClick }) => {
+  const { me } = useSelector(state => state.user);
   const onClickCancel = () => {
     if (setAvatarClick) {
       setAvatarClick(false);
@@ -19,12 +26,21 @@ const UserSetting = ({ setAvatarClick }) => {
     <UserSettingWrapper>
       <UserSettingContent>
         <TopContent>
-          <Title></Title>
+          <TitleWrap>
+            <Title>계정정보</Title>
+          </TitleWrap>
           <CancelWrap onClick={onClickCancel}>
-            <CloseOutlined style={{ fontSize: "18px", color: "blue" }} />
+            <CloseOutlined style={{ fontSize: "18px", color: "#1B98E5" }} />
           </CancelWrap>
         </TopContent>
-        <BottomContent></BottomContent>
+        <BottomContent>
+          <AvatarWrap>
+            <Avatar />
+          </AvatarWrap>
+          <NicknameWrap>
+            <Nickname>{me && me.nickname}</Nickname>
+          </NicknameWrap>
+        </BottomContent>
       </UserSettingContent>
     </UserSettingWrapper>
   );
