@@ -13,6 +13,7 @@
   "dependencies": {
     "@ant-design/icons": "^4.0.3",
     "antd": "^3.26.13",
+    "axios": "^0.19.2",
     "next": "^8.1.0",
     "next-redux-wrapper": "^5.0.0",
     "react": "^16.13.0",
