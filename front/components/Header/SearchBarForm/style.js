@@ -4,8 +4,7 @@ const { Search } = Input;
 import { Form } from "antd";
 
 export const AtdForm = styled(Form)`
-  width: 80%;
-  margin-left: auto;
+  width: 100%;
 
   @media (min-width: 600px) and (max-width: 1024px) {
     width: 500px;

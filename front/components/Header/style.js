@@ -35,6 +35,10 @@ export const HeaderWrapper = styled.div`
   }
 `;
 
-export const Logo = styled.div`
-  width: 5%;
+export const TitleWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
+export const Title = styled.span``;

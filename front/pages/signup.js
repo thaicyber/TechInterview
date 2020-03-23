@@ -6,22 +6,33 @@ import useInput from "../customHooks/useInput";
 const SignupWrapper = styled.div`
   display: flex;
   justify-content: center;
-  align-items: center;
-  background-color: rgb(0, 0, 0, 0.3);
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 2;
+  align-items: flex-start;
+  height: 100vh;
+  @media (min-width: 1025px) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(0, 0, 0, 0.3);
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+  }
 `;
 const SignupContent = styled.div`
-  border-radius: 1rem;
-  background-color: white;
-  min-height: 85%;
-  min-width: 45%;
-  padding: 10px;
-  margin: 0 10rem;
+  border: 1px solid lightgray;
+  min-height: 500px;
+  min-width: 55%;
+  @media (min-width: 1025px) {
+    border-radius: 1rem;
+    background-color: white;
+    min-height: 85%;
+    min-width: 45%;
+    padding: 10px;
+    margin: 0 10rem;
+  }
 `;
 const Label = styled.label``;
 const IdWrapper = styled.div``;
