@@ -36,6 +36,8 @@
 ehthumbs.db
 Thumbs.db
 
+# Folder #
+back/
 
 .env
 generated
