@@ -67,11 +67,12 @@ const signup = () => {
     return regExp.test(email);
   };
   const onChangeEmail = e => {
-    if (isValidCheckEmail(e.target.value)) {
-      setEmail(e.target.value);
+    const inputValue = e.target.value;
+    if (isValidCheckEmail(inputValue)) {
+      setEmail(inputValue);
       setEmailError(false);
     } else {
-      setEmail(e.target.value);
+      setEmail(inputValue);
       setEmailError(true);
     }
   };
