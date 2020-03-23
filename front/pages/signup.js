@@ -53,9 +53,16 @@ const signup = () => {
   const [nickname, setNickname] = useInput("");
   const [email, setEmail] = useState("");
   const [emailError, setEmailError] = useState(false);
-  const [password, setPassword] = useInput("");
+  const [password, setPassword] = useState("");
+  const [passwordError, setPasswordError] = useState(false);
   const onSubmitSignup = e => {
     e.preventDefault();
+    if (emailError) {
+      return alert("유효한 이메일 주소를 입력해주세요.");
+    }
+    if (passwordError) {
+      return alert("비밀번호는 8자 이상 영문과 숫자 조합을 입력해주세요.");
+    }
     console.log({
       nickname,
       email,
@@ -66,6 +73,10 @@ const signup = () => {
     let regExp = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
     return regExp.test(email);
   };
+  const isValidCheckPassword = password => {
+    let regExp = /^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{8,10}$/;
+    return regExp.test(password);
+  };
   const onChangeEmail = e => {
     const inputValue = e.target.value;
     if (isValidCheckEmail(inputValue)) {
@@ -74,6 +85,16 @@ const signup = () => {
     } else {
       setEmail(inputValue);
       setEmailError(true);
+    }
+  };
+  const onChangePassword = e => {
+    const inputValue = e.target.value;
+    if (isValidCheckPassword(inputValue)) {
+      setPassword(inputValue);
+      setPasswordError(false);
+    } else {
+      setPassword(inputValue);
+      setPasswordError(true);
     }
   };
   return (
@@ -113,10 +134,17 @@ const signup = () => {
               type="password"
               name="user-Password"
               required
-              onChange={setPassword}
+              onChange={onChangePassword}
               placeholder="8자 이상 영문과 숫자 조합"
               value={password}
             />
+            {passwordError && (
+              <NotificationWrapper>
+                <NotificationContent>
+                  8자 이상 영문과 숫자 조합을 입력해주세요.
+                </NotificationContent>
+              </NotificationWrapper>
+            )}
           </PasswordWrapper>
           <BtnWrapper>
             <AtdButton type="primary" htmlType="submit">

@@ -455,13 +455,27 @@ var signup = function signup() {
       emailError = _useState4[0],
       setEmailError = _useState4[1];
 
-  var _useInput3 = Object(_customHooks_useInput__WEBPACK_IMPORTED_MODULE_5__["default"])(""),
-      _useInput4 = Object(_babel_runtime_corejs2_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_0__["default"])(_useInput3, 2),
-      password = _useInput4[0],
-      setPassword = _useInput4[1];
+  var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_2__["useState"])(""),
+      _useState6 = Object(_babel_runtime_corejs2_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_0__["default"])(_useState5, 2),
+      password = _useState6[0],
+      setPassword = _useState6[1];
+
+  var _useState7 = Object(react__WEBPACK_IMPORTED_MODULE_2__["useState"])(false),
+      _useState8 = Object(_babel_runtime_corejs2_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_0__["default"])(_useState7, 2),
+      passwordError = _useState8[0],
+      setPasswordError = _useState8[1];
 
   var onSubmitSignup = function onSubmitSignup(e) {
     e.preventDefault();
+
+    if (emailError) {
+      return alert("유효한 이메일 주소를 입력해주세요.");
+    }
+
+    if (passwordError) {
+      return alert("비밀번호는 8자 이상 영문과 숫자 조합을 입력해주세요.");
+    }
+
     console.log({
       nickname: nickname,
       email: email,
@@ -472,6 +486,11 @@ var signup = function signup() {
   var isValidCheckEmail = function isValidCheckEmail(email) {
     var regExp = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
     return regExp.test(email);
+  };
+
+  var isValidCheckPassword = function isValidCheckPassword(password) {
+    var regExp = /^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{8,10}$/;
+    return regExp.test(password);
   };
 
   var onChangeEmail = function onChangeEmail(e) {
@@ -486,36 +505,48 @@ var signup = function signup() {
     }
   };
 
+  var onChangePassword = function onChangePassword(e) {
+    var inputValue = e.target.value;
+
+    if (isValidCheckPassword(inputValue)) {
+      setPassword(inputValue);
+      setPasswordError(false);
+    } else {
+      setPassword(inputValue);
+      setPasswordError(true);
+    }
+  };
+
   return react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(SignupWrapper, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 80
+      lineNumber: 101
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(SignupContent, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 81
+      lineNumber: 102
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(antd__WEBPACK_IMPORTED_MODULE_4__["Form"], {
     onSubmit: onSubmitSignup,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 82
+      lineNumber: 103
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(IdWrapper, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 83
+      lineNumber: 104
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(Label, {
     htmlFor: "user-nickname",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 84
+      lineNumber: 105
     },
     __self: this
   }, "\uB2C9\uB124\uC784"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(antd__WEBPACK_IMPORTED_MODULE_4__["Input"], {
@@ -526,20 +557,20 @@ var signup = function signup() {
     value: nickname,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 85
+      lineNumber: 106
     },
     __self: this
   })), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(EmailWrapper, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 93
+      lineNumber: 114
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(Label, {
     htmlFor: "user-Email",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 94
+      lineNumber: 115
     },
     __self: this
   }, "\uC774\uBA54\uC77C"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(antd__WEBPACK_IMPORTED_MODULE_4__["Input"], {
@@ -550,50 +581,62 @@ var signup = function signup() {
     value: email,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 95
+      lineNumber: 116
     },
     __self: this
   }), emailError && react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(NotificationWrapper, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 103
+      lineNumber: 124
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(NotificationContent, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 104
+      lineNumber: 125
     },
     __self: this
   }, "\uC720\uD6A8\uD55C \uC774\uBA54\uC77C \uC8FC\uC18C\uB97C \uC785\uB825\uD574\uC8FC\uC138\uC694."))), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(PasswordWrapper, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 110
+      lineNumber: 131
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(Label, {
     htmlFor: "user-Password",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 111
+      lineNumber: 132
     },
     __self: this
   }, "\uBE44\uBC00\uBC88\uD638"), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(antd__WEBPACK_IMPORTED_MODULE_4__["Input"], {
     type: "password",
     name: "user-Password",
     required: true,
-    onChange: setPassword,
+    onChange: onChangePassword,
     placeholder: "8\uC790 \uC774\uC0C1 \uC601\uBB38\uACFC \uC22B\uC790 \uC870\uD569",
     value: password,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 112
+      lineNumber: 133
     },
     __self: this
-  })), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(BtnWrapper, {
+  }), passwordError && react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(NotificationWrapper, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 121
+      lineNumber: 142
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(NotificationContent, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 143
+    },
+    __self: this
+  }, "8\uC790 \uC774\uC0C1 \uC601\uBB38\uACFC \uC22B\uC790 \uC870\uD569\uC744 \uC785\uB825\uD574\uC8FC\uC138\uC694."))), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(BtnWrapper, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 149
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(AtdButton, {
@@ -601,7 +644,7 @@ var signup = function signup() {
     htmlType: "submit",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 122
+      lineNumber: 150
     },
     __self: this
   }, "\uD68C\uC6D0\uAC00\uC785")))));
