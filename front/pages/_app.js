@@ -4,7 +4,10 @@ import GlobalStyles from "../styles/GlobalStyles";
 import { Provider } from "react-redux";
 import withRedux from "next-redux-wrapper";
 import { createStore, applyMiddleware, compose } from "redux";
+import withReduxSaga from "next-redux-saga";
+import createSagaMiddleware from "redux-saga";
 import reducer from "../reducers/user";
+import rootSaga from "../sagas";
 const App = ({ Component, store }) => {
   return (
     <Provider store={store}>
