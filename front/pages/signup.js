@@ -42,12 +42,38 @@ const BtnWrapper = styled.div``;
 const AtdButton = styled(Button)`
   width: 100%;
 `;
+
+const NotificationWrapper = styled.div`
+  width: 100%;
+`;
+const NotificationContent = styled.span`
+  color: red;
+`;
 const signup = () => {
   const [nickname, setNickname] = useInput("");
-  const [email, setEmail] = useInput("");
+  const [email, setEmail] = useState("");
+  const [emailError, setEmailError] = useState(false);
   const [password, setPassword] = useInput("");
   const onSubmitSignup = e => {
     e.preventDefault();
+    console.log({
+      nickname,
+      email,
+      password
+    });
+  };
+  const isValidCheckEmail = email => {
+    let regExp = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+    return regExp.test(email);
+  };
+  const onChangeEmail = e => {
+    if (isValidCheckEmail(e.target.value)) {
+      setEmail(e.target.value);
+      setEmailError(false);
+    } else {
+      setEmail(e.target.value);
+      setEmailError(true);
+    }
   };
   return (
     <SignupWrapper>
@@ -68,10 +94,17 @@ const signup = () => {
             <Input
               name="user-Email"
               required
-              onChange={setEmail}
+              onChange={onChangeEmail}
               placeholder="이메일을 입력하세요."
               value={email}
             />
+            {emailError && (
+              <NotificationWrapper>
+                <NotificationContent>
+                  유효한 이메일 주소를 입력해주세요.
+                </NotificationContent>
+              </NotificationWrapper>
+            )}
           </EmailWrapper>
           <PasswordWrapper>
             <Label htmlFor="user-Password">비밀번호</Label>
@@ -80,7 +113,7 @@ const signup = () => {
               name="user-Password"
               required
               onChange={setPassword}
-              placeholder="8자 이상 입력해주세요."
+              placeholder="8자 이상 영문과 숫자 조합"
               value={password}
             />
           </PasswordWrapper>
