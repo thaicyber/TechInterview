@@ -41,4 +41,6 @@ export const TitleWrapper = styled.div`
   justify-content: center;
   align-items: center;
 `;
-export const Title = styled.span``;
+export const Title = styled.span`
+  margin: 0.5rem 0;
+`;

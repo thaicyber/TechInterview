@@ -1,9 +1,10 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useState, useEffect } from "react";
 import styled from "styled-components";
 import { Form, Input, Button } from "antd";
 import useInput from "../customHooks/useInput";
 import { useSelector, useDispatch } from "react-redux";
 import { SIGN_UP_REQUEST } from "../reducers/user";
+import Router from "next/router";
 const SignupWrapper = styled.div`
   display: flex;
   justify-content: center;
@@ -57,6 +58,12 @@ const signup = () => {
   const [password, setPassword] = useState("");
   const [passwordError, setPasswordError] = useState(false);
   const dispatch = useDispatch();
+  const { isSigningUp, me } = useSelector(state => state.user);
+  useEffect(() => {
+    if (me) {
+      Router.push("/");
+    }
+  }, [me]);
   const onSubmitSignup = e => {
     e.preventDefault();
     if (emailError) {
@@ -152,7 +159,7 @@ const signup = () => {
             )}
           </PasswordWrapper>
           <BtnWrapper>
-            <AtdButton type="primary" htmlType="submit">
+            <AtdButton type="primary" htmlType="submit" loading={isSigningUp}>
               회원가입
             </AtdButton>
           </BtnWrapper>

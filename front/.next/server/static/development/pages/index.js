@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -290,7 +290,7 @@ function _templateObject2() {
 }
 
 function _templateObject() {
-  var data = Object(_babel_runtime_corejs2_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0__["default"])(["\n  display: flex;\n  width: 100%;\n  justify-content: center;\n\n  @media (min-width: 600px) and (max-width: 1024px) {\n    display: flex;\n    padding: 0 25%;\n    justify-content: center;\n  }\n\n  @media (min-width: 1025px) {\n    margin-left: 0px;\n    display: flex;\n    width: 30%;\n  }\n\n  @media (min-width: 1240px) {\n    margin-left: 0px;\n  }\n"]);
+  var data = Object(_babel_runtime_corejs2_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0__["default"])(["\n  display: flex;\n  width: 100%;\n  justify-content: center;\n  margin-bottom: 0.5rem;\n  @media (min-width: 600px) and (max-width: 1024px) {\n    display: flex;\n    padding: 0 25%;\n    justify-content: center;\n  }\n\n  @media (min-width: 1025px) {\n    margin-left: 0px;\n    display: flex;\n    width: 30%;\n  }\n\n  @media (min-width: 1240px) {\n    margin-left: 0px;\n  }\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -318,7 +318,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _style__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./style */ "./components/Header/SearchBarForm/style.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "react-redux");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_2__);
 var _jsxFileName = "/Users/kim/Desktop/projects/frank/front/components/Header/SearchBarForm/index.js";
+
 
 
 
@@ -328,18 +331,37 @@ var onSubmitForm = function onSubmitForm(e) {
 };
 
 var SearchBarForm = function SearchBarForm() {
+  var _useSelector = Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["useSelector"])(function (state) {
+    return state.user;
+  }),
+      me = _useSelector.me;
+
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_style__WEBPACK_IMPORTED_MODULE_1__["AtdForm"], {
     onSubmit: onSubmitForm,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 9
+      lineNumber: 11
     },
     __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_style__WEBPACK_IMPORTED_MODULE_1__["AtdInput"], {
+  }, me ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_style__WEBPACK_IMPORTED_MODULE_1__["Avatar"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 14
+    },
+    __self: this
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_style__WEBPACK_IMPORTED_MODULE_1__["AtdInput"], {
+    htmlType: "submit",
+    isLogin: true,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 15
+    },
+    __self: this
+  })) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_style__WEBPACK_IMPORTED_MODULE_1__["AtdInput"], {
     htmlType: "submit",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 10
+      lineNumber: 18
     },
     __self: this
   }));
@@ -353,13 +375,14 @@ var SearchBarForm = function SearchBarForm() {
 /*!**************************************************!*\
   !*** ./components/Header/SearchBarForm/style.js ***!
   \**************************************************/
-/*! exports provided: AtdForm, AtdInput */
+/*! exports provided: AtdForm, AtdInput, Avatar */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AtdForm", function() { return AtdForm; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AtdInput", function() { return AtdInput; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Avatar", function() { return Avatar; });
 /* harmony import */ var _babel_runtime_corejs2_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/taggedTemplateLiteral */ "./node_modules/@babel/runtime-corejs2/helpers/esm/taggedTemplateLiteral.js");
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "styled-components");
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(styled_components__WEBPACK_IMPORTED_MODULE_1__);
@@ -367,8 +390,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(antd__WEBPACK_IMPORTED_MODULE_2__);
 
 
+function _templateObject3() {
+  var data = Object(_babel_runtime_corejs2_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0__["default"])(["\n  display: inline-block;\n  width: 10%;\n  border-radius: 50%;\n  height: 4vh;\n  margin-bottom: 0.5rem;\n  background-color: lightgray;\n  background-image: url(\"https://abs.twimg.com/sticky/default_profile_images/default_profile_bigger.png\");\n  background-repeat: no-repeat;\n  background-size: cover;\n"]);
+
+  _templateObject3 = function _templateObject3() {
+    return data;
+  };
+
+  return data;
+}
+
 function _templateObject2() {
-  var data = Object(_babel_runtime_corejs2_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0__["default"])(["\n  width: 100%;\n"]);
+  var data = Object(_babel_runtime_corejs2_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0__["default"])(["\n  width: ", ";\n  margin-bottom: 0.5rem;\n  margin-left: ", ";\n"]);
 
   _templateObject2 = function _templateObject2() {
     return data;
@@ -378,7 +411,7 @@ function _templateObject2() {
 }
 
 function _templateObject() {
-  var data = Object(_babel_runtime_corejs2_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0__["default"])(["\n  width: 100%;\n\n  @media (min-width: 600px) and (max-width: 1024px) {\n    width: 500px;\n    margin-left: 0px;\n  }\n  @media (min-width: 1025px) {\n    width: 500px;\n    margin-left: 0px;\n  }\n\n  @media (min-width: 1240px) {\n    width: 520px;\n    margin-left: 0px;\n  }\n"]);
+  var data = Object(_babel_runtime_corejs2_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0__["default"])(["\n  width: 100%;\n  display: flex;\n\n  @media (min-width: 600px) and (max-width: 1024px) {\n    width: 500px;\n    margin-left: 0px;\n  }\n  @media (min-width: 1025px) {\n    width: 500px;\n    margin-left: 0px;\n  }\n\n  @media (min-width: 1240px) {\n    width: 520px;\n    margin-left: 0px;\n  }\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -392,7 +425,12 @@ function _templateObject() {
 var Search = antd__WEBPACK_IMPORTED_MODULE_2__["Input"].Search;
 
 var AtdForm = styled_components__WEBPACK_IMPORTED_MODULE_1___default()(antd__WEBPACK_IMPORTED_MODULE_2__["Form"])(_templateObject());
-var AtdInput = styled_components__WEBPACK_IMPORTED_MODULE_1___default()(Search)(_templateObject2());
+var AtdInput = styled_components__WEBPACK_IMPORTED_MODULE_1___default()(Search)(_templateObject2(), function (props) {
+  return props.isLogin ? "85%" : "100%";
+}, function (props) {
+  return props.isLogin ? "auto" : null;
+});
+var Avatar = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.figure(_templateObject3());
 
 /***/ }),
 
@@ -410,41 +448,49 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _SearchBarForm__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SearchBarForm */ "./components/Header/SearchBarForm/index.js");
 /* harmony import */ var _LogInOutBtn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./LogInOutBtn */ "./components/Header/LogInOutBtn/index.js");
 /* harmony import */ var _style__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./style */ "./components/Header/style.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-redux */ "react-redux");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_4__);
 var _jsxFileName = "/Users/kim/Desktop/projects/frank/front/components/Header/index.js";
 
 
 
 
 
+
 var Header = function Header() {
+  var _useSelector = Object(react_redux__WEBPACK_IMPORTED_MODULE_4__["useSelector"])(function (state) {
+    return state.user;
+  }),
+      me = _useSelector.me;
+
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_style__WEBPACK_IMPORTED_MODULE_3__["HeaderWrapper"], {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 7
-    },
-    __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_style__WEBPACK_IMPORTED_MODULE_3__["TitleWrapper"], {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 8
-    },
-    __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_style__WEBPACK_IMPORTED_MODULE_3__["Title"], {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 9
     },
     __self: this
-  }, "IT \uC2A4\uD0C0\uD2B8\uC5C5 \uAE30\uC220 \uBE14\uB85C\uADF8 \uBAA8\uC74C")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_SearchBarForm__WEBPACK_IMPORTED_MODULE_1__["default"], {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_style__WEBPACK_IMPORTED_MODULE_3__["TitleWrapper"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 10
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_style__WEBPACK_IMPORTED_MODULE_3__["Title"], {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 11
     },
     __self: this
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_LogInOutBtn__WEBPACK_IMPORTED_MODULE_2__["default"], {
+  }, "IT \uC2A4\uD0C0\uD2B8\uC5C5 \uAE30\uC220 \uBE14\uB85C\uADF8 \uBAA8\uC74C")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_SearchBarForm__WEBPACK_IMPORTED_MODULE_1__["default"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 12
+      lineNumber: 13
+    },
+    __self: this
+  }), me ? null : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_LogInOutBtn__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 14
     },
     __self: this
   }));
@@ -472,7 +518,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function _templateObject3() {
-  var data = Object(_babel_runtime_corejs2_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0__["default"])([""]);
+  var data = Object(_babel_runtime_corejs2_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0__["default"])(["\n  margin: 0.5rem 0;\n"]);
 
   _templateObject3 = function _templateObject3() {
     return data;
@@ -1479,7 +1525,7 @@ var Home = function Home() {
 
 /***/ }),
 
-/***/ 3:
+/***/ 4:
 /*!******************************!*\
   !*** multi ./pages/index.js ***!
   \******************************/
@@ -1653,6 +1699,17 @@ module.exports = require("prop-types-exact");
 /***/ (function(module, exports) {
 
 module.exports = require("react");
+
+/***/ }),
+
+/***/ "react-redux":
+/*!******************************!*\
+  !*** external "react-redux" ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("react-redux");
 
 /***/ }),
 

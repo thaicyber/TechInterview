@@ -1,7 +1,10 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect } from "react";
 import styled from "styled-components";
 import { Form, Input, Button } from "antd";
 import useInput from "../customHooks/useInput";
+import { useDispatch, useSelector } from "react-redux";
+import { LOG_IN_REQUEST } from "../reducers/user";
+import Router from "next/router";
 const LoginWrapper = styled.div`
   display: flex;
   justify-content: center;
@@ -23,13 +26,24 @@ const AtdButton = styled(Button)`
 const Login = () => {
   const [email, setEmail] = useInput("");
   const [password, setPassword] = useInput("");
+  const dispatch = useDispatch();
+  const { me, isLoggingIn } = useSelector(state => state.user);
   const onSubmitLogin = useCallback(e => {
     e.preventDefault();
-    console.log({
-      email,
-      password
+    dispatch({
+      type: LOG_IN_REQUEST,
+      data: {
+        userId: email,
+        password
+      }
     });
   });
+  useEffect(() => {
+    if (me) {
+      alert("로그인 성공!");
+      Router.push("/");
+    }
+  }, [me]);
   return (
     <LoginWrapper>
       <LoginContent>
@@ -55,7 +69,7 @@ const Login = () => {
             />
           </PasswordWrapper>
           <BtnWrapper>
-            <AtdButton type="primary" htmlType="submit">
+            <AtdButton type="primary" htmlType="submit" loading={isLoggingIn}>
               로그인
             </AtdButton>
           </BtnWrapper>

@@ -4,7 +4,7 @@ export const LogInOutBtnWrapper = styled.div`
   display: flex;
   width: 100%;
   justify-content: center;
-
+  margin-bottom: 0.5rem;
   @media (min-width: 600px) and (max-width: 1024px) {
     display: flex;
     padding: 0 25%;
