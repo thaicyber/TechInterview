@@ -38,6 +38,11 @@ export const reducer = (state = initialState, action) => {
         isSigningUp: false
       };
     }
+    default: {
+      return {
+        ...state
+      };
+    }
   }
 };
 
