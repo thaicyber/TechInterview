@@ -2,7 +2,8 @@ import React, { useCallback, useState } from "react";
 import styled from "styled-components";
 import { Form, Input, Button } from "antd";
 import useInput from "../customHooks/useInput";
-
+import { useSelector, useDispatch } from "react-redux";
+import { SIGN_UP_REQUEST } from "../reducers/user";
 const SignupWrapper = styled.div`
   display: flex;
   justify-content: center;
@@ -55,6 +56,7 @@ const signup = () => {
   const [emailError, setEmailError] = useState(false);
   const [password, setPassword] = useState("");
   const [passwordError, setPasswordError] = useState(false);
+  const dispatch = useDispatch();
   const onSubmitSignup = e => {
     e.preventDefault();
     if (emailError) {
@@ -63,10 +65,13 @@ const signup = () => {
     if (passwordError) {
       return alert("비밀번호는 8자 이상 영문과 숫자 조합을 입력해주세요.");
     }
-    console.log({
-      nickname,
-      email,
-      password
+    dispatch({
+      type: SIGN_UP_REQUEST,
+      data: {
+        nickname,
+        userId: email,
+        password
+      }
     });
   };
   const isValidCheckEmail = email => {
