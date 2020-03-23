@@ -12011,14 +12011,18 @@ var App = function App(_ref) {
   }));
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(next_redux_wrapper__WEBPACK_IMPORTED_MODULE_4__["default"])(function (initialState, options) {
-  var middlewares = [];
-  var enhancer = Object(redux__WEBPACK_IMPORTED_MODULE_5__["compose"])(redux__WEBPACK_IMPORTED_MODULE_5__["applyMiddleware"].apply(void 0, middlewares), !options.isServer && typeof window.__REDUX_DEVTOOLS_EXTENSION__ !== "undefined" ? window.__REDUX_DEVTOOLS_EXTENSION__() : function (f) {
+var configureStore = function configureStore(initialState, options) {
+  var sagaMiddleware = createSagaMiddleware();
+  var middlewares = [sagaMiddleware];
+  var enhancer =  false ? undefined : Object(redux__WEBPACK_IMPORTED_MODULE_5__["compose"])(redux__WEBPACK_IMPORTED_MODULE_5__["applyMiddleware"].apply(void 0, middlewares), !options.isServer && typeof window.__REDUX_DEVTOOLS_EXTENSION__ !== "undefined" ? window.__REDUX_DEVTOOLS_EXTENSION__() : function (f) {
     return f;
   });
   var store = Object(redux__WEBPACK_IMPORTED_MODULE_5__["createStore"])(_reducers_user__WEBPACK_IMPORTED_MODULE_6__["default"], initialState, enhancer);
+  store.sagaTask = sagaMiddleware.run(rootSaga);
   return store;
-})(App)); // 이렇게 감싸주면 기존 App컴포넌트의 기능을 왼쪾의 withRedux기능도 생기면서 확장해주는 개념임.
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(next_redux_wrapper__WEBPACK_IMPORTED_MODULE_4__["default"])(configureStore)(withReduxSaga(App))); // 이렇게 감싸주면 기존 App컴포넌트의 기능을 왼쪾의 withRedux기능도 생기면서 확장해주는 개념임.
 // withRedux는 App컴포넌트에게 props로 store를 넣어주는 역할을 할거임.
 
 /***/ }),
