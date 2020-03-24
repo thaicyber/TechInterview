@@ -37,6 +37,10 @@ const LinkWrap = styled.div`
   display: flex;
   margin-bottom: 1rem;
 `;
+const dateWrap = styled.div`
+  display: flex;
+  margin-bottom: 1rem;
+`;
 const ButtonWrap = styled.div`
   display: flex;
   justify-content: center;
@@ -72,6 +76,10 @@ const Admin = () => {
           <ButtonWrap>
             <Button style={{ width: "30%", height: "100%" }}>등록</Button>
           </ButtonWrap>
+          <dateWrap>
+            <Label htmlFor="date">날짜 입력</Label>
+            <AtdInput name="date" />
+          </dateWrap>
         </AtdForm>
       </AdmimContent>
     </AdminWrapper>
