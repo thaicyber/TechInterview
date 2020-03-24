@@ -10,7 +10,8 @@ import {
   AvatarWrap,
   Avatar,
   NicknameWrap,
-  Nickname
+  Nickname,
+  FollowerWrap
 } from "./style";
 import { CloseOutlined } from "@ant-design/icons";
 import { useSelector } from "react-redux";
@@ -40,6 +41,18 @@ const UserSetting = ({ setAvatarClick }) => {
           <NicknameWrap>
             <Nickname>{me && me.nickname}</Nickname>
           </NicknameWrap>
+          <FollowerWrap>
+            <span
+              style={{
+                fontSize: "1.2rem",
+                fontWeight: "500",
+                marginRight: "0.5rem"
+              }}
+            >
+              0
+            </span>
+            <span style={{ fontSize: "1.2rem" }}>Follower</span>
+          </FollowerWrap>
         </BottomContent>
       </UserSettingContent>
     </UserSettingWrapper>

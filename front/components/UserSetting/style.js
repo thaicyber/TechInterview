@@ -25,18 +25,20 @@ export const TopContent = styled.div`
   height: 100%;
   background-color: white;
   border-bottom: 1px solid lightgray;
+  padding-left: 1rem;
 `;
 
 export const BottomContent = styled.div`
   display: grid;
-  grid-template-rows: repeat(6, 1fr);
+  grid-template-rows: 0.6fr 0.2fr 0.3fr 1fr 1fr 1fr;
   width: 100%;
   height: 100%;
   background-color: white;
+  padding-left: 1rem;
 `;
 
 export const Title = styled.span`
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   font-weight: 400;
 `;
 export const CancelWrap = styled.div`
@@ -50,14 +52,12 @@ export const TitleWrap = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  margin-left: 1rem;
 `;
 
 export const AvatarWrap = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  margin-left: 0.7rem;
 `;
 export const Avatar = styled.figure`
   width: 13%;
@@ -77,9 +77,13 @@ export const NicknameWrap = styled.div`
   justify-content: flex-start;
   width: 100%;
   height: 100%;
-  margin-left: 0.7rem;
 `;
 export const Nickname = styled.span`
-  font-size: 1.1rem;
-  font-weight: 800;
+  font-size: 0.9rem;
+  font-weight: 900;
+`;
+
+export const FollowerWrap = styled.div`
+  width: 100%;
+  height: 100%;
 `;
