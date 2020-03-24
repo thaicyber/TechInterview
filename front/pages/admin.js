@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { Input, Form, Select, Button } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import { LOAD_COMPANIES_REQUEST } from "../reducers/user";
+import { ADD_POST_REQUEST } from "../reducers/post";
 const AdminWrapper = styled.div`
   width: 100%;
   height: 100vh;
@@ -66,7 +67,7 @@ const Admin = () => {
   }, []);
   const [companyId, setCompanyId] = useState("");
   const [text, setText] = useState("");
-  const [img, setImg] = useState("");
+  const [postImg, setPostImg] = useState("");
   const [link, setLink] = useState("");
   const [date, setDate] = useState("");
   const onChangeDate = e => {
@@ -76,7 +77,7 @@ const Admin = () => {
     setLink(e.target.value);
   };
   const onChangeImg = e => {
-    setImg(e.target.value);
+    setPostImg(e.target.value);
   };
   const onChangeText = e => {
     setText(e.target.value);
@@ -87,15 +88,25 @@ const Admin = () => {
   const onSubmitPost = useCallback(
     e => {
       e.preventDefault();
+      dispatch({
+        type: ADD_POST_REQUEST,
+        data: {
+          content: text,
+          companyId,
+          postImg,
+          link,
+          publishedTime: date
+        }
+      });
       console.log({
         companyId,
         text,
-        img,
+        postImg,
         link,
         date
       });
     },
-    [companyId, text, img, link, date]
+    [companyId, text, postImg, link, date]
   );
   return (
     <AdminWrapper>

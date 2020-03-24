@@ -6,7 +6,7 @@ import {
 } from "../reducers/post";
 import axios from "axios";
 function addPostAPI(postData) {
-  return axios.post("/", postData);
+  return axios.post("/post", postData, { withCredentials: true });
 }
 function* addPost(action) {
   try {
