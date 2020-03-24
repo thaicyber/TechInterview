@@ -5,7 +5,8 @@ export const initialState = {
   isLoggingIn: false, // 로그인 시도 중
   isLogined: false, // 로그인 성공 유무
   loginErrorReason: "", // 로그인 실패 사유
-  me: null // 로그인 성공시 담기는 내 정보
+  me: null, // 로그인 성공시 담기는 내 정보
+  isLoggingOut: false // 로그아웃 시도 중
 };
 
 export const SIGN_UP_REQUEST = "SIGN_UP_REQUEST";
@@ -16,6 +17,10 @@ export const LOG_IN_REQUEST = "LOG_IN_REQUEST";
 export const LOG_IN_SUCCESS = "LOG_IN_SUCCESS";
 export const LOG_IN_FAILURE = "LOG_IN_FAILURE";
 
+export const LOG_OUT_REQUEST = "LOG_OUT_REQUEST";
+export const LOG_OUT_SUCCESS = "LOG_OUT_SUCCESS";
+export const LOG_OUT_FAILURE = "LOG_OUT_FAILURE";
+
 export const reducer = (state = initialState, action) => {
   switch (action.type) {
     case SIGN_UP_REQUEST: {
@@ -25,7 +30,6 @@ export const reducer = (state = initialState, action) => {
       };
     }
     case SIGN_UP_SUCCESS: {
-      console.log(action);
       return {
         ...state,
         isSignedUp: true,
@@ -47,7 +51,6 @@ export const reducer = (state = initialState, action) => {
       };
     }
     case LOG_IN_SUCCESS: {
-      console.log(action);
       return {
         ...state,
         isLogined: true,
@@ -60,6 +63,20 @@ export const reducer = (state = initialState, action) => {
         ...state,
         isLogined: false,
         isLoggingIn: false
+      };
+    }
+    case LOG_OUT_REQUEST: {
+      return {
+        ...state,
+        isLoggingOut: true
+      };
+    }
+    case LOG_OUT_SUCCESS: {
+      return {
+        ...state,
+        isLogined: false,
+        isLoggingOut: false,
+        me: null
       };
     }
     default: {

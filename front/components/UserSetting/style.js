@@ -87,3 +87,9 @@ export const FollowerWrap = styled.div`
   width: 100%;
   height: 100%;
 `;
+
+export const LogOutWrap = styled.div`
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+`;

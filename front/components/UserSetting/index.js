@@ -11,17 +11,26 @@ import {
   Avatar,
   NicknameWrap,
   Nickname,
-  FollowerWrap
+  FollowerWrap,
+  LogOutWrap
 } from "./style";
-import { CloseOutlined } from "@ant-design/icons";
-import { useSelector } from "react-redux";
+import { CloseOutlined, LogoutOutlined } from "@ant-design/icons";
+import { useSelector, useDispatch } from "react-redux";
+import { LOG_OUT_REQUEST } from "../../reducers/user";
 const UserSetting = ({ setAvatarClick }) => {
-  const { me } = useSelector(state => state.user);
+  const { me, isLoggingOut } = useSelector(state => state.user);
+  const dispatch = useDispatch();
   const onClickCancel = () => {
     if (setAvatarClick) {
       setAvatarClick(false);
       document.body.style.overflowY = "scroll";
     }
+  };
+  const onClickLogOut = () => {
+    dispatch({
+      type: LOG_OUT_REQUEST
+    });
+    onClickCancel();
   };
   return (
     <UserSettingWrapper>
@@ -53,6 +62,16 @@ const UserSetting = ({ setAvatarClick }) => {
             </span>
             <span style={{ fontSize: "1.2rem" }}>Follower</span>
           </FollowerWrap>
+          <LogOutWrap onClick={onClickLogOut}>
+            <span
+              style={{
+                fontSize: "1.2rem",
+                fontWeight: "500"
+              }}
+            >
+              Log out
+            </span>
+          </LogOutWrap>
         </BottomContent>
       </UserSettingContent>
     </UserSettingWrapper>
