@@ -17,6 +17,7 @@ import {
 import { CloseOutlined, LogoutOutlined } from "@ant-design/icons";
 import { useSelector, useDispatch } from "react-redux";
 import { LOG_OUT_REQUEST } from "../../reducers/user";
+import Link from "next/link";
 const UserSetting = ({ setAvatarClick }) => {
   const { me, isLoggingOut } = useSelector(state => state.user);
   const dispatch = useDispatch();
@@ -72,6 +73,9 @@ const UserSetting = ({ setAvatarClick }) => {
               Log out
             </span>
           </LogOutWrap>
+          <Link href="/post">
+            <a>Post</a>
+          </Link>
         </BottomContent>
       </UserSettingContent>
     </UserSettingWrapper>

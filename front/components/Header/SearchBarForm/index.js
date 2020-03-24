@@ -17,7 +17,7 @@ const SearchBarForm = () => {
     <AtdForm onSubmit={onSubmitForm}>
       {me ? (
         <>
-          <Avatar onClick={onClickAvatar}></Avatar>
+          <Avatar onClick={onClickAvatar} userImg={me.img}></Avatar>
           <AtdInput htmlType="submit" isLogin={true} />
         </>
       ) : (

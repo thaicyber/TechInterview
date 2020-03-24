@@ -75,7 +75,6 @@ package-lock.json
 # Serverless directories
 .serverless
 /front/build/
-react-nodebird.pem
 
 # next.js build output
 .next
