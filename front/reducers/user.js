@@ -6,7 +6,9 @@ export const initialState = {
   isLogined: false, // 로그인 성공 유무
   loginErrorReason: "", // 로그인 실패 사유
   me: null, // 로그인 성공시 담기는 내 정보
-  isLoggingOut: false // 로그아웃 시도 중
+  isLoggingOut: false, // 로그아웃 시도 중
+  companies: null,
+  isLoadingCompaniesErrorReason: ""
 };
 
 export const SIGN_UP_REQUEST = "SIGN_UP_REQUEST";
@@ -20,6 +22,10 @@ export const LOG_IN_FAILURE = "LOG_IN_FAILURE";
 export const LOG_OUT_REQUEST = "LOG_OUT_REQUEST";
 export const LOG_OUT_SUCCESS = "LOG_OUT_SUCCESS";
 export const LOG_OUT_FAILURE = "LOG_OUT_FAILURE";
+
+export const LOAD_COMPANIES_REQUEST = "LOAD_COMPANIES_REQUEST";
+export const LOAD_COMPANIES_SUCCESS = "LOAD_COMPANIES_SUCCESS";
+export const LOAD_COMPANIES_FAILURE = "LOAD_COMPANIES_FAILURE";
 
 export const reducer = (state = initialState, action) => {
   switch (action.type) {
@@ -77,6 +83,22 @@ export const reducer = (state = initialState, action) => {
         isLogined: false,
         isLoggingOut: false,
         me: null
+      };
+    }
+    case LOAD_COMPANIES_REQUEST: {
+      return {
+        ...state
+      };
+    }
+    case LOAD_COMPANIES_SUCCESS: {
+      return {
+        ...state,
+        companies: action.data
+      };
+    }
+    case LOAD_COMPANIES_FAILURE: {
+      return {
+        ...state
       };
     }
     default: {

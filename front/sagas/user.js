@@ -8,9 +8,34 @@ import {
   LOG_IN_SUCCESS,
   LOG_OUT_REQUEST,
   LOG_OUT_FAILURE,
-  LOG_OUT_SUCCESS
+  LOG_OUT_SUCCESS,
+  LOAD_COMPANIES_SUCCESS,
+  LOAD_COMPANIES_FAILURE,
+  LOAD_COMPANIES_REQUEST
 } from "../reducers/user";
 import axios from "axios";
+
+function loadCompaniesAPI() {
+  return axios.get("/users");
+}
+function* loadCompanies() {
+  try {
+    const result = yield call(loadCompaniesAPI);
+    yield put({
+      type: LOAD_COMPANIES_SUCCESS,
+      data: result.data
+    });
+  } catch (e) {
+    console.error(e);
+    yield put({
+      type: LOAD_COMPANIES_FAILURE,
+      error: e
+    });
+  }
+}
+function* watchLoadCompanies() {
+  yield takeLatest(LOAD_COMPANIES_REQUEST, loadCompanies);
+}
 
 function LogOutAPI() {
   return axios.post("/user/logout");
@@ -72,5 +97,10 @@ function* watchSignUp() {
   yield takeLatest(SIGN_UP_REQUEST, signUp);
 }
 export default function* userSaga() {
-  yield all([fork(watchSignUp), fork(watchLogIn), fork(watchLogOut)]);
+  yield all([
+    fork(watchSignUp),
+    fork(watchLogIn),
+    fork(watchLogOut),
+    fork(watchLoadCompanies)
+  ]);
 }

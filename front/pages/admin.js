@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { Input, Form, Select, Button } from "antd";
+import { useSelector, useDispatch } from "react-redux";
+import { LOAD_COMPANIES_REQUEST } from "../reducers/user";
 const AdminWrapper = styled.div`
   width: 100%;
   height: 100vh;
@@ -50,6 +52,12 @@ const ButtonWrap = styled.div`
   padding: 1rem 1rem;
 `;
 const Admin = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch({
+      type: LOAD_COMPANIES_REQUEST
+    });
+  }, []);
   return (
     <AdminWrapper>
       <AdmimContent>
@@ -73,13 +81,13 @@ const Admin = () => {
             <Label htmlFor="linkAddress">링크 주소 입력</Label>
             <AtdInput name="linkAddress" />
           </LinkWrap>
-          <ButtonWrap>
-            <Button style={{ width: "30%", height: "100%" }}>등록</Button>
-          </ButtonWrap>
           <dateWrap>
             <Label htmlFor="date">날짜 입력</Label>
             <AtdInput name="date" />
           </dateWrap>
+          <ButtonWrap>
+            <Button style={{ width: "30%", height: "100%" }}>등록</Button>
+          </ButtonWrap>
         </AtdForm>
       </AdmimContent>
     </AdminWrapper>
