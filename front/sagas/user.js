@@ -58,7 +58,9 @@ function* watchLogOut() {
 }
 
 function logInAPI(logInData) {
-  return axios.post("/user/login", logInData);
+  return axios.post("/user/login", logInData, {
+    withCredentials: true
+  });
 }
 function* logIn(action) {
   try {

@@ -98,7 +98,8 @@ export const reducer = (state = initialState, action) => {
     }
     case LOAD_COMPANIES_FAILURE: {
       return {
-        ...state
+        ...state,
+        isLoadingCompaniesErrorReason: action.error
       };
     }
     default: {
