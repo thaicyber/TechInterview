@@ -76,5 +76,3 @@ package-lock.json
 .serverless
 /front/build/
 
-# next.js build output
-.next

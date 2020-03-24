@@ -73,9 +73,11 @@ const UserSetting = ({ setAvatarClick }) => {
               Log out
             </span>
           </LogOutWrap>
-          <Link href="/post">
-            <a>Post</a>
-          </Link>
+          {me && me.level && me.level === "admin" && (
+            <Link href="/admin">
+              <a>Admin</a>
+            </Link>
+          )}
         </BottomContent>
       </UserSettingContent>
     </UserSettingWrapper>
