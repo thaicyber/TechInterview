@@ -1,7 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { PostCardWrapper, Content } from "./style";
 import { useDispatch, useSelector } from "react-redux";
-import { LOAD_MAIN_POSTS_REQUEST } from "../../reducers/post";
 const PostCard = ({ post }) => {
   const { me } = useSelector(state => state.user);
   return (

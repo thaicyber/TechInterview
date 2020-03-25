@@ -21,3 +21,7 @@ export const NoneMemberLayoutWrapper = styled.div`
     padding: 0 150px;
   }
 `;
+
+export const Wrap = styled.div`
+  margin-top: ${props => (props.isLogined ? "73px" : "113px")};
+`;
