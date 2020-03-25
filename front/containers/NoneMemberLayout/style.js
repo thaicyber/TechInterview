@@ -24,4 +24,5 @@ export const NoneMemberLayoutWrapper = styled.div`
 
 export const Wrap = styled.div`
   margin-top: ${props => (props.isLogined ? "73px" : "113px")};
+  margin-bottom: 7vh;
 `;

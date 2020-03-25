@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const PostCardWrapper = styled.div`
   width: 100%;
-  /* margin-top: ${props => (props.isLogined ? "73px" : "113px")}; */
   background-color: #e6ecf0;
 
   @media (min-width: 600px) and (max-width: 1024px) {
