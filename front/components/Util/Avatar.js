@@ -3,26 +3,32 @@ import styled from "styled-components";
 const handlerHeight = size => {
   switch (size) {
     case "small": {
-      return "4vh";
+      return "30px";
     }
     case "medium": {
-      return "6vh";
+      return "37px";
+    }
+    case "large": {
+      return "45px";
     }
     default: {
-      return "4vh";
+      return "30px";
     }
   }
 };
 const handlerWidth = size => {
   switch (size) {
     case "small": {
-      return "4vh";
+      return "30px";
     }
     case "medium": {
-      return "6vh";
+      return "37px";
+    }
+    case "large": {
+      return "45px";
     }
     default: {
-      return "4vh";
+      return "30px";
     }
   }
 };

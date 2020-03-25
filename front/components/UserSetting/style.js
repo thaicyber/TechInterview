@@ -57,7 +57,6 @@ export const TitleWrap = styled.div`
 export const AvatarWrap = styled.div`
   display: flex;
   align-items: center;
-  justify-content: flex-start;
 `;
 
 export const NicknameWrap = styled.div`

@@ -46,7 +46,7 @@ const UserSetting = ({ setAvatarClick }) => {
         </TopContent>
         <BottomContent>
           <AvatarWrap>
-            <Avatar size="small" img={me.img} />
+            <Avatar size="medium" img={me.img} />
           </AvatarWrap>
           <NicknameWrap>
             <Nickname>{me && me.nickname}</Nickname>

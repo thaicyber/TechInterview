@@ -1,8 +1,10 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const PostCardWrapper = styled.div`
   width: 100%;
-  background-color: #e6ecf0;
+  background-color: white;
+  /* background-color: #e6ecf0; */
+  border-bottom: 1px solid #cdd6dd;
 
   @media (min-width: 600px) and (max-width: 1024px) {
     margin-top: 55px;
@@ -17,17 +19,120 @@ export const PostCardWrapper = styled.div`
   }
 `;
 
-export const Content = styled.div`
+export const PrimeWrap = styled.div`
   display: grid;
-  grid-template-columns: 13% auto;
+  grid-template-columns: 16% auto;
   width: 100%;
-  background-color: skyblue;
   min-height: 41vh;
-  padding: 1rem 1rem;
+  padding: 1rem 1rem 0rem 1rem;
   margin-bottom: 0.1rem;
 `;
 
 export const AvatarWrap = styled.div`
   display: grid;
-  grid-template-rows: 30% 70%;
+  grid-template-rows: 15% 85%;
+`;
+
+export const WriterInfoWrap = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+export const WriterName = styled.div`
+  width: 20%;
+  background-color: yellow;
+`;
+
+export const WriteDate = styled.div`
+  width: 80%;
+  background-color: white;
+`;
+
+export const ContentWrap = styled.div`
+  display: grid;
+  grid-template-rows: 15% 68% 8% 10%;
+`;
+// title , img & content , hastag , nav 순서
+
+export const CardWrap = styled.div`
+  display: grid;
+  grid-template-rows: 70% 15% 15%;
+  width: 100%;
+  height: 100%;
+  border: 1px solid #cdd6dd;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+`;
+
+const Wrap = styled.div`
+  width: 100%;
+  height: 100%;
+`;
+export const CardImageWrap = styled(Wrap)``;
+
+export const CardImage = styled.figure`
+  background-image: url(${props => props.img});
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  width: 100%;
+  height: 100%;
+`;
+
+export const CardTitleWrap = styled(Wrap)`
+  display: flex;
+  align-items: flex-end;
+  padding-left: 0.6rem;
+`;
+
+export const CardTitle = styled.span``;
+
+export const CardLinkWrap = styled(Wrap)`
+  display: flex;
+  align-items: flex-start;
+  padding-left: 0.6rem;
+`;
+
+export const CardLink = styled.span``;
+
+export const HashTagWrap = styled(Wrap)`
+  display: flex;
+  align-items: center;
+`;
+
+export const HashTag = styled.span``;
+
+export const MenuWrap = styled.div`
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+`;
+const MenuWrapStyles = css`
+  width: 25%;
+  cursor: pointer;
+  /* display: flex; */
+`;
+export const CommentWrap = styled.div`
+  ${MenuWrapStyles} /* justify-content : center; */
+`;
+
+export const LikeWrap = styled.div`
+  ${MenuWrapStyles} /* justify-content :center; */
+  margin-left: 15%;
+`;
+
+export const ShareWrap = styled.div`
+  ${MenuWrapStyles} /* justify-content : center; */
+  display : flex;
+  justify-content: flex-end;
+`;
+
+export const PinWrap = styled.div`
+  ${MenuWrapStyles}
+  margin-left : 14%;
+  /* justify-content : center; */
 `;
