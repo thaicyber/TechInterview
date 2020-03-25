@@ -15,40 +15,26 @@ const AdmimContent = styled.div`
   background-color: lightgray;
 `;
 const AtdForm = styled(Form)``;
-const SelectCompanyWrap = styled.div`
+const Wrap = styled.div`
   width: 100%;
   display: flex;
   margin-bottom: 1rem;
 `;
+const SelectCompanyWrap = styled(Wrap)``;
+const TitleWrap = styled(Wrap)``;
 const Label = styled.label`
   width: 20%;
 `;
 const AtdSelect = styled(Select)`
   width: 20%;
 `;
-const ContentWrap = styled.div`
-  width: 100%;
-  display: flex;
-  margin-bottom: 1rem;
-`;
+const ContentWrap = styled(Wrap)``;
 const AtdInput = styled(Input)`
   width: 80%;
 `;
-const ImgWrap = styled.div`
-  width: 100%;
-  display: flex;
-  margin-bottom: 1rem;
-`;
-const LinkWrap = styled.div`
-  width: 100%;
-  display: flex;
-  margin-bottom: 1rem;
-`;
-const DateWrap = styled.div`
-  width: 100%;
-  display: flex;
-  margin-bottom: 1rem;
-`;
+const ImgWrap = styled(Wrap)``;
+const LinkWrap = styled(Wrap)``;
+const DateWrap = styled(Wrap)``;
 const ButtonWrap = styled.div`
   display: flex;
   justify-content: center;
@@ -70,6 +56,7 @@ const Admin = () => {
   const [postImg, setPostImg] = useState("");
   const [link, setLink] = useState("");
   const [date, setDate] = useState("");
+  const [title, setTitle] = useState("");
   const onChangeDate = e => {
     setDate(e.target.value);
   };
@@ -85,6 +72,9 @@ const Admin = () => {
   const onChangeCompanyId = value => {
     setCompanyId(value);
   };
+  const onChangeTitle = e => {
+    setTitle(e.target.value);
+  };
   const onSubmitPost = useCallback(
     e => {
       e.preventDefault();
@@ -95,7 +85,8 @@ const Admin = () => {
           companyId,
           postImg,
           link,
-          publishedTime: date
+          publishedTime: date,
+          title
         }
       });
       console.log({
@@ -103,10 +94,17 @@ const Admin = () => {
         text,
         postImg,
         link,
-        date
+        date,
+        date,
+        title
       });
+      setDate("");
+      setPostImg("");
+      setText("");
+      setTitle("");
+      setLink("");
     },
-    [companyId, text, postImg, link, date]
+    [companyId, text, postImg, link, date, title]
   );
   return (
     <AdminWrapper>
@@ -125,25 +123,34 @@ const Admin = () => {
                 ))}
             </AtdSelect>
           </SelectCompanyWrap>
+          <TitleWrap>
+            <Label htmlFor="title">Title</Label>
+            <AtdInput name="title" onChange={onChangeTitle} value={title} />
+          </TitleWrap>
           <ContentWrap>
             <Label htmlFor="content">내용입력</Label>
             <Input.TextArea
               name="content"
               style={{ width: "80%", height: "150px" }}
               onChange={onChangeText}
+              value={text}
             ></Input.TextArea>
           </ContentWrap>
           <ImgWrap>
             <Label htmlFor="imgAddress">이미지 주소 입력</Label>
-            <AtdInput name="imgAddress" onChange={onChangeImg} />
+            <AtdInput
+              name="imgAddress"
+              onChange={onChangeImg}
+              value={postImg}
+            />
           </ImgWrap>
           <LinkWrap>
             <Label htmlFor="linkAddress">링크 주소 입력</Label>
-            <AtdInput name="linkAddress" onChange={onChangeLink} />
+            <AtdInput name="linkAddress" onChange={onChangeLink} value={link} />
           </LinkWrap>
           <DateWrap>
             <Label htmlFor="date">날짜 입력</Label>
-            <AtdInput name="date" onChange={onChangeDate} />
+            <AtdInput name="date" onChange={onChangeDate} value={date} />
           </DateWrap>
           <ButtonWrap>
             <Button style={{ width: "30%", height: "100%" }} htmlType="submit">
