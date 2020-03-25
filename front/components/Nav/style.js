@@ -8,7 +8,7 @@ export const NavWrapper = styled.nav`
   background-color: white;
   position: fixed;
   border: 1px solid lightgray;
-  bottom: 0;
+  bottom: -2px;
   left: 0;
   right: 0;
 `;

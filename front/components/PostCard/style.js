@@ -38,13 +38,14 @@ export const WriterInfoWrap = styled.div`
   align-items: center;
 `;
 
-export const WriterName = styled.div`
-  width: 20%;
-  background-color: yellow;
+export const WriterName = styled.span`
+  width: 30%;
+  font-size: 1rem;
+  font-weight: 900;
 `;
 
 export const WriteDate = styled.div`
-  width: 80%;
+  width: 70%;
   background-color: white;
 `;
 
@@ -108,31 +109,16 @@ export const HashTag = styled.span``;
 
 export const MenuWrap = styled.div`
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
 `;
 const MenuWrapStyles = css`
-  width: 25%;
   cursor: pointer;
-  /* display: flex; */
 `;
-export const CommentWrap = styled.div`
-  ${MenuWrapStyles} /* justify-content : center; */
-`;
+export const CommentWrap = styled.div``;
 
-export const LikeWrap = styled.div`
-  ${MenuWrapStyles} /* justify-content :center; */
-  margin-left: 15%;
-`;
+export const LikeWrap = styled.div``;
 
-export const ShareWrap = styled.div`
-  ${MenuWrapStyles} /* justify-content : center; */
-  display : flex;
-  justify-content: flex-end;
-`;
+export const ShareWrap = styled.div``;
 
-export const PinWrap = styled.div`
-  ${MenuWrapStyles}
-  margin-left : 14%;
-  /* justify-content : center; */
-`;
+export const PinWrap = styled.div``;

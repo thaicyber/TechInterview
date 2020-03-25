@@ -38,8 +38,10 @@ function* watchLoadCompanies() {
 }
 
 function LogOutAPI() {
-  return axios.post("/user/logout");
+  return axios.post("/user/logout", {}, { withCredentials: true });
 }
+// data가 없더라도 빈 객체 넣어줘야함.
+// 주소/데이터/설정
 function* logOut(action) {
   try {
     yield call(LogOutAPI, action.data);
