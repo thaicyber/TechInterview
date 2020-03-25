@@ -27,16 +27,3 @@ export const AtdInput = styled(Search)`
   margin-bottom: 0.5rem;
   margin-left: ${props => (props.isLogin ? "auto" : null)};
 `;
-
-export const Avatar = styled.figure`
-  display: inline-block;
-  width: 10%;
-  border-radius: 50%;
-  height: 4vh;
-  margin-bottom: 0.5rem;
-  background-color: lightgray;
-  background-image: url(${props => props.img});
-  background-repeat: no-repeat;
-  background-size: cover;
-  cursor: pointer;
-`;

@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { AtdForm, AtdInput, Avatar } from "./style";
+import { AtdForm, AtdInput } from "./style";
 import { useSelector } from "react-redux";
 import UserSetting from "../../UserSetting";
+import Avatar from "../../Util/Avatar";
 const onSubmitForm = e => {
   e.preventDefault();
-  console.log("!!!!submit");
+  console.log("submit");
 };
 const SearchBarForm = () => {
   const [avatarClick, setAvatarClick] = useState(false);
@@ -17,7 +18,7 @@ const SearchBarForm = () => {
     <AtdForm onSubmit={onSubmitForm}>
       {me ? (
         <>
-          <Avatar onClick={onClickAvatar} img={me.img}></Avatar>
+          <Avatar onClick={onClickAvatar} img={me.img} size="small"></Avatar>
           <AtdInput htmlType="submit" isLogin={true} />
         </>
       ) : (

@@ -18,9 +18,16 @@ export const PostCardWrapper = styled.div`
 `;
 
 export const Content = styled.div`
+  display: grid;
+  grid-template-columns: 13% auto;
   width: 100%;
-  background-color: coral;
+  background-color: skyblue;
   min-height: 41vh;
   padding: 1rem 1rem;
   margin-bottom: 0.1rem;
+`;
+
+export const AvatarWrap = styled.div`
+  display: grid;
+  grid-template-rows: 30% 70%;
 `;

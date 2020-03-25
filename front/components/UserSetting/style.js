@@ -59,17 +59,6 @@ export const AvatarWrap = styled.div`
   align-items: center;
   justify-content: flex-start;
 `;
-export const Avatar = styled.figure`
-  width: 13%;
-  border-radius: 50%;
-  height: 4.2vh;
-  margin-bottom: 0.5rem;
-  background-color: lightgray;
-  background-image: url("https://abs.twimg.com/sticky/default_profile_images/default_profile_bigger.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-  cursor: pointer;
-`;
 
 export const NicknameWrap = styled.div`
   display: flex;

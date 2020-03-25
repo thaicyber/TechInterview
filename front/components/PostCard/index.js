@@ -1,8 +1,17 @@
 import React from "react";
-import { PostCardWrapper, Content } from "./style";
+import { PostCardWrapper, Content, AvatarWrap } from "./style";
+import Avatar from "../Util/Avatar";
 const PostCard = ({ post }) => {
   return (
-    <PostCardWrapper>{post && <Content>{post.title}</Content>}</PostCardWrapper>
+    <PostCardWrapper>
+      {post && (
+        <Content>
+          <AvatarWrap>
+            <Avatar size="medium" />
+          </AvatarWrap>
+        </Content>
+      )}
+    </PostCardWrapper>
   );
 };
 

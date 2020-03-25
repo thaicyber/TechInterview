@@ -8,7 +8,6 @@ import {
   Title,
   CancelWrap,
   AvatarWrap,
-  Avatar,
   NicknameWrap,
   Nickname,
   FollowerWrap,
@@ -18,6 +17,7 @@ import { CloseOutlined, LogoutOutlined } from "@ant-design/icons";
 import { useSelector, useDispatch } from "react-redux";
 import { LOG_OUT_REQUEST } from "../../reducers/user";
 import Link from "next/link";
+import Avatar from "../Util/Avatar";
 const UserSetting = ({ setAvatarClick }) => {
   const { me, isLoggingOut } = useSelector(state => state.user);
   const dispatch = useDispatch();
@@ -46,7 +46,7 @@ const UserSetting = ({ setAvatarClick }) => {
         </TopContent>
         <BottomContent>
           <AvatarWrap>
-            <Avatar />
+            <Avatar size="small" img={me.img} />
           </AvatarWrap>
           <NicknameWrap>
             <Nickname>{me && me.nickname}</Nickname>
