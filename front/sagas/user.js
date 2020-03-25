@@ -11,9 +11,37 @@ import {
   LOG_OUT_SUCCESS,
   LOAD_COMPANIES_SUCCESS,
   LOAD_COMPANIES_FAILURE,
-  LOAD_COMPANIES_REQUEST
+  LOAD_COMPANIES_REQUEST,
+  LOAD_USER_REQUEST,
+  LOAD_USER_FAILURE,
+  LOAD_USER_SUCCESS
 } from "../reducers/user";
 import axios from "axios";
+
+function loadUserAPI() {
+  return axios.get("/user", {
+    withCredentials: true
+  });
+  // front session cookie를 서버에 보냄
+}
+function* loadUser() {
+  try {
+    const result = yield call(loadUserAPI);
+    yield put({
+      type: LOAD_USER_SUCCESS,
+      data: result.data
+    });
+  } catch (e) {
+    console.error(e);
+    yield put({
+      type: LOAD_USER_FAILURE,
+      error: e
+    });
+  }
+}
+function* watchLoadUser() {
+  yield takeLatest(LOAD_USER_REQUEST, loadUser);
+}
 
 function loadCompaniesAPI() {
   return axios.get("/users");
@@ -105,6 +133,7 @@ export default function* userSaga() {
     fork(watchSignUp),
     fork(watchLogIn),
     fork(watchLogOut),
-    fork(watchLoadCompanies)
+    fork(watchLoadCompanies),
+    fork(watchLoadUser)
   ]);
 }

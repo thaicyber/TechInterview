@@ -27,6 +27,10 @@ export const LOAD_COMPANIES_REQUEST = "LOAD_COMPANIES_REQUEST";
 export const LOAD_COMPANIES_SUCCESS = "LOAD_COMPANIES_SUCCESS";
 export const LOAD_COMPANIES_FAILURE = "LOAD_COMPANIES_FAILURE";
 
+export const LOAD_USER_REQUEST = "LOAD_USER_REQUEST";
+export const LOAD_USER_SUCCESS = "LOAD_USER_SUCCESS";
+export const LOAD_USER_FAILURE = "LOAD_USER_FAILURE";
+
 export const reducer = (state = initialState, action) => {
   switch (action.type) {
     case SIGN_UP_REQUEST: {
@@ -100,6 +104,22 @@ export const reducer = (state = initialState, action) => {
       return {
         ...state,
         isLoadingCompaniesErrorReason: action.error
+      };
+    }
+    case LOAD_USER_REQUEST: {
+      return {
+        ...state
+      };
+    }
+    case LOAD_USER_SUCCESS: {
+      return {
+        ...state,
+        me: action.data
+      };
+    }
+    case LOAD_USER_FAILURE: {
+      return {
+        ...state
       };
     }
     default: {

@@ -7,6 +7,7 @@ import PostCard from "../../components/PostCard";
 import Nav from "../../components/Nav";
 import { LOAD_MAIN_POSTS_REQUEST } from "../../reducers/post";
 import { useDispatch, useSelector } from "react-redux";
+import { LOAD_USER_REQUEST } from "../../reducers/user";
 const NoneMemberLayout = () => {
   const dispatch = useDispatch();
   const { me } = useSelector(state => state.user);
@@ -14,6 +15,9 @@ const NoneMemberLayout = () => {
   useEffect(() => {
     dispatch({
       type: LOAD_MAIN_POSTS_REQUEST
+    });
+    dispatch({
+      type: LOAD_USER_REQUEST
     });
   }, []);
   return (
