@@ -29,6 +29,7 @@ import {
   HeartOutlined,
   PushpinOutlined
 } from "@ant-design/icons";
+import Link from "next/link";
 const PostCard = ({ post }) => {
   console.log("post", post);
   return (
@@ -55,7 +56,19 @@ const PostCard = ({ post }) => {
               </CardLinkWrap>
             </CardWrap>
             <HashTagWrap>
-              <HashTag>{post.content}</HashTag>
+              <HashTag>
+                {post.content.split(/(#[^\s]+)/g).map(v => {
+                  if (v.match(/(#[^\s]+)/g)) {
+                    return (
+                      <Link href="/hashtag" key={v}>
+                        <a style={{ color: "#1B98E5" }}>{v}</a>
+                      </Link>
+                    );
+                  } else {
+                    return v;
+                  }
+                })}
+              </HashTag>
             </HashTagWrap>
             <MenuWrap>
               <CommentWrap>
