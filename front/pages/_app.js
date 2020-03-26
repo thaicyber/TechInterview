@@ -8,10 +8,13 @@ import withReduxSaga from "next-redux-saga";
 import createSagaMiddleware from "redux-saga";
 import reducer from "../reducers/index";
 import rootSaga from "../sagas";
+import { ThemeProvider } from "styled-components";
+import Theme from "../styles/Theme";
 const App = ({ Component, store }) => {
   return (
     <Provider store={store}>
       <GlobalStyles />
+
       <Head>
         <title>Frank</title>
         <link
@@ -19,7 +22,9 @@ const App = ({ Component, store }) => {
           href="https://cdnjs.cloudflare.com/ajax/libs/antd/3.26.11/antd.css"
         />
       </Head>
-      <Component />
+      <ThemeProvider theme={Theme}>
+        <Component />
+      </ThemeProvider>
     </Provider>
   );
 };

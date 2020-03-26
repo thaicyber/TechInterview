@@ -30,6 +30,7 @@ import {
   PushpinOutlined
 } from "@ant-design/icons";
 import Link from "next/link";
+import Theme from "../../styles/Theme";
 const PostCard = ({ post }) => {
   console.log("post", post);
   return (
@@ -61,7 +62,7 @@ const PostCard = ({ post }) => {
                   if (v.match(/(#[^\s]+)/g)) {
                     return (
                       <Link href="/hashtag" key={v}>
-                        <a style={{ color: "#1B98E5" }}>{v}</a>
+                        <a style={{ color: Theme.themeColor }}>{v}</a>
                       </Link>
                     );
                   } else {

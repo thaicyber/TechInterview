@@ -18,6 +18,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { LOG_OUT_REQUEST } from "../../reducers/user";
 import Link from "next/link";
 import Avatar from "../Util/Avatar";
+import Theme from "../../styles/Theme";
 const UserSetting = ({ setAvatarClick }) => {
   const { me, isLoggingOut } = useSelector(state => state.user);
   const dispatch = useDispatch();
@@ -41,7 +42,9 @@ const UserSetting = ({ setAvatarClick }) => {
             <Title>계정정보</Title>
           </TitleWrap>
           <CancelWrap onClick={onClickCancel}>
-            <CloseOutlined style={{ fontSize: "18px", color: "#1B98E5" }} />
+            <CloseOutlined
+              style={{ fontSize: "18px", color: Theme.themeColor }}
+            />
           </CancelWrap>
         </TopContent>
         <BottomContent>
