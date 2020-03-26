@@ -37,7 +37,7 @@ App.getInitialProps = async context => {
   if (Component.getInitialProps) {
     pageProps = await Component.getInitialProps(ctx);
   }
-  return pageProps;
+  return { pageProps };
 };
 const configureStore = (initialState, options) => {
   const sagaMiddleware = createSagaMiddleware();

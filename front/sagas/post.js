@@ -5,9 +5,35 @@ import {
   ADD_POST_FAILURE,
   LOAD_MAIN_POSTS_SUCCESS,
   LOAD_MAIN_POSTS_FAILURE,
-  LOAD_MAIN_POSTS_REQUEST
+  LOAD_MAIN_POSTS_REQUEST,
+  LOAD_HASHTAG_POSTS_SUCCESS,
+  LOAD_HASHTAG_POSTS_FAILURE,
+  LOAD_HASHTAG_POSTS_REQUEST
 } from "../reducers/post";
 import axios from "axios";
+
+function loadHashtagPostsAPI(tag) {
+  return axios.get(`/hashtag/${encodeURIComponent(tag)}`);
+}
+
+function* loadHashtagPosts(action) {
+  try {
+    const result = yield call(loadHashtagPostsAPI, action.data);
+    yield put({
+      type: LOAD_HASHTAG_POSTS_SUCCESS,
+      data: result.data
+    });
+  } catch (e) {
+    console.error(e);
+    yield put({
+      type: LOAD_HASHTAG_POSTS_FAILURE,
+      error: e
+    });
+  }
+}
+function* watchLoadHashtagPosts() {
+  yield takeLatest(LOAD_HASHTAG_POSTS_REQUEST, loadHashtagPosts);
+}
 
 function loadMainPostsAPI() {
   return axios.get("/posts");
@@ -55,5 +81,9 @@ function* watchAddPost() {
   yield takeLatest(ADD_POST_REQUEST, addPost);
 }
 export default function* postSaga() {
-  yield all([fork(watchAddPost), fork(watchLoadMainPosts)]);
+  yield all([
+    fork(watchAddPost),
+    fork(watchLoadMainPosts),
+    fork(watchLoadHashtagPosts)
+  ]);
 }

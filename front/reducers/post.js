@@ -5,7 +5,8 @@ export const initialState = {
   mainPosts: [], // 화면에 보일 포스트들
   isLoadingMainPosts: false, // 포스트 로딩 중
   isLoadedMainPosts: false, // 포스트 로딩 성공
-  loadMainPostsErrorReason: "" // 포스트 로딩 실패 사유
+  loadMainPostsErrorReason: "", // 포스트 로딩 실패 사유
+  loadHashtagPostsErrorReason: ""
 };
 
 export const ADD_POST_REQUEST = "ADD_POST_REQUEST";
@@ -15,6 +16,10 @@ export const ADD_POST_FAILURE = "ADD_POST_FAILURE";
 export const LOAD_MAIN_POSTS_REQUEST = "LOAD_MAIN_POSTS_REQUEST";
 export const LOAD_MAIN_POSTS_SUCCESS = "LOAD_MAIN_POSTS_SUCCESS";
 export const LOAD_MAIN_POSTS_FAILURE = "LOAD_MAIN_POSTS_FAILURE";
+
+export const LOAD_HASHTAG_POSTS_REQUEST = "LOAD_HASHTAG_POSTS_REQUEST";
+export const LOAD_HASHTAG_POSTS_SUCCESS = "LOAD_HASHTAG_POSTS_SUCCESS";
+export const LOAD_HASHTAG_POSTS_FAILURE = "LOAD_HASHTAG_POSTS_FAILURE";
 
 export const reducer = (state = initialState, action) => {
   switch (action.type) {
@@ -60,6 +65,23 @@ export const reducer = (state = initialState, action) => {
         isLoadingMainPosts: false,
         isLoadedMainPosts: false,
         addPostErrorReason: action.error
+      };
+    }
+    case LOAD_HASHTAG_POSTS_REQUEST: {
+      return {
+        ...state
+      };
+    }
+    case LOAD_HASHTAG_POSTS_SUCCESS: {
+      return {
+        ...state,
+        mainPosts: [...action.data]
+      };
+    }
+    case LOAD_HASHTAG_POSTS_FAILURE: {
+      return {
+        ...state,
+        loadHashtagPostsErrorReason: action.error
       };
     }
     default: {
