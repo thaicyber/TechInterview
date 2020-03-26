@@ -31,7 +31,11 @@ app.prepare().then(() => {
       }
     })
   );
-
+  server.get("/comment/:id", (req, res) => {
+    return app.render(req, res, "/comment", { tag: req.params.id });
+    // 이걸통해서 프론트 hashtag 페이지에 tag가 함께 내려감.
+    // app.render를 통해 pages에 "/hashtag"를 찾는다.
+  });
   server.get("/hashtag/:tag", (req, res) => {
     return app.render(req, res, "/hashtag", { tag: req.params.tag });
     // 이걸통해서 프론트 hashtag 페이지에 tag가 함께 내려감.

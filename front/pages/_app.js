@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Head from "next/head";
 import GlobalStyles from "../styles/GlobalStyles";
 import { Provider } from "react-redux";
@@ -10,11 +10,12 @@ import reducer from "../reducers/index";
 import rootSaga from "../sagas";
 import { ThemeProvider } from "styled-components";
 import Theme from "../styles/Theme";
+import AppLayout from "../components/AppLayout";
+import router from "next/router";
 const App = ({ Component, store, pageProps }) => {
   return (
     <Provider store={store}>
       <GlobalStyles />
-
       <Head>
         <title>Frank</title>
         <link
@@ -23,7 +24,9 @@ const App = ({ Component, store, pageProps }) => {
         />
       </Head>
       <ThemeProvider theme={Theme}>
-        <Component {...pageProps} />
+        <AppLayout>
+          <Component {...pageProps} />
+        </AppLayout>
       </ThemeProvider>
     </Provider>
   );

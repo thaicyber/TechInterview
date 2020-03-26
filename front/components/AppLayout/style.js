@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const NoneMemberLayoutWrapper = styled.div`
+export const AppLayoutWrapper = styled.div`
   @media (min-width: 600px) and (max-width: 1024px) {
     display: grid;
     grid-template-columns: 600px;
