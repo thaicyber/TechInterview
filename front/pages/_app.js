@@ -10,7 +10,7 @@ import reducer from "../reducers/index";
 import rootSaga from "../sagas";
 import { ThemeProvider } from "styled-components";
 import Theme from "../styles/Theme";
-const App = ({ Component, store }) => {
+const App = ({ Component, store, pageProps }) => {
   return (
     <Provider store={store}>
       <GlobalStyles />
@@ -23,12 +23,19 @@ const App = ({ Component, store }) => {
         />
       </Head>
       <ThemeProvider theme={Theme}>
-        <Component />
+        <Component {...pageProps} />
       </ThemeProvider>
     </Provider>
   );
 };
-
+App.getInitialProps = async context => {
+  const { ctx, Component } = context;
+  let pageProps = {};
+  if (Component.getInitialProps) {
+    pageProps = await Component.getInitialProps(ctx);
+  }
+  return pageProps;
+};
 const configureStore = (initialState, options) => {
   const sagaMiddleware = createSagaMiddleware();
   const middlewares = [sagaMiddleware];

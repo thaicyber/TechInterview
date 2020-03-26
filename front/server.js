@@ -32,6 +32,11 @@ app.prepare().then(() => {
     })
   );
 
+  server.get("/hashtag/:tag", (req, res) => {
+    return app.render(req, res, "/hashtag", { tag: req.params.tag });
+    // 이걸통해서 프론트 hashtag 페이지에 tag가 함께 내려감.
+    // app.render를 통해 pages에 "/hashtag"를 찾는다.
+  });
   //모든 get요청을 전부 처리함. 화면 띄우는 거 포함
   server.get("*", (req, res) => {
     return handle(req, res);
