@@ -36,8 +36,8 @@ const AppLayout = ({ children }) => {
       case "/hashtag": {
         return (
           <AppLayoutWrapper>
-            <Header />
-            <Wrap isLogined={me ? true : false}>{children}</Wrap>
+            <SimpleHeader />
+            <SimpleWrap>{children}</SimpleWrap>
             <RightSideBar />
             <LeftSideBar />
             <Footer />

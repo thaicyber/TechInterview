@@ -30,10 +30,10 @@ export const BackBtnWrap = styled.div`
   }
 `;
 
-export const PostTitleWrap = styled.div`
+export const TitleWrap = styled.div`
   margin-left: 1rem;
 `;
-export const PostTitle = styled.div`
+export const Title = styled.div`
   font-size: 1.1rem;
   font-weight: 500;
 `;
