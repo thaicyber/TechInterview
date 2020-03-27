@@ -13,7 +13,8 @@ const hashtag = ({ tag }) => {
   }, [tag]);
   return (
     <>
-      {mainPosts && mainPosts.map(post => <PostCard post={post} key={post} />)}
+      {mainPosts &&
+        mainPosts.map(post => <PostCard post={post} key={post.id} />)}
     </>
   );
 };

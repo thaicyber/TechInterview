@@ -32,7 +32,7 @@ import {
 import Link from "next/link";
 import Theme from "../../styles/Theme";
 const PostCard = ({ post }) => {
-  console.log("post", post);
+  // console.log("post", post);
   return (
     <PostCardWrapper>
       {post && (
@@ -79,9 +79,14 @@ const PostCard = ({ post }) => {
               </HashTag>
             </HashTagWrap>
             <MenuWrap>
-              <CommentWrap>
-                <MessageOutlined />
-              </CommentWrap>
+              <Link
+                href={{ pathname: "/comment", query: { id: post.id } }}
+                as={`/comment/${post.id}`}
+              >
+                <CommentWrap>
+                  <MessageOutlined />
+                </CommentWrap>
+              </Link>
               <LikeWrap>
                 <HeartOutlined />
               </LikeWrap>

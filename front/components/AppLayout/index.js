@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { LOAD_USER_REQUEST } from "../../reducers/user";
 import router from "next/router";
 import LeftSideBar from "../LeftSideBar";
+import SimpleHeader from "../SimpleHeader";
 const AppLayout = ({ children }) => {
   const dispatch = useDispatch();
   const { me } = useSelector(state => state.user);
@@ -27,7 +28,7 @@ const AppLayout = ({ children }) => {
       case "/comment": {
         return (
           <>
-            <Header />
+            <SimpleHeader />
             <Wrap>{children}</Wrap>
           </>
         );
