@@ -27,12 +27,13 @@ import {
   MessageOutlined,
   ExportOutlined,
   HeartOutlined,
-  PushpinOutlined
+  PushpinOutlined,
+  LoadingOutlined
 } from "@ant-design/icons";
 import Link from "next/link";
 import Theme from "../../styles/Theme";
-const PostCard = ({ post }) => {
-  // console.log("post", post);
+const PostCard = props => {
+  const { post, showMenu } = props;
   return (
     <PostCardWrapper>
       {post && (
@@ -78,25 +79,27 @@ const PostCard = ({ post }) => {
                 })}
               </HashTag>
             </HashTagWrap>
-            <MenuWrap>
-              <Link
-                href={{ pathname: "/comment", query: { id: post.id } }}
-                as={`/comment/${post.id}`}
-              >
-                <CommentWrap>
-                  <MessageOutlined />
-                </CommentWrap>
-              </Link>
-              <LikeWrap>
-                <HeartOutlined />
-              </LikeWrap>
-              <PinWrap>
-                <PushpinOutlined />
-              </PinWrap>
-              <ShareWrap>
-                <ExportOutlined />
-              </ShareWrap>
-            </MenuWrap>
+            {showMenu ? (
+              <MenuWrap>
+                <Link
+                  href={{ pathname: "/comment", query: { id: post.id } }}
+                  as={`/comment/${post.id}`}
+                >
+                  <CommentWrap>
+                    <MessageOutlined />
+                  </CommentWrap>
+                </Link>
+                <LikeWrap>
+                  <HeartOutlined />
+                </LikeWrap>
+                <PinWrap>
+                  <PushpinOutlined />
+                </PinWrap>
+                <ShareWrap>
+                  <ExportOutlined />
+                </ShareWrap>
+              </MenuWrap>
+            ) : null}
           </ContentWrap>
         </PrimeWrap>
       )}

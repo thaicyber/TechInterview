@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { ArrowLeftOutlined } from "@ant-design/icons";
 import {
   SimpleHeaderWrapper,
@@ -7,7 +7,9 @@ import {
   PostTitle
 } from "./style";
 import Theme from "../../styles/Theme";
+import { useDispatch, useSelector } from "react-redux";
 const SimpleHeader = () => {
+  const { post } = useSelector(state => state.post);
   const onClickBackBtn = () => {
     window.history.back();
   };
@@ -19,7 +21,7 @@ const SimpleHeader = () => {
         />
       </BackBtnWrap>
       <PostTitleWrap>
-        <PostTitle>포스트 제목</PostTitle>
+        <PostTitle>{post && post.title}</PostTitle>
       </PostTitleWrap>
     </SimpleHeaderWrapper>
   );

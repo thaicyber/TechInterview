@@ -26,3 +26,7 @@ export const Wrap = styled.div`
   margin-top: ${props => (props.isLogined ? "73px" : "113px")};
   margin-bottom: 7vh;
 `;
+
+export const SimpleWrap = styled.div`
+  margin-top: 73px;
+`;

@@ -6,7 +6,11 @@ export const initialState = {
   isLoadingMainPosts: false, // 포스트 로딩 중
   isLoadedMainPosts: false, // 포스트 로딩 성공
   loadMainPostsErrorReason: "", // 포스트 로딩 실패 사유
-  loadHashtagPostsErrorReason: ""
+  loadHashtagPostsErrorReason: "", // 해시태그 포스트 로딩 실패 사유
+  isLoadingPost: false, // 포스트 한개 요청 로딩 중
+  isLoadedPost: false, // 포스트 한개 요청 성공
+  loadPostErrorReason: "", // 포스트 한개 요청 실패 사유
+  post: null
 };
 
 export const ADD_POST_REQUEST = "ADD_POST_REQUEST";
@@ -20,6 +24,14 @@ export const LOAD_MAIN_POSTS_FAILURE = "LOAD_MAIN_POSTS_FAILURE";
 export const LOAD_HASHTAG_POSTS_REQUEST = "LOAD_HASHTAG_POSTS_REQUEST";
 export const LOAD_HASHTAG_POSTS_SUCCESS = "LOAD_HASHTAG_POSTS_SUCCESS";
 export const LOAD_HASHTAG_POSTS_FAILURE = "LOAD_HASHTAG_POSTS_FAILURE";
+
+export const LOAD_POST_REQUEST = "LOAD_POST_REQUEST";
+export const LOAD_POST_SUCCESS = "LOAD_POST_SUCCESS";
+export const LOAD_POST_FAILURE = "LOAD_POST_FAILURE";
+
+export const LOAD_COMMENTS_REQUEST = "LOAD_COMMENTS_REQUEST";
+export const LOAD_COMMENTS_SUCCESS = "LOAD_COMMENTS_SUCCESS";
+export const LOAD_COMMENTS_FAILURE = "LOAD_COMMENTS_FAILURE";
 
 export const reducer = (state = initialState, action) => {
   switch (action.type) {
@@ -82,6 +94,30 @@ export const reducer = (state = initialState, action) => {
       return {
         ...state,
         loadHashtagPostsErrorReason: action.error
+      };
+    }
+
+    case LOAD_POST_REQUEST: {
+      return {
+        ...state,
+        isLoadingPost: true
+      };
+    }
+    case LOAD_POST_SUCCESS: {
+      return {
+        ...state,
+        isLoadingPost: false,
+        isLoadedPost: true,
+        post: action.data
+      };
+    }
+    case LOAD_POST_FAILURE: {
+      return {
+        ...state,
+        isLoadingPost: false,
+        isLoadedPost: false,
+        post: null,
+        loadPostErrorReason: action.error
       };
     }
     default: {

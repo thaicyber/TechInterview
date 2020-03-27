@@ -14,7 +14,9 @@ const hashtag = ({ tag }) => {
   return (
     <>
       {mainPosts &&
-        mainPosts.map(post => <PostCard post={post} key={post.id} />)}
+        mainPosts.map(post => (
+          <PostCard showMenu={true} post={post} key={post.id} />
+        ))}
     </>
   );
 };

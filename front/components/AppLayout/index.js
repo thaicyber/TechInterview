@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { AppLayoutWrapper, Wrap } from "./style";
+import { AppLayoutWrapper, Wrap, SimpleWrap } from "./style";
 import Header from "../Header";
 import RightSideBar from "../RightSideBar";
 import Footer from "../Footer";
@@ -29,7 +29,7 @@ const AppLayout = ({ children }) => {
         return (
           <>
             <SimpleHeader />
-            <Wrap>{children}</Wrap>
+            <SimpleWrap>{children}</SimpleWrap>
           </>
         );
       }

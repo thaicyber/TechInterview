@@ -8,9 +8,61 @@ import {
   LOAD_MAIN_POSTS_REQUEST,
   LOAD_HASHTAG_POSTS_SUCCESS,
   LOAD_HASHTAG_POSTS_FAILURE,
-  LOAD_HASHTAG_POSTS_REQUEST
+  LOAD_HASHTAG_POSTS_REQUEST,
+  LOAD_POST_SUCCESS,
+  LOAD_POST_FAILURE,
+  LOAD_POST_REQUEST,
+  LOAD_COMMENTS_SUCCESS,
+  LOAD_COMMENTS_FAILURE,
+  LOAD_COMMENTS_REQUEST
 } from "../reducers/post";
 import axios from "axios";
+
+function loadPostAPI(id) {
+  return axios.get(`/Post/${id}`);
+}
+
+function* loadPost(action) {
+  try {
+    const result = yield call(loadPostAPI, action.data);
+    yield put({
+      type: LOAD_POST_SUCCESS,
+      data: result.data
+    });
+  } catch (e) {
+    console.error(e);
+    yield put({
+      type: LOAD_POST_FAILURE,
+      error: e
+    });
+  }
+}
+function* watchLoadPost() {
+  yield takeLatest(LOAD_POST_REQUEST, loadPost);
+}
+
+function loadCommentsAPI(id) {
+  return axios.get(`/comments/${id}`);
+}
+
+function* loadComments(action) {
+  try {
+    const result = yield call(loadCommentsAPI, action.data);
+    yield put({
+      type: LOAD_COMMENTS_SUCCESS,
+      data: result.data
+    });
+  } catch (e) {
+    console.error(e);
+    yield put({
+      type: LOAD_COMMENTS_FAILURE,
+      error: e
+    });
+  }
+}
+function* watchLoadComments() {
+  yield takeLatest(LOAD_COMMENTS_REQUEST, loadComments);
+}
 
 function loadHashtagPostsAPI(tag) {
   return axios.get(`/hashtag/${encodeURIComponent(tag)}`);
@@ -84,6 +136,8 @@ export default function* postSaga() {
   yield all([
     fork(watchAddPost),
     fork(watchLoadMainPosts),
-    fork(watchLoadHashtagPosts)
+    fork(watchLoadHashtagPosts),
+    fork(watchLoadComments),
+    fork(watchLoadPost)
   ]);
 }
