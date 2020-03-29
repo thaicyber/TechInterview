@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { ArrowLeftOutlined } from "@ant-design/icons";
 import { SimpleHeaderWrapper, BackBtnWrap, TitleWrap, Title } from "./style";
 import Theme from "../../styles/Theme";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import Router from "next/router";
 const SimpleHeader = () => {
   const { post } = useSelector(state => state.post);

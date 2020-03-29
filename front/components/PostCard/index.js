@@ -27,8 +27,7 @@ import {
   MessageOutlined,
   ExportOutlined,
   HeartOutlined,
-  PushpinOutlined,
-  LoadingOutlined
+  PushpinOutlined
 } from "@ant-design/icons";
 import Link from "next/link";
 import Theme from "../../styles/Theme";
