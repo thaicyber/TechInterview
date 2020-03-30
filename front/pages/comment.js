@@ -7,7 +7,7 @@ import CommentForm from "../components/CommentForm";
 import CommentCard from "../components/CommentCard";
 const comment = ({ id }) => {
   const dispatch = useDispatch();
-  const { post } = useSelector(state => state.post);
+  const { post, comments } = useSelector(state => state.post);
 
   useEffect(() => {
     dispatch({
@@ -41,7 +41,7 @@ const comment = ({ id }) => {
             Router.router.query.tag)
         }
       />
-      <CommentCard />
+      {comments && comments.map(comment => <CommentCard comment={comment} />)}
     </>
   );
 };
