@@ -12,15 +12,25 @@ import Avatar from "../Util/Avatar";
 import { Input, Button } from "antd";
 import { FileImageOutlined } from "@ant-design/icons";
 import Theme from "../../styles/Theme";
-const CommentForm = () => {
+import { useDispatch } from "react-redux";
+import { ADD_COMMENT_REQUEST } from "../../reducers/post";
+const CommentForm = props => {
+  const { postId } = props;
   const [text, setText] = useState("");
+  const dispatch = useDispatch();
   const onChangeText = e => {
     setText(e.target.value);
   };
   const onSubmitComment = useCallback(
     e => {
       e.preventDefault();
-      console.log(text);
+      dispatch({
+        type: ADD_COMMENT_REQUEST,
+        data: {
+          content: text,
+          postId
+        }
+      });
       setText("");
     },
     [text]

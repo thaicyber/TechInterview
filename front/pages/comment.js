@@ -31,7 +31,15 @@ const comment = ({ id }) => {
   return (
     <>
       <PostCard showMenu={false} post={post} />
-      <CommentForm />
+      <CommentForm
+        postId={
+          id ||
+          (Router &&
+            Router.router &&
+            Router.router.query &&
+            Router.router.query.tag)
+        }
+      />
     </>
   );
 };
