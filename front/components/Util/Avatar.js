@@ -39,7 +39,10 @@ const Avatar = styled.figure`
   height: ${props => handlerHeight(props.size)};
   margin-bottom: 0.5rem;
   background-color: lightgray;
-  background-image: url(${props => props.img});
+  background-image: url(${props =>
+    props.img
+      ? props.img
+      : "https://abs.twimg.com/sticky/default_profile_images/default_profile_bigger.png"});
   background-repeat: no-repeat;
   background-size: cover;
   cursor: pointer;

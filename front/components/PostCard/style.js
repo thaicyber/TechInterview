@@ -31,6 +31,8 @@ export const PrimeWrap = styled.div`
 export const AvatarWrap = styled.div`
   display: grid;
   grid-template-rows: 15% 85%;
+  display: flex;
+  justify-content: center;
 `;
 
 export const WriterInfoWrap = styled.div`

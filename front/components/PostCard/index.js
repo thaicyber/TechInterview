@@ -85,17 +85,17 @@ const PostCard = props => {
                   as={`/comment/${post.id}`}
                 >
                   <CommentWrap>
-                    <MessageOutlined />
+                    <MessageOutlined style={{ cursor: "pointer" }} />
                   </CommentWrap>
                 </Link>
                 <LikeWrap>
-                  <HeartOutlined />
+                  <HeartOutlined style={{ cursor: "pointer" }} />
                 </LikeWrap>
                 <PinWrap>
-                  <PushpinOutlined />
+                  <PushpinOutlined style={{ cursor: "pointer" }} />
                 </PinWrap>
                 <ShareWrap>
-                  <ExportOutlined />
+                  <ExportOutlined style={{ cursor: "pointer" }} />
                 </ShareWrap>
               </MenuWrap>
             ) : null}

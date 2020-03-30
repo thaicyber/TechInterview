@@ -16,4 +16,5 @@ export const NavWrapper = styled.nav`
 export const NavIconWrapper = styled.div`
   width: 25%;
   text-align: center;
+  cursor: pointer;
 `;

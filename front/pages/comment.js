@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { LOAD_POST_REQUEST, LOAD_COMMENTS_REQUEST } from "../reducers/post";
 import PostCard from "../components/PostCard";
 import Router from "next/router";
+import CommentForm from "../components/CommentForm";
 const comment = ({ id }) => {
   const dispatch = useDispatch();
   const { post } = useSelector(state => state.post);
@@ -27,7 +28,12 @@ const comment = ({ id }) => {
           Router.router.query.tag)
     });
   }, []);
-  return <PostCard showMenu={false} post={post} />;
+  return (
+    <>
+      <PostCard showMenu={false} post={post} />
+      <CommentForm />
+    </>
+  );
 };
 
 comment.getInitialProps = async context => {
