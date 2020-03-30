@@ -4,6 +4,7 @@ import { LOAD_POST_REQUEST, LOAD_COMMENTS_REQUEST } from "../reducers/post";
 import PostCard from "../components/PostCard";
 import Router from "next/router";
 import CommentForm from "../components/CommentForm";
+import CommentCard from "../components/CommentCard";
 const comment = ({ id }) => {
   const dispatch = useDispatch();
   const { post } = useSelector(state => state.post);
@@ -40,6 +41,7 @@ const comment = ({ id }) => {
             Router.router.query.tag)
         }
       />
+      <CommentCard />
     </>
   );
 };

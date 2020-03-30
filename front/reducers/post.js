@@ -10,7 +10,14 @@ export const initialState = {
   isLoadingPost: false, // 포스트 한개 요청 로딩 중
   isLoadedPost: false, // 포스트 한개 요청 성공
   loadPostErrorReason: "", // 포스트 한개 요청 실패 사유
-  post: null
+  post: null, // comment 페이지 접속하면 나오는 post
+  comments: null, // comment 페이지 접속하면 나오는 comments
+  isAddingComment: false, // 댓글 업로드 중
+  commentAdded: false, // 댓글 업로드 성공
+  isAddCommentErrorReason: "", // 댓글 업로드 실패 사유
+  isLoadingComments: false, // 댓글들 로드중
+  isLoadedComments: false, // 댓글들 로딩 성공
+  isLoadCommentsErrorReason: "" // 댓글 업로드 실패 사유
 };
 
 export const ADD_POST_REQUEST = "ADD_POST_REQUEST";
@@ -122,6 +129,54 @@ export const reducer = (state = initialState, action) => {
         isLoadedPost: false,
         post: null,
         loadPostErrorReason: action.error
+      };
+    }
+
+    case LOAD_COMMENTS_REQUEST: {
+      return {
+        ...state,
+        isLoadingComments: true
+      };
+    }
+    case LOAD_COMMENTS_SUCCESS: {
+      return {
+        ...state,
+        isLoadingComments: false,
+        isLoadedComments: true,
+        comments: [...action.data]
+      };
+    }
+    case LOAD_COMMENTS_FAILURE: {
+      return {
+        ...state,
+        isLoadingComments: false,
+        isLoadedComments: false,
+        comments: null,
+        isLoadCommentsErrorReason: action.error
+      };
+    }
+
+    case ADD_COMMENT_REQUEST: {
+      return {
+        ...state,
+        isAddingComment: true
+      };
+    }
+    case ADD_COMMENT_SUCCESS: {
+      return {
+        ...state,
+        isAddingComment: false,
+        commentAdded: true,
+        comments: [...state.comments, ...action.data]
+      };
+    }
+    case ADD_COMMENT_FAILURE: {
+      return {
+        ...state,
+        isAddingComment: false,
+        commentAdded: false,
+        comments: null,
+        isAddCommentErrorReason: action.error
       };
     }
     default: {
