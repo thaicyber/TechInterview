@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const CommentFormWrapper = styled.div`
+export const CommentFormWrapper = styled.form`
   display: grid;
   grid-template-columns: 16% auto;
   width: 100%;
