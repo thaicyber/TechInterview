@@ -11,7 +11,6 @@ export const CommentFormWrapper = styled.div`
 export const UserImgWrap = styled.div`
   width: 100%;
   height: 100%;
-  background-color: pink;
   display: flex;
   justify-content: center;
 `;
@@ -25,7 +24,13 @@ export const FormWrap = styled.div`
   background-color: yellow;
 `;
 export const BtnWrap = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
   height: 100%;
-  background-color: blue;
+  border: 1px solid lightblue;
 `;
+
+export const ImgUploadIconWrap = styled.div``;
+export const SubmitBtnWrap = styled.div``;
