@@ -8,7 +8,7 @@ import CommentCard from "../components/CommentCard";
 const comment = ({ id }) => {
   const dispatch = useDispatch();
   const { post, comments } = useSelector(state => state.post);
-
+  const { me } = useSelector(state => state.user);
   useEffect(() => {
     dispatch({
       type: LOAD_COMMENTS_REQUEST,
@@ -32,15 +32,17 @@ const comment = ({ id }) => {
   return (
     <>
       <PostCard showMenu={false} post={post} />
-      <CommentForm
-        postId={
-          id ||
-          (Router &&
-            Router.router &&
-            Router.router.query &&
-            Router.router.query.tag)
-        }
-      />
+      {me && (
+        <CommentForm
+          postId={
+            id ||
+            (Router &&
+              Router.router &&
+              Router.router.query &&
+              Router.router.query.tag)
+          }
+        />
+      )}
       {comments && comments.map(comment => <CommentCard comment={comment} />)}
     </>
   );
