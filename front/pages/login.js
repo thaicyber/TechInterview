@@ -13,7 +13,7 @@ const LoginWrapper = styled.div`
 `;
 const LoginContent = styled.div`
   border: 1px solid lightgray;
-  min-height: 550px;
+  min-height: 600px;
   min-width: 55%;
 `;
 const BtnWrapper = styled.div``;
