@@ -14,7 +14,7 @@ const LoginWrapper = styled.div`
 const LoginContent = styled.div`
   border: 1px solid lightgray;
   min-height: 600px;
-  min-width: 55%;
+  min-width: 60%;
 `;
 const BtnWrapper = styled.div``;
 const Label = styled.label``;
