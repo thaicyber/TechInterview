@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useRef, useEffect } from "react";
 import {
   CommentFormWrapper,
   UserImgWrap,
@@ -21,6 +21,10 @@ const CommentForm = props => {
   const onChangeText = e => {
     setText(e.target.value);
   };
+  const inputEl = useRef();
+  useEffect(() => {
+    inputEl.current.focus();
+  }, []);
   const onSubmitComment = useCallback(
     e => {
       e.preventDefault();
@@ -50,6 +54,7 @@ const CommentForm = props => {
             }}
             onChange={onChangeText}
             value={text}
+            ref={inputEl}
           ></Input.TextArea>
         </FormWrap>
         <BtnWrap>
