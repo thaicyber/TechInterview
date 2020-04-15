@@ -9,11 +9,12 @@ import {
   SubmitBtnWrap
 } from "./style";
 import Avatar from "../Util/Avatar";
-import { Input, Button } from "antd";
+import { Input } from "antd";
 import { FileImageOutlined } from "@ant-design/icons";
 import Theme from "../../styles/Theme";
 import { useDispatch } from "react-redux";
 import { ADD_COMMENT_REQUEST } from "../../reducers/post";
+import Button from "../Util/Button";
 const CommentForm = props => {
   const { postId } = props;
   const [text, setText] = useState("");
@@ -53,6 +54,7 @@ const CommentForm = props => {
               border: "1px solid lightgrey"
             }}
             onChange={onChangeText}
+            placeholder="내용을 입력하세요."
             value={text}
             ref={inputEl}
           ></Input.TextArea>
@@ -64,13 +66,20 @@ const CommentForm = props => {
             />
           </ImgUploadIconWrap>
           <SubmitBtnWrap>
-            <Button
-              type="primary"
-              style={{ cursor: "pointer" }}
-              htmlType="submit"
-            >
-              등록
-            </Button>
+            {text ? (
+              <Button
+                color="active"
+                size="small"
+                htmlType="submit"
+                borderRadius="50px"
+              >
+                등록
+              </Button>
+            ) : (
+              <Button color="inActive" size="small" borderRadius="50px">
+                등록
+              </Button>
+            )}
           </SubmitBtnWrap>
         </BtnWrap>
       </InputWrap>

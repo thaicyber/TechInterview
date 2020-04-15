@@ -1,7 +1,7 @@
 import React from "react";
-
+import { CommentCardWrapper } from "./style";
 const CommentCard = props => {
   const { comment } = props;
-  return <div>CommentCard</div>;
+  return <CommentCardWrapper>CommentCard</CommentCardWrapper>;
 };
 export default CommentCard;

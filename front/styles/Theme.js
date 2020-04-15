@@ -1,4 +1,6 @@
 export default {
-  themeColor: "#1B98E5",
-  hoverColor: "#eaf6fe"
+  themeColor: "#1da1f2",
+  hoverColor: "#eaf6fe",
+  activeColor: "#1da1f2",
+  inActiveColor: "#9dd5f9"
 };
