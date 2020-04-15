@@ -41,6 +41,7 @@ const Button = styled.button`
   border-radius: ${props => (props.borderRadius ? props.borderRadius : "null")};
   border: white;
   font-family: "Noto Sans KR", sans-serif;
+  outline: 0;
 `;
 
 export default Button;

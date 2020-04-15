@@ -29,6 +29,11 @@ const CommentForm = props => {
   const onSubmitComment = useCallback(
     e => {
       e.preventDefault();
+      if (!text || !text.trim()) {
+        // trim 문자열 양쪽 공백제거
+        // 스페이스만 친 경우에도 찾아낼 수 있음.
+        return;
+      }
       dispatch({
         type: ADD_COMMENT_REQUEST,
         data: {
