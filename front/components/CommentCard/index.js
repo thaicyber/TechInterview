@@ -4,7 +4,13 @@ import {
   CommentCardContentWrap,
   CommentContent,
   Options,
-  AvatarWrap
+  AvatarWrap,
+  CommentAuthorWrap,
+  CommentCreatedWrap,
+  CommentInfoWrap,
+  CreatedTime,
+  Author,
+  ContentWrap
 } from "./style";
 import Avatar from "../Util/Avatar";
 import { MoreOutlined } from "@ant-design/icons";
@@ -18,7 +24,17 @@ const CommentCard = props => {
         <AvatarWrap>
           <Avatar size="small" />
         </AvatarWrap>
-        <CommentContent></CommentContent>
+        <CommentContent>
+          <CommentInfoWrap>
+            <CommentAuthorWrap>
+              <Author>{comment.User.nickname}</Author>
+            </CommentAuthorWrap>
+            <CommentCreatedWrap>
+              <CreatedTime>{comment.createdAt}</CreatedTime>
+            </CommentCreatedWrap>
+          </CommentInfoWrap>
+          <ContentWrap>{comment.content}</ContentWrap>
+        </CommentContent>
         <Options>
           <MoreOutlined style={{ fontSize: "25px", color: Theme.themeColor }} />
         </Options>

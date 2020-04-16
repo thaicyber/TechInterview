@@ -167,7 +167,7 @@ export const reducer = (state = initialState, action) => {
         ...state,
         isAddingComment: false,
         commentAdded: true,
-        comments: [...state.comments, ...action.data]
+        comments: [...state.comments, action.data]
       };
     }
     case ADD_COMMENT_FAILURE: {

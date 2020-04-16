@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
 export const CommentCardWrapper = styled.div`
-  padding: 1rem 1rem 0rem 1rem;
-  border: 1px solid black;
-  min-height: 100px;
+  padding: 1rem 1rem 1rem 1rem;
+  border-bottom: 1px solid lightgray;
+  min-height: 70px;
 `;
 export const CommentCardContentWrap = styled.div`
   display: grid;
@@ -25,3 +25,15 @@ export const AvatarWrap = styled.div`
   display: flex;
   justify-content: center;
 `;
+export const CommentInfoWrap = styled.div`
+  display: flex;
+`;
+export const CommentAuthorWrap = styled.div`
+  margin-right: 1rem;
+`;
+export const CommentCreatedWrap = styled.div``;
+export const Author = styled.span`
+  font-weight: 900;
+`;
+export const CreatedTime = styled.span``;
+export const ContentWrap = styled.span``;

@@ -30,7 +30,7 @@ export const BtnWrap = styled.div`
   align-items: center;
   width: 100%;
   height: 100%;
-  border: 1px solid lightblue;
+  /* border: 1px solid lightblue; */
 `;
 
 export const ImgUploadIconWrap = styled.div``;
