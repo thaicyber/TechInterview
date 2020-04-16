@@ -31,7 +31,7 @@ const comment = ({ id }) => {
   }, []);
   return (
     <>
-      <PostCard showMenu={false} post={post} />
+      {/* <PostCard showMenu={false} post={post} /> */}
       {me && (
         <CommentForm
           postId={

@@ -11,6 +11,7 @@ export const SimpleHeaderWrapper = styled.div`
   width: 100%;
   top: 0;
   border-bottom: 1px solid lightgray;
+  z-index: 1;
 `;
 
 export const BackBtnWrap = styled.div`

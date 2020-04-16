@@ -7,6 +7,7 @@ export const CommentFormWrapper = styled.form`
   padding: 1rem 1rem 0rem 1rem;
   min-height: 30vh;
   margin-bottom: 0.1rem;
+  z-index: 0;
 `;
 export const UserImgWrap = styled.div`
   width: 100%;

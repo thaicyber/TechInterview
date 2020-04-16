@@ -13,7 +13,7 @@ import {
   FollowerWrap,
   LogOutWrap
 } from "./style";
-import { CloseOutlined, LogoutOutlined } from "@ant-design/icons";
+import { CloseOutlined } from "@ant-design/icons";
 import { useSelector, useDispatch } from "react-redux";
 import { LOG_OUT_REQUEST } from "../../reducers/user";
 import Link from "next/link";
