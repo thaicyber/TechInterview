@@ -16,7 +16,7 @@ export const SimpleHeaderWrapper = styled.div`
 
 export const BackBtnWrap = styled.div`
   cursor: pointer;
-  width: 35px;
+  width: 47px;
   height: 35px;
   border-radius: 50%;
   display: flex;
@@ -33,6 +33,10 @@ export const BackBtnWrap = styled.div`
 
 export const TitleWrap = styled.div`
   margin-left: 1rem;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 `;
 export const Title = styled.div`
   font-size: 1.1rem;
