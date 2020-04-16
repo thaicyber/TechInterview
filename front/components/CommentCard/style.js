@@ -37,3 +37,52 @@ export const Author = styled.span`
 `;
 export const CreatedTime = styled.span``;
 export const ContentWrap = styled.span``;
+
+export const EditCommentWraper = styled.div`
+  z-index: 1;
+  display: grid;
+  grid-template-rows: 75% 25%;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+`;
+
+export const TopWrap = styled.div`
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0, 0, 0, 0.4);
+`;
+export const BottomWrap = styled.div`
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  position: relative;
+  bottom: -1px;
+`;
+
+export const CancelBtnWrap = styled.div`
+  width: 100%;
+  height: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+export const CancelBtn = styled.div``;
+
+export const DeleteBtnWrap = styled.div`
+  width: 100%;
+  height: 30%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+`;
+export const DeleteBtn = styled.div``;
+export const EditBtnWrap = styled.div`
+  width: 100%;
+  height: 30%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+`;
+export const EditBtn = styled.div``;
