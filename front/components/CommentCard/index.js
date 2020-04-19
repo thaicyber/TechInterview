@@ -19,19 +19,30 @@ import {
   EditBtnWrap,
   EditBtn,
   DeleteBtnWrap,
-  DeleteBtn
+  DeleteBtn,
+  IconTitleWrap,
+  IconTitle,
+  DeleteMsgWrapper,
+  MsgWrap,
+  BtnWrap,
+  DeleteCancelBtn,
+  DeleteRequestBtn
 } from "./style";
 import Avatar from "../Util/Avatar";
-import { MoreOutlined } from "@ant-design/icons";
+import { MoreOutlined, DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import Theme from "../../styles/Theme";
 import { useSelector } from "react-redux";
 const CommentCard = props => {
   const { comment } = props;
   const { me } = useSelector(state => state.user);
   const [editBtnClick, setEditBtnClick] = useState(false);
+  const [deleteBtnClick, setDeleteBtnClick] = useState(false);
   const onClickEditBtn = useCallback(() => {
     setEditBtnClick(!editBtnClick);
   }, [editBtnClick]);
+  const onClickDeleteBtn = useCallback(() => {
+    setDeleteBtnClick(!deleteBtnClick);
+  }, [deleteBtnClick]);
   useEffect(() => {
     if (editBtnClick) {
       document.body.style.overflow = "hidden";
@@ -44,15 +55,34 @@ const CommentCard = props => {
   // console.log("@@@@@me@@@@@@@@@", me);
   return (
     <>
+      {deleteBtnClick && (
+        <DeleteMsgWrapper>
+          <MsgWrap></MsgWrap>
+          <BtnWrap>
+            <DeleteCancelBtn onClick={onClickDeleteBtn}></DeleteCancelBtn>
+            <DeleteRequestBtn></DeleteRequestBtn>
+          </BtnWrap>
+        </DeleteMsgWrapper>
+      )}
       {editBtnClick && (
         <EditCommentWraper>
           <TopWrap></TopWrap>
           <BottomWrap>
             <EditBtnWrap>
-              <EditBtn>Edit</EditBtn>
+              <EditBtn>
+                <EditOutlined />
+                <IconTitleWrap>
+                  <IconTitle>수정</IconTitle>
+                </IconTitleWrap>
+              </EditBtn>
             </EditBtnWrap>
             <DeleteBtnWrap>
-              <DeleteBtn>Delete</DeleteBtn>
+              <DeleteBtn onClick={onClickDeleteBtn}>
+                <DeleteOutlined style={{ color: "red" }} />
+                <IconTitleWrap>
+                  <IconTitle style={{ color: "red" }}>삭제</IconTitle>
+                </IconTitleWrap>
+              </DeleteBtn>
             </DeleteBtnWrap>
             <CancelBtnWrap onClick={onClickEditBtn}>
               <CancelBtn>Cancel</CancelBtn>

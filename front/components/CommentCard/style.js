@@ -1,4 +1,5 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+import Theme from "../../styles/Theme";
 
 export const CommentCardWrapper = styled.div`
   padding: 1rem 1rem 1rem 1rem;
@@ -41,7 +42,7 @@ export const ContentWrap = styled.span``;
 export const EditCommentWraper = styled.div`
   z-index: 1;
   display: grid;
-  grid-template-rows: 75% 25%;
+  grid-template-rows: 78% 22%;
   position: fixed;
   width: 100%;
   height: 100%;
@@ -59,30 +60,83 @@ export const BottomWrap = styled.div`
   background-color: white;
   position: relative;
   bottom: -1px;
+  padding: 0.8rem;
 `;
-
-export const CancelBtnWrap = styled.div`
+const BtnWrapStyles = css`
   width: 100%;
-  height: 30%;
+  height: 33%;
   display: flex;
-  justify-content: center;
   align-items: center;
+`;
+export const CancelBtnWrap = styled.div`
+  ${BtnWrapStyles}
+  justify-content: center;
+  background-color: ${Theme.cancelColor};
+  border-radius: 50px;
 `;
 export const CancelBtn = styled.div``;
 
 export const DeleteBtnWrap = styled.div`
-  width: 100%;
-  height: 30%;
-  display: flex;
+  ${BtnWrapStyles}
   justify-content: flex-start;
-  align-items: center;
 `;
-export const DeleteBtn = styled.div``;
+export const DeleteBtn = styled.div`
+  display: flex;
+`;
 export const EditBtnWrap = styled.div`
-  width: 100%;
-  height: 30%;
-  display: flex;
+  ${BtnWrapStyles}
   justify-content: flex-start;
-  align-items: center;
 `;
-export const EditBtn = styled.div``;
+export const EditBtn = styled.div`
+  display: flex;
+`;
+
+export const IconTitleWrap = styled.div`
+  margin-left: 0.4rem;
+`;
+export const IconTitle = styled.span``;
+
+export const DeleteMsgWrapper = styled.div`
+  position: fixed;
+  top: 0;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0, 0, 0, 0.4);
+`;
+
+export const MsgWrap = styled.div`
+  position: absolute;
+  background-color: white;
+  width: 280px;
+  height: 220px;
+  border-radius: 10px;
+`;
+
+export const BtnWrap = styled.div`
+  display: flex;
+  width: 280px;
+  padding: 0.8rem;
+  position: relative;
+  top: 65px;
+`;
+export const DeleteCancelBtn = styled.div`
+  width: 100%;
+  height: 40px;
+  background-color: ${Theme.cancelColor};
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  border-radius: 30px;
+  margin-right: 0.8rem;
+`;
+export const DeleteRequestBtn = styled.div`
+  width: 100%;
+  height: 40px;
+  background-color: ${Theme.deleteColor};
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  border-radius: 30px;
+`;
