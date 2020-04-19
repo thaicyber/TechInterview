@@ -4,7 +4,13 @@ import CommentForm from "../components/CommentForm";
 const commentEdit = ({ id }) => {
   const { comments } = useSelector(state => state.post);
   const comment = comments.find(v => v.id === Number(id));
-  return <CommentForm content={comment.content} />;
+  return (
+    <CommentForm
+      content={comment.content}
+      commentId={id}
+      postId={comment.PostId}
+    />
+  );
 };
 
 commentEdit.getInitialProps = async context => {

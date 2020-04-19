@@ -13,10 +13,11 @@ import { Input } from "antd";
 import { FileImageOutlined } from "@ant-design/icons";
 import Theme from "../../styles/Theme";
 import { useDispatch } from "react-redux";
-import { ADD_COMMENT_REQUEST } from "../../reducers/post";
+import { ADD_COMMENT_REQUEST, EDIT_COMMENT_REQUEST } from "../../reducers/post";
 import Button from "../Util/Button";
+import Link from "next/link";
 const CommentForm = props => {
-  const { postId, content } = props;
+  const { postId, content, commentId } = props;
   const [text, setText] = useState("");
   const dispatch = useDispatch();
   const onChangeText = e => {
@@ -38,6 +39,13 @@ const CommentForm = props => {
         return;
       }
       if (content) {
+        dispatch({
+          type: EDIT_COMMENT_REQUEST,
+          data: {
+            content: text,
+            commentId
+          }
+        });
       } else {
         dispatch({
           type: ADD_COMMENT_REQUEST,
@@ -77,20 +85,38 @@ const CommentForm = props => {
             />
           </ImgUploadIconWrap>
           <SubmitBtnWrap>
-            {text ? (
-              <Button
-                color="active"
-                size="small"
-                htmlType="submit"
-                borderRadius="50px"
-              >
-                등록
-              </Button>
-            ) : (
-              <Button color="inActive" size="small" borderRadius="50px">
-                등록
-              </Button>
-            )}
+            <SubmitBtnWrap>
+              {text ? (
+                content ? (
+                  <Button
+                    onClick={onSubmitComment}
+                    color="active"
+                    size="small"
+                    borderRadius="50px"
+                  >
+                    <Link
+                      href={{ pathname: "/comment", query: { id: postId } }}
+                      as={`/comment/${postId}`}
+                    >
+                      <a>등록</a>
+                    </Link>
+                  </Button>
+                ) : (
+                  <Button
+                    color="active"
+                    size="small"
+                    htmlType="submit"
+                    borderRadius="50px"
+                  >
+                    등록
+                  </Button>
+                )
+              ) : (
+                <Button color="inActive" size="small" borderRadius="50px">
+                  등록
+                </Button>
+              )}
+            </SubmitBtnWrap>
           </SubmitBtnWrap>
         </BtnWrap>
       </InputWrap>

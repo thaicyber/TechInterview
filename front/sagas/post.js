@@ -20,9 +20,43 @@ import {
   ADD_COMMENT_REQUEST,
   DELETE_COMMENT_REQUEST,
   DELETE_COMMENT_SUCCESS,
-  DELETE_COMMENT_FAILURE
+  DELETE_COMMENT_FAILURE,
+  EDIT_COMMENT_SUCCESS,
+  EDIT_COMMENT_FAILURE,
+  EDIT_COMMENT_REQUEST
 } from "../reducers/post";
 import axios from "axios";
+
+function editCommentAPI(commentData) {
+  console.log("commentData", commentData);
+  return axios.patch(
+    `/comment/${commentData.commentId}`,
+    { content: commentData.content },
+    {
+      withCredentials: true
+    }
+  );
+}
+
+function* editComment(action) {
+  try {
+    const result = yield call(editCommentAPI, action.data);
+    console.log("Result", result);
+    yield put({
+      type: EDIT_COMMENT_SUCCESS,
+      data: result.data
+    });
+  } catch (e) {
+    console.error(e);
+    yield put({
+      type: EDIT_COMMENT_FAILURE,
+      error: e
+    });
+  }
+}
+function* watchEditComment() {
+  yield takeLatest(EDIT_COMMENT_REQUEST, editComment);
+}
 
 function deleteCommentAPI(commentId) {
   return axios.delete(`/comment/${commentId}`, {
@@ -202,6 +236,7 @@ export default function* postSaga() {
     fork(watchLoadComments),
     fork(watchLoadPost),
     fork(watchAddComment),
-    fork(watchDeleteComment)
+    fork(watchDeleteComment),
+    fork(watchEditComment)
   ]);
 }

@@ -51,6 +51,10 @@ export const DELETE_COMMENT_REQUEST = "DELETE_COMMENT_REQUEST";
 export const DELETE_COMMENT_SUCCESS = "DELETE_COMMENT_SUCCESS";
 export const DELETE_COMMENT_FAILURE = "DELETE_COMMENT_FAILURE";
 
+export const EDIT_COMMENT_REQUEST = "EDIT_COMMENT_REQUEST";
+export const EDIT_COMMENT_SUCCESS = "EDIT_COMMENT_SUCCESS";
+export const EDIT_COMMENT_FAILURE = "EDIT_COMMENT_FAILURE";
+
 export const reducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_POST_REQUEST: {
