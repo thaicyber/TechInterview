@@ -26,7 +26,9 @@ import {
   MsgWrap,
   BtnWrap,
   DeleteCancelBtn,
-  DeleteRequestBtn
+  DeleteRequestBtn,
+  ConfirmMessage,
+  BtnMessage
 } from "./style";
 import Avatar from "../Util/Avatar";
 import { MoreOutlined, DeleteOutlined, EditOutlined } from "@ant-design/icons";
@@ -57,10 +59,16 @@ const CommentCard = props => {
     <>
       {deleteBtnClick && (
         <DeleteMsgWrapper>
-          <MsgWrap></MsgWrap>
+          <MsgWrap>
+            <ConfirmMessage>정말로 삭제하시겠습니까?</ConfirmMessage>
+          </MsgWrap>
           <BtnWrap>
-            <DeleteCancelBtn onClick={onClickDeleteBtn}></DeleteCancelBtn>
-            <DeleteRequestBtn></DeleteRequestBtn>
+            <DeleteCancelBtn onClick={onClickDeleteBtn}>
+              <BtnMessage style={{ color: "black" }}>취소</BtnMessage>
+            </DeleteCancelBtn>
+            <DeleteRequestBtn>
+              <BtnMessage style={{ color: "white" }}>삭제</BtnMessage>
+            </DeleteRequestBtn>
           </BtnWrap>
         </DeleteMsgWrapper>
       )}

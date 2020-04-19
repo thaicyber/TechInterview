@@ -114,6 +114,9 @@ export const MsgWrap = styled.div`
   width: 280px;
   height: 220px;
   border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const BtnWrap = styled.div`
@@ -131,6 +134,9 @@ export const DeleteCancelBtn = styled.div`
   padding-right: 0.5rem;
   border-radius: 30px;
   margin-right: 0.8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 export const DeleteRequestBtn = styled.div`
   width: 100%;
@@ -139,4 +145,12 @@ export const DeleteRequestBtn = styled.div`
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
+
+export const ConfirmMessage = styled.span`
+  color: black;
+`;
+export const BtnMessage = styled.span``;
