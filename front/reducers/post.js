@@ -17,7 +17,10 @@ export const initialState = {
   isAddCommentErrorReason: "", // 댓글 업로드 실패 사유
   isLoadingComments: false, // 댓글들 로드중
   isLoadedComments: false, // 댓글들 로딩 성공
-  isLoadCommentsErrorReason: "" // 댓글 업로드 실패 사유
+  isLoadCommentsErrorReason: "", // 댓글 업로드 실패 사유
+  isDeletingComment: false, // 댓글 삭제 시도 중
+  deletedComment: false, // 댓글 삭제 성공
+  deleteCommentErrorReason: "" // 댓글 삭제 실패 사유
 };
 
 export const ADD_POST_REQUEST = "ADD_POST_REQUEST";
@@ -43,6 +46,10 @@ export const LOAD_COMMENTS_FAILURE = "LOAD_COMMENTS_FAILURE";
 export const ADD_COMMENT_REQUEST = "ADD_COMMENT_REQUEST";
 export const ADD_COMMENT_SUCCESS = "ADD_COMMENT_SUCCESS";
 export const ADD_COMMENT_FAILURE = "ADD_COMMENT_FAILURE";
+
+export const DELETE_COMMENT_REQUEST = "DELETE_COMMENT_REQUEST";
+export const DELETE_COMMENT_SUCCESS = "DELETE_COMMENT_SUCCESS";
+export const DELETE_COMMENT_FAILURE = "DELETE_COMMENT_FAILURE";
 
 export const reducer = (state = initialState, action) => {
   switch (action.type) {
@@ -155,7 +162,6 @@ export const reducer = (state = initialState, action) => {
         isLoadCommentsErrorReason: action.error
       };
     }
-
     case ADD_COMMENT_REQUEST: {
       return {
         ...state,
@@ -177,6 +183,31 @@ export const reducer = (state = initialState, action) => {
         commentAdded: false,
         comments: null,
         isAddCommentErrorReason: action.error
+      };
+    }
+    case DELETE_COMMENT_REQUEST: {
+      return {
+        ...state,
+        isDeletingComment: true
+      };
+    }
+    case DELETE_COMMENT_SUCCESS: {
+      // console.log(action.data);
+      // console.log(state.comments);
+      // console.log(state.comments.filter(v => v.id != action.data.commentId));
+      return {
+        ...state,
+        isDeletingComment: false,
+        deletedComment: true,
+        comments: state.comments.filter(v => v.id != action.data.commentId)
+      };
+    }
+    case DELETE_COMMENT_FAILURE: {
+      return {
+        ...state,
+        isDeletingComment: false,
+        deletedComment: false,
+        deleteCommentErrorReason: action.error
       };
     }
     default: {

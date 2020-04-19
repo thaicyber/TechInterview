@@ -31,14 +31,25 @@ import {
   BtnMessage
 } from "./style";
 import Avatar from "../Util/Avatar";
-import { MoreOutlined, DeleteOutlined, EditOutlined } from "@ant-design/icons";
+import {
+  MoreOutlined,
+  DeleteOutlined,
+  EditOutlined,
+  LoadingOutlined
+} from "@ant-design/icons";
 import Theme from "../../styles/Theme";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { DELETE_COMMENT_REQUEST } from "../../reducers/post";
+import Link from "next/link";
 const CommentCard = props => {
   const { comment } = props;
   const { me } = useSelector(state => state.user);
+  const { isDeletingComment, deletedComment } = useSelector(
+    state => state.post
+  );
   const [editBtnClick, setEditBtnClick] = useState(false);
   const [deleteBtnClick, setDeleteBtnClick] = useState(false);
+  const dispatch = useDispatch();
   const onClickEditBtn = useCallback(() => {
     setEditBtnClick(!editBtnClick);
   }, [editBtnClick]);
@@ -52,6 +63,21 @@ const CommentCard = props => {
       document.body.style.overflow = "visible";
     }
   }, [editBtnClick]);
+  const onClickDeleteRequestBtn = useCallback(
+    commentId => () => {
+      dispatch({
+        type: DELETE_COMMENT_REQUEST,
+        data: commentId
+      });
+    },
+    []
+  );
+  useEffect(() => {
+    if (isDeletingComment) {
+      setDeleteBtnClick(false);
+      setEditBtnClick(false);
+    }
+  }, [isDeletingComment]);
 
   // console.log("comment", comment);
   // console.log("@@@@@me@@@@@@@@@", me);
@@ -66,7 +92,7 @@ const CommentCard = props => {
             <DeleteCancelBtn onClick={onClickDeleteBtn}>
               <BtnMessage style={{ color: "black" }}>취소</BtnMessage>
             </DeleteCancelBtn>
-            <DeleteRequestBtn>
+            <DeleteRequestBtn onClick={onClickDeleteRequestBtn(comment.id)}>
               <BtnMessage style={{ color: "white" }}>삭제</BtnMessage>
             </DeleteRequestBtn>
           </BtnWrap>
@@ -76,14 +102,19 @@ const CommentCard = props => {
         <EditCommentWraper>
           <TopWrap></TopWrap>
           <BottomWrap>
-            <EditBtnWrap>
-              <EditBtn>
-                <EditOutlined />
-                <IconTitleWrap>
-                  <IconTitle>수정</IconTitle>
-                </IconTitleWrap>
-              </EditBtn>
-            </EditBtnWrap>
+            <Link
+              href={{ pathname: "/commentEdit", query: { id: comment.id } }}
+              as={`/commentEdit/${comment.id}`}
+            >
+              <EditBtnWrap>
+                <EditBtn>
+                  <EditOutlined />
+                  <IconTitleWrap>
+                    <IconTitle>수정</IconTitle>
+                  </IconTitleWrap>
+                </EditBtn>
+              </EditBtnWrap>
+            </Link>
             <DeleteBtnWrap>
               <DeleteBtn onClick={onClickDeleteBtn}>
                 <DeleteOutlined style={{ color: "red" }} />

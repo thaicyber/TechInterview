@@ -17,9 +17,38 @@ import {
   LOAD_COMMENTS_REQUEST,
   ADD_COMMENT_SUCCESS,
   ADD_COMMENT_FAILURE,
-  ADD_COMMENT_REQUEST
+  ADD_COMMENT_REQUEST,
+  DELETE_COMMENT_REQUEST,
+  DELETE_COMMENT_SUCCESS,
+  DELETE_COMMENT_FAILURE
 } from "../reducers/post";
 import axios from "axios";
+
+function deleteCommentAPI(commentId) {
+  return axios.delete(`/comment/${commentId}`, {
+    withCredentials: true
+  });
+}
+
+function* deleteComment(action) {
+  try {
+    const result = yield call(deleteCommentAPI, action.data);
+    console.log("Result", result);
+    yield put({
+      type: DELETE_COMMENT_SUCCESS,
+      data: result.data
+    });
+  } catch (e) {
+    console.error(e);
+    yield put({
+      type: DELETE_COMMENT_FAILURE,
+      error: e
+    });
+  }
+}
+function* watchDeleteComment() {
+  yield takeLatest(DELETE_COMMENT_REQUEST, deleteComment);
+}
 
 function addCommentAPI(commentData) {
   return axios.post(
@@ -172,6 +201,7 @@ export default function* postSaga() {
     fork(watchLoadHashtagPosts),
     fork(watchLoadComments),
     fork(watchLoadPost),
-    fork(watchAddComment)
+    fork(watchAddComment),
+    fork(watchDeleteComment)
   ]);
 }

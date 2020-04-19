@@ -16,7 +16,7 @@ import { useDispatch } from "react-redux";
 import { ADD_COMMENT_REQUEST } from "../../reducers/post";
 import Button from "../Util/Button";
 const CommentForm = props => {
-  const { postId } = props;
+  const { postId, content } = props;
   const [text, setText] = useState("");
   const dispatch = useDispatch();
   const onChangeText = e => {
@@ -24,6 +24,9 @@ const CommentForm = props => {
   };
   const inputEl = useRef();
   useEffect(() => {
+    if (content) {
+      setText(content);
+    }
     inputEl.current.focus();
   }, []);
   const onSubmitComment = useCallback(
@@ -34,14 +37,17 @@ const CommentForm = props => {
         // 스페이스만 친 경우에도 찾아낼 수 있음.
         return;
       }
-      dispatch({
-        type: ADD_COMMENT_REQUEST,
-        data: {
-          content: text,
-          postId
-        }
-      });
-      setText("");
+      if (content) {
+      } else {
+        dispatch({
+          type: ADD_COMMENT_REQUEST,
+          data: {
+            content: text,
+            postId
+          }
+        });
+        setText("");
+      }
     },
     [text]
   );
