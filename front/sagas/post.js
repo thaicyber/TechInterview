@@ -23,9 +23,42 @@ import {
   DELETE_COMMENT_FAILURE,
   EDIT_COMMENT_SUCCESS,
   EDIT_COMMENT_FAILURE,
-  EDIT_COMMENT_REQUEST
+  EDIT_COMMENT_REQUEST,
+  LIKE_POST_REQUEST,
+  LIKE_POST_FAILURE,
+  LIKE_POST_SUCCESS
 } from "../reducers/post";
 import axios from "axios";
+
+function likePostAPI(postId) {
+  return axios.post(
+    `/post/${postId}/like`,
+    {},
+    {
+      withCredentials: true
+    }
+  );
+}
+
+function* likePost(action) {
+  try {
+    const result = yield call(likePostAPI, action.data);
+    console.log("Result", result);
+    yield put({
+      type: LIKE_POST_SUCCESS,
+      data: result.data
+    });
+  } catch (e) {
+    console.error(e);
+    yield put({
+      type: LIKE_POST_FAILURE,
+      error: e
+    });
+  }
+}
+function* watchLikePost() {
+  yield takeLatest(LIKE_POST_REQUEST, likePost);
+}
 
 function editCommentAPI(commentData) {
   console.log("commentData", commentData);
@@ -237,6 +270,7 @@ export default function* postSaga() {
     fork(watchLoadPost),
     fork(watchAddComment),
     fork(watchDeleteComment),
-    fork(watchEditComment)
+    fork(watchEditComment),
+    fork(watchLikePost)
   ]);
 }

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useCallback } from "react";
 import {
   PostCardWrapper,
   PrimeWrap,
@@ -27,12 +27,34 @@ import {
   MessageOutlined,
   ExportOutlined,
   HeartOutlined,
-  PushpinOutlined
+  PushpinOutlined,
+  HeartTwoTone
 } from "@ant-design/icons";
 import Link from "next/link";
 import Theme from "../../styles/Theme";
+import { useDispatch, useSelector } from "react-redux";
+import { LIKE_POST_REQUEST } from "../../reducers/post";
 const PostCard = props => {
   const { post, showMenu } = props;
+  const dispatch = useDispatch();
+  const { me } = useSelector(state => state.user);
+  console.log("post", post);
+  console.log("me", me);
+  const [clickedLike, setClickedLike] = useState(false);
+  const onClickLike = useCallback(() => {
+    if (!clickedLike) {
+      dispatch({
+        type: LIKE_POST_REQUEST,
+        data: post.id
+      });
+    } else {
+      dispatch({});
+    }
+    setClickedLike(!clickedLike);
+  }, [clickedLike]);
+  const alreadyCheck =
+    post && me && post.Likers && post.Likers.find(v => v.Like.UserId === me.id);
+  console.log("alreadyCheck", alreadyCheck);
   return (
     <PostCardWrapper>
       {post && (
@@ -88,8 +110,13 @@ const PostCard = props => {
                     <MessageOutlined style={{ cursor: "pointer" }} />
                   </CommentWrap>
                 </Link>
-                <LikeWrap>
-                  <HeartOutlined style={{ cursor: "pointer" }} />
+                <LikeWrap onClick={onClickLike}>
+                  <HeartTwoTone
+                    style={{ cursor: "pointer" }}
+                    twoToneColor={
+                      clickedLike || alreadyCheck ? "#eb2f96" : Theme.themeColor
+                    }
+                  />
                 </LikeWrap>
                 <PinWrap>
                   <PushpinOutlined style={{ cursor: "pointer" }} />
