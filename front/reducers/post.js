@@ -23,7 +23,9 @@ export const initialState = {
   deleteCommentErrorReason: "", // 댓글 삭제 실패 사유
   isEditingComment: false, // 댓글 수정 시도 중
   editedComment: false, // 댓글 수정 성공
-  editCommentErrorReason: "" // 댓글 수정 실패 사유
+  editCommentErrorReason: "", // 댓글 수정 실패 사유
+  isLikingPost: false, // 좋아요 시도 중
+  likePostErrorReason: "" // 좋아요 시도 실패 사유
 };
 
 export const ADD_POST_REQUEST = "ADD_POST_REQUEST";
@@ -61,6 +63,10 @@ export const EDIT_COMMENT_FAILURE = "EDIT_COMMENT_FAILURE";
 export const LIKE_POST_REQUEST = "LIKE_POST_REQUEST";
 export const LIKE_POST_SUCCESS = "LIKE_POST_SUCCESS";
 export const LIKE_POST_FAILURE = "LIKE_POST_FAILURE";
+
+export const UNLIKE_POST_REQUEST = "UNLIKE_POST_REQUEST";
+export const UNLIKE_POST_SUCCESS = "UNLIKE_POST_SUCCESS";
+export const UNLIKE_POST_FAILURE = "UNLIKE_POST_FAILURE";
 
 export const reducer = (state = initialState, action) => {
   switch (action.type) {
@@ -239,6 +245,34 @@ export const reducer = (state = initialState, action) => {
         isEditingComment: false,
         editedComment: false,
         editCommentErrorReason: action.error
+      };
+    }
+
+    case LIKE_POST_REQUEST: {
+      return {
+        ...state,
+        isLikingPost: true
+      };
+    }
+    case LIKE_POST_SUCCESS: {
+      const postIndex = state.mainPosts.findIndex(
+        v => v.id === action.data.postId
+      );
+      const post = mainPosts[postIndex];
+      const Likers = [...post.Likers, { id: action.data.userId }];
+      const mainPosts = [...state.mainPosts];
+      mainPosts[postIndex] = { ...post, Likers };
+      return {
+        ...state,
+        isLikingPost: false,
+        mainPosts
+      };
+    }
+    case LIKE_POST_FAILURE: {
+      return {
+        ...state,
+        isLikingPost: false,
+        likePostErrorReason: action.error
       };
     }
 

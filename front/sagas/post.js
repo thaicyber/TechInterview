@@ -46,7 +46,10 @@ function* likePost(action) {
     console.log("Result", result);
     yield put({
       type: LIKE_POST_SUCCESS,
-      data: result.data
+      data: {
+        postId: action.data,
+        userId: result.data.userId
+      }
     });
   } catch (e) {
     console.error(e);

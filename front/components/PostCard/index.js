@@ -48,7 +48,10 @@ const PostCard = props => {
         data: post.id
       });
     } else {
-      dispatch({});
+      dispatch({
+        type: UNLIKE_POST_REQUEST,
+        data: post.id
+      });
     }
     setClickedLike(!clickedLike);
   }, [clickedLike]);
