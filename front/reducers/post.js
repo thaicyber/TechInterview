@@ -25,7 +25,9 @@ export const initialState = {
   editedComment: false, // 댓글 수정 성공
   editCommentErrorReason: "", // 댓글 수정 실패 사유
   isLikingPost: false, // 좋아요 시도 중
-  likePostErrorReason: "" // 좋아요 시도 실패 사유
+  likePostErrorReason: "", // 좋아요 시도 실패 사유
+  isUnlikingPost: false, // 좋아요 취소 시도 중
+  unlikePostErrorReason: "" //좋아요 취소 시도 실패 사유
 };
 
 export const ADD_POST_REQUEST = "ADD_POST_REQUEST";
@@ -273,6 +275,34 @@ export const reducer = (state = initialState, action) => {
         ...state,
         isLikingPost: false,
         likePostErrorReason: action.error
+      };
+    }
+
+    case UNLIKE_POST_REQUEST: {
+      return {
+        ...state,
+        isUnlikingPost: true
+      };
+    }
+    case UNLIKE_POST_SUCCESS: {
+      const postIndex = state.mainPosts.findIndex(
+        v => v.id === action.data.postId
+      );
+      const post = state.mainPosts[postIndex];
+      const Likers = post.Likers.filter(v => v.id !== action.data.userId);
+      const mainPosts = [...state.mainPosts];
+      mainPosts[postIndex] = { ...post, Likers };
+      return {
+        ...state,
+        isUnlikingPost: false,
+        mainPosts
+      };
+    }
+    case UNLIKE_POST_FAILURE: {
+      return {
+        ...state,
+        isUnlikingPost: false,
+        unlikePostErrorReason: action.error
       };
     }
 
