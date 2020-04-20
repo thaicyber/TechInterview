@@ -7,11 +7,13 @@ import {
   TitleWrap,
   Title,
   CancelWrap,
-  AvatarWrap,
+  AvatarMyPageWrap,
   NicknameWrap,
   Nickname,
   FollowerWrap,
-  LogOutWrap
+  LogOutWrap,
+  MyPageWrap,
+  MyPage
 } from "./style";
 import { CloseOutlined } from "@ant-design/icons";
 import { useSelector, useDispatch } from "react-redux";
@@ -48,9 +50,14 @@ const UserSetting = ({ setAvatarClick }) => {
           </CancelWrap>
         </TopContent>
         <BottomContent>
-          <AvatarWrap>
+          <AvatarMyPageWrap>
             <Avatar size="medium" img={me.img} />
-          </AvatarWrap>
+            <MyPageWrap onClick={onClickCancel}>
+              <Link href="/myPage">
+                <MyPage>MyPage</MyPage>
+              </Link>
+            </MyPageWrap>
+          </AvatarMyPageWrap>
           <NicknameWrap>
             <Nickname>{me && me.nickname}</Nickname>
           </NicknameWrap>

@@ -17,6 +17,9 @@ const SimpleHeader = () => {
       case "/commentEdit": {
         return <Title>{post && post.title}</Title>;
       }
+      case "/myPage": {
+        return <Title>계정정보 수정</Title>;
+      }
       case "/hashtag": {
         return (
           <Title>
@@ -28,6 +31,7 @@ const SimpleHeader = () => {
           </Title>
         );
       }
+
       default: {
         return null;
       }

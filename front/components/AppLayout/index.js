@@ -33,6 +33,14 @@ const AppLayout = ({ children }) => {
           </>
         );
       }
+      case "/myPage": {
+        return (
+          <>
+            <SimpleHeader />
+            <SimpleWrap>{children}</SimpleWrap>
+          </>
+        );
+      }
       case "/commentEdit": {
         return (
           <>

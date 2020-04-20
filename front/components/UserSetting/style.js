@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Icon } from "antd";
+import Theme from "../../styles/Theme";
 
 export const UserSettingWrapper = styled.div`
   position: fixed;
@@ -54,7 +55,7 @@ export const TitleWrap = styled.div`
   align-items: center;
 `;
 
-export const AvatarWrap = styled.div`
+export const AvatarMyPageWrap = styled.div`
   display: flex;
   align-items: center;
 `;
@@ -80,4 +81,18 @@ export const LogOutWrap = styled.div`
   width: 100%;
   height: 100%;
   cursor: pointer;
+`;
+
+export const MyPageWrap = styled.div`
+  width: 80px;
+  height: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 5rem;
+  border: 1px solid ${Theme.themeColor};
+  border-radius: 20px;
+`;
+export const MyPage = styled.a`
+  color: ${Theme.themeColor};
 `;
