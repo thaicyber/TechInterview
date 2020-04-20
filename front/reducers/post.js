@@ -20,7 +20,10 @@ export const initialState = {
   isLoadCommentsErrorReason: "", // 댓글 업로드 실패 사유
   isDeletingComment: false, // 댓글 삭제 시도 중
   deletedComment: false, // 댓글 삭제 성공
-  deleteCommentErrorReason: "" // 댓글 삭제 실패 사유
+  deleteCommentErrorReason: "", // 댓글 삭제 실패 사유
+  isEditingComment: false, // 댓글 수정 시도 중
+  editedComment: false, // 댓글 수정 성공
+  editCommentErrorReason: "" // 댓글 수정 실패 사유
 };
 
 export const ADD_POST_REQUEST = "ADD_POST_REQUEST";
@@ -196,9 +199,6 @@ export const reducer = (state = initialState, action) => {
       };
     }
     case DELETE_COMMENT_SUCCESS: {
-      // console.log(action.data);
-      // console.log(state.comments);
-      // console.log(state.comments.filter(v => v.id != action.data.commentId));
       return {
         ...state,
         isDeletingComment: false,
@@ -214,6 +214,30 @@ export const reducer = (state = initialState, action) => {
         deleteCommentErrorReason: action.error
       };
     }
+
+    case EDIT_COMMENT_REQUEST: {
+      return {
+        ...state,
+        isEditingComment: true
+      };
+    }
+    case EDIT_COMMENT_SUCCESS: {
+      return {
+        ...state,
+        isEditingComment: false,
+        editedComment: true,
+        comments: null
+      };
+    }
+    case EDIT_COMMENT_FAILURE: {
+      return {
+        ...state,
+        isEditingComment: false,
+        editedComment: false,
+        editCommentErrorReason: action.error
+      };
+    }
+
     default: {
       return {
         ...state

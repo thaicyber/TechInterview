@@ -5,10 +5,30 @@ import PostCard from "../components/PostCard";
 import Router from "next/router";
 import CommentForm from "../components/CommentForm";
 import CommentCard from "../components/CommentCard";
+import styled from "styled-components";
+import { LoadingOutlined } from "@ant-design/icons";
+import Theme from "../styles/Theme";
+const LoadingWrapper = styled.div`
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5rem;
+  color: ${Theme.themeColor};
+`;
 const comment = ({ id }) => {
   const dispatch = useDispatch();
-  const { post, comments } = useSelector(state => state.post);
+  const {
+    post,
+    comments,
+    isEditingComment,
+    isAddingComment,
+    isDeletingComment
+  } = useSelector(state => state.post);
   const { me } = useSelector(state => state.user);
+  const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
     dispatch({
       type: LOAD_COMMENTS_REQUEST,
@@ -29,9 +49,22 @@ const comment = ({ id }) => {
           Router.router.query.tag)
     });
   }, []);
+  useEffect(() => {
+    if (isEditingComment || isAddingComment || isDeletingComment) {
+      setIsLoading(true);
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 500);
+    }
+  }, [isEditingComment, isAddingComment, isDeletingComment]);
   return (
     <>
       {/* <PostCard showMenu={false} post={post} /> */}
+      {isLoading && (
+        <LoadingWrapper>
+          <LoadingOutlined />
+        </LoadingWrapper>
+      )}
       {me && (
         <CommentForm
           postId={
@@ -43,7 +76,9 @@ const comment = ({ id }) => {
           }
         />
       )}
-      {comments && comments.map(comment => <CommentCard comment={comment} />)}
+      {comments &&
+        !isLoading &&
+        comments.map(comment => <CommentCard comment={comment} />)}
     </>
   );
 };
