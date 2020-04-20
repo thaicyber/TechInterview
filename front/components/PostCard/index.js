@@ -65,9 +65,15 @@ const PostCard = props => {
     <PostCardWrapper>
       {post && (
         <PrimeWrap>
-          <AvatarWrap>
-            <Avatar size="large" img={post.User.img} />
-          </AvatarWrap>
+          <Link
+            href={{ pathname: "/profile", query: { id: post.UserId } }}
+            as={`/profile/${post.UserId}`}
+          >
+            <AvatarWrap>
+              <Avatar size="large" img={post.User.img} />
+              <a></a>
+            </AvatarWrap>
+          </Link>
           <ContentWrap>
             <WriterInfoWrap>
               <WriterName>{post && post.User && post.User.nickname}</WriterName>
@@ -113,6 +119,7 @@ const PostCard = props => {
                   as={`/comment/${post.id}`}
                 >
                   <CommentWrap>
+                    <a></a>
                     <MessageOutlined style={{ cursor: "pointer" }} />
                   </CommentWrap>
                 </Link>

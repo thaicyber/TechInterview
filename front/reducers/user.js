@@ -8,7 +8,8 @@ export const initialState = {
   me: null, // 로그인 성공시 담기는 내 정보
   isLoggingOut: false, // 로그아웃 시도 중
   companies: null,
-  isLoadingCompaniesErrorReason: ""
+  isLoadingCompaniesErrorReason: "",
+  userInfo: null // 타인의 정보
 };
 
 export const SIGN_UP_REQUEST = "SIGN_UP_REQUEST";
@@ -116,9 +117,15 @@ export const reducer = (state = initialState, action) => {
       };
     }
     case LOAD_USER_SUCCESS: {
+      if (action.me) {
+        return {
+          ...state,
+          me: action.data
+        };
+      }
       return {
         ...state,
-        me: action.data
+        userInfo: action.data
       };
     }
     case LOAD_USER_FAILURE: {

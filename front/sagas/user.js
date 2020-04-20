@@ -44,19 +44,21 @@ function* watchUploadUserProfileImage() {
   yield takeLatest(UPLOAD_PROFILE_IMAGE_REQUEST, uploadUserProfileImage);
 }
 
-function loadUserAPI() {
-  return axios.get("/user", {
+function loadUserAPI(userId) {
+  return axios.get(userId ? `/user/${userId}` : "/user", {
     withCredentials: true
   });
   // front session cookie를 서버에 보냄
 }
 
-function* loadUser() {
+function* loadUser(action) {
   try {
-    const result = yield call(loadUserAPI);
+    const result = yield call(loadUserAPI, action.data);
+    console.log("result", result);
     yield put({
       type: LOAD_USER_SUCCESS,
-      data: result.data
+      data: result.data,
+      me: !action.data
     });
   } catch (e) {
     console.error(e);
