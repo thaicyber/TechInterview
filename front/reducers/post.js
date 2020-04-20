@@ -258,7 +258,7 @@ export const reducer = (state = initialState, action) => {
       const postIndex = state.mainPosts.findIndex(
         v => v.id === action.data.postId
       );
-      const post = mainPosts[postIndex];
+      const post = state.mainPosts[postIndex];
       const Likers = [...post.Likers, { id: action.data.userId }];
       const mainPosts = [...state.mainPosts];
       mainPosts[postIndex] = { ...post, Likers };

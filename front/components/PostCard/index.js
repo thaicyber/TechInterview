@@ -33,31 +33,34 @@ import {
 import Link from "next/link";
 import Theme from "../../styles/Theme";
 import { useDispatch, useSelector } from "react-redux";
-import { LIKE_POST_REQUEST } from "../../reducers/post";
+import { LIKE_POST_REQUEST, UNLIKE_POST_REQUEST } from "../../reducers/post";
 const PostCard = props => {
   const { post, showMenu } = props;
   const dispatch = useDispatch();
   const { me } = useSelector(state => state.user);
   console.log("post", post);
   console.log("me", me);
-  const [clickedLike, setClickedLike] = useState(false);
+  const likeChecked =
+    post && me && post.Likers && post.Likers.find(v => v.id === me.id);
   const onClickLike = useCallback(() => {
-    if (!clickedLike) {
+    if (!me) {
+      return alert("로그인이 필요한 서비스입니다.");
+    }
+    if (!likeChecked) {
+      // 좋아요를 누르지 않은 상태
       dispatch({
         type: LIKE_POST_REQUEST,
         data: post.id
       });
     } else {
+      // 좋아요를 누른 상태
       dispatch({
         type: UNLIKE_POST_REQUEST,
         data: post.id
       });
     }
-    setClickedLike(!clickedLike);
-  }, [clickedLike]);
-  const alreadyCheck =
-    post && me && post.Likers && post.Likers.find(v => v.Like.UserId === me.id);
-  console.log("alreadyCheck", alreadyCheck);
+  }, [me, post && post.id, likeChecked]);
+
   return (
     <PostCardWrapper>
       {post && (
@@ -116,9 +119,7 @@ const PostCard = props => {
                 <LikeWrap onClick={onClickLike}>
                   <HeartTwoTone
                     style={{ cursor: "pointer" }}
-                    twoToneColor={
-                      clickedLike || alreadyCheck ? "#eb2f96" : Theme.themeColor
-                    }
+                    twoToneColor={likeChecked ? "#eb2f96" : Theme.themeColor}
                   />
                 </LikeWrap>
                 <PinWrap>
