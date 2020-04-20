@@ -14,6 +14,9 @@ const SimpleHeader = () => {
       case "/comment": {
         return <Title>{post && post.title}</Title>;
       }
+      case "/commentEdit": {
+        return <Title>{post && post.title}</Title>;
+      }
       case "/hashtag": {
         return (
           <Title>

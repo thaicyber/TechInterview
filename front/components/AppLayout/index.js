@@ -33,6 +33,14 @@ const AppLayout = ({ children }) => {
           </>
         );
       }
+      case "/commentEdit": {
+        return (
+          <>
+            <SimpleHeader />
+            <SimpleWrap>{children}</SimpleWrap>
+          </>
+        );
+      }
       case "/hashtag": {
         return (
           <AppLayoutWrapper>
