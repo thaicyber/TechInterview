@@ -14,9 +14,35 @@ import {
   LOAD_COMPANIES_REQUEST,
   LOAD_USER_REQUEST,
   LOAD_USER_FAILURE,
-  LOAD_USER_SUCCESS
+  LOAD_USER_SUCCESS,
+  UPLOAD_PROFILE_IMAGE_FAILURE,
+  UPLOAD_PROFILE_IMAGE_REQUEST,
+  UPLOAD_PROFILE_IMAGE_SUCCESS
 } from "../reducers/user";
 import axios from "axios";
+
+function uploadUserProfileImageAPI(formData) {
+  return axios.post(`/user/image`, formData, { withCredentials: true });
+}
+function* uploadUserProfileImage(action) {
+  try {
+    const result = yield call(uploadUserProfileImageAPI, action.data);
+    console.log("result", result);
+    yield put({
+      type: UPLOAD_PROFILE_IMAGE_SUCCESS,
+      data: result.data
+    });
+  } catch (e) {
+    console.error(e);
+    yield put({
+      type: UPLOAD_PROFILE_IMAGE_FAILURE,
+      error: e
+    });
+  }
+}
+function* watchUploadUserProfileImage() {
+  yield takeLatest(UPLOAD_PROFILE_IMAGE_REQUEST, uploadUserProfileImage);
+}
 
 function loadUserAPI() {
   return axios.get("/user", {
@@ -24,6 +50,7 @@ function loadUserAPI() {
   });
   // front session cookie를 서버에 보냄
 }
+
 function* loadUser() {
   try {
     const result = yield call(loadUserAPI);
@@ -134,6 +161,7 @@ export default function* userSaga() {
     fork(watchLogIn),
     fork(watchLogOut),
     fork(watchLoadCompanies),
-    fork(watchLoadUser)
+    fork(watchLoadUser),
+    fork(watchUploadUserProfileImage)
   ]);
 }
