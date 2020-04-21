@@ -61,9 +61,11 @@ const signup = () => {
   const { isSigningUp, me } = useSelector(state => state.user);
   useEffect(() => {
     if (me) {
+      alert("현재 로그인 중 입니다. 메인페이지로 이동합니다.");
       Router.push("/");
     }
   }, [me]);
+
   const onSubmitSignup = e => {
     e.preventDefault();
     if (emailError) {
@@ -112,6 +114,9 @@ const signup = () => {
       setPasswordError(true);
     }
   };
+  if (me) {
+    return null;
+  }
   return (
     <SignupWrapper>
       <SignupContent>
