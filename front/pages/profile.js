@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   LOAD_USER_REQUEST,
@@ -98,6 +98,12 @@ const Profile = ({ id }) => {
   const dispatch = useDispatch();
   const { userInfo, me } = useSelector(state => state.user);
   const { mainPosts } = useSelector(state => state.post);
+  useEffect(() => {
+    dispatch({
+      type: LOAD_USER_REQUEST,
+      data: id
+    });
+  }, [me]);
   const onClickFollow = useCallback(
     userId => () => {
       dispatch({

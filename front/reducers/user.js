@@ -164,6 +164,10 @@ export const reducer = (state = initialState, action) => {
         me: {
           ...state.me,
           Followings: [...state.me.Followings, { id: action.data }]
+        },
+        userInfo: {
+          ...state.userInfo,
+          Followings: state.me.Followings.length
         }
       };
     }
