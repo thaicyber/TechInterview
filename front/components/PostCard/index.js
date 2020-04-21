@@ -31,6 +31,7 @@ import {
   HeartTwoTone
 } from "@ant-design/icons";
 import Link from "next/link";
+import Router from "next/router";
 import Theme from "../../styles/Theme";
 import { useDispatch, useSelector } from "react-redux";
 import { LIKE_POST_REQUEST, UNLIKE_POST_REQUEST } from "../../reducers/post";
@@ -38,7 +39,7 @@ const PostCard = props => {
   const { post, showMenu } = props;
   const dispatch = useDispatch();
   const { me } = useSelector(state => state.user);
-  // console.log("post", post);
+  console.log("post", post);
   // console.log("me", me);
   const likeChecked =
     post && me && post.Likers && post.Likers.find(v => v.id === me.id);
@@ -60,7 +61,12 @@ const PostCard = props => {
       });
     }
   }, [me, post && post.id, likeChecked]);
-
+  const onClickCard = useCallback(
+    link => () => {
+      Router.push(link);
+    },
+    []
+  );
   return (
     <PostCardWrapper>
       {post && (
@@ -79,7 +85,7 @@ const PostCard = props => {
               <WriterName>{post && post.User && post.User.nickname}</WriterName>
               <WriteDate>{post && post.publishedTime}</WriteDate>
             </WriterInfoWrap>
-            <CardWrap>
+            <CardWrap onClick={onClickCard(post.link)}>
               <CardImageWrap>
                 <CardImage img={post.postImg}></CardImage>
               </CardImageWrap>

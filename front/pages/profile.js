@@ -10,7 +10,7 @@ const profile = ({ id }) => {
       data: id
     });
   }, []);
-  console.log("userInfo", userInfo);
+  // console.log("userInfo", userInfo);
   return <div>profile</div>;
 };
 
