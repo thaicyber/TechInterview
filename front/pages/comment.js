@@ -25,7 +25,9 @@ const comment = ({ id }) => {
     comments,
     isEditingComment,
     isAddingComment,
-    isDeletingComment
+    isDeletingComment,
+    isLoadingComments,
+    isLoadedComments
   } = useSelector(state => state.post);
   const { me } = useSelector(state => state.user);
   const [isLoading, setIsLoading] = useState(false);
@@ -50,13 +52,27 @@ const comment = ({ id }) => {
     });
   }, []);
   useEffect(() => {
-    if (isEditingComment || isAddingComment || isDeletingComment) {
+    if (isLoadedComments) {
+      return;
+    }
+    if (
+      isEditingComment ||
+      isAddingComment ||
+      isDeletingComment ||
+      isLoadingComments
+    ) {
       setIsLoading(true);
       setTimeout(() => {
         setIsLoading(false);
       }, 500);
     }
-  }, [isEditingComment, isAddingComment, isDeletingComment]);
+  }, [
+    isEditingComment,
+    isAddingComment,
+    isDeletingComment,
+    isLoadingComments,
+    isLoadedComments
+  ]);
   return (
     <>
       {/* <PostCard showMenu={false} post={post} /> */}
