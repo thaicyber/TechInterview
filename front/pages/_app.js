@@ -12,6 +12,8 @@ import { ThemeProvider } from "styled-components";
 import Theme from "../styles/Theme";
 import AppLayout from "../components/AppLayout";
 import router from "next/router";
+import Axios from "axios";
+import { LOAD_USER_REQUEST } from "../reducers/user";
 const App = ({ Component, store, pageProps }) => {
   return (
     <Provider store={store}>
@@ -34,6 +36,18 @@ const App = ({ Component, store, pageProps }) => {
 App.getInitialProps = async context => {
   const { ctx, Component } = context;
   let pageProps = {};
+  const cookie = ctx.isServer ? ctx.req.headers.cookie : ""; // csr일경우 cxt에 req가 없어서 error 방지
+  if (ctx.isServer && cookie) {
+    //csr일경우 굳이 할 필요 없음.
+    Axios.defaults.headers.Cookie = cookie;
+    // defaults 모든 axios요청에 공통적으로 들어감.
+  }
+  const state = ctx.store.getState();
+  if (!state.user.me) {
+    ctx.store.dispatch({
+      type: LOAD_USER_REQUEST
+    });
+  }
   if (Component.getInitialProps) {
     pageProps = await Component.getInitialProps(ctx);
   }
@@ -60,3 +74,4 @@ export default withRedux(configureStore)(withReduxSaga(App));
 
 // 이렇게 감싸주면 기존 App컴포넌트의 기능을 왼쪾의 withRedux기능도 생기면서 확장해주는 개념임.
 // withRedux는 App컴포넌트에게 props로 store를 넣어주는 역할을 할거임.
+// withReduxSaga

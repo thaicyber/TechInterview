@@ -10,13 +10,7 @@ import router from "next/router";
 import LeftSideBar from "../LeftSideBar";
 import SimpleHeader from "../SimpleHeader";
 const AppLayout = ({ children }) => {
-  const dispatch = useDispatch();
   const { me } = useSelector(state => state.user);
-  useEffect(() => {
-    dispatch({
-      type: LOAD_USER_REQUEST
-    });
-  }, []);
   const getLayout = () => {
     switch (router && router.router && router.router.pathname) {
       case "/login": {
