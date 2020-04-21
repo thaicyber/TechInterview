@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import {
   PostCardWrapper,
   PrimeWrap,
@@ -30,11 +30,16 @@ import {
   PushpinOutlined,
   HeartTwoTone
 } from "@ant-design/icons";
+import { Icon } from "antd";
 import Link from "next/link";
 import Router from "next/router";
 import Theme from "../../styles/Theme";
 import { useDispatch, useSelector } from "react-redux";
-import { LIKE_POST_REQUEST, UNLIKE_POST_REQUEST } from "../../reducers/post";
+import {
+  LIKE_POST_REQUEST,
+  UNLIKE_POST_REQUEST,
+  LOAD_POST_LIKERS_REQUEST
+} from "../../reducers/post";
 const PostCard = props => {
   const { post, showMenu } = props;
   const dispatch = useDispatch();
@@ -130,10 +135,19 @@ const PostCard = props => {
                   </CommentWrap>
                 </Link>
                 <LikeWrap onClick={onClickLike}>
-                  <HeartTwoTone
-                    style={{ cursor: "pointer" }}
-                    twoToneColor={likeChecked ? "#eb2f96" : Theme.themeColor}
-                  />
+                  {likeChecked ? (
+                    <Icon
+                      type="heart"
+                      theme="filled"
+                      style={{ color: "#eb2f96" }}
+                    />
+                  ) : (
+                    <HeartOutlined
+                      style={{
+                        cursor: "pointer"
+                      }}
+                    />
+                  )}
                 </LikeWrap>
                 <PinWrap>
                   <PushpinOutlined style={{ cursor: "pointer" }} />

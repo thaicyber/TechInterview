@@ -32,9 +32,38 @@ import {
   UNLIKE_POST_REQUEST,
   LOAD_USER_POSTS_SUCCESS,
   LOAD_USER_POSTS_FAILURE,
-  LOAD_USER_POSTS_REQUEST
+  LOAD_USER_POSTS_REQUEST,
+  LOAD_POST_LIKERS_SUCCESS,
+  LOAD_POST_LIKERS_FAILURE,
+  LOAD_POST_LIKERS_REQUEST
 } from "../reducers/post";
 import axios from "axios";
+
+function loadPostLikersAPI(postId) {
+  return axios.get(`/post/${postId}/likers`, {
+    withCredentials: true
+  });
+}
+
+function* loadPostLikers(action) {
+  try {
+    const result = yield call(loadPostLikersAPI, action.data);
+    console.log("result!!!!", result);
+    yield put({
+      type: LOAD_POST_LIKERS_SUCCESS,
+      data: result.data
+    });
+  } catch (e) {
+    console.error(e);
+    yield put({
+      type: LOAD_POST_LIKERS_FAILURE,
+      error: e
+    });
+  }
+}
+function* watchLoadPostLikers() {
+  yield takeLatest(LOAD_POST_LIKERS_REQUEST, loadPostLikers);
+}
 
 function loadUserPostsAPI(userId) {
   return axios.get(`/user/${userId}/posts`, {
@@ -122,7 +151,6 @@ function* watchLikePost() {
 }
 
 function editCommentAPI(commentData) {
-  console.log("commentData", commentData);
   return axios.patch(
     `/comment/${commentData.commentId}`,
     { content: commentData.content },
@@ -135,7 +163,6 @@ function editCommentAPI(commentData) {
 function* editComment(action) {
   try {
     const result = yield call(editCommentAPI, action.data);
-    console.log("Result", result);
     yield put({
       type: EDIT_COMMENT_SUCCESS,
       data: result.data
@@ -161,7 +188,6 @@ function deleteCommentAPI(commentId) {
 function* deleteComment(action) {
   try {
     const result = yield call(deleteCommentAPI, action.data);
-    console.log("Result", result);
     yield put({
       type: DELETE_COMMENT_SUCCESS,
       data: result.data
@@ -191,7 +217,6 @@ function addCommentAPI(commentData) {
 function* addComment(action) {
   try {
     const result = yield call(addCommentAPI, action.data);
-    console.log("Result", result);
     yield put({
       type: ADD_COMMENT_SUCCESS,
       data: result.data
@@ -334,6 +359,7 @@ export default function* postSaga() {
     fork(watchEditComment),
     fork(watchLikePost),
     fork(watchUnlikePost),
-    fork(watchLoadUserPosts)
+    fork(watchLoadUserPosts),
+    fork(watchLoadPostLikers)
   ]);
 }

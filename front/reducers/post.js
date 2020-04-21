@@ -74,6 +74,10 @@ export const LOAD_USER_POSTS_REQUEST = "LOAD_USER_POSTS_REQUEST";
 export const LOAD_USER_POSTS_SUCCESS = "LOAD_USER_POSTS_SUCCESS";
 export const LOAD_USER_POSTS_FAILURE = "LOAD_USER_POSTS_FAILURE";
 
+export const LOAD_POST_LIKERS_REQUEST = "LOAD_POST_LIKERS_REQUEST";
+export const LOAD_POST_LIKERS_SUCCESS = "LOAD_POST_LIKERS_SUCCESS";
+export const LOAD_POST_LIKERS_FAILURE = "LOAD_POST_LIKERS_FAILURE";
+
 export const reducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_POST_REQUEST: {

@@ -12,7 +12,7 @@ import PostCard from "../components/PostCard";
 import Theme from "../styles/Theme";
 const ProfileWrapper = styled.div`
   display: grid;
-  grid-template-rows: 20% 7% 73%;
+  grid-template-rows: 182px 60px 1fr;
   min-height: 100vh;
 `;
 const UserInfoWrap = styled.div`
@@ -73,7 +73,7 @@ const Number = styled.span`
 `;
 const FollowBtnWrapCss = css`
   position: absolute;
-  top: 6.5rem;
+  top: 5.5rem;
   right: 1.5rem;
   display: flex;
   justify-content: center;
