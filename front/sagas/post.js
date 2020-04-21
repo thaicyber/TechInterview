@@ -29,9 +29,37 @@ import {
   LIKE_POST_SUCCESS,
   UNLIKE_POST_SUCCESS,
   UNLIKE_POST_FAILURE,
-  UNLIKE_POST_REQUEST
+  UNLIKE_POST_REQUEST,
+  LOAD_USER_POSTS_SUCCESS,
+  LOAD_USER_POSTS_FAILURE,
+  LOAD_USER_POSTS_REQUEST
 } from "../reducers/post";
 import axios from "axios";
+
+function loadUserPostsAPI(userId) {
+  return axios.get(`/user/${userId}/posts`, {
+    withCredentials: true
+  });
+}
+
+function* loadUserPosts(action) {
+  try {
+    const result = yield call(loadUserPostsAPI, action.data);
+    yield put({
+      type: LOAD_USER_POSTS_SUCCESS,
+      data: result.data
+    });
+  } catch (e) {
+    console.error(e);
+    yield put({
+      type: LOAD_USER_POSTS_FAILURE,
+      error: e
+    });
+  }
+}
+function* watchLoadUserPosts() {
+  yield takeLatest(LOAD_USER_POSTS_REQUEST, loadUserPosts);
+}
 
 function unlikePostAPI(postId) {
   return axios.delete(`/post/${postId}/like`, {
@@ -305,6 +333,7 @@ export default function* postSaga() {
     fork(watchDeleteComment),
     fork(watchEditComment),
     fork(watchLikePost),
-    fork(watchUnlikePost)
+    fork(watchUnlikePost),
+    fork(watchLoadUserPosts)
   ]);
 }

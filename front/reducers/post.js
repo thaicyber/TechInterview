@@ -104,6 +104,7 @@ export const reducer = (state = initialState, action) => {
         isLoadingMainPosts: true
       };
     }
+    case LOAD_USER_POSTS_SUCCESS:
     case LOAD_MAIN_POSTS_SUCCESS: {
       return {
         ...state,

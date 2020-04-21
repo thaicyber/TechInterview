@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { LOAD_USER_REQUEST } from "../reducers/user";
 import styled, { css } from "styled-components";
 import Avatar from "../components/Util/Avatar";
+import { LOAD_USER_POSTS_REQUEST } from "../reducers/post";
+import PostCard from "../components/PostCard";
 const ProfileWrapper = styled.div`
   display: grid;
   grid-template-rows: 20% 7% 73%;
@@ -66,7 +68,9 @@ const Number = styled.span`
 `;
 const Profile = ({ id }) => {
   const { userInfo } = useSelector(state => state.user);
+  const { mainPosts } = useSelector(state => state.post);
   console.log("userInfo", userInfo);
+  console.log("mainPosts", mainPosts);
   return (
     <ProfileWrapper>
       <UserInfoWrap>
@@ -91,7 +95,10 @@ const Profile = ({ id }) => {
           <Number>{userInfo && userInfo.Followings}</Number>
         </FollowingWrap>
       </UserFollowPostInfoWrap>
-      <UserPostsWrap></UserPostsWrap>
+      <UserPostsWrap>
+        {mainPosts &&
+          mainPosts.map(post => <PostCard post={post} showMenu={true} />)}
+      </UserPostsWrap>
     </ProfileWrapper>
   );
 };
@@ -100,6 +107,10 @@ Profile.getInitialProps = async context => {
   const id = context.query.id;
   context.store.dispatch({
     type: LOAD_USER_REQUEST,
+    data: id
+  });
+  context.store.dispatch({
+    type: LOAD_USER_POSTS_REQUEST,
     data: id
   });
 
