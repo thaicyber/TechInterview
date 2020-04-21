@@ -35,6 +35,14 @@ const AppLayout = ({ children }) => {
           </>
         );
       }
+      case "/profile": {
+        return (
+          <>
+            <SimpleHeader />
+            <SimpleWrap>{children}</SimpleWrap>
+          </>
+        );
+      }
       case "/commentEdit": {
         return (
           <>

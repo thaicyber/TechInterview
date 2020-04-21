@@ -6,6 +6,8 @@ import { useSelector } from "react-redux";
 import Router from "next/router";
 const SimpleHeader = () => {
   const { post } = useSelector(state => state.post);
+  const { me, userInfo } = useSelector(state => state.user);
+  console.log("me", me);
   const onClickBackBtn = () => {
     window.history.back();
   };
@@ -19,6 +21,9 @@ const SimpleHeader = () => {
       }
       case "/myPage": {
         return <Title>계정정보 수정</Title>;
+      }
+      case "/profile": {
+        return <Title>프로필</Title>;
       }
       case "/hashtag": {
         return (
