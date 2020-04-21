@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import PostCard from "../components/PostCard";
 import { FileExclamationOutlined, MehOutlined } from "@ant-design/icons";
@@ -21,14 +21,8 @@ const Desc = styled.span`
   margin-top: 30px;
 `;
 const likePosts = () => {
-  const dispatch = useDispatch();
   const { mainPosts } = useSelector(state => state.post);
   const { me } = useSelector(state => state.user);
-  useEffect(() => {
-    dispatch({
-      type: LOAD_MAIN_POSTS_REQUEST
-    });
-  }, []);
   let isExistLikePosts = false;
   const isExistLikePostsCheck = () => {
     if (me) {
@@ -72,5 +66,9 @@ const likePosts = () => {
     </>
   );
 };
-
+likePosts.getInitialProps = async context => {
+  context.store.dispatch({
+    type: LOAD_MAIN_POSTS_REQUEST
+  });
+};
 export default likePosts;
