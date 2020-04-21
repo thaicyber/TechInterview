@@ -1,10 +1,15 @@
-import React, { useEffect } from "react";
+import React, { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { LOAD_USER_REQUEST } from "../reducers/user";
+import {
+  LOAD_USER_REQUEST,
+  FOLLOW_USER_REQUEST,
+  UNFOLLOW_USER_REQUEST
+} from "../reducers/user";
 import styled, { css } from "styled-components";
 import Avatar from "../components/Util/Avatar";
 import { LOAD_USER_POSTS_REQUEST } from "../reducers/post";
 import PostCard from "../components/PostCard";
+import Theme from "../styles/Theme";
 const ProfileWrapper = styled.div`
   display: grid;
   grid-template-rows: 20% 7% 73%;
@@ -66,14 +71,79 @@ const Number = styled.span`
   margin-top: 0.3rem;
   font-weight: 600;
 `;
+const FollowBtnWrapCss = css`
+  position: absolute;
+  top: 6.5rem;
+  right: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 40px;
+  border-radius: 20px;
+`;
+const UnFollowBtnWrap = styled.div`
+  ${FollowBtnWrapCss}
+  color : white;
+  background-color: ${Theme.themeColor};
+`;
+const FollowBtnWrap = styled.div`
+  ${FollowBtnWrapCss}
+  color: ${Theme.themeColor};
+  border: 1px solid ${Theme.themeColor};
+`;
+const FollowBtnName = styled.span``;
+const UnFollowBtnName = styled.span``;
 const Profile = ({ id }) => {
-  const { userInfo } = useSelector(state => state.user);
+  const dispatch = useDispatch();
+  const { userInfo, me } = useSelector(state => state.user);
   const { mainPosts } = useSelector(state => state.post);
+  const onClickFollow = useCallback(
+    userId => () => {
+      dispatch({
+        type: FOLLOW_USER_REQUEST,
+        data: userId
+      });
+    },
+    []
+  );
+  const onClickUnFollow = useCallback(
+    userId => () => {
+      dispatch({
+        type: UNFOLLOW_USER_REQUEST,
+        data: userId
+      });
+    },
+    []
+  );
   console.log("userInfo", userInfo);
   console.log("mainPosts", mainPosts);
+  console.log("me", me);
+  const alreadyFollow =
+    me &&
+    userInfo &&
+    me.id !== userInfo.id &&
+    me.Followings &&
+    me.Followings.find(f => f.id === userInfo.id)
+      ? true
+      : false;
+  console.log("alreadyFollow", alreadyFollow);
   return (
     <ProfileWrapper>
       <UserInfoWrap>
+        {me && userInfo && me.id === userInfo.id ? null : alreadyFollow ? (
+          <UnFollowBtnWrap>
+            <UnFollowBtnName onClick={onClickUnFollow(userInfo && userInfo.id)}>
+              언팔로우
+            </UnFollowBtnName>
+          </UnFollowBtnWrap>
+        ) : (
+          <FollowBtnWrap>
+            <FollowBtnName onClick={onClickFollow(userInfo && userInfo.id)}>
+              팔로우
+            </FollowBtnName>
+          </FollowBtnWrap>
+        )}
         <AvatarWrap>
           <Avatar size="midLarge" />
         </AvatarWrap>
@@ -91,7 +161,7 @@ const Profile = ({ id }) => {
           <Number>{userInfo && userInfo.Followers}</Number>
         </FollowWrap>
         <FollowingWrap>
-          <Title>팔로우</Title>
+          <Title>팔로잉</Title>
           <Number>{userInfo && userInfo.Followings}</Number>
         </FollowingWrap>
       </UserFollowPostInfoWrap>

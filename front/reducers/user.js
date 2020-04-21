@@ -9,7 +9,15 @@ export const initialState = {
   isLoggingOut: false, // 로그아웃 시도 중
   companies: null,
   isLoadingCompaniesErrorReason: "",
-  userInfo: null // 타인의 정보
+  userInfo: null, // 타인의 정보
+  isFollowing: false, // 팔로우 시도 중
+  isFollowed: false, // 팔로우 성공 유무
+  isFollowErrorReason: "", // 팔로우 실패 사유,
+  followingList: [], // 팔로잉 리스트
+  followerList: [], // 팔로워 리스트
+  isUnfollowing: false, // 언팔로우 시도 중
+  isUnfollowed: false, // 언팔로우 성공 유무
+  isUnfollowErrorReason: "" // 언팔로우 실패 사유,
 };
 
 export const SIGN_UP_REQUEST = "SIGN_UP_REQUEST";
@@ -35,6 +43,14 @@ export const LOAD_USER_FAILURE = "LOAD_USER_FAILURE";
 export const UPLOAD_PROFILE_IMAGE_REQUEST = "UPLOAD_PROFILE_IMAGE_REQUEST";
 export const UPLOAD_PROFILE_IMAGE_SUCCESS = "UPLOAD_PROFILE_IMAGE_SUCCESS";
 export const UPLOAD_PROFILE_IMAGE_FAILURE = "UPLOAD_PROFILE_IMAGE_FAILURE";
+
+export const FOLLOW_USER_REQUEST = "FOLLOW_USER_REQUEST";
+export const FOLLOW_USER_SUCCESS = "FOLLOW_USER_SUCCESS";
+export const FOLLOW_USER_FAILURE = "FOLLOW_USER_FAILURE";
+
+export const UNFOLLOW_USER_REQUEST = "UNFOLLOW_USER_REQUEST";
+export const UNFOLLOW_USER_SUCCESS = "UNFOLLOW_USER_SUCCESS";
+export const UNFOLLOW_USER_FAILURE = "UNFOLLOW_USER_FAILURE";
 
 export const reducer = (state = initialState, action) => {
   switch (action.type) {
@@ -133,6 +149,57 @@ export const reducer = (state = initialState, action) => {
         ...state
       };
     }
+
+    case FOLLOW_USER_REQUEST: {
+      return {
+        ...state,
+        isFollowing: true
+      };
+    }
+    case FOLLOW_USER_SUCCESS: {
+      return {
+        ...state,
+        isFollowing: false,
+        isFollowed: true,
+        me: {
+          ...state.me,
+          Followings: [...state.me.Followings, { id: action.data }]
+        }
+      };
+    }
+    case FOLLOW_USER_FAILURE: {
+      return {
+        ...state,
+        isFollowing: false,
+        isFollowed: false
+      };
+    }
+
+    case UNFOLLOW_USER_REQUEST: {
+      return {
+        ...state,
+        isUnfollowing: true
+      };
+    }
+    case UNFOLLOW_USER_SUCCESS: {
+      return {
+        ...state,
+        isUnfollowing: false,
+        isUnfollowed: true,
+        me: {
+          ...state.me,
+          Followings: state.me.Followings.filter(v => v.id !== action.data)
+        }
+      };
+    }
+    case UNFOLLOW_USER_FAILURE: {
+      return {
+        ...state,
+        isUnfollowing: false,
+        isUnfollowed: false
+      };
+    }
+
     default: {
       return {
         ...state

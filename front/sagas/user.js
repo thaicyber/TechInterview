@@ -17,9 +17,61 @@ import {
   LOAD_USER_SUCCESS,
   UPLOAD_PROFILE_IMAGE_FAILURE,
   UPLOAD_PROFILE_IMAGE_REQUEST,
-  UPLOAD_PROFILE_IMAGE_SUCCESS
+  UPLOAD_PROFILE_IMAGE_SUCCESS,
+  FOLLOW_USER_SUCCESS,
+  FOLLOW_USER_FAILURE,
+  FOLLOW_USER_REQUEST,
+  UNFOLLOW_USER_SUCCESS,
+  UNFOLLOW_USER_FAILURE,
+  UNFOLLOW_USER_REQUEST
 } from "../reducers/user";
 import axios from "axios";
+
+function unFollowUserAPI(userId) {
+  return axios.delete(`/user/${userId}/follow`, { withCredentials: true });
+}
+function* unFollowUser(action) {
+  try {
+    const result = yield call(unFollowUserAPI, action.data);
+    console.log("result", result);
+    yield put({
+      type: UNFOLLOW_USER_SUCCESS,
+      data: result.data
+    });
+  } catch (e) {
+    console.error(e);
+    yield put({
+      type: UNFOLLOW_USER_FAILURE,
+      error: e
+    });
+  }
+}
+function* watchUnFollowUser() {
+  yield takeLatest(UNFOLLOW_USER_REQUEST, unFollowUser);
+}
+
+function followUserAPI(userId) {
+  return axios.post(`/user/${userId}/follow`, {}, { withCredentials: true });
+}
+function* followUser(action) {
+  try {
+    const result = yield call(followUserAPI, action.data);
+    console.log("result", result);
+    yield put({
+      type: FOLLOW_USER_SUCCESS,
+      data: result.data
+    });
+  } catch (e) {
+    console.error(e);
+    yield put({
+      type: FOLLOW_USER_FAILURE,
+      error: e
+    });
+  }
+}
+function* watchFollowUser() {
+  yield takeLatest(FOLLOW_USER_REQUEST, followUser);
+}
 
 function uploadUserProfileImageAPI(formData) {
   return axios.post(`/user/image`, formData, { withCredentials: true });
@@ -27,7 +79,6 @@ function uploadUserProfileImageAPI(formData) {
 function* uploadUserProfileImage(action) {
   try {
     const result = yield call(uploadUserProfileImageAPI, action.data);
-    console.log("result", result);
     yield put({
       type: UPLOAD_PROFILE_IMAGE_SUCCESS,
       data: result.data
@@ -54,7 +105,6 @@ function loadUserAPI(userId) {
 function* loadUser(action) {
   try {
     const result = yield call(loadUserAPI, action.data);
-    console.log("result", result);
     yield put({
       type: LOAD_USER_SUCCESS,
       data: result.data,
@@ -164,6 +214,8 @@ export default function* userSaga() {
     fork(watchLogOut),
     fork(watchLoadCompanies),
     fork(watchLoadUser),
-    fork(watchUploadUserProfileImage)
+    fork(watchUploadUserProfileImage),
+    fork(watchFollowUser),
+    fork(watchUnFollowUser)
   ]);
 }
