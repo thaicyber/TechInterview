@@ -47,7 +47,7 @@ const PostCard = props => {
   const { post, showMenu } = props;
   const dispatch = useDispatch();
   const { me } = useSelector(state => state.user);
-  // console.log("post", post);
+  console.log("post", post);
   // console.log("me", me);
   const likeChecked =
     post && me && post.Likers && post.Likers.find(v => v.id === me.id);
@@ -140,7 +140,7 @@ const PostCard = props => {
                       <MessageOutlined style={{ cursor: "pointer" }} />
                     </IconWrap>
                     <CountWrap>
-                      <Count>7</Count>
+                      <Count>{post.Comments ? post.Comments.length : 0}</Count>
                     </CountWrap>
                   </CommentWrap>
                 </Link>
@@ -161,7 +161,7 @@ const PostCard = props => {
                     )}
                   </IconWrap>
                   <CountWrap>
-                    <Count>7</Count>
+                    <Count>{post.Likers ? post.Likers.length : 0}</Count>
                   </CountWrap>
                 </LikeWrap>
               </MenuWrap>
