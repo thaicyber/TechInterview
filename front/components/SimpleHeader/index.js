@@ -7,7 +7,6 @@ import Router from "next/router";
 const SimpleHeader = () => {
   const { post } = useSelector(state => state.post);
   const { me, userInfo } = useSelector(state => state.user);
-  console.log("me", me);
   const onClickBackBtn = () => {
     window.history.back();
   };
@@ -24,6 +23,9 @@ const SimpleHeader = () => {
       }
       case "/profile": {
         return <Title>프로필</Title>;
+      }
+      case "/followers": {
+        return <Title>팔로워</Title>;
       }
       case "/hashtag": {
         return (

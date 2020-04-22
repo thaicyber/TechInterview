@@ -43,6 +43,14 @@ const AppLayout = ({ children }) => {
           </>
         );
       }
+      case "/followers": {
+        return (
+          <>
+            <SimpleHeader />
+            <SimpleWrap>{children}</SimpleWrap>
+          </>
+        );
+      }
       case "/commentEdit": {
         return (
           <>

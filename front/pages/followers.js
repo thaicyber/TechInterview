@@ -9,13 +9,13 @@ const FollowersWrapper = styled.div``;
 const FollowerWrap = styled.div`
   display: grid;
   grid-template-columns: 30% 70%;
-  grid-auto-rows: 100px;
+  grid-auto-rows: 80px;
 `;
 const UserNicknameWrap = styled.div`
   display: flex;
   justify-content: flex-start;
-  font-size: 1.3rem;
-  padding-left: 1rem;
+  font-size: 1rem;
+  padding-left: 0.5rem;
   font-weight: 400;
   align-items: center;
 `;
@@ -35,7 +35,7 @@ const followers = ({ id }) => {
           return (
             <FollowerWrap>
               <AvartarWrap>
-                <Avatar size="midLarge" />
+                <Avatar size="smallLarge" />
               </AvartarWrap>
               <UserNicknameWrap>
                 <UserNickname>{follower.nickname}</UserNickname>

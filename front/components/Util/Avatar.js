@@ -11,6 +11,9 @@ const handlerHeight = size => {
     case "large": {
       return "45px";
     }
+    case "smallLarge": {
+      return "60px";
+    }
     case "midLarge": {
       return "75px";
     }
@@ -32,6 +35,9 @@ const handlerWidth = size => {
     }
     case "large": {
       return "45px";
+    }
+    case "smallLarge": {
+      return "60px";
     }
     case "midLarge": {
       return "75px";
