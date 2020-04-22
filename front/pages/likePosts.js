@@ -45,8 +45,8 @@ const likePosts = () => {
           post =>
             post.Likers &&
             post.Likers.length > 0 &&
-            post.Likers.map(post => {
-              if (post.id === me.id) {
+            post.Likers.map(v => {
+              if (v.id === me.id) {
                 return <PostCard showMenu={true} post={post} key={post.id} />;
               }
             })

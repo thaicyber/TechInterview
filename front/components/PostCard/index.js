@@ -21,7 +21,9 @@ import {
   LikeWrap,
   ShareWrap,
   PinWrap,
-  LikeCount
+  IconWrap,
+  CountWrap,
+  Count
 } from "./style";
 import Avatar from "../Util/Avatar";
 import {
@@ -82,7 +84,10 @@ const PostCard = props => {
             as={`/profile/${post.UserId}`}
           >
             <AvatarWrap>
-              <Avatar size="large" img={post.User.img} />
+              <Avatar
+                size="large"
+                img={post.User && post.User.img ? post.User.img : null}
+              />
               <a></a>
             </AvatarWrap>
           </Link>
@@ -131,31 +136,34 @@ const PostCard = props => {
                   as={`/comment/${post.id}`}
                 >
                   <CommentWrap>
-                    <a></a>
-                    <MessageOutlined style={{ cursor: "pointer" }} />
+                    <IconWrap>
+                      <MessageOutlined style={{ cursor: "pointer" }} />
+                    </IconWrap>
+                    <CountWrap>
+                      <Count>7</Count>
+                    </CountWrap>
                   </CommentWrap>
                 </Link>
                 <LikeWrap onClick={onClickLike}>
-                  {likeChecked ? (
-                    <Icon
-                      type="heart"
-                      theme="filled"
-                      style={{ color: "#eb2f96" }}
-                    />
-                  ) : (
-                    <HeartOutlined
-                      style={{
-                        cursor: "pointer"
-                      }}
-                    />
-                  )}
+                  <IconWrap>
+                    {likeChecked ? (
+                      <Icon
+                        type="heart"
+                        theme="filled"
+                        style={{ color: "#eb2f96" }}
+                      />
+                    ) : (
+                      <HeartOutlined
+                        style={{
+                          cursor: "pointer"
+                        }}
+                      />
+                    )}
+                  </IconWrap>
+                  <CountWrap>
+                    <Count>7</Count>
+                  </CountWrap>
                 </LikeWrap>
-                <PinWrap>
-                  <PushpinOutlined style={{ cursor: "pointer" }} />
-                </PinWrap>
-                <ShareWrap>
-                  <ExportOutlined style={{ cursor: "pointer" }} />
-                </ShareWrap>
               </MenuWrap>
             ) : null}
           </ContentWrap>

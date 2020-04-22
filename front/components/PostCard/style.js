@@ -110,19 +110,37 @@ export const HashTagWrap = styled(Wrap)`
 export const HashTag = styled.span``;
 
 export const MenuWrap = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
 `;
 const MenuWrapStyles = css`
-  cursor: pointer;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 20% 80%;
 `;
-export const CommentWrap = styled.div``;
+export const CommentWrap = styled.div`
+  ${MenuWrapStyles}
+`;
 
-export const LikeWrap = styled.div``;
+export const LikeWrap = styled.div`
+  ${MenuWrapStyles}
+`;
 
 export const ShareWrap = styled.div``;
 
 export const PinWrap = styled.div``;
-
-export const LikeCount = styled.span``;
+export const CountWrap = styled.div`
+  display: flex;
+  align-items: center;
+  margin-top: 0.2rem;
+  padding-left: 0.2rem;
+`;
+export const Count = styled.a`
+  text-decoration: none;
+  font-size: 0.8rem;
+  margin-bottom: 0.1rem;
+`;
+export const IconWrap = styled.div`
+  display: flex;
+  align-items: center;
+`;
