@@ -124,3 +124,5 @@ export const LikeWrap = styled.div``;
 export const ShareWrap = styled.div``;
 
 export const PinWrap = styled.div``;
+
+export const LikeCount = styled.span``;

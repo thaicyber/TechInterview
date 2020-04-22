@@ -20,7 +20,8 @@ import {
   CommentWrap,
   LikeWrap,
   ShareWrap,
-  PinWrap
+  PinWrap,
+  LikeCount
 } from "./style";
 import Avatar from "../Util/Avatar";
 import {

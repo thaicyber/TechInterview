@@ -36,7 +36,6 @@ const likePosts = () => {
     }
   };
   isExistLikePostsCheck();
-
   return (
     <>
       {isExistLikePosts ? (
@@ -46,9 +45,10 @@ const likePosts = () => {
           post =>
             post.Likers &&
             post.Likers.length > 0 &&
-            post.Likers.map(v => {
-              v.id === me.id;
-              return <PostCard showMenu={true} post={post} key={post.id} />;
+            post.Likers.map(post => {
+              if (post.id === me.id) {
+                return <PostCard showMenu={true} post={post} key={post.id} />;
+              }
             })
         )
       ) : (
