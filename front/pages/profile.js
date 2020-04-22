@@ -10,6 +10,7 @@ import Avatar from "../components/Util/Avatar";
 import { LOAD_USER_POSTS_REQUEST } from "../reducers/post";
 import PostCard from "../components/PostCard";
 import Theme from "../styles/Theme";
+import Link from "next/link";
 const ProfileWrapper = styled.div`
   display: grid;
   grid-template-rows: 182px 60px 1fr;
@@ -62,9 +63,10 @@ const FollowWrap = styled.div`
 const FollowingWrap = styled.div`
   ${BoxWrap}
 `;
-const Title = styled.span`
+const Title = styled.a`
   display: block;
   color: rgb(0, 0, 0, 0.4);
+  text-decoration: none;
 `;
 const Number = styled.span`
   display: block;
@@ -162,10 +164,18 @@ const Profile = ({ id }) => {
           <Title>게시물</Title>
           <Number>{userInfo && userInfo.Posts}</Number>
         </PostWrap>
-        <FollowWrap>
-          <Title>팔로워</Title>
-          <Number>{userInfo && userInfo.Followers}</Number>
-        </FollowWrap>
+        <Link
+          href={{
+            pathname: "/followers",
+            query: { id: userInfo && userInfo.id }
+          }}
+          as={`/followers/${userInfo && userInfo.id}`}
+        >
+          <FollowWrap>
+            <Title>팔로워</Title>
+            <Number>{userInfo && userInfo.Followers}</Number>
+          </FollowWrap>
+        </Link>
         <FollowingWrap>
           <Title>팔로잉</Title>
           <Number>{userInfo && userInfo.Followings}</Number>
