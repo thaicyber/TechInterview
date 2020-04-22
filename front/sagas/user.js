@@ -23,9 +23,35 @@ import {
   FOLLOW_USER_REQUEST,
   UNFOLLOW_USER_SUCCESS,
   UNFOLLOW_USER_FAILURE,
-  UNFOLLOW_USER_REQUEST
+  UNFOLLOW_USER_REQUEST,
+  LOAD_FOLLOWERS_SUCCESS,
+  LOAD_FOLLOWERS_FAILURE,
+  LOAD_FOLLOWERS_REQUEST
 } from "../reducers/user";
 import axios from "axios";
+
+function loadFollowersAPI(userId) {
+  return axios.get(`/user/${userId}/followers`, { withCredentials: true });
+}
+function* loadFollowers(action) {
+  try {
+    const result = yield call(loadFollowersAPI, action.data);
+    console.log("result", result);
+    yield put({
+      type: LOAD_FOLLOWERS_SUCCESS,
+      data: result.data
+    });
+  } catch (e) {
+    console.error(e);
+    yield put({
+      type: LOAD_FOLLOWERS_FAILURE,
+      error: e
+    });
+  }
+}
+function* watchLoadFollowers() {
+  yield takeLatest(LOAD_FOLLOWERS_REQUEST, loadFollowers);
+}
 
 function unFollowUserAPI(userId) {
   return axios.delete(`/user/${userId}/follow`, { withCredentials: true });
@@ -33,7 +59,6 @@ function unFollowUserAPI(userId) {
 function* unFollowUser(action) {
   try {
     const result = yield call(unFollowUserAPI, action.data);
-    console.log("result", result);
     yield put({
       type: UNFOLLOW_USER_SUCCESS,
       data: result.data
@@ -216,6 +241,7 @@ export default function* userSaga() {
     fork(watchLoadUser),
     fork(watchUploadUserProfileImage),
     fork(watchFollowUser),
-    fork(watchUnFollowUser)
+    fork(watchUnFollowUser),
+    fork(watchLoadFollowers)
   ]);
 }

@@ -17,7 +17,10 @@ export const initialState = {
   followerList: [], // 팔로워 리스트
   isUnfollowing: false, // 언팔로우 시도 중
   isUnfollowed: false, // 언팔로우 성공 유무
-  isUnfollowErrorReason: "" // 언팔로우 실패 사유,
+  isUnfollowErrorReason: "", // 언팔로우 실패 사유,
+  isLoadFollowers: false, // 팔로워 리스트 불러오기 시도 중
+  isLoadedFollwers: false, // 팔로워 리스트 불러오기 성공 유무
+  isLoadFollowersErrorReason: "" // 팔로워 리스트 불러오기 실패 사유
 };
 
 export const SIGN_UP_REQUEST = "SIGN_UP_REQUEST";
@@ -51,6 +54,10 @@ export const FOLLOW_USER_FAILURE = "FOLLOW_USER_FAILURE";
 export const UNFOLLOW_USER_REQUEST = "UNFOLLOW_USER_REQUEST";
 export const UNFOLLOW_USER_SUCCESS = "UNFOLLOW_USER_SUCCESS";
 export const UNFOLLOW_USER_FAILURE = "UNFOLLOW_USER_FAILURE";
+
+export const LOAD_FOLLOWERS_REQUEST = "LOAD_FOLLOW_REQUEST";
+export const LOAD_FOLLOWERS_SUCCESS = "LOAD_FOLLOW_SUCCESS";
+export const LOAD_FOLLOWERS_FAILURE = "LOAD_FOLLOW_FAILURE";
 
 export const reducer = (state = initialState, action) => {
   switch (action.type) {
@@ -175,7 +182,8 @@ export const reducer = (state = initialState, action) => {
       return {
         ...state,
         isFollowing: false,
-        isFollowed: false
+        isFollowed: false,
+        isFollowErrorReason: action.error
       };
     }
 
@@ -200,7 +208,31 @@ export const reducer = (state = initialState, action) => {
       return {
         ...state,
         isUnfollowing: false,
-        isUnfollowed: false
+        isUnfollowed: false,
+        isUnfollowErrorReason: action.error
+      };
+    }
+
+    case LOAD_FOLLOWERS_REQUEST: {
+      return {
+        ...state,
+        isLoadFollowers: true
+      };
+    }
+    case LOAD_FOLLOWERS_SUCCESS: {
+      return {
+        ...state,
+        isLoadFollowers: false,
+        isLoadedFollwers: true,
+        followerList: action.data
+      };
+    }
+    case LOAD_FOLLOWERS_FAILURE: {
+      return {
+        ...state,
+        isLoadFollowers: false,
+        isLoadedFollwers: false,
+        isLoadFollowersErrorReason: action.error
       };
     }
 

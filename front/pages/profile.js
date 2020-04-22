@@ -124,9 +124,9 @@ const Profile = ({ id }) => {
     },
     []
   );
-  console.log("userInfo", userInfo);
-  console.log("mainPosts", mainPosts);
-  console.log("me", me);
+  // console.log("userInfo", userInfo);
+  // console.log("mainPosts", mainPosts);
+  // console.log("me", me);
   const alreadyFollow =
     me &&
     userInfo &&
@@ -135,7 +135,7 @@ const Profile = ({ id }) => {
     me.Followings.find(f => f.id === userInfo.id)
       ? true
       : false;
-  console.log("alreadyFollow", alreadyFollow);
+  // console.log("alreadyFollow", alreadyFollow);
   return (
     <ProfileWrapper>
       <UserInfoWrap>

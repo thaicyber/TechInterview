@@ -5,19 +5,19 @@ import { FileExclamationOutlined, MehOutlined } from "@ant-design/icons";
 import Theme from "../styles/Theme";
 import styled from "styled-components";
 import { LOAD_MAIN_POSTS_REQUEST } from "../reducers/post";
-const AnnounceWrap = styled.div``;
-const IconWrapper = styled.div`
+export const AnnounceWrap = styled.div``;
+export const IconWrapper = styled.div`
   width: 100%;
   display: flex;
   margin-top: 200px;
   justify-content: center;
 `;
-const DescWrap = styled.div`
+export const DescWrap = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
 `;
-const Desc = styled.span`
+export const Desc = styled.span`
   margin-top: 30px;
 `;
 const likePosts = () => {
