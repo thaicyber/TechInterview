@@ -1,3 +1,5 @@
+import produce from "immer";
+
 export const initialState = {
   addPostErrorReason: "", // 포스트 업로드 실패 사유
   isAddingPost: false, // 포스트 업로드 중
@@ -95,320 +97,240 @@ export const LOAD_COUNT_POSTS_SUCCESS = "LOAD_COUNT_POSTS_SUCCESS";
 export const LOAD_COUNT_POSTS_FAILURE = "LOAD_COUNT_POSTS_FAILURE";
 
 export const reducer = (state = initialState, action) => {
-  switch (action.type) {
-    case ADD_POST_REQUEST: {
-      return {
-        ...state,
-        isAddingPost: true
-      };
-    }
-    case ADD_POST_SUCCESS: {
-      return {
-        ...state,
-        isAddingPost: false,
-        postAdded: true,
-        mainPosts: [action.data, ...state.mainPosts]
-      };
-    }
-    case ADD_POST_FAILURE: {
-      return {
-        ...state,
-        isAddingPost: false,
-        postAdded: false,
-        addPostErrorReason: action.error
-      };
-    }
-    case LOAD_HASHTAG_POSTS_REQUEST: {
-      return {
-        ...state,
-        isLoadingHashtagPosts: true
-      };
-    }
-    case LOAD_HASHTAG_POSTS_SUCCESS: {
-      return {
-        ...state,
-        isLoadingHashtagPosts: false,
-        isLoadedMainPosts: true,
-        hashtagPosts: action.data
-      };
-    }
-    case LOAD_HASHTAG_POSTS_FAILURE: {
-      return {
-        ...state,
-        loadHashtagPostsErrorReason: action.error
-      };
-    }
-
-    case LOAD_USER_POSTS_REQUEST: {
-      return {
-        ...state,
-        isLoadingUserPosts: true
-      };
-    }
-    case LOAD_USER_POSTS_SUCCESS: {
-      return {
-        ...state,
-        isLoadingUserPosts: false,
-        isLoadedUserPosts: true,
-        userPosts: action.data
-      };
-    }
-    case LOAD_MAIN_POSTS_FAILURE: {
-      return {
-        ...state,
-        isLoadingUserPosts: false,
-        isLoadedUserPosts: false,
-        loadUserPostsErrorReason: action.error
-      };
-    }
-    case LOAD_MAIN_POSTS_REQUEST: {
-      return {
-        ...state,
-        isLoadingMainPosts: true,
-        mainPosts: action.lastId === 0 ? [] : state.mainPosts,
-        hasMorePost: action.lastId ? state.hasMorePost : true
-      };
-    }
-    case LOAD_MAIN_POSTS_SUCCESS: {
-      if (state.mainPosts.length >= state.postsCount) {
-        return {
-          ...state
-        };
+  return produce(state, draft => {
+    switch (action.type) {
+      case ADD_POST_REQUEST: {
+        draft.isAddingPost = true;
+        break;
       }
-      return {
-        ...state,
-        isLoadingMainPosts: false,
-        isLoadedMainPosts: true,
-        mainPosts: state.mainPosts.concat(action.data),
-        hasMorePost: action.data.length === 10
-      };
-    }
-    case LOAD_MAIN_POSTS_FAILURE: {
-      return {
-        ...state,
-        isLoadingMainPosts: false,
-        isLoadedMainPosts: false,
-        addPostErrorReason: action.error
-      };
-    }
+      case ADD_POST_SUCCESS: {
+        draft.isAddingPost = false;
+        draft.postAdded = true;
+        draft.mainPosts.unshift(action.data);
+        break;
+      }
+      case ADD_POST_FAILURE: {
+        draft.isAddingPost = false;
+        draft.postAdded = false;
+        draft.addPostErrorReason = action.error;
+        break;
+      }
+      case LOAD_HASHTAG_POSTS_REQUEST: {
+        draft.isLoadingHashtagPosts = true;
+        break;
+      }
+      case LOAD_HASHTAG_POSTS_SUCCESS: {
+        draft.isLoadingHashtagPosts = false;
+        draft.isLoadedMainPosts = true;
+        draft.hashtagPosts = action.data;
+        break;
+      }
+      case LOAD_HASHTAG_POSTS_FAILURE: {
+        draft.loadHashtagPostsErrorReason = action.error;
+        break;
+      }
 
-    case LOAD_POST_REQUEST: {
-      return {
-        ...state,
-        isLoadingPost: true
-      };
-    }
-    case LOAD_POST_SUCCESS: {
-      return {
-        ...state,
-        isLoadingPost: false,
-        isLoadedPost: true,
-        post: action.data
-      };
-    }
-    case LOAD_POST_FAILURE: {
-      return {
-        ...state,
-        isLoadingPost: false,
-        isLoadedPost: false,
-        post: null,
-        loadPostErrorReason: action.error
-      };
-    }
+      case LOAD_USER_POSTS_REQUEST: {
+        draft.isLoadingUserPosts = true;
+        break;
+      }
+      case LOAD_USER_POSTS_SUCCESS: {
+        draft.isLoadingUserPosts = false;
+        draft.isLoadedUserPosts = true;
+        draft.userPosts = action.data;
+        break;
+      }
+      case LOAD_MAIN_POSTS_FAILURE: {
+        draft.isLoadingUserPosts = false;
+        draft.isLoadedUserPosts = false;
+        draft.loadUserPostsErrorReason = action.error;
+        break;
+      }
+      case LOAD_MAIN_POSTS_REQUEST: {
+        draft.isLoadingMainPosts = true;
+        draft.mainPosts = action.lastId === 0 ? [] : draft.mainPosts;
+        draft.hasMorePost = action.lastId ? draft.hasMorePost : true;
+        break;
+      }
+      case LOAD_MAIN_POSTS_SUCCESS: {
+        if (state.mainPosts.length >= state.postsCount) {
+          break;
+        }
+        draft.isLoadingMainPosts = false;
+        draft.isLoadedMainPosts = true;
+        action.data.forEach(post => {
+          draft.mainPosts.push(post);
+        });
+        draft.hasMorePost = action.data.length === 10;
+        break;
+      }
+      case LOAD_MAIN_POSTS_FAILURE: {
+        draft.isLoadingMainPosts = false;
+        draft.isLoadedMainPosts = false;
+        draft.addPostErrorReason = action.error;
+        break;
+      }
 
-    case LOAD_COMMENTS_REQUEST: {
-      return {
-        ...state,
-        isLoadingComments: true
-      };
-    }
-    case LOAD_COMMENTS_SUCCESS: {
-      return {
-        ...state,
-        isLoadingComments: false,
-        isLoadedComments: true,
-        comments: [...action.data]
-      };
-    }
-    case LOAD_COMMENTS_FAILURE: {
-      return {
-        ...state,
-        isLoadingComments: false,
-        isLoadedComments: false,
-        comments: null,
-        isLoadCommentsErrorReason: action.error
-      };
-    }
-    case ADD_COMMENT_REQUEST: {
-      return {
-        ...state,
-        isAddingComment: true
-      };
-    }
-    case ADD_COMMENT_SUCCESS: {
-      return {
-        ...state,
-        isAddingComment: false,
-        commentAdded: true,
-        comments: [...state.comments, action.data]
-      };
-    }
-    case ADD_COMMENT_FAILURE: {
-      return {
-        ...state,
-        isAddingComment: false,
-        commentAdded: false,
-        comments: null,
-        isAddCommentErrorReason: action.error
-      };
-    }
-    case DELETE_COMMENT_REQUEST: {
-      return {
-        ...state,
-        isDeletingComment: true
-      };
-    }
-    case DELETE_COMMENT_SUCCESS: {
-      return {
-        ...state,
-        isDeletingComment: false,
-        deletedComment: true,
-        comments: state.comments.filter(v => v.id != action.data.commentId)
-      };
-    }
-    case DELETE_COMMENT_FAILURE: {
-      return {
-        ...state,
-        isDeletingComment: false,
-        deletedComment: false,
-        deleteCommentErrorReason: action.error
-      };
-    }
+      case LOAD_POST_REQUEST: {
+        draft.isLoadingPost = true;
+        break;
+      }
+      case LOAD_POST_SUCCESS: {
+        draft.isLoadingPost = false;
+        draft.isLoadedPost = true;
+        draft.post = action.data;
+        break;
+      }
+      case LOAD_POST_FAILURE: {
+        draft.isLoadingPost = false;
+        draft.isLoadedPost = false;
+        draft.post = null;
+        draft.loadPostErrorReason = action.error;
+        break;
+      }
 
-    case EDIT_COMMENT_REQUEST: {
-      return {
-        ...state,
-        isEditingComment: true
-      };
-    }
-    case EDIT_COMMENT_SUCCESS: {
-      return {
-        ...state,
-        isEditingComment: false,
-        editedComment: true,
-        comments: null
-      };
-    }
-    case EDIT_COMMENT_FAILURE: {
-      return {
-        ...state,
-        isEditingComment: false,
-        editedComment: false,
-        editCommentErrorReason: action.error
-      };
-    }
+      case LOAD_COMMENTS_REQUEST: {
+        draft.isLoadingComments = true;
+        break;
+      }
+      case LOAD_COMMENTS_SUCCESS: {
+        draft.isLoadingComments = false;
+        draft.isLoadedComments = true;
+        draft.comments = action.data;
+        break;
+      }
+      case LOAD_COMMENTS_FAILURE: {
+        draft.isLoadingComments = false;
+        draft.isLoadedComments = false;
+        draft.comments = null;
+        draft.isLoadCommentsErrorReason = action.error;
+        break;
+      }
+      case ADD_COMMENT_REQUEST: {
+        draft.isAddingComment = true;
+        break;
+      }
+      case ADD_COMMENT_SUCCESS: {
+        draft.isAddingComment = false;
+        draft.commentAdded = true;
+        draft.comments.push(action.data);
+        break;
+      }
+      case ADD_COMMENT_FAILURE: {
+        draft.isAddingComment = false;
+        draft.commentAdded = false;
+        draft.comments = null;
+        draft.isAddCommentErrorReason = action.error;
+        break;
+      }
+      case DELETE_COMMENT_REQUEST: {
+        draft.isDeletingComment = true;
+        break;
+      }
+      case DELETE_COMMENT_SUCCESS: {
+        draft.isDeletingComment = false;
+        draft.deletedComment = true;
+        const index = draft.comments.findIndex(
+          v => v.id === action.data.commentId
+        );
+        draft.comments.splice(index, 1);
+        break;
+      }
+      case DELETE_COMMENT_FAILURE: {
+        draft.isDeletingComment = false;
+        draft.deletedComment = false;
+        draft.deleteCommentErrorReason = action.error;
+        break;
+      }
 
-    case LIKE_POST_REQUEST: {
-      return {
-        ...state,
-        isLikingPost: true
-      };
-    }
-    case LIKE_POST_SUCCESS: {
-      const postIndex = state.mainPosts.findIndex(
-        v => v.id === action.data.postId
-      );
-      const post = state.mainPosts[postIndex];
-      const Likers = [...post.Likers, { id: action.data.userId }];
-      const mainPosts = [...state.mainPosts];
-      mainPosts[postIndex] = { ...post, Likers };
-      return {
-        ...state,
-        isLikingPost: false,
-        mainPosts
-      };
-    }
-    case LIKE_POST_FAILURE: {
-      return {
-        ...state,
-        isLikingPost: false,
-        likePostErrorReason: action.error
-      };
-    }
+      case EDIT_COMMENT_REQUEST: {
+        draft.isEditingComment = true;
+        break;
+      }
+      case EDIT_COMMENT_SUCCESS: {
+        draft.isEditingComment = false;
+        draft.editedComment = true;
+        draft.comments = null;
+        break;
+      }
+      case EDIT_COMMENT_FAILURE: {
+        draft.isEditingComment = false;
+        draft.editedComment = false;
+        draft.editCommentErrorReason = action.error;
+        break;
+      }
 
-    case UNLIKE_POST_REQUEST: {
-      return {
-        ...state,
-        isUnlikingPost: true
-      };
-    }
-    case UNLIKE_POST_SUCCESS: {
-      const postIndex = state.mainPosts.findIndex(
-        v => v.id === action.data.postId
-      );
-      const post = state.mainPosts[postIndex];
-      const Likers = post.Likers.filter(v => v.id !== action.data.userId);
-      const mainPosts = [...state.mainPosts];
-      mainPosts[postIndex] = { ...post, Likers };
-      return {
-        ...state,
-        isUnlikingPost: false,
-        mainPosts
-      };
-    }
-    case UNLIKE_POST_FAILURE: {
-      return {
-        ...state,
-        isUnlikingPost: false,
-        unlikePostErrorReason: action.error
-      };
-    }
+      case LIKE_POST_REQUEST: {
+        draft.isLikingPost = true;
+        break;
+      }
+      case LIKE_POST_SUCCESS: {
+        const postIndex = draft.mainPosts.findIndex(
+          v => v.id === action.data.postId
+        );
+        draft.mainPosts[postIndex].Likers.push({ id: action.data.userId });
+        draft.isLikingPost = false;
+        break;
+      }
+      case LIKE_POST_FAILURE: {
+        draft.isLikingPost = false;
+        draft.likePostErrorReason = action.error;
+        break;
+      }
 
-    case LOAD_POST_LIKERS_REQUEST: {
-      return {
-        ...state,
-        isLoadingPostLikers: true
-      };
-    }
-    case LOAD_POST_LIKERS_SUCCESS: {
-      return {
-        ...state,
-        isLoadingPostLikers: false,
-        postLikers: action.data
-      };
-    }
-    case LOAD_POST_LIKERS_FAILURE: {
-      return {
-        ...state,
-        isLoadingPostLikers: false,
-        editedComment: false,
-        isLoadPostLikersErrorReason: action.error
-      };
-    }
+      case UNLIKE_POST_REQUEST: {
+        draft.isUnlikingPost = true;
+        break;
+      }
+      case UNLIKE_POST_SUCCESS: {
+        const postIndex = draft.mainPosts.findIndex(
+          v => v.id === action.data.postId
+        );
+        const likeIndex = draft.mainPosts[postIndex].Likers.findIndex(
+          v => v.id === action.data.userId
+        );
+        draft.mainPosts[postIndex].Likers.splice(likeIndex, 1);
+        draft.isUnlikingPost = false;
+        break;
+      }
+      case UNLIKE_POST_FAILURE: {
+        draft.isUnlikingPost = false;
+        draft.unlikePostErrorReason = action.error;
+        break;
+      }
 
-    case LOAD_COUNT_POSTS_REQUEST: {
-      return {
-        ...state
-      };
-    }
-    case LOAD_COUNT_POSTS_SUCCESS: {
-      return {
-        ...state,
-        postsCount: action.data.length
-      };
-    }
-    case LOAD_COUNT_POSTS_FAILURE: {
-      return {
-        ...state
-      };
-    }
+      case LOAD_POST_LIKERS_REQUEST: {
+        draft.isLoadingPostLikers = true;
+        break;
+      }
+      case LOAD_POST_LIKERS_SUCCESS: {
+        draft.isLoadingPostLikers = false;
+        draft.postLikers = action.data;
+        break;
+      }
+      case LOAD_POST_LIKERS_FAILURE: {
+        draft.isLoadingPostLikers = false;
+        draft.editedComment = false;
+        draft.isLoadPostLikersErrorReason = action.error;
+        break;
+      }
 
-    default: {
-      return {
-        ...state
-      };
+      case LOAD_COUNT_POSTS_REQUEST: {
+        break;
+      }
+      case LOAD_COUNT_POSTS_SUCCESS: {
+        draft.postsCount = action.data.length;
+        break;
+      }
+      case LOAD_COUNT_POSTS_FAILURE: {
+        break;
+      }
+
+      default: {
+        break;
+      }
     }
-  }
+  });
 };
 
 export default reducer;
