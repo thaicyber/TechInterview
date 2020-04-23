@@ -26,9 +26,34 @@ import {
   UNFOLLOW_USER_REQUEST,
   LOAD_FOLLOWERS_SUCCESS,
   LOAD_FOLLOWERS_FAILURE,
-  LOAD_FOLLOWERS_REQUEST
+  LOAD_FOLLOWERS_REQUEST,
+  LOAD_FOLLOWINGS_SUCCESS,
+  LOAD_FOLLOWINGS_FAILURE,
+  LOAD_FOLLOWINGS_REQUEST
 } from "../reducers/user";
 import axios from "axios";
+function loadFollowingsAPI(userId) {
+  return axios.get(`/user/${userId}/followings`, { withCredentials: true });
+}
+function* loadFollowings(action) {
+  try {
+    const result = yield call(loadFollowingsAPI, action.data);
+    console.log("result", result);
+    yield put({
+      type: LOAD_FOLLOWINGS_SUCCESS,
+      data: result.data
+    });
+  } catch (e) {
+    console.error(e);
+    yield put({
+      type: LOAD_FOLLOWINGS_FAILURE,
+      error: e
+    });
+  }
+}
+function* watchLoadFollowings() {
+  yield takeLatest(LOAD_FOLLOWINGS_REQUEST, loadFollowings);
+}
 
 function loadFollowersAPI(userId) {
   return axios.get(`/user/${userId}/followers`, { withCredentials: true });
@@ -242,6 +267,7 @@ export default function* userSaga() {
     fork(watchUploadUserProfileImage),
     fork(watchFollowUser),
     fork(watchUnFollowUser),
-    fork(watchLoadFollowers)
+    fork(watchLoadFollowers),
+    fork(watchLoadFollowings)
   ]);
 }

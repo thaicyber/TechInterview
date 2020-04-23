@@ -27,6 +27,9 @@ const SimpleHeader = () => {
       case "/followers": {
         return <Title>팔로워</Title>;
       }
+      case "/followings": {
+        return <Title>팔로잉</Title>;
+      }
       case "/postLikers": {
         return <Title>좋아요</Title>;
       }

@@ -176,10 +176,18 @@ const Profile = ({ id }) => {
             <Number>{userInfo && userInfo.Followers}</Number>
           </FollowWrap>
         </Link>
-        <FollowingWrap>
-          <Title>팔로잉</Title>
-          <Number>{userInfo && userInfo.Followings}</Number>
-        </FollowingWrap>
+        <Link
+          href={{
+            pathname: "/followings",
+            query: { id: userInfo && userInfo.id }
+          }}
+          as={`/followings/${userInfo && userInfo.id}`}
+        >
+          <FollowingWrap>
+            <Title>팔로잉</Title>
+            <Number>{userInfo && userInfo.Followings}</Number>
+          </FollowingWrap>
+        </Link>
       </UserFollowPostInfoWrap>
       <UserPostsWrap>
         {mainPosts &&

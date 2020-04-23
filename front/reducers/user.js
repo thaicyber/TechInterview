@@ -20,7 +20,10 @@ export const initialState = {
   isUnfollowErrorReason: "", // 언팔로우 실패 사유,
   isLoadFollowers: false, // 팔로워 리스트 불러오기 시도 중
   isLoadedFollwers: false, // 팔로워 리스트 불러오기 성공 유무
-  isLoadFollowersErrorReason: "" // 팔로워 리스트 불러오기 실패 사유
+  isLoadFollowersErrorReason: "", // 팔로워 리스트 불러오기 실패 사유
+  isLoadFollowings: false, // 팔로잉 리스트 불러오기 시도 중
+  isLoadedFollwings: false, // 팔로잉 리스트 불러오기 성공 유무
+  isLoadFollowingsErrorReason: "" // 팔로잉 리스트 불러오기 실패 사유
 };
 
 export const SIGN_UP_REQUEST = "SIGN_UP_REQUEST";
@@ -55,9 +58,13 @@ export const UNFOLLOW_USER_REQUEST = "UNFOLLOW_USER_REQUEST";
 export const UNFOLLOW_USER_SUCCESS = "UNFOLLOW_USER_SUCCESS";
 export const UNFOLLOW_USER_FAILURE = "UNFOLLOW_USER_FAILURE";
 
-export const LOAD_FOLLOWERS_REQUEST = "LOAD_FOLLOW_REQUEST";
-export const LOAD_FOLLOWERS_SUCCESS = "LOAD_FOLLOW_SUCCESS";
-export const LOAD_FOLLOWERS_FAILURE = "LOAD_FOLLOW_FAILURE";
+export const LOAD_FOLLOWERS_REQUEST = "LOAD_FOLLOWERS_REQUEST";
+export const LOAD_FOLLOWERS_SUCCESS = "LOAD_FOLLOWERS_SUCCESS";
+export const LOAD_FOLLOWERS_FAILURE = "LOAD_FOLLOWERS_FAILURE";
+
+export const LOAD_FOLLOWINGS_REQUEST = "LOAD_FOLLOWINGS_REQUEST";
+export const LOAD_FOLLOWINGS_SUCCESS = "LOAD_FOLLOWINGS_SUCCESS";
+export const LOAD_FOLLOWINGS_FAILURE = "LOAD_FOLLOWINGS_FAILURE";
 
 export const reducer = (state = initialState, action) => {
   switch (action.type) {
@@ -233,6 +240,29 @@ export const reducer = (state = initialState, action) => {
         isLoadFollowers: false,
         isLoadedFollwers: false,
         isLoadFollowersErrorReason: action.error
+      };
+    }
+
+    case LOAD_FOLLOWINGS_REQUEST: {
+      return {
+        ...state,
+        isLoadFollowings: true
+      };
+    }
+    case LOAD_FOLLOWINGS_SUCCESS: {
+      return {
+        ...state,
+        isLoadFollowings: false,
+        isLoadedFollwings: true,
+        followingList: action.data
+      };
+    }
+    case LOAD_FOLLOWINGS_FAILURE: {
+      return {
+        ...state,
+        isLoadFollowings: false,
+        isLoadedFollwings: false,
+        isLoadFollowingsErrorReason: action.error
       };
     }
 
