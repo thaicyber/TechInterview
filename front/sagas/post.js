@@ -306,10 +306,8 @@ function* watchLoadComments() {
   yield takeLatest(LOAD_COMMENTS_REQUEST, loadComments);
 }
 
-function loadHashtagPostsAPI(tag, lastId = 10) {
-  return axios.get(
-    `/hashtag/${encodeURIComponent(tag)}?lastId=${lastId}&limit=10`
-  );
+function loadHashtagPostsAPI(tag) {
+  return axios.get(`/hashtag/${encodeURIComponent(tag)}`);
 }
 
 function* loadHashtagPosts(action) {

@@ -3,10 +3,13 @@ export const initialState = {
   isAddingPost: false, // 포스트 업로드 중
   postAdded: false, // 포스트 업로드 성공
   mainPosts: [], // 화면에 보일 포스트들
-  isLoadingMainPosts: false, // 포스트 로딩 중
+  isLoadingHashtagPosts: false, // 해시태그 포스트 로딩 중
+  isLoadedHashtagPosts: false, // 해시태그 포스트 로딩 성공
+  loadHashtagPostsErrorReason: "", // 해시태그 포스트 로딩 실패 사유
+  hashtagPosts: [], // 해시태그 포스트 목록
+  isLoadingHashtagPosts: false, // 포스트 로딩 중
   isLoadedMainPosts: false, // 포스트 로딩 성공
   loadMainPostsErrorReason: "", // 포스트 로딩 실패 사유
-  loadHashtagPostsErrorReason: "", // 해시태그 포스트 로딩 실패 사유
   isLoadingPost: false, // 포스트 한개 요청 로딩 중
   isLoadedPost: false, // 포스트 한개 요청 성공
   loadPostErrorReason: "", // 포스트 한개 요청 실패 사유
@@ -111,8 +114,33 @@ export const reducer = (state = initialState, action) => {
         addPostErrorReason: action.error
       };
     }
-    case LOAD_HASHTAG_POSTS_REQUEST:
-    case LOAD_USER_POSTS_REQUEST:
+    case LOAD_HASHTAG_POSTS_REQUEST: {
+      return {
+        ...state,
+        isLoadingHashtagPosts: true
+      };
+    }
+    case LOAD_HASHTAG_POSTS_SUCCESS: {
+      return {
+        ...state,
+        isLoadingHashtagPosts: false,
+        isLoadedMainPosts: true,
+        hashtagPosts: action.data
+      };
+    }
+    case LOAD_HASHTAG_POSTS_FAILURE: {
+      return {
+        ...state,
+        loadHashtagPostsErrorReason: action.error
+      };
+    }
+
+    case LOAD_USER_POSTS_REQUEST: {
+      return {
+        ...state,
+        isLoadingHashtagPosts: true
+      };
+    }
     case LOAD_MAIN_POSTS_REQUEST: {
       return {
         ...state,
@@ -121,7 +149,6 @@ export const reducer = (state = initialState, action) => {
         hasMorePost: action.lastId ? state.hasMorePost : true
       };
     }
-    case LOAD_HASHTAG_POSTS_SUCCESS:
     case LOAD_USER_POSTS_SUCCESS:
     case LOAD_MAIN_POSTS_SUCCESS: {
       if (state.mainPosts.length >= state.postsCount) {
@@ -143,13 +170,6 @@ export const reducer = (state = initialState, action) => {
         isLoadingMainPosts: false,
         isLoadedMainPosts: false,
         addPostErrorReason: action.error
-      };
-    }
-
-    case LOAD_HASHTAG_POSTS_FAILURE: {
-      return {
-        ...state,
-        loadHashtagPostsErrorReason: action.error
       };
     }
 
