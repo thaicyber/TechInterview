@@ -5,13 +5,16 @@ import {
   Desc,
   AnnounceWrap
 } from "../../styles/GlobalComponentStyles";
-import { MehOutlined } from "@ant-design/icons";
+import { InfoCircleOutlined } from "@ant-design/icons";
 import Theme from "../../styles/Theme";
 const Announce = ({ message }) => {
+  console.log("message", message);
   return (
     <AnnounceWrap>
       <IconWrapper>
-        <MehOutlined style={{ fontSize: "50px", color: Theme.themeColor }} />
+        <InfoCircleOutlined
+          style={{ fontSize: "20px", color: Theme.themeColor }}
+        />
       </IconWrapper>
       <DescWrap>
         <Desc>{message}</Desc>

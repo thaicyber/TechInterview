@@ -9,7 +9,7 @@ const followers = () => {
     <>
       {followerList ? (
         followerList.map(follower => {
-          return <AvatarNickname follower={follower} />;
+          return <AvatarNickname userInfo={follower} />;
         })
       ) : (
         <Announce message="팔로워가 없습니다." />

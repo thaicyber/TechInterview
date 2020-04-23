@@ -7,15 +7,15 @@ import {
 } from "./styles";
 import Avatar from "../Util/Avatar";
 
-const AvatarNickname = ({ follower }) => {
-  console.log("follower", follower);
+const AvatarNickname = ({ userInfo }) => {
+  console.log("userInfo", userInfo);
   return (
     <FollowerWrap>
       <AvartarWrap>
         <Avatar size="smallLarge" />
       </AvartarWrap>
       <UserNicknameWrap>
-        <UserNickname>{follower.nickname}</UserNickname>
+        <UserNickname>{userInfo.nickname}</UserNickname>
       </UserNicknameWrap>
     </FollowerWrap>
   );

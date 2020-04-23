@@ -1,10 +1,15 @@
 import React from "react";
 import { LOAD_POST_LIKERS_REQUEST } from "../reducers/post";
 import { useSelector } from "react-redux";
-const PostLikers = ({ id }) => {
+import Announce from "../components/Announce";
+import AvatarNickname from "../components/AvatarNickname";
+const PostLikers = () => {
   const { postLikers } = useSelector(state => state.post);
-  console.log("postLikers", postLikers);
-  return <div>PostLikers/{id}</div>;
+  return postLikers && postLikers.length > 0 ? (
+    postLikers.map(liker => <AvatarNickname userInfo={liker} />)
+  ) : (
+    <Announce message="좋아요가 없습니다." />
+  );
 };
 
 PostLikers.getInitialProps = async context => {
