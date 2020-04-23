@@ -24,12 +24,12 @@ import {
   EDIT_COMMENT_SUCCESS,
   EDIT_COMMENT_FAILURE,
   EDIT_COMMENT_REQUEST,
-  LIKE_POST_REQUEST,
-  LIKE_POST_FAILURE,
-  LIKE_POST_SUCCESS,
-  UNLIKE_POST_SUCCESS,
-  UNLIKE_POST_FAILURE,
-  UNLIKE_POST_REQUEST,
+  LIKE_POST_REQUEST_INDEX,
+  LIKE_POST_FAILURE_INDEX,
+  LIKE_POST_SUCCESS_INDEX,
+  UNLIKE_POST_SUCCESS_INDEX,
+  UNLIKE_POST_FAILURE_INDEX,
+  UNLIKE_POST_REQUEST_INDEX,
   LOAD_USER_POSTS_SUCCESS,
   LOAD_USER_POSTS_FAILURE,
   LOAD_USER_POSTS_REQUEST,
@@ -127,7 +127,7 @@ function* unlikePost(action) {
   try {
     const result = yield call(unlikePostAPI, action.data);
     yield put({
-      type: UNLIKE_POST_SUCCESS,
+      type: UNLIKE_POST_SUCCESS_INDEX,
       data: {
         postId: action.data,
         userId: result.data.userId
@@ -136,13 +136,13 @@ function* unlikePost(action) {
   } catch (e) {
     console.error(e);
     yield put({
-      type: UNLIKE_POST_FAILURE,
+      type: UNLIKE_POST_FAILURE_INDEX,
       error: e
     });
   }
 }
 function* watchUnlikePost() {
-  yield takeLatest(UNLIKE_POST_REQUEST, unlikePost);
+  yield takeLatest(UNLIKE_POST_REQUEST_INDEX, unlikePost);
 }
 
 function likePostAPI(postId) {
@@ -159,7 +159,7 @@ function* likePost(action) {
   try {
     const result = yield call(likePostAPI, action.data);
     yield put({
-      type: LIKE_POST_SUCCESS,
+      type: LIKE_POST_SUCCESS_INDEX,
       data: {
         postId: action.data,
         userId: result.data.userId
@@ -168,13 +168,13 @@ function* likePost(action) {
   } catch (e) {
     console.error(e);
     yield put({
-      type: LIKE_POST_FAILURE,
+      type: LIKE_POST_FAILURE_INDEX,
       error: e
     });
   }
 }
 function* watchLikePost() {
-  yield takeLatest(LIKE_POST_REQUEST, likePost);
+  yield takeLatest(LIKE_POST_REQUEST_INDEX, likePost);
 }
 
 function editCommentAPI(commentData) {

@@ -8,7 +8,7 @@ const hashtag = () => {
     <>
       {hashtagPosts &&
         hashtagPosts.map(post => (
-          <PostCard showMenu={true} post={post} key={post.id} />
+          <PostCard showMenu={true} post={post} key={post.id} route="hashtag" />
         ))}
     </>
   );

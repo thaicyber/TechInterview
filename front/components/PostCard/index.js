@@ -44,13 +44,38 @@ import {
   LOAD_POST_LIKERS_REQUEST
 } from "../../reducers/post";
 const PostCard = props => {
-  const { post, showMenu } = props;
+  const { post, showMenu, route } = props;
   const dispatch = useDispatch();
   const { me } = useSelector(state => state.user);
   // console.log("post", post);
   // console.log("me", me);
+  console.log("route", route);
   const likeChecked =
     post && me && post.Likers && post.Likers.find(v => v.id === me.id);
+  const INDEX = "INDEX";
+  const PROFILE = "PROFILE";
+  const HASHTAG = "HASHTAG";
+  let type = "";
+  const getType = () => {
+    switch (route) {
+      case "index": {
+        type = INDEX;
+        break;
+      }
+      case "profile": {
+        type = PROFILE;
+        break;
+      }
+      case "hashtag": {
+        type = HASHTAG;
+        break;
+      }
+      default:
+        type = null;
+        break;
+    }
+  };
+  getType();
   const onClickLike = useCallback(() => {
     if (!me) {
       return alert("로그인이 필요한 서비스입니다.");
@@ -58,13 +83,13 @@ const PostCard = props => {
     if (!likeChecked) {
       // 좋아요를 누르지 않은 상태
       dispatch({
-        type: LIKE_POST_REQUEST,
+        type: `LIKE_POST_REQUEST_${type}`,
         data: post.id
       });
     } else {
       // 좋아요를 누른 상태
       dispatch({
-        type: UNLIKE_POST_REQUEST,
+        type: `UNLIKE_POST_REQUEST_${type}`,
         data: post.id
       });
     }

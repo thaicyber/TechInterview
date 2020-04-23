@@ -191,7 +191,14 @@ const Profile = ({ id }) => {
       </UserFollowPostInfoWrap>
       <UserPostsWrap>
         {userPosts &&
-          userPosts.map(post => <PostCard post={post} showMenu={true} />)}
+          userPosts.map(post => (
+            <PostCard
+              post={post}
+              showMenu={true}
+              key={post.id}
+              route="profile"
+            />
+          ))}
       </UserPostsWrap>
     </ProfileWrapper>
   );

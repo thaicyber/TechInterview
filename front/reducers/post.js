@@ -76,13 +76,13 @@ export const EDIT_COMMENT_REQUEST = "EDIT_COMMENT_REQUEST";
 export const EDIT_COMMENT_SUCCESS = "EDIT_COMMENT_SUCCESS";
 export const EDIT_COMMENT_FAILURE = "EDIT_COMMENT_FAILURE";
 
-export const LIKE_POST_REQUEST = "LIKE_POST_REQUEST";
-export const LIKE_POST_SUCCESS = "LIKE_POST_SUCCESS";
-export const LIKE_POST_FAILURE = "LIKE_POST_FAILURE";
+export const LIKE_POST_REQUEST_INDEX = "LIKE_POST_REQUEST_INDEX";
+export const LIKE_POST_SUCCESS_INDEX = "LIKE_POST_SUCCESS_INDEX";
+export const LIKE_POST_FAILURE_INDEX = "LIKE_POST_FAILURE_INDEX";
 
-export const UNLIKE_POST_REQUEST = "UNLIKE_POST_REQUEST";
-export const UNLIKE_POST_SUCCESS = "UNLIKE_POST_SUCCESS";
-export const UNLIKE_POST_FAILURE = "UNLIKE_POST_FAILURE";
+export const UNLIKE_POST_REQUEST_INDEX = "UNLIKE_POST_REQUEST_INDEX";
+export const UNLIKE_POST_SUCCESS_INDEX = "UNLIKE_POST_SUCCESS_INDEX";
+export const UNLIKE_POST_FAILURE_INDEX = "UNLIKE_POST_FAILURE_INDEX";
 
 export const LOAD_USER_POSTS_REQUEST = "LOAD_USER_POSTS_REQUEST";
 export const LOAD_USER_POSTS_SUCCESS = "LOAD_USER_POSTS_SUCCESS";
@@ -260,29 +260,42 @@ export const reducer = (state = initialState, action) => {
         break;
       }
 
-      case LIKE_POST_REQUEST: {
+      case LIKE_POST_REQUEST_INDEX: {
         draft.isLikingPost = true;
         break;
       }
-      case LIKE_POST_SUCCESS: {
+      case LIKE_POST_SUCCESS_INDEX: {
+        console.log("action.data.userId", action.data.userId);
         const postIndex = draft.mainPosts.findIndex(
           v => v.id === action.data.postId
         );
+        console.log("postIndex", postIndex);
+        console.log(
+          "draft.mainPosts[postIndex].Likers",
+          draft.mainPosts[postIndex].Likers
+        );
+        // console.log(
+        //   "draft.hashtagPosts[postIndex].Likers",
+        //   draft.hashtagPosts[postIndex].Likers
+        // );
         draft.mainPosts[postIndex].Likers.push({ id: action.data.userId });
+        // draft.hashtagPosts[postIndex].Likers.unshift({
+        //   id: action.data.userId
+        // });
         draft.isLikingPost = false;
         break;
       }
-      case LIKE_POST_FAILURE: {
+      case LIKE_POST_FAILURE_INDEX: {
         draft.isLikingPost = false;
         draft.likePostErrorReason = action.error;
         break;
       }
 
-      case UNLIKE_POST_REQUEST: {
+      case UNLIKE_POST_REQUEST_INDEX: {
         draft.isUnlikingPost = true;
         break;
       }
-      case UNLIKE_POST_SUCCESS: {
+      case UNLIKE_POST_SUCCESS_INDEX: {
         const postIndex = draft.mainPosts.findIndex(
           v => v.id === action.data.postId
         );
@@ -290,10 +303,11 @@ export const reducer = (state = initialState, action) => {
           v => v.id === action.data.userId
         );
         draft.mainPosts[postIndex].Likers.splice(likeIndex, 1);
+        // draft.hashtagPosts[postIndex].Likers.splice(likeIndex, 1);
         draft.isUnlikingPost = false;
         break;
       }
-      case UNLIKE_POST_FAILURE: {
+      case UNLIKE_POST_FAILURE_INDEX: {
         draft.isUnlikingPost = false;
         draft.unlikePostErrorReason = action.error;
         break;

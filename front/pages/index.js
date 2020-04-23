@@ -38,7 +38,7 @@ const Home = () => {
     <>
       {mainPosts &&
         mainPosts.map(post => (
-          <PostCard showMenu={true} post={post} key={post.id} />
+          <PostCard showMenu={true} post={post} key={post.id} route="index" />
         ))}
     </>
   );
