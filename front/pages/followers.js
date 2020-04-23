@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { AnnounceWrap, IconWrapper, DescWrap, Desc } from "./likePosts";
 import { MehOutlined } from "@ant-design/icons";
 import Avatar from "../components/Util/Avatar";
+import AvatarNickname from "../components/AvatarNickname";
 const FollowersWrapper = styled.div``;
 const FollowerWrap = styled.div`
   display: grid;
@@ -29,19 +30,10 @@ const UserNickname = styled.span``;
 const followers = ({ id }) => {
   const { followerList } = useSelector(state => state.user);
   return (
-    <FollowersWrapper>
+    <>
       {followerList ? (
         followerList.map(follower => {
-          return (
-            <FollowerWrap>
-              <AvartarWrap>
-                <Avatar size="smallLarge" />
-              </AvartarWrap>
-              <UserNicknameWrap>
-                <UserNickname>{follower.nickname}</UserNickname>
-              </UserNicknameWrap>
-            </FollowerWrap>
-          );
+          return <AvatarNickname follower={follower} />;
         })
       ) : (
         <AnnounceWrap>
@@ -55,7 +47,7 @@ const followers = ({ id }) => {
           </DescWrap>
         </AnnounceWrap>
       )}
-    </FollowersWrapper>
+    </>
   );
 };
 followers.getInitialProps = async context => {

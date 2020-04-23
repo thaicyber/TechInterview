@@ -144,8 +144,8 @@ const PostCard = props => {
                     </CountWrap>
                   </CommentWrap>
                 </Link>
-                <LikeWrap onClick={onClickLike}>
-                  <IconWrap>
+                <LikeWrap>
+                  <IconWrap onClick={onClickLike}>
                     {likeChecked ? (
                       <Icon
                         type="heart"
@@ -160,9 +160,17 @@ const PostCard = props => {
                       />
                     )}
                   </IconWrap>
-                  <CountWrap>
-                    <Count>{post.Likers ? post.Likers.length : 0}</Count>
-                  </CountWrap>
+                  <Link
+                    href={{
+                      pathname: "/postLikers",
+                      query: { id: post.id }
+                    }}
+                    as={`/postLikers/${post.id}`}
+                  >
+                    <CountWrap>
+                      <Count>{post.Likers ? post.Likers.length : 0}</Count>
+                    </CountWrap>
+                  </Link>
                 </LikeWrap>
               </MenuWrap>
             ) : null}

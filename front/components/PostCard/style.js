@@ -116,7 +116,7 @@ export const MenuWrap = styled.div`
 const MenuWrapStyles = css`
   height: 100%;
   display: grid;
-  grid-template-columns: 20% 80%;
+  grid-template-columns: 25% 20%;
 `;
 export const CommentWrap = styled.div`
   ${MenuWrapStyles}
@@ -133,7 +133,6 @@ export const CountWrap = styled.div`
   display: flex;
   align-items: center;
   margin-top: 0.2rem;
-  padding-left: 0.2rem;
 `;
 export const Count = styled.a`
   text-decoration: none;

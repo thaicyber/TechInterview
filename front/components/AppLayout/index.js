@@ -51,6 +51,14 @@ const AppLayout = ({ children }) => {
           </>
         );
       }
+      case "/postLikers": {
+        return (
+          <>
+            <SimpleHeader />
+            <SimpleWrap>{children}</SimpleWrap>
+          </>
+        );
+      }
       case "/commentEdit": {
         return (
           <>

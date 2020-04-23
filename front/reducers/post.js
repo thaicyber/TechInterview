@@ -27,7 +27,10 @@ export const initialState = {
   isLikingPost: false, // 좋아요 시도 중
   likePostErrorReason: "", // 좋아요 시도 실패 사유
   isUnlikingPost: false, // 좋아요 취소 시도 중
-  unlikePostErrorReason: "" //좋아요 취소 시도 실패 사유
+  unlikePostErrorReason: "", //좋아요 취소 시도 실패 사유
+  isLoadingPostLikers: false, // 게시물에 좋아요한 사람들 불러오기 시도 중
+  postLikers: false, // 게시물에 좋아요한 사람들 불러오기 성공
+  isLoadPostLikersErrorReason: "" // 게시물에 좋아요한 사람들 불러오기 실패 사유
 };
 
 export const ADD_POST_REQUEST = "ADD_POST_REQUEST";
@@ -312,6 +315,28 @@ export const reducer = (state = initialState, action) => {
         ...state,
         isUnlikingPost: false,
         unlikePostErrorReason: action.error
+      };
+    }
+
+    case LOAD_POST_LIKERS_REQUEST: {
+      return {
+        ...state,
+        isLoadingPostLikers: true
+      };
+    }
+    case LOAD_POST_LIKERS_SUCCESS: {
+      return {
+        ...state,
+        isLoadingPostLikers: false,
+        postLikers: action.data
+      };
+    }
+    case LOAD_POST_LIKERS_FAILURE: {
+      return {
+        ...state,
+        isLoadingPostLikers: false,
+        editedComment: false,
+        isLoadPostLikersErrorReason: action.error
       };
     }
 

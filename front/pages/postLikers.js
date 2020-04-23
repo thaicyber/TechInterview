@@ -1,15 +1,19 @@
 import React from "react";
-
-const PostLikers = ({ postId }) => {
-  return <div>PostLikers/{postId}</div>;
+import { LOAD_POST_LIKERS_REQUEST } from "../reducers/post";
+import { useSelector } from "react-redux";
+const PostLikers = ({ id }) => {
+  const { postLikers } = useSelector(state => state.post);
+  console.log("postLikers", postLikers);
+  return <div>PostLikers/{id}</div>;
 };
 
-PostLikers.getInitailProps = async context => {
-  const postId = context.query.postId;
+PostLikers.getInitialProps = async context => {
+  const id = context.query.id;
   context.store.dispatch({
-    // type: LOAD_FOLLOWERS_REQUEST,
-    // data: postId
+    type: LOAD_POST_LIKERS_REQUEST,
+    data: id
   });
-  return { postId };
+  return { id };
 };
+
 export default PostLikers;
