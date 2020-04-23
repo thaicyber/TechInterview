@@ -47,7 +47,7 @@ const PostCard = props => {
   const { post, showMenu } = props;
   const dispatch = useDispatch();
   const { me } = useSelector(state => state.user);
-  console.log("post", post);
+  // console.log("post", post);
   // console.log("me", me);
   const likeChecked =
     post && me && post.Likers && post.Likers.find(v => v.id === me.id);
@@ -79,18 +79,19 @@ const PostCard = props => {
     <PostCardWrapper>
       {post && (
         <PrimeWrap>
-          <Link
-            href={{ pathname: "/profile", query: { id: post.UserId } }}
-            as={`/profile/${post.UserId}`}
-          >
-            <AvatarWrap>
-              <Avatar
-                size="large"
-                img={post.User && post.User.img ? post.User.img : null}
-              />
-              <a></a>
-            </AvatarWrap>
-          </Link>
+          <AvatarWrap>
+            <>
+              <Link
+                href={{ pathname: "/profile", query: { id: post.UserId } }}
+                as={`/profile/${post.UserId}`}
+              >
+                <Avatar
+                  size="large"
+                  img={post.User && post.User.img ? post.User.img : null}
+                />
+              </Link>
+            </>
+          </AvatarWrap>
           <ContentWrap>
             <WriterInfoWrap>
               <WriterName>{post && post.User && post.User.nickname}</WriterName>

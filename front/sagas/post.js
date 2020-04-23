@@ -1,4 +1,4 @@
-import { all, fork, call, takeLatest, put } from "redux-saga/effects";
+import { all, fork, call, takeLatest, put, throttle } from "redux-saga/effects";
 import {
   ADD_POST_REQUEST,
   ADD_POST_SUCCESS,
@@ -35,9 +35,37 @@ import {
   LOAD_USER_POSTS_REQUEST,
   LOAD_POST_LIKERS_SUCCESS,
   LOAD_POST_LIKERS_FAILURE,
-  LOAD_POST_LIKERS_REQUEST
+  LOAD_POST_LIKERS_REQUEST,
+  LOAD_COUNT_POSTS_SUCCESS,
+  LOAD_COUNT_POSTS_FAILURE,
+  LOAD_COUNT_POSTS_REQUEST
 } from "../reducers/post";
 import axios from "axios";
+
+function loadCountPostsAPI() {
+  return axios.get(`/posts/count`, {
+    withCredentials: true
+  });
+}
+
+function* loadCountPosts() {
+  try {
+    const result = yield call(loadCountPostsAPI);
+    yield put({
+      type: LOAD_COUNT_POSTS_SUCCESS,
+      data: result.data
+    });
+  } catch (e) {
+    console.error(e);
+    yield put({
+      type: LOAD_COUNT_POSTS_FAILURE,
+      error: e
+    });
+  }
+}
+function* watchLoadCountPosts() {
+  yield takeLatest(LOAD_COUNT_POSTS_REQUEST, loadCountPosts);
+}
 
 function loadPostLikersAPI(postId) {
   return axios.get(`/post/${postId}/likers`, {
@@ -48,7 +76,6 @@ function loadPostLikersAPI(postId) {
 function* loadPostLikers(action) {
   try {
     const result = yield call(loadPostLikersAPI, action.data);
-    console.log("result!!!!", result);
     yield put({
       type: LOAD_POST_LIKERS_SUCCESS,
       data: result.data
@@ -253,7 +280,7 @@ function* loadPost(action) {
   }
 }
 function* watchLoadPost() {
-  yield takeLatest(LOAD_POST_REQUEST, loadPost);
+  yield throttle(2000, LOAD_POST_REQUEST, loadPost);
 }
 
 function loadCommentsAPI(id) {
@@ -279,13 +306,15 @@ function* watchLoadComments() {
   yield takeLatest(LOAD_COMMENTS_REQUEST, loadComments);
 }
 
-function loadHashtagPostsAPI(tag) {
-  return axios.get(`/hashtag/${encodeURIComponent(tag)}`);
+function loadHashtagPostsAPI(tag, lastId = 10) {
+  return axios.get(
+    `/hashtag/${encodeURIComponent(tag)}?lastId=${lastId}&limit=10`
+  );
 }
 
 function* loadHashtagPosts(action) {
   try {
-    const result = yield call(loadHashtagPostsAPI, action.data);
+    const result = yield call(loadHashtagPostsAPI, action.data, action.lastId);
     yield put({
       type: LOAD_HASHTAG_POSTS_SUCCESS,
       data: result.data
@@ -299,16 +328,16 @@ function* loadHashtagPosts(action) {
   }
 }
 function* watchLoadHashtagPosts() {
-  yield takeLatest(LOAD_HASHTAG_POSTS_REQUEST, loadHashtagPosts);
+  yield throttle(2000, LOAD_HASHTAG_POSTS_REQUEST, loadHashtagPosts);
 }
 
-function loadMainPostsAPI() {
-  return axios.get("/posts");
+function loadMainPostsAPI(lastId = 0, limit = 10) {
+  return axios.get(`/posts?lastId=${lastId}&limit=${limit}`);
 }
 
 function* loadMainPosts(action) {
   try {
-    const result = yield call(loadMainPostsAPI, action.data);
+    const result = yield call(loadMainPostsAPI, action.lastId);
     yield put({
       type: LOAD_MAIN_POSTS_SUCCESS,
       data: result.data
@@ -322,7 +351,7 @@ function* loadMainPosts(action) {
   }
 }
 function* watchLoadMainPosts() {
-  yield takeLatest(LOAD_MAIN_POSTS_REQUEST, loadMainPosts);
+  yield throttle(2000, LOAD_MAIN_POSTS_REQUEST, loadMainPosts);
 }
 
 function addPostAPI(postData) {
@@ -360,6 +389,7 @@ export default function* postSaga() {
     fork(watchLikePost),
     fork(watchUnlikePost),
     fork(watchLoadUserPosts),
-    fork(watchLoadPostLikers)
+    fork(watchLoadPostLikers),
+    fork(watchLoadCountPosts)
   ]);
 }

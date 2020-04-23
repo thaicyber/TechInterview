@@ -30,7 +30,9 @@ export const initialState = {
   unlikePostErrorReason: "", //좋아요 취소 시도 실패 사유
   isLoadingPostLikers: false, // 게시물에 좋아요한 사람들 불러오기 시도 중
   postLikers: false, // 게시물에 좋아요한 사람들 불러오기 성공
-  isLoadPostLikersErrorReason: "" // 게시물에 좋아요한 사람들 불러오기 실패 사유
+  isLoadPostLikersErrorReason: "", // 게시물에 좋아요한 사람들 불러오기 실패 사유
+  hasMorePost: false,
+  postsCount: 0
 };
 
 export const ADD_POST_REQUEST = "ADD_POST_REQUEST";
@@ -81,6 +83,10 @@ export const LOAD_POST_LIKERS_REQUEST = "LOAD_POST_LIKERS_REQUEST";
 export const LOAD_POST_LIKERS_SUCCESS = "LOAD_POST_LIKERS_SUCCESS";
 export const LOAD_POST_LIKERS_FAILURE = "LOAD_POST_LIKERS_FAILURE";
 
+export const LOAD_COUNT_POSTS_REQUEST = "LOAD_COUNT_POSTS_REQUEST";
+export const LOAD_COUNT_POSTS_SUCCESS = "LOAD_COUNT_POSTS_SUCCESS";
+export const LOAD_COUNT_POSTS_FAILURE = "LOAD_COUNT_POSTS_FAILURE";
+
 export const reducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_POST_REQUEST: {
@@ -105,19 +111,30 @@ export const reducer = (state = initialState, action) => {
         addPostErrorReason: action.error
       };
     }
+    case LOAD_HASHTAG_POSTS_REQUEST:
+    case LOAD_USER_POSTS_REQUEST:
     case LOAD_MAIN_POSTS_REQUEST: {
       return {
         ...state,
-        isLoadingMainPosts: true
+        isLoadingMainPosts: true,
+        mainPosts: action.lastId === 0 ? [] : state.mainPosts,
+        hasMorePost: action.lastId ? state.hasMorePost : true
       };
     }
+    case LOAD_HASHTAG_POSTS_SUCCESS:
     case LOAD_USER_POSTS_SUCCESS:
     case LOAD_MAIN_POSTS_SUCCESS: {
+      if (state.mainPosts.length >= state.postsCount) {
+        return {
+          ...state
+        };
+      }
       return {
         ...state,
         isLoadingMainPosts: false,
         isLoadedMainPosts: true,
-        mainPosts: [...action.data]
+        mainPosts: state.mainPosts.concat(action.data),
+        hasMorePost: action.data.length === 10
       };
     }
     case LOAD_MAIN_POSTS_FAILURE: {
@@ -128,17 +145,7 @@ export const reducer = (state = initialState, action) => {
         addPostErrorReason: action.error
       };
     }
-    case LOAD_HASHTAG_POSTS_REQUEST: {
-      return {
-        ...state
-      };
-    }
-    case LOAD_HASHTAG_POSTS_SUCCESS: {
-      return {
-        ...state,
-        mainPosts: [...action.data]
-      };
-    }
+
     case LOAD_HASHTAG_POSTS_FAILURE: {
       return {
         ...state,
@@ -337,6 +344,23 @@ export const reducer = (state = initialState, action) => {
         isLoadingPostLikers: false,
         editedComment: false,
         isLoadPostLikersErrorReason: action.error
+      };
+    }
+
+    case LOAD_COUNT_POSTS_REQUEST: {
+      return {
+        ...state
+      };
+    }
+    case LOAD_COUNT_POSTS_SUCCESS: {
+      return {
+        ...state,
+        postsCount: action.data.length
+      };
+    }
+    case LOAD_COUNT_POSTS_FAILURE: {
+      return {
+        ...state
       };
     }
 
