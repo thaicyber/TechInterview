@@ -99,7 +99,7 @@ const UnFollowBtnName = styled.span``;
 const Profile = ({ id }) => {
   const dispatch = useDispatch();
   const { userInfo, me } = useSelector(state => state.user);
-  const { mainPosts } = useSelector(state => state.post);
+  const { userPosts } = useSelector(state => state.post);
   useEffect(() => {
     dispatch({
       type: LOAD_USER_REQUEST,
@@ -125,7 +125,7 @@ const Profile = ({ id }) => {
     []
   );
   // console.log("userInfo", userInfo);
-  // console.log("mainPosts", mainPosts);
+  // console.log("userPosts", userPosts);
   // console.log("me", me);
   const alreadyFollow =
     me &&
@@ -190,8 +190,8 @@ const Profile = ({ id }) => {
         </Link>
       </UserFollowPostInfoWrap>
       <UserPostsWrap>
-        {mainPosts &&
-          mainPosts.map(post => <PostCard post={post} showMenu={true} />)}
+        {userPosts &&
+          userPosts.map(post => <PostCard post={post} showMenu={true} />)}
       </UserPostsWrap>
     </ProfileWrapper>
   );

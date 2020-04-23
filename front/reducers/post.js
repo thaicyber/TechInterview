@@ -7,6 +7,10 @@ export const initialState = {
   isLoadedHashtagPosts: false, // 해시태그 포스트 로딩 성공
   loadHashtagPostsErrorReason: "", // 해시태그 포스트 로딩 실패 사유
   hashtagPosts: [], // 해시태그 포스트 목록
+  isLoadingUserPosts: false, // 유저 포스트 목록 로딩 중
+  isLoadedUserPosts: false, // 유저 포스트 목록 로딩 성공
+  loadUserPostsErrorReason: "", // 유저 포스트 목록 로딩 실패 사유
+  userPosts: [], // 해시태그 포스트 목록
   isLoadingHashtagPosts: false, // 포스트 로딩 중
   isLoadedMainPosts: false, // 포스트 로딩 성공
   loadMainPostsErrorReason: "", // 포스트 로딩 실패 사유
@@ -138,7 +142,23 @@ export const reducer = (state = initialState, action) => {
     case LOAD_USER_POSTS_REQUEST: {
       return {
         ...state,
-        isLoadingHashtagPosts: true
+        isLoadingUserPosts: true
+      };
+    }
+    case LOAD_USER_POSTS_SUCCESS: {
+      return {
+        ...state,
+        isLoadingUserPosts: false,
+        isLoadedUserPosts: true,
+        userPosts: action.data
+      };
+    }
+    case LOAD_MAIN_POSTS_FAILURE: {
+      return {
+        ...state,
+        isLoadingUserPosts: false,
+        isLoadedUserPosts: false,
+        loadUserPostsErrorReason: action.error
       };
     }
     case LOAD_MAIN_POSTS_REQUEST: {
@@ -149,7 +169,6 @@ export const reducer = (state = initialState, action) => {
         hasMorePost: action.lastId ? state.hasMorePost : true
       };
     }
-    case LOAD_USER_POSTS_SUCCESS:
     case LOAD_MAIN_POSTS_SUCCESS: {
       if (state.mainPosts.length >= state.postsCount) {
         return {
