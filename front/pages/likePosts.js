@@ -1,25 +1,9 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import PostCard from "../components/PostCard";
-import { FileExclamationOutlined, MehOutlined } from "@ant-design/icons";
-import Theme from "../styles/Theme";
-import styled from "styled-components";
 import { LOAD_MAIN_POSTS_REQUEST } from "../reducers/post";
-export const AnnounceWrap = styled.div``;
-export const IconWrapper = styled.div`
-  width: 100%;
-  display: flex;
-  margin-top: 200px;
-  justify-content: center;
-`;
-export const DescWrap = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-export const Desc = styled.span`
-  margin-top: 30px;
-`;
+import Announce from "../components/Announce";
+
 const likePosts = () => {
   const { mainPosts } = useSelector(state => state.post);
   const { me } = useSelector(state => state.user);
@@ -52,16 +36,7 @@ const likePosts = () => {
             })
         )
       ) : (
-        <AnnounceWrap>
-          <IconWrapper>
-            <MehOutlined
-              style={{ fontSize: "50px", color: Theme.themeColor }}
-            />
-          </IconWrapper>
-          <DescWrap>
-            <Desc>좋아요 게시글이 없습니다.</Desc>
-          </DescWrap>
-        </AnnounceWrap>
+        <Announce message="좋아요 게시글이 없습니다." />
       )}
     </>
   );
