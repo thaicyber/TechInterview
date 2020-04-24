@@ -33,6 +33,9 @@ const SimpleHeader = () => {
       case "/postLikers": {
         return <Title>좋아요</Title>;
       }
+      case "/likePosts": {
+        return <Title>좋아요</Title>;
+      }
       case "/hashtag": {
         return (
           <Title>
