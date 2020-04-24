@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from "react";
+import React, { useCallback } from "react";
 import {
   PostCardWrapper,
   PrimeWrap,
@@ -19,20 +19,12 @@ import {
   MenuWrap,
   CommentWrap,
   LikeWrap,
-  ShareWrap,
-  PinWrap,
   IconWrap,
   CountWrap,
   Count
 } from "./style";
 import Avatar from "../Util/Avatar";
-import {
-  MessageOutlined,
-  ExportOutlined,
-  HeartOutlined,
-  PushpinOutlined,
-  HeartTwoTone
-} from "@ant-design/icons";
+import { MessageOutlined, HeartOutlined } from "@ant-design/icons";
 import { Icon } from "antd";
 import Link from "next/link";
 import Router from "next/router";
@@ -43,6 +35,7 @@ import {
   UNLIKE_POST_REQUEST,
   LOAD_POST_LIKERS_REQUEST
 } from "../../reducers/post";
+import { getRouteType } from "../Util/meta";
 const PostCard = props => {
   const { post, showMenu, route } = props;
   const dispatch = useDispatch();
@@ -52,30 +45,7 @@ const PostCard = props => {
   // console.log("route", route);
   const likeChecked =
     post && me && post.Likers && post.Likers.find(v => v.id === me.id);
-  const INDEX = "INDEX";
-  const PROFILE = "PROFILE";
-  const HASHTAG = "HASHTAG";
-  let type = "";
-  const getType = () => {
-    switch (route) {
-      case "index": {
-        type = INDEX;
-        break;
-      }
-      case "profile": {
-        type = PROFILE;
-        break;
-      }
-      case "hashtag": {
-        type = HASHTAG;
-        break;
-      }
-      default:
-        type = null;
-        break;
-    }
-  };
-  getType();
+  const type = getRouteType(route);
   const onClickLike = useCallback(() => {
     if (!me) {
       return alert("로그인이 필요한 서비스입니다.");
