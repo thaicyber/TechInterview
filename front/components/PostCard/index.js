@@ -49,7 +49,7 @@ const PostCard = props => {
   const { me } = useSelector(state => state.user);
   // console.log("post", post);
   // console.log("me", me);
-  console.log("route", route);
+  // console.log("route", route);
   const likeChecked =
     post && me && post.Likers && post.Likers.find(v => v.id === me.id);
   const INDEX = "INDEX";
@@ -83,14 +83,16 @@ const PostCard = props => {
     if (!likeChecked) {
       // 좋아요를 누르지 않은 상태
       dispatch({
-        type: `LIKE_POST_REQUEST_${type}`,
-        data: post.id
+        type: LIKE_POST_REQUEST,
+        data: post.id,
+        route: type
       });
     } else {
       // 좋아요를 누른 상태
       dispatch({
-        type: `UNLIKE_POST_REQUEST_${type}`,
-        data: post.id
+        type: UNLIKE_POST_REQUEST,
+        data: post.id,
+        route: type
       });
     }
   }, [me, post && post.id, likeChecked]);

@@ -12,7 +12,7 @@ export const initialState = {
   isLoadingUserPosts: false, // 유저 포스트 목록 로딩 중
   isLoadedUserPosts: false, // 유저 포스트 목록 로딩 성공
   loadUserPostsErrorReason: "", // 유저 포스트 목록 로딩 실패 사유
-  userPosts: [], // 해시태그 포스트 목록
+  userPosts: [], // 유저 포스트 목록
   isLoadingHashtagPosts: false, // 포스트 로딩 중
   isLoadedMainPosts: false, // 포스트 로딩 성공
   loadMainPostsErrorReason: "", // 포스트 로딩 실패 사유
@@ -76,13 +76,13 @@ export const EDIT_COMMENT_REQUEST = "EDIT_COMMENT_REQUEST";
 export const EDIT_COMMENT_SUCCESS = "EDIT_COMMENT_SUCCESS";
 export const EDIT_COMMENT_FAILURE = "EDIT_COMMENT_FAILURE";
 
-export const LIKE_POST_REQUEST_INDEX = "LIKE_POST_REQUEST_INDEX";
-export const LIKE_POST_SUCCESS_INDEX = "LIKE_POST_SUCCESS_INDEX";
-export const LIKE_POST_FAILURE_INDEX = "LIKE_POST_FAILURE_INDEX";
+export const LIKE_POST_REQUEST = "LIKE_POST_REQUEST";
+export const LIKE_POST_SUCCESS = "LIKE_POST_SUCCESS";
+export const LIKE_POST_FAILURE = "LIKE_POST_FAILURE";
 
-export const UNLIKE_POST_REQUEST_INDEX = "UNLIKE_POST_REQUEST_INDEX";
-export const UNLIKE_POST_SUCCESS_INDEX = "UNLIKE_POST_SUCCESS_INDEX";
-export const UNLIKE_POST_FAILURE_INDEX = "UNLIKE_POST_FAILURE_INDEX";
+export const UNLIKE_POST_REQUEST = "UNLIKE_POST_REQUEST";
+export const UNLIKE_POST_SUCCESS = "UNLIKE_POST_SUCCESS";
+export const UNLIKE_POST_FAILURE = "UNLIKE_POST_FAILURE";
 
 export const LOAD_USER_POSTS_REQUEST = "LOAD_USER_POSTS_REQUEST";
 export const LOAD_USER_POSTS_SUCCESS = "LOAD_USER_POSTS_SUCCESS";
@@ -260,42 +260,69 @@ export const reducer = (state = initialState, action) => {
         break;
       }
 
-      case LIKE_POST_REQUEST_INDEX: {
+      case LIKE_POST_REQUEST: {
         draft.isLikingPost = true;
         break;
       }
-      case LIKE_POST_SUCCESS_INDEX: {
-        console.log("action.data.userId", action.data.userId);
+      case LIKE_POST_SUCCESS: {
+        if (action.data.route === "HASHTAG") {
+          const hashtagPostIndex = draft.hashtagPosts.findIndex(
+            v => v.id === action.data.postId
+          );
+          draft.hashtagPosts[hashtagPostIndex].Likers.push({
+            id: action.data.userId
+          });
+        }
+        if (action.data.route === "PROFILE") {
+          const profilePostIndex = draft.userPosts.findIndex(
+            v => v.id === action.data.postId
+          );
+          draft.userPosts[profilePostIndex].Likers.push({
+            id: action.data.userId
+          });
+        }
+        //mainPosts
         const postIndex = draft.mainPosts.findIndex(
           v => v.id === action.data.postId
         );
-        console.log("postIndex", postIndex);
-        console.log(
-          "draft.mainPosts[postIndex].Likers",
-          draft.mainPosts[postIndex].Likers
-        );
-        // console.log(
-        //   "draft.hashtagPosts[postIndex].Likers",
-        //   draft.hashtagPosts[postIndex].Likers
-        // );
         draft.mainPosts[postIndex].Likers.push({ id: action.data.userId });
-        // draft.hashtagPosts[postIndex].Likers.unshift({
-        //   id: action.data.userId
-        // });
         draft.isLikingPost = false;
         break;
       }
-      case LIKE_POST_FAILURE_INDEX: {
+      case LIKE_POST_FAILURE: {
         draft.isLikingPost = false;
         draft.likePostErrorReason = action.error;
         break;
       }
 
-      case UNLIKE_POST_REQUEST_INDEX: {
+      case UNLIKE_POST_REQUEST: {
         draft.isUnlikingPost = true;
         break;
       }
-      case UNLIKE_POST_SUCCESS_INDEX: {
+      case UNLIKE_POST_SUCCESS: {
+        if (action.data.route === "HASHTAG") {
+          const hashtagPostIndex = draft.hashtagPosts.findIndex(
+            v => v.id === action.data.postId
+          );
+          const hashtagLikeIndex = draft.hashtagPosts[
+            hashtagPostIndex
+          ].Likers.findIndex(v => v.id === action.data.userId);
+          draft.hashtagPosts[hashtagPostIndex].Likers.splice(
+            hashtagLikeIndex,
+            1
+          );
+        }
+        if (action.data.route === "PROFILE") {
+          const profilePostIndex = draft.userPosts.findIndex(
+            v => v.id === action.data.postId
+          );
+          const profileLikeIndex = draft.userPosts[
+            profilePostIndex
+          ].Likers.findIndex(v => v.id === action.data.userId);
+          draft.userPosts[profilePostIndex].Likers.splice(profileLikeIndex, 1);
+        }
+
+        //mainPosts
         const postIndex = draft.mainPosts.findIndex(
           v => v.id === action.data.postId
         );
@@ -303,11 +330,10 @@ export const reducer = (state = initialState, action) => {
           v => v.id === action.data.userId
         );
         draft.mainPosts[postIndex].Likers.splice(likeIndex, 1);
-        // draft.hashtagPosts[postIndex].Likers.splice(likeIndex, 1);
         draft.isUnlikingPost = false;
         break;
       }
-      case UNLIKE_POST_FAILURE_INDEX: {
+      case UNLIKE_POST_FAILURE: {
         draft.isUnlikingPost = false;
         draft.unlikePostErrorReason = action.error;
         break;
