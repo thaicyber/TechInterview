@@ -1,3 +1,5 @@
+import produce from "immer";
+
 export const initialState = {
   isSigningUp: false, // 회원가입 시도 중
   isSignedUp: false, // 회원가입 성공 유무
@@ -67,211 +69,154 @@ export const LOAD_FOLLOWINGS_SUCCESS = "LOAD_FOLLOWINGS_SUCCESS";
 export const LOAD_FOLLOWINGS_FAILURE = "LOAD_FOLLOWINGS_FAILURE";
 
 export const reducer = (state = initialState, action) => {
-  switch (action.type) {
-    case SIGN_UP_REQUEST: {
-      return {
-        ...state,
-        isSigningUp: true
-      };
-    }
-    case SIGN_UP_SUCCESS: {
-      return {
-        ...state,
-        isSignedUp: true,
-        isSigningUp: false,
-        me: action
-      };
-    }
-    case SIGN_UP_FAILURE: {
-      return {
-        ...state,
-        isSignedUp: false,
-        isSigningUp: false
-      };
-    }
-    case LOG_IN_REQUEST: {
-      return {
-        ...state,
-        isLoggingIn: true
-      };
-    }
-    case LOG_IN_SUCCESS: {
-      return {
-        ...state,
-        isLogined: true,
-        isLoggingIn: false,
-        me: action.data
-      };
-    }
-    case LOG_IN_FAILURE: {
-      return {
-        ...state,
-        isLogined: false,
-        isLoggingIn: false
-      };
-    }
-    case LOG_OUT_REQUEST: {
-      return {
-        ...state,
-        isLoggingOut: true
-      };
-    }
-    case LOG_OUT_SUCCESS: {
-      return {
-        ...state,
-        isLogined: false,
-        isLoggingOut: false,
-        me: null
-      };
-    }
-    case LOAD_COMPANIES_REQUEST: {
-      return {
-        ...state
-      };
-    }
-    case LOAD_COMPANIES_SUCCESS: {
-      return {
-        ...state,
-        companies: action.data
-      };
-    }
-    case LOAD_COMPANIES_FAILURE: {
-      return {
-        ...state,
-        isLoadingCompaniesErrorReason: action.error
-      };
-    }
-    case LOAD_USER_REQUEST: {
-      return {
-        ...state
-      };
-    }
-    case LOAD_USER_SUCCESS: {
-      if (action.me) {
-        return {
-          ...state,
-          me: action.data
-        };
+  return produce(state, draft => {
+    switch (action.type) {
+      case SIGN_UP_REQUEST: {
+        draft.isSigningUp = true;
+        break;
       }
-      return {
-        ...state,
-        userInfo: action.data
-      };
-    }
-    case LOAD_USER_FAILURE: {
-      return {
-        ...state
-      };
-    }
-
-    case FOLLOW_USER_REQUEST: {
-      return {
-        ...state,
-        isFollowing: true
-      };
-    }
-    case FOLLOW_USER_SUCCESS: {
-      return {
-        ...state,
-        isFollowing: false,
-        isFollowed: true,
-        me: {
-          ...state.me,
-          Followings: [...state.me.Followings, { id: action.data }]
-        },
-        userInfo: {
-          ...state.userInfo,
-          Followings: state.me.Followings.length
+      case SIGN_UP_SUCCESS: {
+        draft.isSignedUp = true;
+        draft.isSigningUp = false;
+        draft.me = action;
+        break;
+      }
+      case SIGN_UP_FAILURE: {
+        draft.isSignedUp = false;
+        draft.isSigningUp = false;
+        break;
+      }
+      case LOG_IN_REQUEST: {
+        draft.isLoggingIn = true;
+        break;
+      }
+      case LOG_IN_SUCCESS: {
+        draft.isLogined = true;
+        draft.isLoggingIn = false;
+        draft.me = action.data;
+        break;
+      }
+      case LOG_IN_FAILURE: {
+        draft.isLogined = false;
+        draft.isLoggingIn = false;
+        break;
+      }
+      case LOG_OUT_REQUEST: {
+        draft.isLoggingOut = true;
+        break;
+      }
+      case LOG_OUT_SUCCESS: {
+        draft.isLogined = false;
+        draft.isLoggingOut = false;
+        draft.me = null;
+        break;
+      }
+      case LOAD_COMPANIES_REQUEST: {
+        break;
+      }
+      case LOAD_COMPANIES_SUCCESS: {
+        draft.companies = action.data;
+        break;
+      }
+      case LOAD_COMPANIES_FAILURE: {
+        draft.isLoadingCompaniesErrorReason = action.error;
+        break;
+      }
+      case LOAD_USER_REQUEST: {
+        break;
+      }
+      case LOAD_USER_SUCCESS: {
+        if (action.me) {
+          draft.me = action.data;
+          break;
         }
-      };
-    }
-    case FOLLOW_USER_FAILURE: {
-      return {
-        ...state,
-        isFollowing: false,
-        isFollowed: false,
-        isFollowErrorReason: action.error
-      };
-    }
+        draft.userInfo = action.data;
+        break;
+      }
+      case LOAD_USER_FAILURE: {
+        break;
+      }
 
-    case UNFOLLOW_USER_REQUEST: {
-      return {
-        ...state,
-        isUnfollowing: true
-      };
-    }
-    case UNFOLLOW_USER_SUCCESS: {
-      return {
-        ...state,
-        isUnfollowing: false,
-        isUnfollowed: true,
-        me: {
-          ...state.me,
-          Followings: state.me.Followings.filter(v => v.id !== action.data)
-        }
-      };
-    }
-    case UNFOLLOW_USER_FAILURE: {
-      return {
-        ...state,
-        isUnfollowing: false,
-        isUnfollowed: false,
-        isUnfollowErrorReason: action.error
-      };
-    }
+      case FOLLOW_USER_REQUEST: {
+        draft.isFollowing = true;
+        break;
+      }
+      case FOLLOW_USER_SUCCESS: {
+        draft.isFollowing = false;
+        draft.isFollowed = true;
+        draft.me.Followings.unshift({ id: action.data });
+        break;
+      }
+      case FOLLOW_USER_FAILURE: {
+        draft.isFollowing = false;
+        draft.isFollowed = false;
+        draft.isFollowErrorReason = action.error;
+        break;
+      }
 
-    case LOAD_FOLLOWERS_REQUEST: {
-      return {
-        ...state,
-        isLoadFollowers: true
-      };
-    }
-    case LOAD_FOLLOWERS_SUCCESS: {
-      return {
-        ...state,
-        isLoadFollowers: false,
-        isLoadedFollwers: true,
-        followerList: action.data
-      };
-    }
-    case LOAD_FOLLOWERS_FAILURE: {
-      return {
-        ...state,
-        isLoadFollowers: false,
-        isLoadedFollwers: false,
-        isLoadFollowersErrorReason: action.error
-      };
-    }
+      case UNFOLLOW_USER_REQUEST: {
+        draft.isUnfollowing = true;
+        break;
+      }
+      case UNFOLLOW_USER_SUCCESS: {
+        draft.isUnfollowing = false;
+        draft.isUnfollowed = true;
+        const followIndex = draft.me.Followings.findIndex(
+          v => v.id === action.data
+        );
+        draft.me.Followings.splice(followIndex, 1);
+        break;
+      }
+      case UNFOLLOW_USER_FAILURE: {
+        draft.isUnfollowing = false;
+        draft.isUnfollowed = false;
+        draft.isUnfollowErrorReason = action.error;
+        break;
+      }
 
-    case LOAD_FOLLOWINGS_REQUEST: {
-      return {
-        ...state,
-        isLoadFollowings: true
-      };
-    }
-    case LOAD_FOLLOWINGS_SUCCESS: {
-      return {
-        ...state,
-        isLoadFollowings: false,
-        isLoadedFollwings: true,
-        followingList: action.data
-      };
-    }
-    case LOAD_FOLLOWINGS_FAILURE: {
-      return {
-        ...state,
-        isLoadFollowings: false,
-        isLoadedFollwings: false,
-        isLoadFollowingsErrorReason: action.error
-      };
-    }
+      case LOAD_FOLLOWERS_REQUEST: {
+        draft.isLoadFollowers = true;
+        break;
+      }
+      case LOAD_FOLLOWERS_SUCCESS: {
+        draft.isLoadFollowers = false;
+        draft.isLoadedFollwers = true;
+        action.data.forEach(follower => {
+          draft.followerList.push(follower);
+        });
+        break;
+      }
+      case LOAD_FOLLOWERS_FAILURE: {
+        draft.isLoadFollowers = false;
+        draft.isLoadedFollwers = false;
+        draft.isLoadFollowersErrorReason = action.error;
+        break;
+      }
 
-    default: {
-      return {
-        ...state
-      };
+      case LOAD_FOLLOWINGS_REQUEST: {
+        draft.isLoadFollowings = true;
+        break;
+      }
+      case LOAD_FOLLOWINGS_SUCCESS: {
+        draft.isLoadFollowings = false;
+        draft.isLoadedFollwings = true;
+        action.data.forEach(following => {
+          draft.followingList.push(following);
+        });
+        break;
+      }
+      case LOAD_FOLLOWINGS_FAILURE: {
+        draft.isLoadFollowings = false;
+        draft.isLoadedFollwings = false;
+        draft.isLoadFollowingsErrorReason = action.error;
+        break;
+      }
+
+      default: {
+        break;
+      }
     }
-  }
+  });
 };
 
 export default reducer;
