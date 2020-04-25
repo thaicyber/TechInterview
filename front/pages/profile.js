@@ -101,6 +101,7 @@ const Profile = ({ id }) => {
   const dispatch = useDispatch();
   const { userInfo, me } = useSelector(state => state.user);
   const { userPosts } = useSelector(state => state.post);
+
   useEffect(() => {
     if (!userInfo) {
       dispatch({
@@ -110,7 +111,7 @@ const Profile = ({ id }) => {
           (Router &&
             Router.router &&
             Router.router.query &&
-            Router.router.query.tag)
+            Router.router.query.id)
       });
     }
   }, [userInfo]);

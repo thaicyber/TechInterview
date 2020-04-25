@@ -8,6 +8,17 @@ import {
 const Home = () => {
   const dispatch = useDispatch();
   const { mainPosts, hasMorePost } = useSelector(state => state.post);
+  useEffect(() => {
+    // 가장 처음 로딩때 getInitialProps에서 mainPosts를 dispatch하지 않는 경우를 대비
+    if (!mainPosts || mainPosts.length === 0) {
+      dispatch({
+        type: LOAD_MAIN_POSTS_REQUEST
+      });
+      dispatch({
+        type: LOAD_COUNT_POSTS_REQUEST
+      });
+    }
+  }, []);
   const countRef = useRef([]);
   const onScroll = useCallback(() => {
     if (

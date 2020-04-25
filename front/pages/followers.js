@@ -1,10 +1,25 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { LOAD_FOLLOWERS_REQUEST } from "../reducers/user";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import AvatarNickname from "../components/AvatarNickname";
 import Announce from "../components/Announce";
+import Router from "next/router";
 const followers = () => {
+  const distpatch = useDispatch();
   const { followerList } = useSelector(state => state.user);
+  // useEffect(() => {
+  //   if (!followerList) {
+  //     distpatch({
+  //       type: LOAD_FOLLOWERS_REQUEST,
+  //       data:
+  //         id ||
+  //         (Router &&
+  //           Router.router &&
+  //           Router.router.query &&
+  //           Router.router.query.id)
+  //     });
+  //   }
+  // }, []);
   return (
     <>
       {followerList ? (
