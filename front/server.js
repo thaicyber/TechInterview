@@ -31,6 +31,22 @@ app.prepare().then(() => {
       }
     })
   );
+  server.get("/profile/:id", (req, res) => {
+    return app.render(req, res, "/profile", { tag: req.params.id });
+  });
+  server.get("/postLikers/:id", (req, res) => {
+    return app.render(req, res, "/postLikers", { tag: req.params.id });
+  });
+
+  server.get("/followings/:id", (req, res) => {
+    return app.render(req, res, "/followings", { tag: req.params.id });
+  });
+  server.get("/followers/:id", (req, res) => {
+    return app.render(req, res, "/followers", { tag: req.params.id });
+  });
+  server.get("/commentEdit/:id", (req, res) => {
+    return app.render(req, res, "/commentEdit", { tag: req.params.id });
+  });
   server.get("/comment/:id", (req, res) => {
     return app.render(req, res, "/comment", { tag: req.params.id });
     // 이걸통해서 프론트 hashtag 페이지에 tag가 함께 내려감.

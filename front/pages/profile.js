@@ -11,6 +11,7 @@ import { LOAD_USER_POSTS_REQUEST } from "../reducers/post";
 import PostCard from "../components/PostCard";
 import Theme from "../styles/Theme";
 import Link from "next/link";
+import Router from "next/router";
 const ProfileWrapper = styled.div`
   display: grid;
   grid-template-rows: 182px 60px 1fr;
@@ -101,11 +102,18 @@ const Profile = ({ id }) => {
   const { userInfo, me } = useSelector(state => state.user);
   const { userPosts } = useSelector(state => state.post);
   useEffect(() => {
-    dispatch({
-      type: LOAD_USER_REQUEST,
-      data: id
-    });
-  }, [me]);
+    if (!userInfo) {
+      dispatch({
+        type: LOAD_USER_REQUEST,
+        data:
+          id ||
+          (Router &&
+            Router.router &&
+            Router.router.query &&
+            Router.router.query.tag)
+      });
+    }
+  }, [userInfo]);
   const onClickFollow = useCallback(
     userId => () => {
       dispatch({
