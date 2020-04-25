@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import AvatarNickname from "../components/AvatarNickname";
 import Announce from "../components/Announce";
 import Router from "next/router";
-const followers = () => {
+const Followers = () => {
   const distpatch = useDispatch();
   const { followerList } = useSelector(state => state.user);
   // useEffect(() => {
@@ -32,7 +32,7 @@ const followers = () => {
     </>
   );
 };
-followers.getInitialProps = async context => {
+Followers.getInitialProps = async context => {
   const id = context.query.id;
   context.store.dispatch({
     type: LOAD_FOLLOWERS_REQUEST,
@@ -40,4 +40,4 @@ followers.getInitialProps = async context => {
   });
   return { id };
 };
-export default followers;
+export default Followers;

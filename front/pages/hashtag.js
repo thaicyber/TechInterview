@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import PostCard from "../components/PostCard";
 import { LOAD_HASHTAG_POSTS_REQUEST } from "../reducers/post";
-const hashtag = () => {
+const Hashtag = () => {
   const { hashtagPosts } = useSelector(state => state.post);
   return (
     <>
@@ -14,7 +14,7 @@ const hashtag = () => {
   );
 };
 
-hashtag.getInitialProps = async context => {
+Hashtag.getInitialProps = async context => {
   const tag = context.query.tag;
   context.store.dispatch({
     type: LOAD_HASHTAG_POSTS_REQUEST,
@@ -23,4 +23,4 @@ hashtag.getInitialProps = async context => {
   return { tag };
 };
 
-export default hashtag;
+export default Hashtag;

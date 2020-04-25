@@ -51,7 +51,7 @@ const NotificationWrapper = styled.div`
 const NotificationContent = styled.span`
   color: red;
 `;
-const signup = () => {
+const Signup = () => {
   const [nickname, setNickname] = useInput("");
   const [email, setEmail] = useState("");
   const [emailError, setEmailError] = useState(false);
@@ -177,4 +177,4 @@ const signup = () => {
   );
 };
 
-export default signup;
+export default Signup;

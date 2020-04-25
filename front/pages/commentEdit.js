@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import CommentForm from "../components/CommentForm";
-const commentEdit = ({ id }) => {
+const CommentEdit = ({ id }) => {
   const { comments } = useSelector(state => state.post);
   const comment = comments.find(v => v.id === Number(id));
   return (
@@ -13,8 +13,8 @@ const commentEdit = ({ id }) => {
   );
 };
 
-commentEdit.getInitialProps = async context => {
+CommentEdit.getInitialProps = async context => {
   const id = context.query.id;
   return { id };
 };
-export default commentEdit;
+export default CommentEdit;

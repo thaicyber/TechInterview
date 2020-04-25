@@ -3,7 +3,7 @@ import { LOAD_FOLLOWINGS_REQUEST } from "../reducers/user";
 import { useSelector } from "react-redux";
 import AvatarNickname from "../components/AvatarNickname";
 import Announce from "../components/Announce";
-const followings = () => {
+const Followings = () => {
   const { followingList } = useSelector(state => state.user);
   return (
     <>
@@ -17,7 +17,7 @@ const followings = () => {
     </>
   );
 };
-followings.getInitialProps = async context => {
+Followings.getInitialProps = async context => {
   const id = context.query.id;
   context.store.dispatch({
     type: LOAD_FOLLOWINGS_REQUEST,
@@ -25,4 +25,4 @@ followings.getInitialProps = async context => {
   });
   return { id };
 };
-export default followings;
+export default Followings;

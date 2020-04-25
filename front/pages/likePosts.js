@@ -4,7 +4,7 @@ import PostCard from "../components/PostCard";
 import { LOAD_MAIN_POSTS_REQUEST } from "../reducers/post";
 import Announce from "../components/Announce";
 
-const likePosts = () => {
+const LikePosts = () => {
   const { mainPosts } = useSelector(state => state.post);
   const { me } = useSelector(state => state.user);
   let isExistLikePosts = false;
@@ -41,9 +41,9 @@ const likePosts = () => {
     </>
   );
 };
-likePosts.getInitialProps = async context => {
+LikePosts.getInitialProps = async context => {
   context.store.dispatch({
     type: LOAD_MAIN_POSTS_REQUEST
   });
 };
-export default likePosts;
+export default LikePosts;

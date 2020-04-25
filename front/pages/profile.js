@@ -101,9 +101,17 @@ const Profile = ({ id }) => {
   const dispatch = useDispatch();
   const { userInfo, me } = useSelector(state => state.user);
   const { userPosts } = useSelector(state => state.post);
-
+  console.log("ROuet", Router.router);
   useEffect(() => {
+    console.log("userInfo", userInfo);
     if (!userInfo) {
+      console.log("useEffect userInfo", userInfo);
+      console.log(
+        Router &&
+          Router.router &&
+          Router.router.query &&
+          Router.router.query.tag
+      );
       dispatch({
         type: LOAD_USER_REQUEST,
         data:
@@ -114,7 +122,7 @@ const Profile = ({ id }) => {
             Router.router.query.id)
       });
     }
-  }, [userInfo]);
+  }, []);
   const onClickFollow = useCallback(
     userId => () => {
       dispatch({

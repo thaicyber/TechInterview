@@ -18,7 +18,7 @@ const LoadingWrapper = styled.div`
   font-size: 2.5rem;
   color: ${Theme.themeColor};
 `;
-const comment = ({ id }) => {
+const Comment = ({ id }) => {
   const dispatch = useDispatch();
   const {
     post,
@@ -99,8 +99,8 @@ const comment = ({ id }) => {
   );
 };
 
-comment.getInitialProps = async context => {
+Comment.getInitialProps = async context => {
   const id = context.query.id;
   return { id };
 };
-export default comment;
+export default Comment;
