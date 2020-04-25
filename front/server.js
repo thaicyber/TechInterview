@@ -37,7 +37,6 @@ app.prepare().then(() => {
   server.get("/postLikers/:id", (req, res) => {
     return app.render(req, res, "/postLikers", { id: req.params.id });
   });
-
   server.get("/followings/:id", (req, res) => {
     return app.render(req, res, "/followings", { id: req.params.id });
   });
@@ -49,8 +48,6 @@ app.prepare().then(() => {
   });
   server.get("/comment/:id", (req, res) => {
     return app.render(req, res, "/comment", { id: req.params.id });
-    // 이걸통해서 프론트 hashtag 페이지에 tag가 함께 내려감.
-    // app.render를 통해 pages에 "/hashtag"를 찾는다.
   });
   server.get("/hashtag/:tag", (req, res) => {
     return app.render(req, res, "/hashtag", { tag: req.params.tag });

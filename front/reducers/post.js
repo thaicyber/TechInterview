@@ -135,12 +135,14 @@ export const reducer = (state = initialState, action) => {
         break;
       }
       case LOAD_USER_POSTS_SUCCESS: {
+        console.log("LOAD_USER_POSTS_SUCCESS", LOAD_USER_POSTS_SUCCESS);
+        console.log("LOAD_USER_POSTS_SUCCESS action.data", action.data);
         draft.isLoadingUserPosts = false;
         draft.isLoadedUserPosts = true;
-        draft.userPosts = [];
-        action.data.forEach(post => {
-          draft.userPosts.push(post);
-        });
+        draft.userPosts = action.data;
+        // action.data.forEach(post => {
+        //   draft.userPosts.push(post);
+        // });
         break;
       }
       case LOAD_MAIN_POSTS_FAILURE: {

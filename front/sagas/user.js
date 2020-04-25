@@ -61,7 +61,7 @@ function loadFollowersAPI(userId) {
 function* loadFollowers(action) {
   try {
     const result = yield call(loadFollowersAPI, action.data);
-    console.log("result", result);
+    console.log("loadFollowers result", result);
     yield put({
       type: LOAD_FOLLOWERS_SUCCESS,
       data: result.data

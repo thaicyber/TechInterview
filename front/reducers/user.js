@@ -144,7 +144,8 @@ export const reducer = (state = initialState, action) => {
       case FOLLOW_USER_SUCCESS: {
         draft.isFollowing = false;
         draft.isFollowed = true;
-        draft.me.Followings.unshift({ id: action.data });
+        draft.me.Followings.push({ id: action.data });
+        draft.userInfo.Followers = Number(draft.userInfo.Followers) + 1;
         break;
       }
       case FOLLOW_USER_FAILURE: {
@@ -165,6 +166,7 @@ export const reducer = (state = initialState, action) => {
           v => v.id === action.data
         );
         draft.me.Followings.splice(followIndex, 1);
+        draft.userInfo.Followers = Number(draft.userInfo.Followers) - 1;
         break;
       }
       case UNFOLLOW_USER_FAILURE: {
@@ -181,6 +183,7 @@ export const reducer = (state = initialState, action) => {
       case LOAD_FOLLOWERS_SUCCESS: {
         draft.isLoadFollowers = false;
         draft.isLoadedFollwers = true;
+        draft.followerList = [];
         action.data.forEach(follower => {
           draft.followerList.push(follower);
         });
@@ -200,6 +203,7 @@ export const reducer = (state = initialState, action) => {
       case LOAD_FOLLOWINGS_SUCCESS: {
         draft.isLoadFollowings = false;
         draft.isLoadedFollwings = true;
+        draft.followingList = [];
         action.data.forEach(following => {
           draft.followingList.push(following);
         });

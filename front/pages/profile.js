@@ -101,17 +101,11 @@ const Profile = ({ id }) => {
   const dispatch = useDispatch();
   const { userInfo, me } = useSelector(state => state.user);
   const { userPosts } = useSelector(state => state.post);
-  console.log("ROuet", Router.router);
+  // console.log("userInfo", userInfo);
+  // console.log("me", me);
   useEffect(() => {
-    console.log("userInfo", userInfo);
     if (!userInfo) {
-      console.log("useEffect userInfo", userInfo);
-      console.log(
-        Router &&
-          Router.router &&
-          Router.router.query &&
-          Router.router.query.tag
-      );
+      console.log("userInfo가 없어서", userInfo);
       dispatch({
         type: LOAD_USER_REQUEST,
         data:
@@ -120,6 +114,12 @@ const Profile = ({ id }) => {
             Router.router &&
             Router.router.query &&
             Router.router.query.id)
+      });
+    }
+    if (!me) {
+      console.log("me가 없는경우", me);
+      dispatch({
+        type: LOAD_USER_REQUEST
       });
     }
   }, []);
@@ -223,6 +223,14 @@ const Profile = ({ id }) => {
 
 Profile.getInitialProps = async context => {
   const id = context.query.id;
+  // console.log("getInitialProps id", id);
+  // const state = context.store.getState();
+  // if (state.post.userPosts.length === 0) {
+  //   context.store.dispatch({
+  //     type: LOAD_USER_POSTS_REQUEST,
+  //     data: id
+  //   });
+  // }
   context.store.dispatch({
     type: LOAD_USER_REQUEST,
     data: id
@@ -231,7 +239,6 @@ Profile.getInitialProps = async context => {
     type: LOAD_USER_POSTS_REQUEST,
     data: id
   });
-
   return { id };
 };
 export default Profile;

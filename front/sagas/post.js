@@ -282,7 +282,7 @@ function* loadPost(action) {
   }
 }
 function* watchLoadPost() {
-  yield throttle(1300, LOAD_POST_REQUEST, loadPost);
+  yield throttle(800, LOAD_POST_REQUEST, loadPost);
 }
 
 function loadCommentsAPI(id) {
@@ -328,7 +328,7 @@ function* loadHashtagPosts(action) {
   }
 }
 function* watchLoadHashtagPosts() {
-  yield throttle(1300, LOAD_HASHTAG_POSTS_REQUEST, loadHashtagPosts);
+  yield throttle(800, LOAD_HASHTAG_POSTS_REQUEST, loadHashtagPosts);
 }
 
 function loadMainPostsAPI(lastId = 0, limit = 10) {
@@ -351,7 +351,7 @@ function* loadMainPosts(action) {
   }
 }
 function* watchLoadMainPosts() {
-  yield throttle(1300, LOAD_MAIN_POSTS_REQUEST, loadMainPosts);
+  yield throttle(800, LOAD_MAIN_POSTS_REQUEST, loadMainPosts);
 }
 
 function addPostAPI(postData) {
