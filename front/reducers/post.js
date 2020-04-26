@@ -287,10 +287,12 @@ export const reducer = (state = initialState, action) => {
           });
         }
         //mainPosts
-        const postIndex = draft.mainPosts.findIndex(
-          v => v.id === action.data.postId
-        );
-        draft.mainPosts[postIndex].Likers.push({ id: action.data.userId });
+        if (state.mainPosts.length > 0) {
+          const postIndex = draft.mainPosts.findIndex(
+            v => v.id === action.data.postId
+          );
+          draft.mainPosts[postIndex].Likers.push({ id: action.data.userId });
+        }
         draft.isLikingPost = false;
         break;
       }
@@ -326,15 +328,16 @@ export const reducer = (state = initialState, action) => {
           ].Likers.findIndex(v => v.id === action.data.userId);
           draft.userPosts[profilePostIndex].Likers.splice(profileLikeIndex, 1);
         }
-
         //mainPosts
-        const postIndex = draft.mainPosts.findIndex(
-          v => v.id === action.data.postId
-        );
-        const likeIndex = draft.mainPosts[postIndex].Likers.findIndex(
-          v => v.id === action.data.userId
-        );
-        draft.mainPosts[postIndex].Likers.splice(likeIndex, 1);
+        if (state.mainPosts.length > 0) {
+          const postIndex = draft.mainPosts.findIndex(
+            v => v.id === action.data.postId
+          );
+          const likeIndex = draft.mainPosts[postIndex].Likers.findIndex(
+            v => v.id === action.data.userId
+          );
+          draft.mainPosts[postIndex].Likers.splice(likeIndex, 1);
+        }
         draft.isUnlikingPost = false;
         break;
       }
