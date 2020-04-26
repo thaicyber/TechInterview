@@ -31,6 +31,7 @@ app.prepare().then(() => {
       }
     })
   );
+  // 동적 route 추가하는 곳
   server.get("/profile/:id", (req, res) => {
     return app.render(req, res, "/profile", { id: req.params.id });
   });
