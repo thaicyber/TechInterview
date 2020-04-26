@@ -12,6 +12,7 @@ import PostCard from "../components/PostCard";
 import Theme from "../styles/Theme";
 import Link from "next/link";
 import Router from "next/router";
+import Helmet from "react-helmet";
 const ProfileWrapper = styled.div`
   display: grid;
   grid-template-rows: 182px 60px 1fr;
@@ -101,11 +102,10 @@ const Profile = ({ id }) => {
   const dispatch = useDispatch();
   const { userInfo, me } = useSelector(state => state.user);
   const { userPosts } = useSelector(state => state.post);
-  // console.log("userInfo", userInfo);
+  console.log("userInfo", userInfo);
   // console.log("me", me);
   useEffect(() => {
     if (!userInfo) {
-      console.log("userInfo가 없어서", userInfo);
       dispatch({
         type: LOAD_USER_REQUEST,
         data:
@@ -117,7 +117,6 @@ const Profile = ({ id }) => {
       });
     }
     if (!me) {
-      console.log("me가 없는경우", me);
       dispatch({
         type: LOAD_USER_REQUEST
       });
@@ -154,70 +153,97 @@ const Profile = ({ id }) => {
       : false;
   // console.log("alreadyFollow", alreadyFollow);
   return (
-    <ProfileWrapper>
-      <UserInfoWrap>
-        {me && userInfo && me.id === userInfo.id ? null : alreadyFollow ? (
-          <UnFollowBtnWrap>
-            <UnFollowBtnName onClick={onClickUnFollow(userInfo && userInfo.id)}>
-              언팔로우
-            </UnFollowBtnName>
-          </UnFollowBtnWrap>
-        ) : (
-          <FollowBtnWrap>
-            <FollowBtnName onClick={onClickFollow(userInfo && userInfo.id)}>
-              팔로우
-            </FollowBtnName>
-          </FollowBtnWrap>
-        )}
-        <AvatarWrap>
-          <Avatar size="midLarge" />
-        </AvatarWrap>
-        <NicknameWrap>
-          <Nickname>{userInfo && userInfo.nickname}</Nickname>
-        </NicknameWrap>
-      </UserInfoWrap>
-      <UserFollowPostInfoWrap>
-        <PostWrap>
-          <Title>게시물</Title>
-          <Number>{userInfo && userInfo.Posts}</Number>
-        </PostWrap>
-        <Link
-          href={{
-            pathname: "/followers",
-            query: { id: userInfo && userInfo.id }
-          }}
-          as={`/followers/${userInfo && userInfo.id}`}
-        >
-          <FollowWrap>
-            <Title>팔로워</Title>
-            <Number>{userInfo && userInfo.Followers}</Number>
-          </FollowWrap>
-        </Link>
-        <Link
-          href={{
-            pathname: "/followings",
-            query: { id: userInfo && userInfo.id }
-          }}
-          as={`/followings/${userInfo && userInfo.id}`}
-        >
-          <FollowingWrap>
-            <Title>팔로잉</Title>
-            <Number>{userInfo && userInfo.Followings}</Number>
-          </FollowingWrap>
-        </Link>
-      </UserFollowPostInfoWrap>
-      <UserPostsWrap>
-        {userPosts &&
-          userPosts.map(post => (
-            <PostCard
-              post={post}
-              showMenu={true}
-              key={post.id}
-              route="profile"
-            />
-          ))}
-      </UserPostsWrap>
-    </ProfileWrapper>
+    <>
+      <Helmet
+        title={`${userInfo.nickname}님의 프로필`}
+        description={`${userInfo.nickname}님의 게시글 ${userInfo.Posts} 확인 하러가기`}
+        meta={[
+          {
+            name: "description",
+            content: `${userInfo.nickname}님의 게시글 ${userInfo.Posts} 확인 하러가기`
+          },
+          {
+            property: "og:title",
+            content: `${userInfo.nickname}님의 프로필`
+          },
+          {
+            property: "og:description",
+            content: `${userInfo.nickname}님의 게시글 ${userInfo.Posts} 확인 하러가기`
+          },
+          {
+            property: "og:url",
+            content: `http://localhost:3060/profile/${id}`
+          }
+          // property og:image 추가
+        ]}
+      />
+      <ProfileWrapper>
+        <UserInfoWrap>
+          {me && userInfo && me.id === userInfo.id ? null : alreadyFollow ? (
+            <UnFollowBtnWrap>
+              <UnFollowBtnName
+                onClick={onClickUnFollow(userInfo && userInfo.id)}
+              >
+                언팔로우
+              </UnFollowBtnName>
+            </UnFollowBtnWrap>
+          ) : (
+            <FollowBtnWrap>
+              <FollowBtnName onClick={onClickFollow(userInfo && userInfo.id)}>
+                팔로우
+              </FollowBtnName>
+            </FollowBtnWrap>
+          )}
+          <AvatarWrap>
+            <Avatar size="midLarge" />
+          </AvatarWrap>
+          <NicknameWrap>
+            <Nickname>{userInfo && userInfo.nickname}</Nickname>
+          </NicknameWrap>
+        </UserInfoWrap>
+        <UserFollowPostInfoWrap>
+          <PostWrap>
+            <Title>게시물</Title>
+            <Number>{userInfo && userInfo.Posts}</Number>
+          </PostWrap>
+          <Link
+            href={{
+              pathname: "/followers",
+              query: { id: userInfo && userInfo.id }
+            }}
+            as={`/followers/${userInfo && userInfo.id}`}
+          >
+            <FollowWrap>
+              <Title>팔로워</Title>
+              <Number>{userInfo && userInfo.Followers}</Number>
+            </FollowWrap>
+          </Link>
+          <Link
+            href={{
+              pathname: "/followings",
+              query: { id: userInfo && userInfo.id }
+            }}
+            as={`/followings/${userInfo && userInfo.id}`}
+          >
+            <FollowingWrap>
+              <Title>팔로잉</Title>
+              <Number>{userInfo && userInfo.Followings}</Number>
+            </FollowingWrap>
+          </Link>
+        </UserFollowPostInfoWrap>
+        <UserPostsWrap>
+          {userPosts &&
+            userPosts.map(post => (
+              <PostCard
+                post={post}
+                showMenu={true}
+                key={post.id}
+                route="profile"
+              />
+            ))}
+        </UserPostsWrap>
+      </ProfileWrapper>
+    </>
   );
 };
 
