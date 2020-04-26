@@ -4,6 +4,7 @@ import PostCard from "../components/PostCard";
 import { LOAD_HASHTAG_POSTS_REQUEST } from "../reducers/post";
 const Hashtag = () => {
   const { hashtagPosts } = useSelector(state => state.post);
+  // console.log("hashtagPosts", hashtagPosts);
   return (
     <>
       {hashtagPosts &&

@@ -102,7 +102,7 @@ const Profile = ({ id }) => {
   const dispatch = useDispatch();
   const { userInfo, me } = useSelector(state => state.user);
   const { userPosts } = useSelector(state => state.post);
-  console.log("userInfo", userInfo);
+  // console.log("userInfo", userInfo);
   // console.log("me", me);
   useEffect(() => {
     if (!userInfo) {
@@ -154,29 +154,31 @@ const Profile = ({ id }) => {
   // console.log("alreadyFollow", alreadyFollow);
   return (
     <>
-      <Helmet
-        title={`${userInfo.nickname}님의 프로필`}
-        description={`${userInfo.nickname}님의 게시글 ${userInfo.Posts} 확인 하러가기`}
-        meta={[
-          {
-            name: "description",
-            content: `${userInfo.nickname}님의 게시글 ${userInfo.Posts} 확인 하러가기`
-          },
-          {
-            property: "og:title",
-            content: `${userInfo.nickname}님의 프로필`
-          },
-          {
-            property: "og:description",
-            content: `${userInfo.nickname}님의 게시글 ${userInfo.Posts} 확인 하러가기`
-          },
-          {
-            property: "og:url",
-            content: `http://localhost:3060/profile/${id}`
-          }
-          // property og:image 추가
-        ]}
-      />
+      {userInfo && (
+        <Helmet
+          title={`${userInfo.nickname}님의 프로필`}
+          description={`${userInfo.nickname}님의 게시글 ${userInfo.Posts} 확인 하러가기`}
+          meta={[
+            {
+              name: "description",
+              content: `${userInfo.nickname}님의 게시글 ${userInfo.Posts} 확인 하러가기`
+            },
+            {
+              property: "og:title",
+              content: `${userInfo.nickname}님의 프로필`
+            },
+            {
+              property: "og:description",
+              content: `${userInfo.nickname}님의 게시글 ${userInfo.Posts} 확인 하러가기`
+            },
+            {
+              property: "og:url",
+              content: `http://localhost:3060/profile/${id}`
+            }
+            // property og:image 추가
+          ]}
+        />
+      )}
       <ProfileWrapper>
         <UserInfoWrap>
           {me && userInfo && me.id === userInfo.id ? null : alreadyFollow ? (

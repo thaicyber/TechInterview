@@ -45,6 +45,7 @@ const Home = () => {
       window.removeEventListener("scroll", onScroll);
     };
   }, [mainPosts.length]);
+  console.log("mainPosts", mainPosts);
   return (
     <>
       {mainPosts &&

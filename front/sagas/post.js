@@ -208,15 +208,15 @@ function* watchEditComment() {
   yield takeLatest(EDIT_COMMENT_REQUEST, editComment);
 }
 
-function deleteCommentAPI(commentId) {
-  return axios.delete(`/comment/${commentId}`, {
+function deleteCommentAPI(commentId, postId) {
+  return axios.delete(`post/${postId}/comment/${commentId}`, {
     withCredentials: true
   });
 }
 
 function* deleteComment(action) {
   try {
-    const result = yield call(deleteCommentAPI, action.data);
+    const result = yield call(deleteCommentAPI, action.data, action.postId);
     yield put({
       type: DELETE_COMMENT_SUCCESS,
       data: result.data
@@ -246,6 +246,7 @@ function addCommentAPI(commentData) {
 function* addComment(action) {
   try {
     const result = yield call(addCommentAPI, action.data);
+    console.log("addComment", result);
     yield put({
       type: ADD_COMMENT_SUCCESS,
       data: result.data

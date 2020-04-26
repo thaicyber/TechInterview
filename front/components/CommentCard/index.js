@@ -67,10 +67,11 @@ const CommentCard = props => {
     commentId => () => {
       dispatch({
         type: DELETE_COMMENT_REQUEST,
-        data: commentId
+        data: commentId,
+        postId: comment.PostId
       });
     },
-    []
+    [comment && comment.PostId]
   );
   useEffect(() => {
     if (isDeletingComment) {

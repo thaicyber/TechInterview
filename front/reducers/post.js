@@ -135,14 +135,9 @@ export const reducer = (state = initialState, action) => {
         break;
       }
       case LOAD_USER_POSTS_SUCCESS: {
-        console.log("LOAD_USER_POSTS_SUCCESS", LOAD_USER_POSTS_SUCCESS);
-        console.log("LOAD_USER_POSTS_SUCCESS action.data", action.data);
         draft.isLoadingUserPosts = false;
         draft.isLoadedUserPosts = true;
         draft.userPosts = action.data;
-        // action.data.forEach(post => {
-        //   draft.userPosts.push(post);
-        // });
         break;
       }
       case LOAD_MAIN_POSTS_FAILURE: {
@@ -219,6 +214,13 @@ export const reducer = (state = initialState, action) => {
         draft.isAddingComment = false;
         draft.commentAdded = true;
         draft.comments.push(action.data);
+
+        if (state.mainPosts.length > 0) {
+          const index = draft.mainPosts.findIndex(
+            v => v.id === action.data.PostId
+          );
+          draft.mainPosts[index].Comments.push({ id: action.data.id });
+        }
         break;
       }
       case ADD_COMMENT_FAILURE: {
@@ -239,6 +241,14 @@ export const reducer = (state = initialState, action) => {
           v => v.id === action.data.commentId
         );
         draft.comments.splice(index, 1);
+
+        if (state.mainPosts.length > 0) {
+          const postIndex = draft.mainPosts.findIndex(
+            v => v.id === action.data.postId
+          );
+          const targetIndex = draft.mainPosts[postIndex];
+          draft.mainPosts[postIndex].Comments.splice(targetIndex, 1);
+        }
         break;
       }
       case DELETE_COMMENT_FAILURE: {
