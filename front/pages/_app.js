@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-import Head from "next/head";
+import React from "react";
 import GlobalStyles from "../styles/GlobalStyles";
 import { Provider } from "react-redux";
 import withRedux from "next-redux-wrapper";
@@ -11,26 +10,64 @@ import rootSaga from "../sagas";
 import { ThemeProvider } from "styled-components";
 import Theme from "../styles/Theme";
 import AppLayout from "../components/AppLayout";
-import router from "next/router";
 import Axios from "axios";
 import { LOAD_USER_REQUEST } from "../reducers/user";
+import Helmet from "react-helmet";
+import { Container } from "next/app";
 const App = ({ Component, store, pageProps }) => {
   return (
-    <Provider store={store}>
-      <GlobalStyles />
-      <Head>
-        <title>Frank</title>
-        <link
-          rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/antd/3.26.11/antd.css"
+    <Container>
+      <Provider store={store}>
+        <Helmet
+          title="테크인터뷰"
+          htmlAttributes={{ lang: "ko" }}
+          meta={[
+            {
+              charset: "UTF-8"
+            },
+            {
+              name: "viewport",
+              content:
+                "width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=yes,viewport-fit=cover"
+            },
+            {
+              "http-equiv": "X-UA-Compatible",
+              content: "IE=edge"
+            },
+            {
+              name: "description",
+              content: "개발자 면접준비는 테크인터뷰"
+            },
+            {
+              name: "og:title",
+              content: "테크인터뷰"
+            },
+            {
+              name: "og:description",
+              content: "개발자 면접준비는 테크인터뷰"
+            },
+            {
+              property: "og:type",
+              content: "website"
+            }
+          ]}
+          link={[
+            {
+              rel: "stylesheet",
+              href:
+                "https://cdnjs.cloudflare.com/ajax/libs/antd/3.26.11/antd.css"
+            }
+          ]}
         />
-      </Head>
-      <ThemeProvider theme={Theme}>
-        <AppLayout>
-          <Component {...pageProps} />
-        </AppLayout>
-      </ThemeProvider>
-    </Provider>
+        <GlobalStyles />
+
+        <ThemeProvider theme={Theme}>
+          <AppLayout>
+            <Component {...pageProps} />
+          </AppLayout>
+        </ThemeProvider>
+      </Provider>
+    </Container>
   );
 };
 App.getInitialProps = async context => {
