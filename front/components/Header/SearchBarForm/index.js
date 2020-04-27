@@ -28,10 +28,10 @@ const SearchBarForm = () => {
       {me ? (
         <>
           <Avatar onClick={onClickAvatar} img={me.img} size="small"></Avatar>
-          <AtdInput onChange={onChangeInput} htmlType="submit" isLogin={true} />
+          <AtdInput onChange={onChangeInput} />
         </>
       ) : (
-        <AtdInput htmlType="submit" onChange={onChangeInput} />
+        <AtdInput onChange={onChangeInput} />
       )}
       {avatarClick ? (
         <UserSetting

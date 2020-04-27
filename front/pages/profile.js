@@ -213,6 +213,7 @@ const Profile = ({ id }) => {
               pathname: "/followers",
               query: { id: userInfo && userInfo.id }
             }}
+            key="followers"
             as={`/followers/${userInfo && userInfo.id}`}
           >
             <FollowWrap>
@@ -225,6 +226,7 @@ const Profile = ({ id }) => {
               pathname: "/followings",
               query: { id: userInfo && userInfo.id }
             }}
+            key="followings"
             as={`/followings/${userInfo && userInfo.id}`}
           >
             <FollowingWrap>
