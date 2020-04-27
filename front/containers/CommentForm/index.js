@@ -8,13 +8,13 @@ import {
   ImgUploadIconWrap,
   SubmitBtnWrap
 } from "./style";
-import Avatar from "../Util/Avatar";
+import Avatar from "../../components/Util/Avatar";
 import { Input } from "antd";
 import { FileImageOutlined } from "@ant-design/icons";
 import Theme from "../../styles/Theme";
 import { useDispatch } from "react-redux";
 import { ADD_COMMENT_REQUEST, EDIT_COMMENT_REQUEST } from "../../reducers/post";
-import Button from "../Util/Button";
+import Button from "../../components/Util/Button";
 import Link from "next/link";
 const CommentForm = props => {
   const { postId, content, commentId } = props;

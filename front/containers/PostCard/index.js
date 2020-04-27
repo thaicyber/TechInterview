@@ -23,7 +23,7 @@ import {
   CountWrap,
   Count
 } from "./style";
-import Avatar from "../Util/Avatar";
+import Avatar from "../../components/Util/Avatar";
 import { MessageOutlined, HeartOutlined } from "@ant-design/icons";
 import { Icon } from "antd";
 import Link from "next/link";
@@ -35,7 +35,7 @@ import {
   UNLIKE_POST_REQUEST,
   LOAD_POST_LIKERS_REQUEST
 } from "../../reducers/post";
-import { getRouteType } from "../Util/meta";
+import { getRouteType } from "../../components/Util/meta";
 const PostCard = props => {
   const { post, showMenu, route } = props;
   const dispatch = useDispatch();

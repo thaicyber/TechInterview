@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { LOAD_POST_REQUEST, LOAD_COMMENTS_REQUEST } from "../reducers/post";
-import PostCard from "../components/PostCard";
+import PostCard from "../containers/PostCard";
 import Router from "next/router";
-import CommentForm from "../components/CommentForm";
-import CommentCard from "../components/CommentCard";
+import CommentForm from "../containers/CommentForm";
+import CommentCard from "../containers/CommentCard";
 import styled from "styled-components";
 import { LoadingOutlined } from "@ant-design/icons";
 import Theme from "../styles/Theme";

@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import PostCard from "../components/PostCard";
+import PostCard from "../containers/PostCard";
 import { LOAD_HASHTAG_POSTS_REQUEST } from "../reducers/post";
 import Announce from "../components/Announce";
 const Hashtag = ({ tag }) => {

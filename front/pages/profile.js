@@ -8,7 +8,7 @@ import {
 import styled, { css } from "styled-components";
 import Avatar from "../components/Util/Avatar";
 import { LOAD_USER_POSTS_REQUEST } from "../reducers/post";
-import PostCard from "../components/PostCard";
+import PostCard from "../containers/PostCard";
 import Theme from "../styles/Theme";
 import Link from "next/link";
 import Router from "next/router";

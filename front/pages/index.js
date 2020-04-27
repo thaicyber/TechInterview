@@ -1,5 +1,5 @@
 import React, { useEffect, useCallback, useRef } from "react";
-import PostCard from "../components/PostCard";
+import PostCard from "../containers/PostCard";
 import { useSelector, useDispatch } from "react-redux";
 import {
   LOAD_MAIN_POSTS_REQUEST,
@@ -50,7 +50,7 @@ const Home = () => {
       {mainPosts &&
         mainPosts.map(post => (
           <PostCard
-            key={post.createdAt}
+            key={+post.createdAt}
             showMenu={true}
             post={post}
             route="index"

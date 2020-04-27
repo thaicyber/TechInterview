@@ -30,7 +30,7 @@ import {
   ConfirmMessage,
   BtnMessage
 } from "./style";
-import Avatar from "../Util/Avatar";
+import Avatar from "../../components/Util/Avatar";
 import {
   MoreOutlined,
   DeleteOutlined,

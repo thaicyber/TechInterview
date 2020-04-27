@@ -19,7 +19,7 @@ import { CloseOutlined } from "@ant-design/icons";
 import { useSelector, useDispatch } from "react-redux";
 import { LOG_OUT_REQUEST } from "../../reducers/user";
 import Link from "next/link";
-import Avatar from "../Util/Avatar";
+import Avatar from "../../components/Util/Avatar";
 import Theme from "../../styles/Theme";
 const UserSetting = ({ setAvatarClick }) => {
   const { me, isLoggingOut } = useSelector(state => state.user);

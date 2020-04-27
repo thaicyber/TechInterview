@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { Icon } from "antd";
 import Theme from "../../styles/Theme";
 
 export const UserSettingWrapper = styled.div`

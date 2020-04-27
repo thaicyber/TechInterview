@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { AtdForm, AtdInput } from "./style";
 import { useDispatch, useSelector } from "react-redux";
-import UserSetting from "../../UserSetting";
+import UserSetting from "../../../containers/UserSetting";
 import Avatar from "../../Util/Avatar";
 import Router from "next/router";
 const SearchBarForm = () => {
