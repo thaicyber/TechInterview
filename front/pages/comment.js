@@ -94,7 +94,9 @@ const Comment = ({ id }) => {
       )}
       {comments &&
         !isLoading &&
-        comments.map(comment => <CommentCard comment={comment} />)}
+        comments.map(comment => (
+          <CommentCard key={comment.id} comment={comment} />
+        ))}
     </>
   );
 };

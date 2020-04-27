@@ -24,7 +24,7 @@ const Followers = () => {
     <>
       {followerList ? (
         followerList.map(follower => {
-          return <AvatarNickname userInfo={follower} />;
+          return <AvatarNickname key={follower.id} userInfo={follower} />;
         })
       ) : (
         <Announce message="팔로워가 없습니다." />

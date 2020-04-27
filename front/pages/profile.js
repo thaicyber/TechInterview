@@ -239,9 +239,9 @@ const Profile = ({ id }) => {
           {userPosts &&
             userPosts.map(post => (
               <PostCard
+                key={post.id}
                 post={post}
                 showMenu={true}
-                key={post.id}
                 route="profile"
               />
             ))}

@@ -6,7 +6,7 @@ import AvatarNickname from "../components/AvatarNickname";
 const PostLikers = () => {
   const { postLikers } = useSelector(state => state.post);
   return postLikers && postLikers.length > 0 ? (
-    postLikers.map(liker => <AvatarNickname userInfo={liker} />)
+    postLikers.map(liker => <AvatarNickname key={liker.id} userInfo={liker} />)
   ) : (
     <Announce message="좋아요가 없습니다." />
   );

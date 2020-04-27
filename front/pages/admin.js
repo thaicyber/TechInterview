@@ -119,7 +119,9 @@ const Admin = () => {
             >
               {companies &&
                 companies.map(v => (
-                  <Select.Option value={v.id}>{v.nickname}</Select.Option>
+                  <Select.Option key={v.id} value={v.id}>
+                    {v.nickname}
+                  </Select.Option>
                 ))}
             </AtdSelect>
           </SelectCompanyWrap>

@@ -9,7 +9,7 @@ const Followings = () => {
     <>
       {followingList ? (
         followingList.map(following => {
-          return <AvatarNickname userInfo={following} />;
+          return <AvatarNickname key={following.id} userInfo={following} />;
         })
       ) : (
         <Announce message="팔로잉이 없습니다." />
