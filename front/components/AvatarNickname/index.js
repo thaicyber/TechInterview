@@ -15,9 +15,11 @@ const AvatarNickname = ({ userInfo }) => {
         href={{ pathname: "/profile", query: { id: userInfo.id } }}
         as={`/profile/${userInfo.id}`}
       >
-        <AvartarWrap>
-          <Avatar size="smallLarge" />
-        </AvartarWrap>
+        <a>
+          <AvartarWrap>
+            <Avatar size="smallLarge" />
+          </AvartarWrap>
+        </a>
       </Link>
       <UserNicknameWrap>
         <UserNickname>{userInfo.nickname}</UserNickname>

@@ -107,14 +107,16 @@ const CommentCard = props => {
               href={{ pathname: "/commentEdit", query: { id: comment.id } }}
               as={`/commentEdit/${comment.id}`}
             >
-              <EditBtnWrap>
-                <EditBtn>
-                  <EditOutlined />
-                  <IconTitleWrap>
-                    <IconTitle>수정</IconTitle>
-                  </IconTitleWrap>
-                </EditBtn>
-              </EditBtnWrap>
+              <a>
+                <EditBtnWrap>
+                  <EditBtn>
+                    <EditOutlined />
+                    <IconTitleWrap>
+                      <IconTitle>수정</IconTitle>
+                    </IconTitleWrap>
+                  </EditBtn>
+                </EditBtnWrap>
+              </a>
             </Link>
             <DeleteBtnWrap>
               <DeleteBtn onClick={onClickDeleteBtn}>

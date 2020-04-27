@@ -15,8 +15,6 @@ const SearchBarForm = () => {
       { pathname: "/hashtag", query: { tag: hashtag } },
       `/hashtag/${hashtag}`
     );
-    console.log(hashtag);
-    console.log("submit");
   };
   const onClickAvatar = () => {
     setAvatarClick(true);
