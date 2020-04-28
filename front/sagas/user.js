@@ -38,7 +38,6 @@ function loadFollowingsAPI(userId) {
 function* loadFollowings(action) {
   try {
     const result = yield call(loadFollowingsAPI, action.data);
-    console.log("result", result);
     yield put({
       type: LOAD_FOLLOWINGS_SUCCESS,
       data: result.data
@@ -61,7 +60,6 @@ function loadFollowersAPI(userId) {
 function* loadFollowers(action) {
   try {
     const result = yield call(loadFollowersAPI, action.data);
-    console.log("loadFollowers result", result);
     yield put({
       type: LOAD_FOLLOWERS_SUCCESS,
       data: result.data
@@ -106,7 +104,6 @@ function followUserAPI(userId) {
 function* followUser(action) {
   try {
     const result = yield call(followUserAPI, action.data);
-    console.log("result", result);
     yield put({
       type: FOLLOW_USER_SUCCESS,
       data: result.data

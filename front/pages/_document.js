@@ -1,6 +1,5 @@
 import React from "react";
 import Helmet from "react-helmet";
-import PropTypes from "prop-types";
 import Document, { Main, NextScript } from "next/document";
 import { ServerStyleSheet } from "styled-components";
 
@@ -36,10 +35,5 @@ class MyDocument extends Document {
     );
   }
 }
-
-MyDocument.propTypes = {
-  helmet: PropTypes.object.isRequired,
-  styleTags: PropTypes.object.isRequired
-};
 
 export default MyDocument;

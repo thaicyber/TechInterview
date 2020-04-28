@@ -14,10 +14,10 @@ const AppLayout = ({ children }) => {
   const getLayout = () => {
     switch (router && router.router && router.router.pathname) {
       case "/login": {
-        return <Wrap>{children}</Wrap>;
+        return <>{children}</>;
       }
       case "/signup": {
-        return <Wrap>{children}</Wrap>;
+        return <>{children}</>;
       }
       case "/comment": {
         return (
@@ -97,16 +97,7 @@ const AppLayout = ({ children }) => {
         );
       }
       default: {
-        return (
-          <AppLayoutWrapper>
-            <Header />
-            <Wrap isLogined={me ? true : false}>{children}</Wrap>
-            <RightSideBar />
-            <LeftSideBar />
-            <Footer />
-            <Nav />
-          </AppLayoutWrapper>
-        );
+        return null;
       }
     }
   };
