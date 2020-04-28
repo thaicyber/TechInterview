@@ -10,7 +10,7 @@ const Nav = () => {
         </NavIconWrapper>
       </Link>
       <NavIconWrapper>검색</NavIconWrapper>
-      <Link ="/likePosts" prefetch>
+      <Link href="/likePosts" prefetch>
         <NavIconWrapper>
           <a>좋아요</a>
         </NavIconWrapper>
