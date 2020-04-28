@@ -4,13 +4,13 @@ import Link from "next/link";
 const Nav = () => {
   return (
     <NavWrapper>
-      <Link href="/">
+      <Link href="/" prefetch>
         <NavIconWrapper>
           <a>홈</a>
         </NavIconWrapper>
       </Link>
       <NavIconWrapper>검색</NavIconWrapper>
-      <Link href="/likePosts">
+      <Link ="/likePosts" prefetch>
         <NavIconWrapper>
           <a>좋아요</a>
         </NavIconWrapper>

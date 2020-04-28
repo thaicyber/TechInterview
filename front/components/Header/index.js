@@ -9,7 +9,7 @@ const Header = () => {
   return (
     <HeaderWrapper>
       <TitleWrapper>
-        <Link href="/">
+        <Link href="/" prefetch>
           <Title>IT 스타트업 기술 블로그 모음</Title>
         </Link>
       </TitleWrapper>

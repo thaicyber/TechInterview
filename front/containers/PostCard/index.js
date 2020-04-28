@@ -80,6 +80,7 @@ const PostCard = props => {
             <>
               <Link
                 href={{ pathname: "/profile", query: { id: post.UserId } }}
+                prefetch
                 as={`/profile/${post.UserId}`}
               >
                 <Avatar
@@ -115,6 +116,7 @@ const PostCard = props => {
                           pathname: "/hashtag",
                           query: { tag: v.slice(1) }
                         }}
+                        prefetch
                         as={`/hashtag/${v.slice(1)}`}
                         key={v}
                       >
@@ -131,6 +133,7 @@ const PostCard = props => {
               <MenuWrap>
                 <Link
                   href={{ pathname: "/comment", query: { id: post.id } }}
+                  prefetch
                   as={`/comment/${post.id}`}
                 >
                   <CommentWrap>
@@ -163,6 +166,7 @@ const PostCard = props => {
                       pathname: "/postLikers",
                       query: { id: post.id }
                     }}
+                    prefetch
                     as={`/postLikers/${post.id}`}
                   >
                     <CountWrap>

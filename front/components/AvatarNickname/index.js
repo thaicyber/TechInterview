@@ -13,6 +13,7 @@ const AvatarNickname = ({ userInfo }) => {
     <FollowerWrap>
       <Link
         href={{ pathname: "/profile", query: { id: userInfo.id } }}
+        prefetch
         as={`/profile/${userInfo.id}`}
       >
         <a>

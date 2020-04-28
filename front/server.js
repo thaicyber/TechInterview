@@ -10,6 +10,7 @@ const prod = process.env.NODE_ENV === "production"; // 배포모드
 // express와 next를 연결하는 방법
 const app = next({ dev });
 const handle = app.getRequestHandler();
+const path = require("path");
 dotenv.config();
 // 이 부분이 next에 필요한 내용
 // 이렇게 하면 next랑 express가 연결됌.
@@ -17,6 +18,7 @@ app.prepare().then(() => {
   const server = express();
 
   server.use(morgan("dev"));
+  server.use("/", express.static(path.join(__dirname, "public")));
   server.use(express.json());
   server.use(express.urlencoded({ extended: true }));
   server.use(cookieParser(process.env.COOKIE_SECRET));

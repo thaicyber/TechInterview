@@ -4,12 +4,12 @@ import Link from "next/link";
 const LogInOutBtn = () => {
   return (
     <LogInOutBtnWrapper>
-      <Link href="/login">
+      <Link href="/login" prefetch>
         <a style={{ width: "100%" }}>
           <AtdButton>로그인</AtdButton>
         </a>
       </Link>
-      <Link href="/signup">
+      <Link href="/signup" prefetch>
         <a style={{ width: "100%" }}>
           <AtdButton type="primary">회원가입</AtdButton>
         </a>
