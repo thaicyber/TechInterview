@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useCallback, memo } from "react";
 import {
   PostCardWrapper,
   PrimeWrap,
@@ -38,7 +38,7 @@ import {
 import { getRouteType } from "../../components/Util/meta";
 import moment from "moment";
 moment.locale("ko");
-const PostCard = props => {
+const PostCard = memo(props => {
   const { post, showMenu, route } = props;
   const dispatch = useDispatch();
   const { me } = useSelector(state => state.user);
@@ -185,6 +185,6 @@ const PostCard = props => {
       )}
     </PostCardWrapper>
   );
-};
+});
 
 export default PostCard;
