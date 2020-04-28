@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import CommentForm from "../components/CommentForm";
+import CommentForm from "../containers/CommentForm";
 const CommentEdit = ({ id }) => {
   const { comments } = useSelector(state => state.post);
   const comment = comments.find(v => v.id === Number(id));

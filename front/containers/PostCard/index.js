@@ -36,6 +36,8 @@ import {
   LOAD_POST_LIKERS_REQUEST
 } from "../../reducers/post";
 import { getRouteType } from "../../components/Util/meta";
+import moment from "moment";
+moment.locale("ko");
 const PostCard = props => {
   const { post, showMenu, route } = props;
   const dispatch = useDispatch();
@@ -93,7 +95,9 @@ const PostCard = props => {
           <ContentWrap>
             <WriterInfoWrap>
               <WriterName>{post && post.User && post.User.nickname}</WriterName>
-              <WriteDate>{post && post.publishedTime}</WriteDate>
+              <WriteDate>
+                {post && moment(post.publishedTime).format("YYYY.MM.DD")}
+              </WriteDate>
             </WriterInfoWrap>
             <CardWrap onClick={onClickCard(post.link)}>
               <CardImageWrap>
