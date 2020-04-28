@@ -10,7 +10,7 @@ const Header = () => {
     <HeaderWrapper>
       <TitleWrapper>
         <Link href="/" prefetch>
-          <Title>IT 스타트업 기술 블로그 모음</Title>
+          <Title>테크인터뷰</Title>
         </Link>
       </TitleWrapper>
       <SearchBarForm />

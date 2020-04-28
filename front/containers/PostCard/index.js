@@ -1,4 +1,4 @@
-import React, { useCallback, memo } from "react";
+import React, { useCallback, memo, useRef, useEffect } from "react";
 import {
   PostCardWrapper,
   PrimeWrap,
@@ -45,6 +45,7 @@ const PostCard = memo(props => {
   // console.log("post", post);
   // console.log("me", me);
   // console.log("route", route);
+
   const likeChecked =
     post && me && post.Likers && post.Likers.find(v => v.id === me.id);
   const type = getRouteType(route);

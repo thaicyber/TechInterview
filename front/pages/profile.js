@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from "react";
+import React, { useCallback, useEffect, memo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   LOAD_USER_REQUEST,
@@ -98,7 +98,7 @@ const FollowBtnWrap = styled.div`
 `;
 const FollowBtnName = styled.span``;
 const UnFollowBtnName = styled.span``;
-const Profile = ({ id }) => {
+const Profile = memo(({ id }) => {
   const dispatch = useDispatch();
   const { userInfo, me } = useSelector(state => state.user);
   const { userPosts } = useSelector(state => state.post);
@@ -249,7 +249,7 @@ const Profile = ({ id }) => {
       </ProfileWrapper>
     </>
   );
-};
+});
 
 Profile.getInitialProps = async context => {
   const id = context.query.id;
