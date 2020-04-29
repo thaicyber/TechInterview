@@ -1,48 +1,46 @@
-import React, { useCallback, useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
-import { Form, Input, Button } from "antd";
+import { Form, Button } from "antd";
 import useInput from "../customHooks/useInput";
 import { useSelector, useDispatch } from "react-redux";
 import { SIGN_UP_REQUEST } from "../reducers/user";
 import Router from "next/router";
+import Theme from "../styles/Theme";
+import { device } from "../styles/device";
 const SignupWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
+  display: grid;
   height: 100vh;
-  @media (min-width: 1025px) {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgb(0, 0, 0, 0.3);
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 2;
+  grid-template-rows: 9% 28% 63%;
+
+  @media ${device.tablet} {
+    width: 50%;
+    margin: 0 auto;
+  }
+  @media ${device.laptop} {
+    width: 35%;
+    margin: 0 auto;
   }
 `;
 const SignupContent = styled.div`
-  border: 1px solid lightgray;
-  min-height: 500px;
-  min-width: 55%;
-  @media (min-width: 1025px) {
-    border-radius: 1rem;
-    background-color: white;
-    min-height: 85%;
-    min-width: 45%;
-    padding: 10px;
-    margin: 0 10rem;
-  }
+  padding-left: 1rem;
+  padding-right: 1rem;
 `;
-const Label = styled.label``;
-const IdWrapper = styled.div``;
-const EmailWrapper = styled.div``;
-const PasswordWrapper = styled.div``;
+const Label = styled.label`
+  margin-left: 0.2rem;
+`;
+const IdWrapper = styled.div`
+  margin-bottom: 1rem;
+`;
+const EmailWrapper = styled.div`
+  margin-bottom: 1rem;
+`;
+const PasswordWrapper = styled.div`
+  margin-bottom: 1rem;
+`;
 const BtnWrapper = styled.div``;
 const AtdButton = styled(Button)`
   width: 100%;
+  height: 3.1rem;
 `;
 
 const NotificationWrapper = styled.div`
@@ -50,6 +48,47 @@ const NotificationWrapper = styled.div`
 `;
 const NotificationContent = styled.span`
   color: red;
+`;
+
+const TopWrap = styled.div`
+  display: flex;
+`;
+const LogoWrap = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+`;
+const IntroWrap = styled.div`
+  padding: 4rem 2rem 2rem 2rem;
+  text-align: center;
+`;
+const TopIntroWrap = styled.h1`
+  font-weight: 600;
+  margin-bottom: 2rem;
+  font-size: 1.5rem;
+`;
+const BottomIntroWrap = styled.h2`
+  font-weight: 400;
+  font-size: 1rem;
+`;
+const UserInput = styled.input`
+  width: 100%;
+  height: 3.1rem;
+  padding-right: 1rem;
+  padding-left: 1rem;
+  border-radius: 0.3rem;
+  border: 1px solid #e1e2e3;
+  background-color: #fff;
+  font-size: 1rem;
+  color: #333;
+  resize: none;
+  margin-top: 0.5rem;
+  &:focus {
+    outline: none !important;
+    border: 1px solid ${Theme.themeColor};
+    border-radius: 0.3rem;
+  }
 `;
 const Signup = () => {
   const [nickname, setNickname] = useInput("");
@@ -59,6 +98,10 @@ const Signup = () => {
   const [passwordError, setPasswordError] = useState(false);
   const dispatch = useDispatch();
   const { isSigningUp, me } = useSelector(state => state.user);
+  const nicknameInput = useRef();
+  useEffect(() => {
+    nicknameInput.current.focus();
+  }, []);
   useEffect(() => {
     if (me) {
       alert("현재 로그인 중 입니다. 메인페이지로 이동합니다.");
@@ -119,25 +162,38 @@ const Signup = () => {
   }
   return (
     <SignupWrapper>
+      <TopWrap>
+        <LogoWrap>
+          <span>테크인터뷰</span>
+        </LogoWrap>
+      </TopWrap>
+      <IntroWrap>
+        <TopIntroWrap>기술면접 준비는 테크인터뷰!</TopIntroWrap>
+        <BottomIntroWrap>
+          테크인터뷰는 기술면접에 필요한 포스트들 중 엄선된 포스트만 선별해서
+          모은 서비스 입니다.
+        </BottomIntroWrap>
+      </IntroWrap>
       <SignupContent>
         <Form onSubmit={onSubmitSignup}>
           <IdWrapper>
             <Label htmlFor="user-nickname">닉네임</Label>
-            <Input
+            <UserInput
               name="user-nickname"
               required
               onChange={setNickname}
-              placeholder="닉네임을 입력하세요."
+              placeholder="닉네임을 입력해 주세요."
               value={nickname}
+              ref={nicknameInput}
             />
           </IdWrapper>
           <EmailWrapper>
             <Label htmlFor="user-Email">이메일</Label>
-            <Input
+            <UserInput
               name="user-Email"
               required
               onChange={onChangeEmail}
-              placeholder="이메일을 입력하세요."
+              placeholder="이메일을 입력해 주세요."
               value={email}
             />
             {emailError && (
@@ -150,7 +206,7 @@ const Signup = () => {
           </EmailWrapper>
           <PasswordWrapper>
             <Label htmlFor="user-Password">비밀번호</Label>
-            <Input
+            <UserInput
               type="password"
               name="user-Password"
               required

@@ -6,10 +6,20 @@ import { useDispatch, useSelector } from "react-redux";
 import { LOG_IN_REQUEST } from "../reducers/user";
 import Router from "next/router";
 import Theme from "../styles/Theme";
+import { device } from "../styles/device";
 const LoginWrapper = styled.div`
   display: grid;
   height: 100vh;
-  grid-template-rows: 6% 26% 68%;
+  grid-template-rows: 9% 28% 63%;
+
+  @media ${device.tablet} {
+    width: 60%;
+    margin: 0 auto;
+  }
+  @media ${device.laptop} {
+    width: 35%;
+    margin: 0 auto;
+  }
 `;
 const LoginContent = styled.div`
   padding-left: 1rem;
@@ -27,7 +37,7 @@ const PasswordWrapper = styled.div`
 `;
 const AtdButton = styled(Button)`
   width: 100%;
-  height: 50px;
+  height: 3.1rem;
 `;
 const TopWrap = styled.div`
   display: flex;
@@ -39,7 +49,7 @@ const LogoWrap = styled.div`
   width: 100%;
 `;
 const IntroWrap = styled.div`
-  padding: 3rem 2rem 2rem 2rem;
+  padding: 4rem 2rem 2rem 2rem;
   text-align: center;
 `;
 const TopIntroWrap = styled.h1`
@@ -53,20 +63,20 @@ const BottomIntroWrap = styled.h2`
 `;
 const UserInput = styled.input`
   width: 100%;
-  height: 50px;
-  padding-right: 15px;
-  padding-left: 15px;
-  border-radius: 5px;
+  height: 3.1rem;
+  padding-right: 1rem;
+  padding-left: 1rem;
+  border-radius: 0.3rem;
   border: 1px solid #e1e2e3;
   background-color: #fff;
-  font-size: 15px;
+  font-size: 1rem;
   color: #333;
   resize: none;
   margin-top: 0.5rem;
   &:focus {
     outline: none !important;
     border: 1px solid ${Theme.themeColor};
-    border-radius: 5px;
+    border-radius: 0.3rem;
   }
 `;
 

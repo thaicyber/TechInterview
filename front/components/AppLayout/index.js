@@ -97,7 +97,16 @@ const AppLayout = ({ children }) => {
         );
       }
       default: {
-        return null;
+        return (
+          <AppLayoutWrapper>
+            <Header />
+            <Wrap isLogined={me ? true : false}>{children}</Wrap>
+            <RightSideBar />
+            <LeftSideBar />
+            <Footer />
+            <Nav />
+          </AppLayoutWrapper>
+        );
       }
     }
   };
