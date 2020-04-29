@@ -241,9 +241,10 @@ function signUpAPI(signUpData) {
 }
 function* signUp(action) {
   try {
-    yield call(signUpAPI, action.data);
+    const result = yield call(signUpAPI, action.data);
     yield put({
-      type: SIGN_UP_SUCCESS
+      type: SIGN_UP_SUCCESS,
+      data: result.data
     });
   } catch (e) {
     console.error(e);
@@ -256,23 +257,6 @@ function* signUp(action) {
 function* watchSignUp() {
   yield takeLatest(SIGN_UP_REQUEST, signUp);
 }
-
-// function* signUpFailureReset(action) {
-//   try {
-//     yield put({
-//       type: SIGN_UP_SUCCESS
-//     });
-//   } catch (e) {
-//     console.error(e);
-//     yield put({
-//       type: SIGN_UP_FAILURE,
-//       error: e
-//     });
-//   }
-// }
-// function* watchSignUpFailureReset() {
-//   yield takeLatest(SIGN_UP_FAILURE_RESET, signUpFailureReset);
-// }
 export default function* userSaga() {
   yield all([
     fork(watchSignUp),

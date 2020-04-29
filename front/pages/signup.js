@@ -4,9 +4,9 @@ import { Form, Button } from "antd";
 import useInput from "../customHooks/useInput";
 import { useSelector, useDispatch } from "react-redux";
 import { SIGN_UP_REQUEST, SIGN_UP_FAILURE_RESET } from "../reducers/user";
-import Router from "next/router";
 import Theme from "../styles/Theme";
 import { device } from "../styles/device";
+import Router from "next/router";
 const SignupWrapper = styled.div`
   display: grid;
   height: 100vh;
@@ -97,10 +97,16 @@ const Signup = () => {
   const [password, setPassword] = useState("");
   const [passwordError, setPasswordError] = useState(false);
   const dispatch = useDispatch();
-  const { isSigningUp, me, signUpErrorReason } = useSelector(
+  const { isSigningUp, me, signUpErrorReason, isSignedUp } = useSelector(
     state => state.user
   );
   const nicknameInput = useRef();
+  useEffect(() => {
+    if (isSignedUp) {
+      alert("회원가입 성공! 로그인 페이지로 이동합니다.");
+      Router.push("/login");
+    }
+  }, [isSignedUp]);
   useEffect(() => {
     if (signUpErrorReason) {
       alert("이미 존재하는 이메일 주소 입니다. 다시 입력해 주세요.");
