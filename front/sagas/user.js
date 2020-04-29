@@ -32,6 +32,7 @@ import {
   LOAD_FOLLOWINGS_REQUEST
 } from "../reducers/user";
 import axios from "axios";
+
 function loadFollowingsAPI(userId) {
   return axios.get(`/user/${userId}/followings`, { withCredentials: true });
 }
@@ -247,13 +248,31 @@ function* signUp(action) {
   } catch (e) {
     console.error(e);
     yield put({
-      type: SIGN_UP_FAILURE
+      type: SIGN_UP_FAILURE,
+      error: e
     });
   }
 }
 function* watchSignUp() {
   yield takeLatest(SIGN_UP_REQUEST, signUp);
 }
+
+// function* signUpFailureReset(action) {
+//   try {
+//     yield put({
+//       type: SIGN_UP_SUCCESS
+//     });
+//   } catch (e) {
+//     console.error(e);
+//     yield put({
+//       type: SIGN_UP_FAILURE,
+//       error: e
+//     });
+//   }
+// }
+// function* watchSignUpFailureReset() {
+//   yield takeLatest(SIGN_UP_FAILURE_RESET, signUpFailureReset);
+// }
 export default function* userSaga() {
   yield all([
     fork(watchSignUp),

@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Form, Button } from "antd";
 import useInput from "../customHooks/useInput";
 import { useSelector, useDispatch } from "react-redux";
-import { SIGN_UP_REQUEST } from "../reducers/user";
+import { SIGN_UP_REQUEST, SIGN_UP_FAILURE_RESET } from "../reducers/user";
 import Router from "next/router";
 import Theme from "../styles/Theme";
 import { device } from "../styles/device";
@@ -91,14 +91,24 @@ const UserInput = styled.input`
   }
 `;
 const Signup = () => {
-  const [nickname, setNickname] = useInput("");
+  const [nickname, setNickname] = useState("");
   const [email, setEmail] = useState("");
   const [emailError, setEmailError] = useState(false);
   const [password, setPassword] = useState("");
   const [passwordError, setPasswordError] = useState(false);
   const dispatch = useDispatch();
-  const { isSigningUp, me } = useSelector(state => state.user);
+  const { isSigningUp, me, signUpErrorReason } = useSelector(
+    state => state.user
+  );
   const nicknameInput = useRef();
+  useEffect(() => {
+    if (signUpErrorReason) {
+      alert("이미 존재하는 이메일 주소 입니다. 다시 입력해 주세요.");
+      dispatch({
+        type: SIGN_UP_FAILURE_RESET
+      });
+    }
+  }, [signUpErrorReason]);
   useEffect(() => {
     nicknameInput.current.focus();
   }, []);
@@ -108,7 +118,6 @@ const Signup = () => {
       Router.push("/");
     }
   }, [me]);
-
   const onSubmitSignup = e => {
     e.preventDefault();
     if (emailError) {
@@ -157,6 +166,12 @@ const Signup = () => {
       setPasswordError(true);
     }
   };
+  const onChangeNickname = e => {
+    if (e.target.value.length > 15) {
+      return;
+    }
+    setNickname(e.target.value);
+  };
   if (me) {
     return null;
   }
@@ -179,9 +194,10 @@ const Signup = () => {
           <IdWrapper>
             <Label htmlFor="user-nickname">닉네임</Label>
             <UserInput
+              type="text"
               name="user-nickname"
               required
-              onChange={setNickname}
+              onChange={onChangeNickname}
               placeholder="닉네임을 입력해 주세요."
               value={nickname}
               ref={nicknameInput}
@@ -190,6 +206,7 @@ const Signup = () => {
           <EmailWrapper>
             <Label htmlFor="user-Email">이메일</Label>
             <UserInput
+              type="text"
               name="user-Email"
               required
               onChange={onChangeEmail}

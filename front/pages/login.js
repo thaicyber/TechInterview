@@ -124,6 +124,7 @@ const Login = () => {
           <IdWrapper>
             <Label htmlFor="user-email">이메일</Label>
             <UserInput
+              type="text"
               name="user-email"
               required
               value={email}
@@ -135,6 +136,7 @@ const Login = () => {
           <PasswordWrapper>
             <Label htmlFor="user-password">비밀번호</Label>
             <UserInput
+              type="password"
               name="user-password"
               required
               value={password}

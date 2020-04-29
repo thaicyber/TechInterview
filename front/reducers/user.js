@@ -31,6 +31,7 @@ export const initialState = {
 export const SIGN_UP_REQUEST = "SIGN_UP_REQUEST";
 export const SIGN_UP_SUCCESS = "SIGN_UP_SUCCESS";
 export const SIGN_UP_FAILURE = "SIGN_UP_FAILURE";
+export const SIGN_UP_FAILURE_RESET = "SIGN_UP_FAILURE_RESET";
 
 export const LOG_IN_REQUEST = "LOG_IN_REQUEST";
 export const LOG_IN_SUCCESS = "LOG_IN_SUCCESS";
@@ -84,8 +85,15 @@ export const reducer = (state = initialState, action) => {
       case SIGN_UP_FAILURE: {
         draft.isSignedUp = false;
         draft.isSigningUp = false;
+        draft.signUpErrorReason = action.error.response.data;
         break;
       }
+      case SIGN_UP_FAILURE_RESET:
+        console.log("SIGN_UP_FAILURE_RESET");
+        {
+          draft.signUpErrorReason = "";
+          break;
+        }
       case LOG_IN_REQUEST: {
         draft.isLoggingIn = true;
         break;
