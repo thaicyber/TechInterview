@@ -1,6 +1,16 @@
 import styled from "styled-components";
 import Theme from "../../styles/Theme";
 
+export const BackgroundWrapper = styled.div`
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  height: 100vh;
+  width: 100%;
+  z-index: 2;
+  background-color: rgb(0, 0, 0, 0.4);
+`;
 export const UserSettingWrapper = styled.div`
   position: fixed;
   left: 0;
@@ -8,11 +18,12 @@ export const UserSettingWrapper = styled.div`
   bottom: 0;
   height: 100vh;
   width: 75%;
+  z-index: 3;
 `;
 
 export const UserSettingContent = styled.div`
   display: grid;
-  grid-template-rows: 7vh 50vh auto;
+  grid-template-rows: 8vh 50vh auto;
   width: 100%;
   height: 100%;
   background-color: white;
@@ -24,13 +35,12 @@ export const TopContent = styled.div`
   width: 100%;
   height: 100%;
   background-color: white;
-  border-bottom: 1px solid lightgray;
   padding-left: 1rem;
 `;
 
 export const BottomContent = styled.div`
   display: grid;
-  grid-template-rows: 0.6fr 0.2fr 0.3fr 1fr 1fr 1fr;
+  grid-template-rows: 0.8fr 0.8fr 0.8fr 1fr 1fr 1fr;
   width: 100%;
   height: 100%;
   background-color: white;
@@ -38,8 +48,7 @@ export const BottomContent = styled.div`
 `;
 
 export const Title = styled.span`
-  font-size: 1.5rem;
-  font-weight: 400;
+  font-size: 1.3rem;
 `;
 export const CancelWrap = styled.div`
   display: flex;
@@ -55,8 +64,8 @@ export const TitleWrap = styled.div`
 `;
 
 export const AvatarMyPageWrap = styled.div`
-  display: flex;
-  align-items: center;
+  display: grid;
+  grid-template-columns: 2fr 8fr;
 `;
 
 export const NicknameWrap = styled.div`
@@ -74,12 +83,15 @@ export const Nickname = styled.span`
 export const FollowerWrap = styled.div`
   width: 100%;
   height: 100%;
+  line-height: 1.3;
 `;
 
 export const LogOutWrap = styled.div`
   width: 100%;
   height: 100%;
   cursor: pointer;
+  display: flex;
+  align-items: center;
 `;
 
 export const MyPageWrap = styled.div`
@@ -95,3 +107,9 @@ export const MyPageWrap = styled.div`
 export const MyPage = styled.a`
   color: ${Theme.themeColor};
 `;
+
+export const LikeWrap = styled.div`
+  display: flex;
+  align-items: center;
+`;
+export const IconWrap = styled.div``;

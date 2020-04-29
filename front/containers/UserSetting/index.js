@@ -8,12 +8,12 @@ import {
   Title,
   CancelWrap,
   AvatarMyPageWrap,
-  NicknameWrap,
-  Nickname,
   FollowerWrap,
   LogOutWrap,
   MyPageWrap,
-  MyPage
+  MyPage,
+  BackgroundWrapper,
+  LikeWrap
 } from "./style";
 import { CloseOutlined } from "@ant-design/icons";
 import { useSelector, useDispatch } from "react-redux";
@@ -37,60 +37,138 @@ const UserSetting = ({ setAvatarClick }) => {
     onClickCancel();
   };
   return (
-    <UserSettingWrapper>
-      <UserSettingContent>
-        <TopContent>
-          <TitleWrap>
-            <Title>계정정보</Title>
-          </TitleWrap>
-          <CancelWrap onClick={onClickCancel}>
-            <CloseOutlined
-              style={{ fontSize: "18px", color: Theme.themeColor }}
-            />
-          </CancelWrap>
-        </TopContent>
-        <BottomContent>
-          <AvatarMyPageWrap>
-            <Avatar size="medium" img={me.img} />
-            <MyPageWrap onClick={onClickCancel}>
-              <Link href="/myPage">
-                <MyPage>MyPage</MyPage>
+    <BackgroundWrapper>
+      <UserSettingWrapper>
+        <UserSettingContent>
+          <TopContent>
+            <TitleWrap>
+              <Title>
+                <span style={{ fontWeight: "400" }}>{me && me.nickname}</span>
+                <span style={{ fontWeight: "600" }}>님</span>
+              </Title>
+            </TitleWrap>
+            <CancelWrap onClick={onClickCancel}>
+              <CloseOutlined
+                style={{ fontSize: "1.4rem", color: Theme.themeColor }}
+              />
+            </CancelWrap>
+          </TopContent>
+          <BottomContent>
+            <AvatarMyPageWrap>
+              <div style={{ display: "flex", alignItems: "center" }}>
+                <Avatar size="large" img={me.img} />
+              </div>
+              <div style={{ display: "flex", alignItems: "center" }}>
+                <MyPageWrap onClick={onClickCancel}>
+                  <Link href="/myPage">
+                    <MyPage>MyPage</MyPage>
+                  </Link>
+                </MyPageWrap>
+              </div>
+            </AvatarMyPageWrap>
+            <div style={{ display: "flex", alignItems: "center" }}>
+              <Link
+                href={{
+                  pathname: "/followers",
+                  query: { id: me.id }
+                }}
+                as={`/followers/${me.id}`}
+              >
+                <a>
+                  <FollowerWrap>
+                    <span
+                      style={{
+                        fontSize: "1rem",
+                        fontWeight: "800",
+                        marginRight: "0.2rem",
+                        color: "black"
+                      }}
+                    >
+                      {me && me.Followers && me && me.Followers.length}
+                    </span>
+                    <span
+                      style={{
+                        fontSize: "1rem",
+                        color: "rgb(101, 119, 134)"
+                      }}
+                    >
+                      Followers
+                    </span>
+                  </FollowerWrap>
+                </a>
               </Link>
-            </MyPageWrap>
-          </AvatarMyPageWrap>
-          <NicknameWrap>
-            <Nickname>{me && me.nickname}</Nickname>
-          </NicknameWrap>
-          <FollowerWrap>
-            <span
-              style={{
-                fontSize: "1.2rem",
-                fontWeight: "500",
-                marginRight: "0.5rem"
+
+              <Link
+                href={{
+                  pathname: "/followings",
+                  query: { id: me.id }
+                }}
+                as={`/followings/${me.id}`}
+              >
+                <a>
+                  <FollowerWrap>
+                    <span
+                      style={{
+                        marginLeft: "0.7rem",
+                        fontSize: "1rem",
+                        fontWeight: "500",
+                        marginRight: "0.2rem",
+                        color: "black"
+                      }}
+                    >
+                      {me && me.Followings && me && me.Followings.length}
+                    </span>
+                    <span
+                      style={{
+                        fontSize: "1rem",
+                        color: "rgb(101, 119, 134)"
+                      }}
+                    >
+                      Following
+                    </span>
+                  </FollowerWrap>
+                </a>
+              </Link>
+            </div>
+            <Link
+              href={{
+                pathname: "/likePosts",
+                query: { id: me.id }
               }}
+              as={`/likePosts/${me.id}`}
             >
-              0
-            </span>
-            <span style={{ fontSize: "1.2rem" }}>Follower</span>
-          </FollowerWrap>
-          <LogOutWrap onClick={onClickLogOut}>
-            <span
-              style={{
-                fontSize: "1.2rem",
-                fontWeight: "500"
-              }}
-            >
-              Log out
-            </span>
-          </LogOutWrap>
-          {me && me.level && me.level === "admin" && (
-            <Link href="/admin">
-              <a>Admin</a>
+              <LikeWrap>
+                <span
+                  style={{
+                    fontSize: "1rem",
+                    fontWeight: "400",
+                    color: "rgb(101, 119, 134)"
+                  }}
+                >
+                  좋아요
+                </span>
+              </LikeWrap>
             </Link>
-          )}
-        </BottomContent>
-      </UserSettingContent>
-    </UserSettingWrapper>
+            <LogOutWrap onClick={onClickLogOut}>
+              <span
+                style={{
+                  fontSize: "1rem",
+                  fontWeight: "400",
+                  color: "rgb(101, 119, 134)"
+                }}
+              >
+                로그아웃
+              </span>
+            </LogOutWrap>
+            {me && me.level && me.level === "admin" && (
+              <Link href="/admin">
+                <a>Admin</a>
+              </Link>
+            )}
+          </BottomContent>
+        </UserSettingContent>
+      </UserSettingWrapper>
+    </BackgroundWrapper>
   );
 };
 

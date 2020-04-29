@@ -105,6 +105,7 @@ const Profile = memo(({ id }) => {
   // console.log("userInfo", userInfo);
   // console.log("me", me);
   useEffect(() => {
+    document.body.style.overflowY = "scroll";
     if (!userInfo) {
       dispatch({
         type: LOAD_USER_REQUEST,
