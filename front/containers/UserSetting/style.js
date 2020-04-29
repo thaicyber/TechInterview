@@ -83,7 +83,6 @@ export const Nickname = styled.span`
 export const FollowerWrap = styled.div`
   width: 100%;
   height: 100%;
-  line-height: 1.3;
 `;
 
 export const LogOutWrap = styled.div`
@@ -95,14 +94,14 @@ export const LogOutWrap = styled.div`
 `;
 
 export const MyPageWrap = styled.div`
-  width: 80px;
-  height: 25px;
+  width: 5rem;
+  height: 1.6rem;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-left: 5rem;
   border: 1px solid ${Theme.themeColor};
-  border-radius: 20px;
+  border-radius: 1.3rem;
 `;
 export const MyPage = styled.a`
   color: ${Theme.themeColor};
