@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Form, Button } from "antd";
 import useInput from "../customHooks/useInput";
 import { useDispatch, useSelector } from "react-redux";
-import { LOG_IN_REQUEST } from "../reducers/user";
+import { LOG_IN_REQUEST, LOG_IN_FAILURE_RESET } from "../reducers/user";
 import Router from "next/router";
 import Theme from "../styles/Theme";
 import { device } from "../styles/device";
@@ -11,7 +11,7 @@ import Link from "next/link";
 const LoginWrapper = styled.div`
   display: grid;
   height: 100vh;
-  grid-template-rows: 9% 28% 63%;
+  grid-template-rows: 9% 28% 57% 6%;
 
   @media ${device.tablet} {
     width: 60%;
@@ -85,8 +85,18 @@ const Login = () => {
   const [email, setEmail] = useInput("");
   const [password, setPassword] = useInput("");
   const dispatch = useDispatch();
-  const { me, isLoggingIn } = useSelector(state => state.user);
+  const { me, isLoggingIn, loginErrorReason } = useSelector(
+    state => state.user
+  );
   const emailInput = useRef();
+  useEffect(() => {
+    if (loginErrorReason) {
+      alert(`${loginErrorReason}`);
+      dispatch({
+        type: LOG_IN_FAILURE_RESET
+      });
+    }
+  }, [loginErrorReason]);
   useEffect(() => {
     emailInput.current.focus();
   }, []);
@@ -102,7 +112,6 @@ const Login = () => {
   });
   useEffect(() => {
     if (me) {
-      alert("로그인 성공!");
       Router.push("/");
     }
   }, [me]);

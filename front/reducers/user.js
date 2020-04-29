@@ -36,6 +36,7 @@ export const SIGN_UP_FAILURE_RESET = "SIGN_UP_FAILURE_RESET";
 export const LOG_IN_REQUEST = "LOG_IN_REQUEST";
 export const LOG_IN_SUCCESS = "LOG_IN_SUCCESS";
 export const LOG_IN_FAILURE = "LOG_IN_FAILURE";
+export const LOG_IN_FAILURE_RESET = "LOG_IN_FAILURE_RESET";
 
 export const LOG_OUT_REQUEST = "LOG_OUT_REQUEST";
 export const LOG_OUT_SUCCESS = "LOG_OUT_SUCCESS";
@@ -104,6 +105,11 @@ export const reducer = (state = initialState, action) => {
       case LOG_IN_FAILURE: {
         draft.isLogined = false;
         draft.isLoggingIn = false;
+        draft.loginErrorReason = action.error.response.data;
+        break;
+      }
+      case LOG_IN_FAILURE_RESET: {
+        draft.loginErrorReason = "";
         break;
       }
       case LOG_OUT_REQUEST: {
