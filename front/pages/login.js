@@ -7,6 +7,7 @@ import { LOG_IN_REQUEST } from "../reducers/user";
 import Router from "next/router";
 import Theme from "../styles/Theme";
 import { device } from "../styles/device";
+import Link from "next/link";
 const LoginWrapper = styled.div`
   display: grid;
   height: 100vh;
@@ -108,9 +109,13 @@ const Login = () => {
   return (
     <LoginWrapper>
       <TopWrap>
-        <LogoWrap>
-          <span>테크인터뷰</span>
-        </LogoWrap>
+        <Link href="/">
+          <LogoWrap>
+            <a>
+              <span>테크인터뷰</span>
+            </a>
+          </LogoWrap>
+        </Link>
       </TopWrap>
       <IntroWrap>
         <TopIntroWrap>기술면접 준비는 테크인터뷰!</TopIntroWrap>

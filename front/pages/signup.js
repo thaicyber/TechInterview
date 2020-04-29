@@ -7,6 +7,7 @@ import { SIGN_UP_REQUEST, SIGN_UP_FAILURE_RESET } from "../reducers/user";
 import Theme from "../styles/Theme";
 import { device } from "../styles/device";
 import Router from "next/router";
+import Link from "next/link";
 const SignupWrapper = styled.div`
   display: grid;
   height: 100vh;
@@ -184,9 +185,13 @@ const Signup = () => {
   return (
     <SignupWrapper>
       <TopWrap>
-        <LogoWrap>
-          <span>테크인터뷰</span>
-        </LogoWrap>
+        <Link href="/">
+          <LogoWrap>
+            <a>
+              <span>테크인터뷰</span>
+            </a>
+          </LogoWrap>
+        </Link>
       </TopWrap>
       <IntroWrap>
         <TopIntroWrap>기술면접 준비는 테크인터뷰!</TopIntroWrap>
