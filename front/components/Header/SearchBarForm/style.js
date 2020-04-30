@@ -2,23 +2,15 @@ import styled from "styled-components";
 import { Input } from "antd";
 const { Search } = Input;
 import { Form } from "antd";
+import { device } from "../../../styles/device";
 
 export const AtdForm = styled(Form)`
   width: 100%;
   display: flex;
 
-  @media (min-width: 600px) and (max-width: 1024px) {
-    width: 500px;
-    margin-left: 0px;
-  }
-  @media (min-width: 1025px) {
-    width: 500px;
-    margin-left: 0px;
-  }
-
-  @media (min-width: 1240px) {
-    width: 520px;
-    margin-left: 0px;
+  @media ${device.tablet} {
+    width: 600px;
+    background-color: red;
   }
 `;
 

@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import { NavWrapper, NavIconWrapper } from "./style";
 import Link from "next/link";
 import UserSetting from "../../containers/UserSetting";
+import { useSelector } from "react-redux";
 const Nav = () => {
   const [showMyAccount, setShowMyAccount] = useState(false);
+  const { me } = useSelector(state => state.user);
   const onClickMyAccount = () => {
     setShowMyAccount(true);
   };
@@ -18,11 +20,17 @@ const Nav = () => {
         </Link>
         <NavIconWrapper>인터뷰</NavIconWrapper>
         <NavIconWrapper>채용</NavIconWrapper>
-        <Link href="/" prefetch>
+        {me ? (
           <NavIconWrapper onClick={onClickMyAccount}>
             <a>내 계정</a>
           </NavIconWrapper>
-        </Link>
+        ) : (
+          <Link href="/login" prefetch>
+            <NavIconWrapper>
+              <a>내 계정</a>
+            </NavIconWrapper>
+          </Link>
+        )}
       </NavWrapper>
     </>
   );
