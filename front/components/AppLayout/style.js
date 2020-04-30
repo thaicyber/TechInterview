@@ -5,20 +5,23 @@ export const AppLayoutWrapper = styled.div`
     display: grid;
     grid-template-columns: 600px;
     justify-content: center;
-    padding: 0 1rem;
+    /* padding-left: 1rem; */
+    /* padding-right: 1rem; */
   }
 
   @media (min-width: 1025px) {
     display: grid;
     grid-template-columns: 600px 350px;
-    padding: 0 1rem;
+    /* padding-left: 1rem; */
+    /* padding-right: 1rem; */
     justify-content: center;
   }
 
   @media (min-width: 1240px) {
     display: grid;
     grid-template-columns: 600px 350px;
-    padding: 0 150px;
+    /* padding-left: 150px; */
+    /* padding-right: 150px; */
   }
 `;
 

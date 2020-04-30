@@ -21,14 +21,18 @@ import { LOG_OUT_REQUEST } from "../../reducers/user";
 import Link from "next/link";
 import Avatar from "../../components/Util/Avatar";
 import Theme from "../../styles/Theme";
-const UserSetting = ({ setAvatarClick }) => {
+const UserSetting = props => {
+  const { setAvatarClick, setShowMyAccount } = props;
   const { me, isLoggingOut } = useSelector(state => state.user);
   const dispatch = useDispatch();
   const onClickCancel = () => {
     if (setAvatarClick) {
       setAvatarClick(false);
-      document.body.style.overflowY = "scroll";
     }
+    if (setShowMyAccount) {
+      setShowMyAccount(false);
+    }
+    document.body.style.overflowY = "scroll";
   };
   const onClickLogOut = () => {
     dispatch({
