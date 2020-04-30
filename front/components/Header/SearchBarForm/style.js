@@ -32,7 +32,6 @@ export const SearchBarLogoWrapper = styled.div`
 
   @media ${device.tablet} {
     width: 600px;
-    background-color: red;
   }
 `;
 

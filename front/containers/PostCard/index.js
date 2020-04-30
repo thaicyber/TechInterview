@@ -22,7 +22,9 @@ import {
   IconWrap,
   CountWrap,
   Count,
-  Line
+  Line,
+  CardContentWrap,
+  CardContent
 } from "./style";
 import Avatar from "../../components/Util/Avatar";
 import { MessageOutlined, HeartOutlined } from "@ant-design/icons";
@@ -111,6 +113,9 @@ const PostCard = memo(props => {
                 <CardTitleWrap>
                   <CardTitle>{post.title}</CardTitle>
                 </CardTitleWrap>
+                <CardContentWrap>
+                  <CardContent>test</CardContent>
+                </CardContentWrap>
                 <CardLinkWrap>
                   <CardLink>
                     {post.link && urlRegEx.exec(String(post.link))[1]}

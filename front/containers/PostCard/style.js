@@ -12,7 +12,7 @@ export const PrimeWrap = styled.div`
   display: grid;
   grid-template-columns: 16% auto;
   width: 100%;
-  min-height: 41vh;
+  min-height: 52vh;
   padding: 1rem 1rem 0rem 1rem;
   margin-bottom: 0.1rem;
 
@@ -20,16 +20,16 @@ export const PrimeWrap = styled.div`
     display: grid;
     grid-template-columns: 16% auto;
     width: 100%;
-    min-height: 50vh;
+    min-height: 62vh;
     padding: 1rem 1rem 0rem 1rem;
     margin-bottom: 0.1rem;
   }
   @media ${device.tablet} {
-    min-height: 60vh;
+    min-height: 62vh;
   }
 
   @media ${device.tablet} {
-    min-height: 70vh;
+    min-height: 72vh;
   }
 `;
 
@@ -37,7 +37,7 @@ export const AvatarWrap = styled.div`
   display: grid;
   grid-template-rows: 15% 85%;
   justify-content: center;
-
+  margin-top: 0.5rem;
   /* @media ${device.tablet} {
     margin-top: 0.6rem;
   }
@@ -53,8 +53,8 @@ export const WriterInfoWrap = styled.div`
 
 export const WriterName = styled.span`
   width: 100%;
-  font-size: 1rem;
-  font-weight: 600;
+  font-size: 1.2rem;
+  font-weight: 500;
 `;
 
 export const WriteDate = styled.div`
@@ -63,21 +63,21 @@ export const WriteDate = styled.div`
 
 export const ContentWrap = styled.div`
   display: grid;
-  grid-template-rows: 15% 68% 8% 10%;
+  grid-template-rows: 15% 69% 8% 8%;
   /* border-bottom: 1px solid #cdd6dd; */
 
   @media ${device.tablet} {
-    grid-template-rows: 12% 68% 8% 10%;
+    /* grid-template-rows: 12% 68% 8% 10%; */
   }
   @media ${device.laptop} {
-    grid-template-rows: 10% 68% 8% 10%;
+    /* grid-template-rows: 10% 68% 8% 10%; */
   }
 `;
 // title , img & content , hastag , nav 순서
 
 export const CardWrap = styled.div`
   display: grid;
-  grid-template-rows: 70% 15% 15%;
+  grid-template-rows: 45% 10% 35% 10%;
   width: 100%;
   height: 100%;
   /* border: 1px solid #cdd6dd; */
@@ -87,10 +87,10 @@ export const CardWrap = styled.div`
   border-bottom-right-radius: 10px;
 
   @media ${device.tablet} {
-    grid-template-rows: 70% 14% 14%;
+    grid-template-rows: 50% 10% 30% 10%;
   }
   @media ${device.laptop} {
-    grid-template-rows: 70% 13% 13%;
+    /* grid-template-rows: 70% 13% 13%; */
   }
 `;
 
@@ -127,7 +127,8 @@ export const CardTitleWrap = styled(Wrap)`
 `;
 
 export const CardTitle = styled.span`
-  font-weight: 500;
+  font-weight: 400;
+  font-size: 0.9rem;
 `;
 
 export const CardLinkWrap = styled(Wrap)`
@@ -147,11 +148,11 @@ export const CardLinkWrap = styled(Wrap)`
 `;
 
 export const CardLink = styled.span`
-  font-weight: 300;
+  font-weight: 400;
 `;
 
 export const HashTagWrap = styled(Wrap)`
-  padding-top: 0.5rem;
+  padding-top: 0.8rem;
 
   /* @media ${device.tablet} {
     padding-top: 1rem;
@@ -211,4 +212,25 @@ export const Line = styled.div`
     margin-left: 2.4rem;
     width: 91%;
   }
+`;
+
+export const CardContentWrap = styled.div`
+  border-left: 1px solid #cdd6dd;
+  border-right: 1px solid #cdd6dd;
+  display: flex;
+  align-items: center;
+`;
+export const CardContent = styled.div`
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 5; /* 라인수 */
+  -webkit-box-orient: vertical;
+  word-wrap: break-word;
+  line-height: 1.1rem;
+  height: 5.3rem;
+  font-size: 0.9rem;
+  font-weight: 300;
+  padding-left: 0.6rem;
+  padding-right: 0.6rem;
 `;
