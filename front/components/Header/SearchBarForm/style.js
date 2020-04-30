@@ -23,5 +23,22 @@ export const AtdInput = styled(Search)`
 export const SearchBarWrapper = styled.div`
   width: 100%;
   display: grid;
-  grid-template-columns: 8.8fr 0.2fr 1fr;
+  grid-template-columns: 9.2fr 0.8fr;
+`;
+
+export const SearchBarLogoWrapper = styled.div`
+  width: 100%;
+  display: grid;
+  grid-template-columns: 16% auto;
+
+  @media ${device.tablet} {
+    width: 600px;
+    background-color: red;
+  }
+`;
+
+export const AvatarWrap = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 `;

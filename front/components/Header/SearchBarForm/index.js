@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import UserSetting from "../../../containers/UserSetting";
 import Avatar from "../../Util/Avatar";
 import Router from "next/router";
-import { SearchBarWrapper } from "./style";
+import { SearchBarLogoWrapper, SearchBarWrapper, AvatarWrap } from "./style";
 const SearchBarForm = () => {
   const dispatch = useDispatch();
   const [avatarClick, setAvatarClick] = useState(false);
@@ -27,14 +27,19 @@ const SearchBarForm = () => {
   return (
     <AtdForm onSubmit={onSubmitForm}>
       {me ? (
-        <SearchBarWrapper>
-          <AtdInput
-            onChange={onChangeInput}
-            placeholder="검색어를 입력하세요."
-          />
+        <SearchBarLogoWrapper>
           <div></div>
-          <Avatar onClick={onClickAvatar} img={me.img} size="small"></Avatar>
-        </SearchBarWrapper>
+          <SearchBarWrapper>
+            <AtdInput onChange={onChangeInput} />
+            <AvatarWrap>
+              <Avatar
+                onClick={onClickAvatar}
+                img={me.img}
+                size="small"
+              ></Avatar>
+            </AvatarWrap>
+          </SearchBarWrapper>
+        </SearchBarLogoWrapper>
       ) : (
         <AtdInput onChange={onChangeInput} />
       )}
