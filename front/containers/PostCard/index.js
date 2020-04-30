@@ -21,7 +21,8 @@ import {
   LikeWrap,
   IconWrap,
   CountWrap,
-  Count
+  Count,
+  Line
 } from "./style";
 import Avatar from "../../components/Util/Avatar";
 import { MessageOutlined, HeartOutlined } from "@ant-design/icons";
@@ -42,10 +43,10 @@ const PostCard = memo(props => {
   const { post, showMenu, route } = props;
   const dispatch = useDispatch();
   const { me } = useSelector(state => state.user);
-  // console.log("post", post);
+  console.log("post", post);
   // console.log("me", me);
   // console.log("route", route);
-
+  const urlRegEx = /^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n?]+)/;
   const likeChecked =
     post && me && post.Likers && post.Likers.find(v => v.id === me.id);
   const type = getRouteType(route);
@@ -76,115 +77,124 @@ const PostCard = memo(props => {
     []
   );
   return (
-    <PostCardWrapper>
-      {post && (
-        <PrimeWrap>
-          <AvatarWrap>
-            <>
-              <Link
-                href={{ pathname: "/profile", query: { id: post.UserId } }}
-                prefetch
-                as={`/profile/${post.UserId}`}
-              >
-                <Avatar
-                  size="large"
-                  img={post.User && post.User.img ? post.User.img : null}
-                />
-              </Link>
-            </>
-          </AvatarWrap>
-          <ContentWrap>
-            <WriterInfoWrap>
-              <WriterName>{post && post.User && post.User.nickname}</WriterName>
-              <WriteDate>
-                {post && moment(post.publishedTime).format("YYYY.MM.DD")}
-              </WriteDate>
-            </WriterInfoWrap>
-            <CardWrap onClick={onClickCard(post.link)}>
-              <CardImageWrap>
-                <CardImage img={post.postImg}></CardImage>
-              </CardImageWrap>
-              <CardTitleWrap>
-                <CardTitle>{post.title}</CardTitle>
-              </CardTitleWrap>
-              <CardLinkWrap>
-                <CardLink>postLink.com</CardLink>
-              </CardLinkWrap>
-            </CardWrap>
-            <HashTagWrap>
-              <HashTag>
-                {post.content.split(/(#[^\s]+)/g).map(v => {
-                  if (v.match(/(#[^\s]+)/g)) {
-                    return (
-                      <Link
-                        href={{
-                          pathname: "/hashtag",
-                          query: { tag: v.slice(1) }
-                        }}
-                        prefetch
-                        as={`/hashtag/${v.slice(1)}`}
-                        key={v}
-                      >
-                        <a style={{ color: Theme.themeColor }}>{v}</a>
-                      </Link>
-                    );
-                  } else {
-                    return v;
-                  }
-                })}
-              </HashTag>
-            </HashTagWrap>
-            {showMenu ? (
-              <MenuWrap>
+    <>
+      <PostCardWrapper>
+        {post && (
+          <PrimeWrap>
+            <AvatarWrap>
+              <>
                 <Link
-                  href={{ pathname: "/comment", query: { id: post.id } }}
+                  href={{ pathname: "/profile", query: { id: post.UserId } }}
                   prefetch
-                  as={`/comment/${post.id}`}
+                  as={`/profile/${post.UserId}`}
                 >
-                  <CommentWrap>
-                    <IconWrap>
-                      <MessageOutlined style={{ cursor: "pointer" }} />
-                    </IconWrap>
-                    <CountWrap>
-                      <Count>{post.Comments ? post.Comments.length : 0}</Count>
-                    </CountWrap>
-                  </CommentWrap>
+                  <Avatar
+                    size="large"
+                    img={post.User && post.User.img ? post.User.img : null}
+                  />
                 </Link>
-                <LikeWrap>
-                  <IconWrap onClick={onClickLike}>
-                    {likeChecked ? (
-                      <Icon
-                        type="heart"
-                        theme="filled"
-                        style={{ color: "#eb2f96" }}
-                      />
-                    ) : (
-                      <HeartOutlined
-                        style={{
-                          cursor: "pointer"
-                        }}
-                      />
-                    )}
-                  </IconWrap>
+              </>
+            </AvatarWrap>
+            <ContentWrap>
+              <WriterInfoWrap>
+                <WriterName>
+                  {post && post.User && post.User.nickname}
+                </WriterName>
+                <WriteDate>
+                  {post && moment(post.publishedTime).format("YYYY.MM.DD")}
+                </WriteDate>
+              </WriterInfoWrap>
+              <CardWrap onClick={onClickCard(post.link)}>
+                <CardImageWrap>
+                  <CardImage img={post.postImg}></CardImage>
+                </CardImageWrap>
+                <CardTitleWrap>
+                  <CardTitle>{post.title}</CardTitle>
+                </CardTitleWrap>
+                <CardLinkWrap>
+                  <CardLink>
+                    {post.link && urlRegEx.exec(String(post.link))[1]}
+                  </CardLink>
+                </CardLinkWrap>
+              </CardWrap>
+              <HashTagWrap>
+                <HashTag>
+                  {post.content.split(/(#[^\s]+)/g).map(v => {
+                    if (v.match(/(#[^\s]+)/g)) {
+                      return (
+                        <Link
+                          href={{
+                            pathname: "/hashtag",
+                            query: { tag: v.slice(1) }
+                          }}
+                          prefetch
+                          as={`/hashtag/${v.slice(1)}`}
+                          key={v}
+                        >
+                          <a style={{ color: Theme.themeColor }}>{v}</a>
+                        </Link>
+                      );
+                    } else {
+                      return v;
+                    }
+                  })}
+                </HashTag>
+              </HashTagWrap>
+              {showMenu ? (
+                <MenuWrap>
                   <Link
-                    href={{
-                      pathname: "/postLikers",
-                      query: { id: post.id }
-                    }}
+                    href={{ pathname: "/comment", query: { id: post.id } }}
                     prefetch
-                    as={`/postLikers/${post.id}`}
+                    as={`/comment/${post.id}`}
                   >
-                    <CountWrap>
-                      <Count>{post.Likers ? post.Likers.length : 0}</Count>
-                    </CountWrap>
+                    <CommentWrap>
+                      <IconWrap>
+                        <MessageOutlined style={{ cursor: "pointer" }} />
+                      </IconWrap>
+                      <CountWrap>
+                        <Count>
+                          {post.Comments ? post.Comments.length : 0}
+                        </Count>
+                      </CountWrap>
+                    </CommentWrap>
                   </Link>
-                </LikeWrap>
-              </MenuWrap>
-            ) : null}
-          </ContentWrap>
-        </PrimeWrap>
-      )}
-    </PostCardWrapper>
+                  <LikeWrap>
+                    <IconWrap onClick={onClickLike}>
+                      {likeChecked ? (
+                        <Icon
+                          type="heart"
+                          theme="filled"
+                          style={{ color: "#eb2f96" }}
+                        />
+                      ) : (
+                        <HeartOutlined
+                          style={{
+                            cursor: "pointer"
+                          }}
+                        />
+                      )}
+                    </IconWrap>
+                    <Link
+                      href={{
+                        pathname: "/postLikers",
+                        query: { id: post.id }
+                      }}
+                      prefetch
+                      as={`/postLikers/${post.id}`}
+                    >
+                      <CountWrap>
+                        <Count>{post.Likers ? post.Likers.length : 0}</Count>
+                      </CountWrap>
+                    </Link>
+                  </LikeWrap>
+                </MenuWrap>
+              ) : null}
+            </ContentWrap>
+          </PrimeWrap>
+        )}
+      </PostCardWrapper>
+      <Line />
+    </>
   );
 });
 

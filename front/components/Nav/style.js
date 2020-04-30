@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { device } from "../../styles/device";
 
 export const NavWrapper = styled.nav`
   display: flex;
@@ -11,6 +12,10 @@ export const NavWrapper = styled.nav`
   bottom: -2px;
   left: 0;
   right: 0;
+
+  @media ${device.laptop} {
+    display: none;
+  }
 `;
 
 export const NavIconWrapper = styled.div`

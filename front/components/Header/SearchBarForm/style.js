@@ -10,7 +10,6 @@ export const AtdForm = styled(Form)`
 
   @media ${device.tablet} {
     width: 600px;
-    background-color: red;
   }
 `;
 
