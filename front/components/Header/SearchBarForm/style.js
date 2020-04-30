@@ -27,3 +27,9 @@ export const AtdInput = styled(Search)`
   margin-bottom: 0.5rem;
   margin-left: ${props => (props.isLogin ? "auto" : null)};
 `;
+
+export const SearchBarWrapper = styled.div`
+  width: 100%;
+  display: grid;
+  grid-template-columns: 8.8fr 0.2fr 1fr;
+`;

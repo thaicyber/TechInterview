@@ -11,16 +11,16 @@ const Nav = () => {
     <>
       {showMyAccount && <UserSetting setShowMyAccount={setShowMyAccount} />}
       <NavWrapper>
-        <Link href="/" prefetch>
-          <NavIconWrapper onClick={onClickMyAccount}>
-            <a>내 계정</a>
+        <Link href="/likePosts" prefetch>
+          <NavIconWrapper>
+            <a>좋아요</a>
           </NavIconWrapper>
         </Link>
         <NavIconWrapper>인터뷰</NavIconWrapper>
         <NavIconWrapper>채용</NavIconWrapper>
-        <Link href="/likePosts" prefetch>
-          <NavIconWrapper>
-            <a>좋아요</a>
+        <Link href="/" prefetch>
+          <NavIconWrapper onClick={onClickMyAccount}>
+            <a>내 계정</a>
           </NavIconWrapper>
         </Link>
       </NavWrapper>

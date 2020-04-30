@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import UserSetting from "../../../containers/UserSetting";
 import Avatar from "../../Util/Avatar";
 import Router from "next/router";
+import { SearchBarWrapper } from "./style";
 const SearchBarForm = () => {
   const dispatch = useDispatch();
   const [avatarClick, setAvatarClick] = useState(false);
@@ -26,10 +27,11 @@ const SearchBarForm = () => {
   return (
     <AtdForm onSubmit={onSubmitForm}>
       {me ? (
-        <>
-          <Avatar onClick={onClickAvatar} img={me.img} size="small"></Avatar>
+        <SearchBarWrapper>
           <AtdInput onChange={onChangeInput} />
-        </>
+          <div></div>
+          <Avatar onClick={onClickAvatar} img={me.img} size="small"></Avatar>
+        </SearchBarWrapper>
       ) : (
         <AtdInput onChange={onChangeInput} />
       )}
