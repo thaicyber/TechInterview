@@ -28,7 +28,10 @@ const SearchBarForm = () => {
     <AtdForm onSubmit={onSubmitForm}>
       {me ? (
         <SearchBarWrapper>
-          <AtdInput onChange={onChangeInput} />
+          <AtdInput
+            onChange={onChangeInput}
+            placeholder="검색어를 입력하세요."
+          />
           <div></div>
           <Avatar onClick={onClickAvatar} img={me.img} size="small"></Avatar>
         </SearchBarWrapper>
