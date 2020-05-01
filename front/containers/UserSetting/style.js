@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Theme from "../../styles/Theme";
-
+import { device } from "../../styles/device";
 export const BackgroundWrapper = styled.div`
   position: fixed;
   right: 0;
@@ -19,6 +19,17 @@ export const UserSettingWrapper = styled.div`
   height: 100vh;
   width: 75%;
   z-index: 3;
+
+  @media ${device.mobileL} {
+    width: 40%;
+  }
+  @media ${device.tablet} {
+    width: 30%;
+  }
+
+  @media ${device.laptop} {
+    width: 25%;
+  }
 `;
 
 export const UserSettingContent = styled.div`

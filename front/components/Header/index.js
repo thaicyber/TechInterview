@@ -11,8 +11,8 @@ const Header = () => {
       <TitleWrapper>
         <Link href="/" prefetch>
           <Title>
-            {/* <img src="/logo2.png" /> */}
-            TechInterview
+            <img src="/logo3.jpg" />
+            {/* TechInterview */}
           </Title>
         </Link>
       </TitleWrapper>

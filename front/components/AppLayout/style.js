@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { device } from "../../styles/device";
 
 export const AppLayoutWrapper = styled.div`
   @media (min-width: 600px) and (max-width: 1024px) {
@@ -28,6 +29,10 @@ export const AppLayoutWrapper = styled.div`
 export const Wrap = styled.div`
   margin-top: ${props => (props.isLogined ? "73px" : "113px")};
   margin-bottom: 7vh;
+
+  @media ${device.laptop} {
+    margin-top: 51px;
+  }
 `;
 
 export const SimpleWrap = styled.div`

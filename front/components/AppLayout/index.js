@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { AppLayoutWrapper, Wrap, SimpleWrap } from "./style";
 import Header from "../Header";
-import RightSideBar from "../RightSideBar";
+import PopularTagList from "../PopularTagList";
 import Footer from "../Footer";
 import Nav from "../Nav";
 import { useDispatch, useSelector } from "react-redux";
@@ -89,8 +89,7 @@ const AppLayout = ({ children }) => {
           <AppLayoutWrapper>
             <SimpleHeader />
             <SimpleWrap>{children}</SimpleWrap>
-            <RightSideBar />
-            <LeftSideBar />
+            <PopularTagList />
             <Footer />
             <Nav />
           </AppLayoutWrapper>
@@ -101,8 +100,7 @@ const AppLayout = ({ children }) => {
           <AppLayoutWrapper>
             <Header />
             <Wrap isLogined={me ? true : false}>{children}</Wrap>
-            <RightSideBar />
-            <LeftSideBar />
+            <PopularTagList />
             <Footer />
             <Nav />
           </AppLayoutWrapper>

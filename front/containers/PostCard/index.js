@@ -114,7 +114,17 @@ const PostCard = memo(props => {
                   <CardTitle>{post.title}</CardTitle>
                 </CardTitleWrap>
                 <CardContentWrap>
-                  <CardContent>test</CardContent>
+                  <CardContent>
+                    만약 리액트라는 라이브러리를 이용하면, 내가 직접 Dom에
+                    접근하지 않는다. useState를 통해 count 변수를 하나 만들고,
+                    4개의 박스에 변수를 넣은 뒤, count만 증가시키면, 리액트
+                    라이브러리가 클릭 전의 Dom과, 클릭이 되었을 때가 반영된
+                    가상의 Dom을 비교한다. [랜더링을 먼저 하지 않는다.] 현재
+                    브라우저에 보여지고 있는 진짜 DOM과 비교해서 바뀐 부분을
+                    반영해서 가짜DOM이 진짜 DOM에게 랜더링해야 할 DOM을
+                    던져준다. 그러면, 브라우저는 단 1번의 랜더트리를 생성해서
+                    유저에게 새로운 화면을 보여주게 되죠
+                  </CardContent>
                 </CardContentWrap>
                 <CardLinkWrap>
                   <CardLink>
@@ -169,7 +179,7 @@ const PostCard = memo(props => {
                         <Icon
                           type="heart"
                           theme="filled"
-                          style={{ color: "#eb2f96" }}
+                          style={{ color: "#eb2f96", cursor: "pointer" }}
                         />
                       ) : (
                         <HeartOutlined
