@@ -103,7 +103,10 @@ const PostCard = memo(props => {
                   {post && post.User && post.User.nickname}
                 </WriterName>
                 <WriteDate>
-                  {post && moment(post.publishedTime).format("YYYY.MM.DD")}
+                  <span>
+                    {post &&
+                      moment(post.publishedTime).format("YYYY년 MM월 DD일")}
+                  </span>
                 </WriteDate>
               </WriterInfoWrap>
               <CardWrap onClick={onClickCard(post.link)}>
