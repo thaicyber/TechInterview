@@ -4,7 +4,7 @@ import Theme from "../../styles/Theme";
 export const PopularTagListWrapper = styled.div`
   display: none;
   min-height: 300px;
-  padding-left: 1rem;
+  padding-left: 4rem;
 
   @media ${device.laptop} {
     display: grid;
@@ -22,6 +22,7 @@ export const LinkWrap = styled.div`
 `;
 export const LinkName = styled.a`
   color: ${Theme.themeColor};
+  font-size: 0.9rem;
 `;
 
 export const TitleWrap = styled.div`

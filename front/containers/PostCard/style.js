@@ -59,9 +59,14 @@ export const WriterName = styled.span`
 
 export const WriteDate = styled.div`
   background-color: white;
-  width: 170px;
+  width: 240px;
   display: flex;
   justify-content: flex-end;
+
+  & > span {
+    font-size: 0.8rem;
+    color: rgb(0, 0, 0, 0.5);
+  }
 `;
 
 export const ContentWrap = styled.div`
