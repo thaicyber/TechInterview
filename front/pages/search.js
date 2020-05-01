@@ -2,7 +2,6 @@ import React, { useState, useCallback, useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { LOAD_HASHTAG_POSTS_REQUEST } from "../reducers/post";
 import PostCard from "../containers/PostCard";
-import Announce from "../components/Announce";
 const Search = () => {
   const dispatch = useDispatch();
   const [searchTag, setSearchTag] = useState("");
@@ -36,7 +35,8 @@ const Search = () => {
           />
         </form>
         <span>{hashtagPosts && hashtagPosts.length}</span>
-        {hashtagPosts && hashtagPosts.length > 0 ? (
+        {hashtagPosts &&
+          hashtagPosts.length > 0 &&
           hashtagPosts.map(post => (
             <PostCard
               showMenu={true}
@@ -44,10 +44,7 @@ const Search = () => {
               key={post.id}
               route="hashtag"
             />
-          ))
-        ) : (
-          <Announce message={`#${searchTag} 검색된 결과가 없습니다.`} />
-        )}
+          ))}
       </div>
     </>
   );

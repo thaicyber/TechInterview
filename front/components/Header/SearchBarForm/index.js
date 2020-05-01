@@ -5,6 +5,8 @@ import UserSetting from "../../../containers/UserSetting";
 import Avatar from "../../Util/Avatar";
 import Router from "next/router";
 import { SearchBarLogoWrapper, SearchBarWrapper, AvatarWrap } from "./style";
+import { SearchOutlined } from "@ant-design/icons";
+import Link from "next/link";
 const SearchBarForm = () => {
   const dispatch = useDispatch();
   const [avatarClick, setAvatarClick] = useState(false);
@@ -30,7 +32,14 @@ const SearchBarForm = () => {
         <SearchBarLogoWrapper>
           <div></div>
           <SearchBarWrapper>
-            <AtdInput onChange={onChangeInput} />
+            {/* <AtdInput onChange={onChangeInput} /> */}
+            <Link href="/search" prefetch>
+              <a>
+                <div>
+                  <SearchOutlined />
+                </div>
+              </a>
+            </Link>
             <AvatarWrap>
               <Avatar
                 onClick={onClickAvatar}
@@ -41,7 +50,14 @@ const SearchBarForm = () => {
           </SearchBarWrapper>
         </SearchBarLogoWrapper>
       ) : (
-        <AtdInput onChange={onChangeInput} />
+        <Link href="/search" prefetch>
+          <a>
+            <div>
+              <SearchOutlined />
+            </div>
+          </a>
+        </Link>
+        // <AtdInput onChange={onChangeInput} />
       )}
       {avatarClick ? (
         <UserSetting
