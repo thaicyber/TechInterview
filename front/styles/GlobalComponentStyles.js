@@ -15,3 +15,15 @@ export const DescWrap = styled.div`
 export const Desc = styled.span`
   margin-top: 30px;
 `;
+
+export const ATag = styled.a`
+  &:link {
+    text-decoration: none;
+  }
+  &:visited {
+    text-decoration: none;
+  }
+  &:hover {
+    text-decoration: none;
+  }
+`;

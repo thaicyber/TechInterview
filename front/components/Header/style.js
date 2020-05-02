@@ -1,9 +1,10 @@
 import styled from "styled-components";
 import Theme from "../../styles/Theme";
+import { device } from "../../styles/device";
 
-export const HeaderWrapper = styled.div`
+export const HeaderContentWrapper = styled.div`
   display: grid;
-  grid-template-columns: 6.8fr 1.2fr 2fr;
+  grid-template-columns: 6.6fr 1.4fr 75px;
   position: fixed;
   z-index: 1;
   width: 100%;
@@ -12,6 +13,29 @@ export const HeaderWrapper = styled.div`
   background-color: white;
   border-bottom: 1px solid lightgray;
   height: 4rem;
+  @media ${device.mobileL} {
+    width: 100vw;
+    padding-left: 2.2rem;
+    padding-right: 1.5rem;
+  }
+
+  @media ${device.tablet} {
+    justify-content: center;
+    width: 600px;
+    padding-right: 1rem;
+  }
+
+  @media ${device.laptop} {
+    grid-template-columns: 7.3fr 0.7fr 75px;
+    justify-content: center;
+    width: 950px;
+    height: 4rem;
+  }
+`;
+
+export const HeaderWrapper = styled.div`
+  @media screen {
+  }
 `;
 
 export const LogoWrapper = styled.div`
@@ -22,13 +46,32 @@ export const LogoWrapper = styled.div`
 `;
 export const Title = styled.span`
   margin: 0.5rem 0;
+  cursor: pointer;
 `;
 
 export const IconWrapper = styled.div`
   width: 100%;
+  height: 100%;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
+
+  &:hover {
+    color: ${Theme.themeColor};
+  }
+`;
+
+export const HoverWrapper = styled.div`
+  width: 70%;
+  height: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  &:hover {
+    background-color: ${Theme.hoverColor};
+    border-radius: 50%;
+  }
 `;
 
 export const LogInWrapper = styled.div`

@@ -98,11 +98,15 @@ const AppLayout = ({ children }) => {
       default: {
         return (
           <AppLayoutWrapper>
-            <Header />
-            <Wrap isLogined={me ? true : false}>{children}</Wrap>
-            <PopularTagList />
-            <Footer />
-            <Nav />
+            <div>
+              <Header />
+              <Wrap isLogined={me ? true : false}>{children}</Wrap>
+            </div>
+            <div>
+              <PopularTagList />
+              <Footer />
+              <Nav />
+            </div>
           </AppLayoutWrapper>
         );
       }
