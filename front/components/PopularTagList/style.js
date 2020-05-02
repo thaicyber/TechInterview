@@ -12,7 +12,7 @@ export const PopularTagListWrapper = styled.div`
     position: fixed;
     right: 203px;
     top: 78px;
-    left: 60%;
+    left: 54%;
   }
 `;
 

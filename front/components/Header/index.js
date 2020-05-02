@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import SearchBarForm from "./SearchBarForm";
 import LogInOutBtn from "./LogInOutBtn";
 import {
@@ -15,11 +15,19 @@ import { useSelector } from "react-redux";
 import Link from "next/link";
 import { SearchOutlined } from "@ant-design/icons";
 import { ATag } from "../../styles/GlobalComponentStyles";
+import { AvatarWrap } from "./SearchBarForm/style";
+import Avatar from "../Util/Avatar";
+import UserSetting from "../../containers/UserSetting";
 const Header = () => {
   const { me } = useSelector(state => state.user);
+  const [avatarClick, setAvatarClick] = useState(false);
+  const onClickAvatar = () => {
+    setAvatarClick(true);
+    document.body.style.overflowY = "hidden";
+  };
   return (
     <HeaderWrapper>
-      <HeaderContentWrapper>
+      <HeaderContentWrapper isLogin={me ? true : false}>
         <LogoWrapper>
           <Link href="/" prefetch>
             <Title>
@@ -37,14 +45,26 @@ const Header = () => {
             </HoverWrapper>
           </Link>
         </IconWrapper>
-        <Link href="/login" prefetch>
-          <LogInWrapper>
-            <ATag>
-              <LogInButton>로그인</LogInButton>
-            </ATag>
-          </LogInWrapper>
-        </Link>
+        {me ? (
+          <AvatarWrap style={{ display: "flex", justifyContent: "center" }}>
+            <Avatar onClick={onClickAvatar} img={me.img} size="large"></Avatar>
+          </AvatarWrap>
+        ) : (
+          <Link href="/login" prefetch>
+            <LogInWrapper>
+              <ATag>
+                <LogInButton>로그인</LogInButton>
+              </ATag>
+            </LogInWrapper>
+          </Link>
+        )}
       </HeaderContentWrapper>
+      {avatarClick ? (
+        <UserSetting
+          setAvatarClick={setAvatarClick}
+          avatarClick={avatarClick}
+        />
+      ) : null}
     </HeaderWrapper>
   );
 };

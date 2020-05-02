@@ -6,6 +6,11 @@ export const PostCardWrapper = styled.div`
   background-color: white;
   /* background-color: #e6ecf0; */
   /* border-bottom: 1px solid #cdd6dd; */
+
+  @media ${device.tablet} {
+    display: flex;
+    justify-content: center;
+  }
 `;
 
 export const PrimeWrap = styled.div`
@@ -30,6 +35,11 @@ export const PrimeWrap = styled.div`
 
   @media ${device.tablet} {
     min-height: 72vh;
+  }
+
+  @media ${device.laptop} {
+    min-height: 77vh;
+    width: 80%;
   }
 `;
 

@@ -6,10 +6,18 @@ import {
 } from "../reducers/post";
 import styled from "styled-components";
 import { Input } from "antd";
+import { device } from "../styles/device";
 const SearchWrapper = styled.div`
   margin-top: 100px;
   width: 100vw;
   padding: 0 3rem;
+
+  @media ${device.tablet} {
+    width: 600px;
+  }
+  @media ${device.laptop} {
+    width: 950px;
+  }
 `;
 const SearchResultCountWrap = styled.div`
   margin-top: 1rem;
