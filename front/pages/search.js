@@ -1,6 +1,9 @@
 import React, { useState, useCallback, useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { LOAD_HASHTAG_POSTS_REQUEST } from "../reducers/post";
+import {
+  LOAD_HASHTAG_POSTS_REQUEST,
+  LOAD_HASHTAG_POSTS_INITIAL
+} from "../reducers/post";
 import styled from "styled-components";
 import { Input } from "antd";
 const SearchWrapper = styled.div`
@@ -21,6 +24,10 @@ const Search = () => {
   useEffect(() => {
     inputTag.current.focus();
     document.body.style.overflowY = "hidden";
+    return () => {
+      document.body.style.overflowY = "scroll";
+      dispatch({ type: LOAD_HASHTAG_POSTS_INITIAL });
+    };
   }, []);
   useEffect(() => {
     if (hashtagPosts.length === 0) {
@@ -40,7 +47,16 @@ const Search = () => {
     },
     [searchTag]
   );
-  const onSubmitSearchTag = useCallback(() => {}, []);
+  const onSubmitSearchTag = useCallback(
+    e => {
+      e.preventDefault();
+      dispatch({
+        type: LOAD_HASHTAG_POSTS_REQUEST,
+        data: searchTag
+      });
+    },
+    [searchTag]
+  );
   return (
     <>
       <SearchWrapper>

@@ -55,6 +55,7 @@ export const LOAD_MAIN_POSTS_FAILURE = "LOAD_MAIN_POSTS_FAILURE";
 export const LOAD_HASHTAG_POSTS_REQUEST = "LOAD_HASHTAG_POSTS_REQUEST";
 export const LOAD_HASHTAG_POSTS_SUCCESS = "LOAD_HASHTAG_POSTS_SUCCESS";
 export const LOAD_HASHTAG_POSTS_FAILURE = "LOAD_HASHTAG_POSTS_FAILURE";
+export const LOAD_HASHTAG_POSTS_INITIAL = "LOAD_HASHTAG_POSTS_INITIAL";
 
 export const LOAD_POST_REQUEST = "LOAD_POST_REQUEST";
 export const LOAD_POST_SUCCESS = "LOAD_POST_SUCCESS";
@@ -129,7 +130,10 @@ export const reducer = (state = initialState, action) => {
         draft.loadHashtagPostsErrorReason = action.error;
         break;
       }
-
+      case LOAD_HASHTAG_POSTS_INITIAL: {
+        draft.hashtagPosts = [];
+        break;
+      }
       case LOAD_USER_POSTS_REQUEST: {
         draft.isLoadingUserPosts = true;
         break;
