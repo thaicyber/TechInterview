@@ -11,7 +11,7 @@ export const HeaderContentWrapper = styled.div`
   padding: 0 1rem;
   top: 0;
   background-color: white;
-  border-bottom: 1px solid lightgray;
+  /* border-bottom: 1px solid lightgray; */
   height: 4rem;
   @media ${device.mobileL} {
     width: 100vw;

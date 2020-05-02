@@ -1,15 +1,34 @@
 import React, { useState, useCallback, useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { LOAD_HASHTAG_POSTS_REQUEST } from "../reducers/post";
+import styled from "styled-components";
+import { Input } from "antd";
+const SearchWrapper = styled.div`
+  margin-top: 100px;
+  width: 100vw;
+  padding: 0 3rem;
+`;
+const SearchResultCountWrap = styled.div`
+  margin-top: 1rem;
+`;
 import PostCard from "../containers/PostCard";
 const Search = () => {
+  const { Search } = Input;
   const dispatch = useDispatch();
   const [searchTag, setSearchTag] = useState("");
   const { hashtagPosts } = useSelector(state => state.post);
   const inputTag = useRef();
   useEffect(() => {
     inputTag.current.focus();
+    document.body.style.overflowY = "hidden";
   }, []);
+  useEffect(() => {
+    if (hashtagPosts.length === 0) {
+      document.body.style.overflowY = "hidden";
+    } else {
+      document.body.style.overflowY = "scroll";
+    }
+  }, [hashtagPosts.length]);
   const onChangeSearchTag = useCallback(
     e => {
       setSearchTag(e.target.value);
@@ -24,17 +43,25 @@ const Search = () => {
   const onSubmitSearchTag = useCallback(() => {}, []);
   return (
     <>
-      <div style={{ marginTop: "100px" }}>
+      <SearchWrapper>
         <form onSubmit={onSubmitSearchTag}>
-          <input
+          <Search
             type="text"
             value={searchTag}
             onChange={onChangeSearchTag}
             style={{ width: "120px", height: "30px" }}
             ref={inputTag}
+            style={{ width: "100%" }}
+            placeholder="검색어를 입력해 주세요."
           />
         </form>
-        <span>{hashtagPosts && hashtagPosts.length}</span>
+        <SearchResultCountWrap>
+          <span>
+            {hashtagPosts && hashtagPosts.length !== 0
+              ? `총 ${hashtagPosts.length}개의 포스트를 찾았습니다.`
+              : "검색결과가 없습니다."}
+          </span>
+        </SearchResultCountWrap>
         {hashtagPosts &&
           hashtagPosts.length > 0 &&
           hashtagPosts.map(post => (
@@ -45,7 +72,7 @@ const Search = () => {
               route="hashtag"
             />
           ))}
-      </div>
+      </SearchWrapper>
     </>
   );
 };

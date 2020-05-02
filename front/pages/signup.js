@@ -59,6 +59,7 @@ const LogoWrap = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
+  padding-top: 1rem;
 `;
 const IntroWrap = styled.div`
   padding: 4rem 2rem 2rem 2rem;
@@ -188,7 +189,7 @@ const Signup = () => {
         <Link href="/">
           <LogoWrap>
             <a>
-              <span>테크인터뷰</span>
+              <img src="/blackTopLogo.jpg" width="120px" height="50px" />
             </a>
           </LogoWrap>
         </Link>

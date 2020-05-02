@@ -48,6 +48,7 @@ const LogoWrap = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
+  padding-top: 1rem;
 `;
 const IntroWrap = styled.div`
   padding: 4rem 2rem 2rem 2rem;
@@ -61,6 +62,20 @@ const TopIntroWrap = styled.h1`
 const BottomIntroWrap = styled.h2`
   font-weight: 400;
   font-size: 1rem;
+`;
+const IntroSignUpWrapper = styled.div`
+  font-weight: 400;
+  font-size: 1rem;
+
+  & > span {
+    display: block;
+    margin-top: 1rem;
+    color: black;
+  }
+
+  & > span span {
+    color: ${Theme.themeColor};
+  }
 `;
 const UserInput = styled.input`
   width: 100%;
@@ -121,7 +136,7 @@ const Login = () => {
         <Link href="/">
           <LogoWrap>
             <a>
-              <span>테크인터뷰</span>
+              <img src="/blackTopLogo.jpg" width="120px" height="50px" />
             </a>
           </LogoWrap>
         </Link>
@@ -163,6 +178,16 @@ const Login = () => {
               로그인
             </AtdButton>
           </BtnWrapper>
+          <IntroSignUpWrapper>
+            <span>
+              아직 회원이 아니신가요?{" "}
+              <Link href="/signup">
+                <a>
+                  <span>회원가입</span>
+                </a>
+              </Link>
+            </span>
+          </IntroSignUpWrapper>
         </Form>
       </LoginContent>
     </LoginWrapper>

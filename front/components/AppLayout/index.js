@@ -95,6 +95,17 @@ const AppLayout = ({ children }) => {
           </AppLayoutWrapper>
         );
       }
+
+      case "/search": {
+        return (
+          <AppLayoutWrapper>
+            <div>
+              <Header />
+              <Wrap isLogined={me ? true : false}>{children}</Wrap>
+            </div>
+          </AppLayoutWrapper>
+        );
+      }
       default: {
         return (
           <AppLayoutWrapper>
