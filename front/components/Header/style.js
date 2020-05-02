@@ -1,9 +1,9 @@
 import styled from "styled-components";
+import Theme from "../../styles/Theme";
 
 export const HeaderWrapper = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
+  display: grid;
+  grid-template-columns: 6.8fr 1.2fr 2fr;
   position: fixed;
   z-index: 1;
   width: 100%;
@@ -11,36 +11,45 @@ export const HeaderWrapper = styled.div`
   top: 0;
   background-color: white;
   border-bottom: 1px solid lightgray;
-
-  @media (min-width: 600px) and (max-width: 1024px) {
-    justify-content: center;
-  }
-
-  @media (min-width: 1025px) {
-    grid-column: 1 / 3;
-    grid-row: 1 / 2;
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: center;
-    padding: 0 5.5rem;
-  }
-
-  @media (min-width: 1240px) {
-    grid-column: 1 / 3;
-    grid-row: 1 / 2;
-    display: flex;
-    justify-content: flex-start;
-    padding: 0 5.5rem;
-    min-height: 63px;
-  }
+  height: 4rem;
 `;
 
-export const TitleWrapper = styled.div`
+export const LogoWrapper = styled.div`
   width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
 `;
 export const Title = styled.span`
   margin: 0.5rem 0;
+`;
+
+export const IconWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+`;
+
+export const LogInWrapper = styled.div`
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+`;
+
+export const LogInButton = styled.button`
+  width: 100%;
+  height: 100%;
+  background-color: ${Theme.themeColor};
+  font-size: 1rem;
+  color: white;
+  border-radius: 1rem;
+  font-weight: 600;
+  word-break: keep-all;
+  cursor: pointer;
+  border-width: initial;
+  border-style: none;
+  border-color: initial;
+  border-image: initial;
+  outline: none;
+  padding-top: 0.27rem;
 `;
