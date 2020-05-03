@@ -49,13 +49,23 @@ const App = ({ Component, store, pageProps }) => {
             {
               property: "og:type",
               content: "website"
+            },
+            {
+              property: "og:image",
+              content: "http://techinterview.kr/logoCenterBlue.jpg"
             }
           ]}
           link={[
+            { rel: "shortcut icon", href: "/favicon.ico" },
             {
               rel: "stylesheet",
               href:
                 "https://cdnjs.cloudflare.com/ajax/libs/antd/3.26.11/antd.css"
+            }
+          ]}
+          script={[
+            {
+              src: "https://cdnjs.cloudflare.com/ajax/libs/antd/3.26.11/antd.js"
             }
           ]}
         />
