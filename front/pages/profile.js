@@ -13,7 +13,6 @@ import Theme from "../styles/Theme";
 import Link from "next/link";
 import Router from "next/router";
 import Helmet from "react-helmet";
-import { serverURL } from "../config/config";
 const ProfileWrapper = styled.div`
   display: grid;
   grid-template-rows: 182px 60px 1fr;
@@ -175,7 +174,7 @@ const Profile = memo(({ id }) => {
             },
             {
               property: "og:url",
-              content: `${serverURL}/profile/${id}`
+              content: `techinterview/profile/${id}`
             }
             // property og:image 추가
           ]}

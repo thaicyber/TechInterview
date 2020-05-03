@@ -136,7 +136,7 @@ const Login = () => {
         <Link href="/">
           <LogoWrap>
             <a>
-              <img src="/blackTopLogo.jpg" width="120px" height="50px" />
+              <img src="/logoCenterBlue.jpg" width="120px" height="50px" />
             </a>
           </LogoWrap>
         </Link>
