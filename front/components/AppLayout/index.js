@@ -90,7 +90,7 @@ const AppLayout = ({ children }) => {
             <SimpleHeader />
             <SimpleWrap>{children}</SimpleWrap>
             <PopularTagList />
-            <Footer />
+            {/* <Footer /> */}
             <Nav />
           </AppLayoutWrapper>
         );
@@ -115,7 +115,7 @@ const AppLayout = ({ children }) => {
             </div>
             <div>
               <PopularTagList />
-              <Footer />
+              {/* <Footer /> */}
               <Nav />
             </div>
           </AppLayoutWrapper>

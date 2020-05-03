@@ -13,7 +13,10 @@ export const CommentCardContentWrap = styled.div`
 export const CommentContent = styled.div`
   width: 100%;
   height: 100%;
+  display: grid;
+  grid-template-rows: 3fr 7fr;
 `;
+export const CommentContentWrap = styled.span``;
 export const Options = styled.div`
   display: flex;
   align-items: flex-start;
@@ -32,11 +35,18 @@ export const CommentInfoWrap = styled.div`
 export const CommentAuthorWrap = styled.div`
   margin-right: 1rem;
 `;
-export const CommentCreatedWrap = styled.div``;
+export const CommentCreatedWrap = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+`;
 export const Author = styled.span`
   font-weight: 900;
 `;
-export const CreatedTime = styled.span``;
+export const CreatedTime = styled.span`
+  font-size: 0.8rem;
+  font-weight: 400;
+`;
 export const ContentWrap = styled.span``;
 
 export const EditCommentWraper = styled.div`

@@ -28,7 +28,8 @@ import {
   DeleteCancelBtn,
   DeleteRequestBtn,
   ConfirmMessage,
-  BtnMessage
+  BtnMessage,
+  CommentContentWrap
 } from "./style";
 import Avatar from "../../components/Util/Avatar";
 import {
@@ -41,6 +42,8 @@ import Theme from "../../styles/Theme";
 import { useDispatch, useSelector } from "react-redux";
 import { DELETE_COMMENT_REQUEST } from "../../reducers/post";
 import Link from "next/link";
+import moment from "moment";
+moment.locale("ko");
 const CommentCard = props => {
   const { comment } = props;
   const { me } = useSelector(state => state.user);
@@ -143,10 +146,15 @@ const CommentCard = props => {
                 <Author>{comment.User.nickname}</Author>
               </CommentAuthorWrap>
               <CommentCreatedWrap>
-                <CreatedTime>{comment.createdAt}</CreatedTime>
+                <CreatedTime>
+                  {comment.createdAt &&
+                    moment(comment.createdAt).format("YYYY년 MM월 DD일")}
+                </CreatedTime>
               </CommentCreatedWrap>
             </CommentInfoWrap>
-            <ContentWrap>{comment.content}</ContentWrap>
+            <ContentWrap>
+              <CommentContentWrap>{comment.content}</CommentContentWrap>
+            </ContentWrap>
           </CommentContent>
           {comment && me && me.id === comment.UserId && (
             <Options onClick={onClickEditBtn}>

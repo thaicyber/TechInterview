@@ -210,6 +210,10 @@ export const CountWrap = styled.div`
   display: flex;
   align-items: center;
   margin-top: 0.2rem;
+
+  @media ${device.laptop} {
+    margin-left: 0.4rem;
+  }
 `;
 export const Count = styled.a`
   text-decoration: none;
@@ -245,8 +249,8 @@ export const CardContent = styled.div`
   -webkit-line-clamp: 5; /* 라인수 */
   -webkit-box-orient: vertical;
   word-wrap: break-word;
-  line-height: 1.1rem;
-  height: 5.3rem;
+  line-height: 1.2rem;
+  height: 6rem;
   font-size: 0.9rem;
   font-weight: 300;
   padding-left: 0.6rem;

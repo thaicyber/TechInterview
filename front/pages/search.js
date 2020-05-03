@@ -10,7 +10,6 @@ import { device } from "../styles/device";
 const SearchWrapper = styled.div`
   margin-top: 100px;
   width: 100vw;
-  padding: 0 3rem;
 
   @media ${device.tablet} {
     width: 600px;
@@ -68,24 +67,26 @@ const Search = () => {
   return (
     <>
       <SearchWrapper>
-        <form onSubmit={onSubmitSearchTag}>
-          <Search
-            type="text"
-            value={searchTag}
-            onChange={onChangeSearchTag}
-            style={{ width: "120px", height: "30px" }}
-            ref={inputTag}
-            style={{ width: "100%" }}
-            placeholder="검색어를 입력해 주세요."
-          />
-        </form>
-        <SearchResultCountWrap>
-          <span>
-            {hashtagPosts && hashtagPosts.length !== 0
-              ? `총 ${hashtagPosts.length}개의 포스트를 찾았습니다.`
-              : "검색결과가 없습니다."}
-          </span>
-        </SearchResultCountWrap>
+        <div style={{ padding: "0 3rem" }}>
+          <form onSubmit={onSubmitSearchTag}>
+            <Search
+              type="text"
+              value={searchTag}
+              onChange={onChangeSearchTag}
+              style={{ width: "120px", height: "30px" }}
+              ref={inputTag}
+              style={{ width: "100%" }}
+              placeholder="검색어를 입력해 주세요."
+            />
+          </form>
+          <SearchResultCountWrap>
+            <span>
+              {hashtagPosts && hashtagPosts.length !== 0
+                ? `총 ${hashtagPosts.length}개의 포스트를 찾았습니다.`
+                : "검색결과가 없습니다."}
+            </span>
+          </SearchResultCountWrap>
+        </div>
         {hashtagPosts &&
           hashtagPosts.length > 0 &&
           hashtagPosts.map(post => (
