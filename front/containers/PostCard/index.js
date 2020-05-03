@@ -45,7 +45,7 @@ const PostCard = memo(props => {
   const { post, showMenu, route } = props;
   const dispatch = useDispatch();
   const { me } = useSelector(state => state.user);
-  console.log("post", post);
+  // console.log("post", post);
   // console.log("me", me);
   // console.log("route", route);
   const urlRegEx = /^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n?]+)/;

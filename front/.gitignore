@@ -76,3 +76,7 @@ package-lock.json
 .serverless
 /front/build/
 
+*.pem
+.DS_Store
+.idea/
+*.iml
