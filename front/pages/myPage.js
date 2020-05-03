@@ -25,7 +25,7 @@ const MyPage = () => {
     [].forEach.call(e.target.files, f => {
       imageFormData.append("image", f);
     });
-
+    console.log("onChangeImages", imageFormData);
     dispatch({
       type: UPLOAD_PROFILE_IMAGE_REQUEST,
       data: imageFormData
