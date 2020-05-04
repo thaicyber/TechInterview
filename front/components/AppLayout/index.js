@@ -21,10 +21,21 @@ const AppLayout = ({ children }) => {
       }
       case "/comment": {
         return (
-          <>
-            <SimpleHeader />
-            <SimpleWrap>{children}</SimpleWrap>
-          </>
+          // <>
+          //   <SimpleHeader />
+          //   <SimpleWrap>{children}</SimpleWrap>
+          // </>
+          <AppLayoutWrapper>
+            <div>
+              <SimpleHeader />
+              <Wrap isLogined={me ? true : false}>{children}</Wrap>
+            </div>
+            <div>
+              <PopularTagList />
+              {/* <Footer /> */}
+              <Nav />
+            </div>
+          </AppLayoutWrapper>
         );
       }
       case "/myPage": {
@@ -98,12 +109,16 @@ const AppLayout = ({ children }) => {
 
       case "/search": {
         return (
-          <AppLayoutWrapper>
-            <div>
-              <Header />
-              <Wrap isLogined={me ? true : false}>{children}</Wrap>
-            </div>
-          </AppLayoutWrapper>
+          // <AppLayoutWrapper>
+          //   <div>
+          //     <Header />
+          //     <Wrap isLogined={me ? true : false}>{children}</Wrap>
+          //   </div>
+          // </AppLayoutWrapper>
+          <>
+            <SimpleHeader />
+            <SimpleWrap>{children}</SimpleWrap>
+          </>
         );
       }
       default: {

@@ -16,3 +16,7 @@ export const getRouteType = route => {
       return null;
   }
 };
+
+export const isMobile = () => {
+  return navigator.userAgent.indexOf("Mobi") > -1;
+};

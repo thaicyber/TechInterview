@@ -8,6 +8,7 @@ import Theme from "../styles/Theme";
 import { device } from "../styles/device";
 import Router from "next/router";
 import Link from "next/link";
+import { isMobile } from "../components/Util/meta";
 const SignupWrapper = styled.div`
   display: grid;
   height: 100vh;
@@ -118,7 +119,9 @@ const Signup = () => {
     }
   }, [signUpErrorReason]);
   useEffect(() => {
-    nicknameInput.current.focus();
+    if (!isMobile()) {
+      nicknameInput.current.focus();
+    }
   }, []);
   useEffect(() => {
     if (me) {

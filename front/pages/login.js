@@ -8,6 +8,7 @@ import Router from "next/router";
 import Theme from "../styles/Theme";
 import { device } from "../styles/device";
 import Link from "next/link";
+import { isMobile } from "../components/Util/meta";
 const LoginWrapper = styled.div`
   display: grid;
   height: 100vh;
@@ -113,7 +114,9 @@ const Login = () => {
     }
   }, [loginErrorReason]);
   useEffect(() => {
-    emailInput.current.focus();
+    if (!isMobile()) {
+      emailInput.current.focus();
+    }
   }, []);
   const onSubmitLogin = useCallback(e => {
     e.preventDefault();

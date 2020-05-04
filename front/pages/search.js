@@ -21,6 +21,13 @@ const SearchWrapper = styled.div`
 const SearchResultCountWrap = styled.div`
   margin-top: 1rem;
 `;
+const SearchContentWrap = styled.div`
+  padding: 0 1rem;
+
+  @media ${device.tablet} {
+    padding: 0 3rem;
+  }
+`;
 import PostCard from "../containers/PostCard";
 const Search = () => {
   const { Search } = Input;
@@ -67,7 +74,7 @@ const Search = () => {
   return (
     <>
       <SearchWrapper>
-        <div style={{ padding: "0 3rem" }}>
+        <SearchContentWrap>
           <form onSubmit={onSubmitSearchTag}>
             <Search
               type="text"
@@ -86,7 +93,7 @@ const Search = () => {
                 : "검색결과가 없습니다."}
             </span>
           </SearchResultCountWrap>
-        </div>
+        </SearchContentWrap>
         {hashtagPosts &&
           hashtagPosts.length > 0 &&
           hashtagPosts.map(post => (

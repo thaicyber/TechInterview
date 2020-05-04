@@ -81,10 +81,10 @@ export const WriteDate = styled.div`
 
 export const ContentWrap = styled.div`
   display: grid;
-  grid-template-rows: 15% 69% 8% 8%;
-  /* border-bottom: 1px solid #cdd6dd; */
-
-  @media ${device.tablet} {
+  grid-template-rows:
+    8% 71% 11% 10%
+    /* border-bottom: 1px solid #cdd6dd; */
+    @media ${device.tablet} {
     /* grid-template-rows: 12% 68% 8% 10%; */
   }
   @media ${device.laptop} {
@@ -95,7 +95,7 @@ export const ContentWrap = styled.div`
 
 export const CardWrap = styled.div`
   display: grid;
-  grid-template-rows: 45% 10% 35% 10%;
+  grid-template-rows: 45% 15% 30% 10%;
   width: 100%;
   height: 100%;
   /* border: 1px solid #cdd6dd; */
@@ -137,6 +137,13 @@ export const CardTitleWrap = styled(Wrap)`
   border-right: 1px solid #cdd6dd;
   padding-top: 0.2rem;
   padding-bottom: 0.2rem;
+  /* overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  word-wrap: break-word;
+  line-height: 1.2rem; */
 
   @media ${device.tablet} {
     padding-top: 0.4rem;
@@ -146,7 +153,8 @@ export const CardTitleWrap = styled(Wrap)`
 
 export const CardTitle = styled.span`
   font-weight: 400;
-  font-size: 0.9rem;
+  font-size: 1rem;
+  line-height: 1.3rem;
 `;
 
 export const CardLinkWrap = styled(Wrap)`
@@ -171,13 +179,17 @@ export const CardLink = styled.span`
 
 export const HashTagWrap = styled(Wrap)`
   padding-top: 0.8rem;
-
+  display: flex;
+  align-items: center;
+  padding-top: 0.3rem
   /* @media ${device.tablet} {
     padding-top: 1rem;
   } */
 `;
 
-export const HashTag = styled.span``;
+export const HashTag = styled.span`
+  line-height: 1.5rem;
+`;
 
 export const MenuWrap = styled.div`
   display: grid;
@@ -246,11 +258,11 @@ export const CardContent = styled.div`
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
-  -webkit-line-clamp: 5; /* 라인수 */
+  -webkit-line-clamp: 3; /* 라인수 */
   -webkit-box-orient: vertical;
   word-wrap: break-word;
   line-height: 1.2rem;
-  height: 6rem;
+  height: 3.7rem;
   font-size: 0.9rem;
   font-weight: 300;
   padding-left: 0.6rem;

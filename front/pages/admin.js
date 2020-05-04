@@ -53,10 +53,12 @@ const Admin = () => {
   }, []);
   const [companyId, setCompanyId] = useState("");
   const [text, setText] = useState("");
-  const [postImg, setPostImg] = useState("");
+  const [img, setImg] = useState("");
   const [link, setLink] = useState("");
   const [date, setDate] = useState("");
   const [title, setTitle] = useState("");
+  const [previewContent, setPreviewContent] = useState("");
+  const [type, setType] = useState("");
   const onChangeDate = e => {
     setDate(e.target.value);
   };
@@ -64,17 +66,26 @@ const Admin = () => {
     setLink(e.target.value);
   };
   const onChangeImg = e => {
-    setPostImg(e.target.value);
+    setImg(e.target.value);
   };
   const onChangeText = e => {
     setText(e.target.value);
   };
+  const onChangePreviewContent = e => {
+    setPreviewContent(e.target.value);
+  };
   const onChangeCompanyId = value => {
     setCompanyId(value);
+  };
+
+  const onChangeType = value => {
+    setType(value);
   };
   const onChangeTitle = e => {
     setTitle(e.target.value);
   };
+
+  const postTypes = ["frontend", "backend", "network", "database", "algorithm"];
   const onSubmitPost = useCallback(
     e => {
       e.preventDefault();
@@ -83,29 +94,34 @@ const Admin = () => {
         data: {
           content: text,
           companyId,
-          postImg,
+          img,
           link,
           publishedTime: date,
           title,
-          type: "frontEnd"
+          previewContent,
+          type
         }
       });
       console.log({
         companyId,
         text,
-        postImg,
+        img,
         link,
         date,
         date,
-        title
+        title,
+        previewContent,
+        type
       });
       setDate("");
-      setPostImg("");
+      setImg("");
       setText("");
       setTitle("");
       setLink("");
+      setPreviewContent("");
+      setType("");
     },
-    [companyId, text, postImg, link, date, title]
+    [companyId, text, img, link, date, title, type, previewContent]
   );
   return (
     <AdminWrapper>
@@ -115,7 +131,7 @@ const Admin = () => {
             <Label htmlFor="selectCompany">회사선택</Label>
             <AtdSelect
               name="selectCompany"
-              style={{ width: "20%" }}
+              style={{ width: "40%" }}
               onChange={onChangeCompanyId}
             >
               {companies &&
@@ -126,26 +142,49 @@ const Admin = () => {
                 ))}
             </AtdSelect>
           </SelectCompanyWrap>
+
+          <SelectCompanyWrap>
+            <Label htmlFor="selectType">주제선택</Label>
+            <AtdSelect
+              name="selectType"
+              style={{ width: "40%" }}
+              onChange={onChangeType}
+            >
+              {postTypes.map(v => (
+                <Select.Option key={v} value={v}>
+                  {v}
+                </Select.Option>
+              ))}
+            </AtdSelect>
+          </SelectCompanyWrap>
+
           <TitleWrap>
-            <Label htmlFor="title">Title</Label>
+            <Label htmlFor="title">제목</Label>
             <AtdInput name="title" onChange={onChangeTitle} value={title} />
           </TitleWrap>
           <ContentWrap>
-            <Label htmlFor="content">내용입력</Label>
+            <Label htmlFor="content">해시태그</Label>
             <Input.TextArea
               name="content"
-              style={{ width: "80%", height: "150px" }}
+              style={{ width: "80%", height: "40px" }}
               onChange={onChangeText}
               value={text}
             ></Input.TextArea>
           </ContentWrap>
+
+          <ContentWrap>
+            <Label htmlFor="previewContent">미리보기 내용</Label>
+            <Input.TextArea
+              name="previewContent"
+              style={{ width: "80%", height: "200px" }}
+              onChange={onChangePreviewContent}
+              value={previewContent}
+            ></Input.TextArea>
+          </ContentWrap>
+
           <ImgWrap>
             <Label htmlFor="imgAddress">이미지 주소 입력</Label>
-            <AtdInput
-              name="imgAddress"
-              onChange={onChangeImg}
-              value={postImg}
-            />
+            <AtdInput name="imgAddress" onChange={onChangeImg} value={img} />
           </ImgWrap>
           <LinkWrap>
             <Label htmlFor="linkAddress">링크 주소 입력</Label>
