@@ -14,19 +14,18 @@ const MyPageWrapper = styled.div`
 const IconWrap = styled.div`
   position: absolute;
   top: 43%;
-  right: 175px;
+  right: 11rem;
 `;
 const Form = styled.form``;
 const MyPage = () => {
+  const { me } = useSelector(state => state.user);
   const dispatch = useDispatch();
   const imageInput = useRef();
   const onChangeImages = useCallback(e => {
-    console.log(e.target.files);
     const imageFormData = new FormData();
     [].forEach.call(e.target.files, f => {
       imageFormData.append("image", f);
     });
-    console.log("onChangeImages", imageFormData);
     dispatch({
       type: UPLOAD_PROFILE_IMAGE_REQUEST,
       data: imageFormData
@@ -38,9 +37,14 @@ const MyPage = () => {
   return (
     <Form encType="multipart/form-data">
       <MyPageWrapper>
-        <Avatar size="superLarge" onClick={onClickImgUpload}>
+        <Avatar
+          size="superLarge"
+          onClick={onClickImgUpload}
+          img={me && me.img ? me.img : null}
+        >
           <input
             type="file"
+            accept="images/*"
             multiple
             hidden
             ref={imageInput}

@@ -25,7 +25,10 @@ export const initialState = {
   isLoadFollowersErrorReason: "", // 팔로워 리스트 불러오기 실패 사유
   isLoadFollowings: false, // 팔로잉 리스트 불러오기 시도 중
   isLoadedFollwings: false, // 팔로잉 리스트 불러오기 성공 유무
-  isLoadFollowingsErrorReason: "" // 팔로잉 리스트 불러오기 실패 사유
+  isLoadFollowingsErrorReason: "", // 팔로잉 리스트 불러오기 실패 사유
+  isUploadProfileImg: false, // 프로필 이미지 등록 시도 중
+  isUploadedProfileImg: false, // 프로필 이미지 등록 성공 유무
+  isUploadProfileImgErrorReason: ""
 };
 
 export const SIGN_UP_REQUEST = "SIGN_UP_REQUEST";
@@ -224,6 +227,22 @@ export const reducer = (state = initialState, action) => {
         draft.isLoadFollowings = false;
         draft.isLoadedFollwings = false;
         draft.isLoadFollowingsErrorReason = action.error;
+        break;
+      }
+      case UPLOAD_PROFILE_IMAGE_REQUEST: {
+        draft.isUploadProfileImg = true;
+        break;
+      }
+      case UPLOAD_PROFILE_IMAGE_SUCCESS: {
+        draft.isUploadProfileImg = false;
+        draft.isUploadedProfileImg = true;
+        draft.me = action.data;
+        break;
+      }
+      case UPLOAD_PROFILE_IMAGE_FAILURE: {
+        draft.isUploadProfileImgErrorReason = action.error;
+        draft.isUploadProfileImg = false;
+        draft.isUploadedProfileImg = false;
         break;
       }
 

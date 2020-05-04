@@ -86,7 +86,8 @@ const Admin = () => {
           postImg,
           link,
           publishedTime: date,
-          title
+          title,
+          type: "frontEnd"
         }
       });
       console.log({
