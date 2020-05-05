@@ -4,7 +4,7 @@ import { device } from "../../styles/device";
 
 export const HeaderContentWrapper = styled.div`
   display: grid;
-  grid-template-columns: 7fr 2fr 1fr;
+  grid-template-columns: 7fr 1fr 2fr;
   /* grid-template-columns: ${props =>
     props.isLogin ? "7fr 1.8fr 45px" : "6.6fr 1.4fr 75px;"} */
   position: fixed;
@@ -17,11 +17,11 @@ export const HeaderContentWrapper = styled.div`
 
   @media ${device.tablet} {
     padding-right : 0rem;
-    grid-template-columns: 9fr 0.5fr 1fr;
+    grid-template-columns: 8.5fr 0.5fr 1.5fr;
   }
   @media ${device.laptop} {
     width: 87.5%;
-    grid-template-columns: 9fr 0.5fr 0.5fr;
+    grid-template-columns: 9fr 0.5fr 1fr;
   }
   /* @media ${device.mobileL} {
     grid-template-columns: ${props =>
