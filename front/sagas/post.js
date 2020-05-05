@@ -236,7 +236,7 @@ function* watchDeleteComment() {
 function addCommentAPI(commentData) {
   return axios.post(
     `/post/${commentData.postId}/comment`,
-    { content: commentData.content },
+    { content: commentData.content, img: commentData.img },
     {
       withCredentials: true
     }

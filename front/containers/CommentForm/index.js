@@ -43,7 +43,8 @@ const CommentForm = props => {
           type: EDIT_COMMENT_REQUEST,
           data: {
             content: text,
-            commentId
+            commentId,
+            img: ""
           }
         });
       } else {
@@ -51,7 +52,8 @@ const CommentForm = props => {
           type: ADD_COMMENT_REQUEST,
           data: {
             content: text,
-            postId
+            postId,
+            img: ""
           }
         });
         setText("");

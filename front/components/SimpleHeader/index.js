@@ -4,6 +4,7 @@ import { SimpleHeaderWrapper, BackBtnWrap, TitleWrap, Title } from "./style";
 import Theme from "../../styles/Theme";
 import { useSelector } from "react-redux";
 import Router from "next/router";
+import Header from "../Header";
 const SimpleHeader = () => {
   const { post } = useSelector(state => state.post);
   const { me, userInfo } = useSelector(state => state.user);
@@ -35,6 +36,9 @@ const SimpleHeader = () => {
       }
       case "/likePosts": {
         return <Title>좋아요</Title>;
+      }
+      case "/search": {
+        return <Title>검색</Title>;
       }
       case "/hashtag": {
         return (

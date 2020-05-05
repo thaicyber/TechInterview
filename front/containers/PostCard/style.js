@@ -14,39 +14,25 @@ export const PostCardWrapper = styled.div`
 `;
 
 export const PrimeWrap = styled.div`
+  /* display: grid; */
+  /* grid-template-columns: 16% auto; */
   display: grid;
-  grid-template-columns: 16% auto;
+  grid-template-rows: 13% 66% 11% 10%;
   width: 100%;
-  min-height: 52vh;
-  padding: 1rem 1rem 0rem 1rem;
+  min-height: 63vh;
   margin-bottom: 0.1rem;
 
   @media ${device.mobileL} {
-    display: grid;
-    grid-template-columns: 16% auto;
-    width: 100%;
-    min-height: 62vh;
-    padding: 1rem 1rem 0rem 1rem;
-    margin-bottom: 0.1rem;
+    min-height: 73vh;
   }
   @media ${device.tablet} {
-    min-height: 62vh;
-  }
-
-  @media ${device.tablet} {
-    min-height: 72vh;
-  }
-
-  @media ${device.laptop} {
-    min-height: 77vh;
-    width: 80%;
   }
 `;
 
 export const AvatarWrap = styled.div`
-  display: grid;
+  /* display: grid;
   grid-template-rows: 15% 85%;
-  justify-content: center;
+  justify-content: center; */
   margin-top: 0.5rem;
   /* @media ${device.tablet} {
     margin-top: 0.6rem;
@@ -65,6 +51,7 @@ export const WriterName = styled.span`
   width: 100%;
   font-size: 1.2rem;
   font-weight: 500;
+  margin-left: 0.6rem;
 `;
 
 export const WriteDate = styled.div`
@@ -82,7 +69,7 @@ export const WriteDate = styled.div`
 export const ContentWrap = styled.div`
   display: grid;
   grid-template-rows:
-    8% 71% 11% 10%
+    13% 66% 11% 10%
     /* border-bottom: 1px solid #cdd6dd; */
     @media ${device.tablet} {
     /* grid-template-rows: 12% 68% 8% 10%; */
@@ -95,7 +82,7 @@ export const ContentWrap = styled.div`
 
 export const CardWrap = styled.div`
   display: grid;
-  grid-template-rows: 45% 15% 30% 10%;
+  grid-template-rows: 48% 14% 28% 10%;
   width: 100%;
   height: 100%;
   /* border: 1px solid #cdd6dd; */
@@ -103,12 +90,11 @@ export const CardWrap = styled.div`
   border-top-right-radius: 10px;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
-
+  @media ${device.mobileL} {
+  }
   @media ${device.tablet} {
-    grid-template-rows: 50% 10% 30% 10%;
   }
   @media ${device.laptop} {
-    /* grid-template-rows: 70% 13% 13%; */
   }
 `;
 
@@ -131,7 +117,7 @@ export const CardImage = styled.figure`
 
 export const CardTitleWrap = styled(Wrap)`
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   padding-left: 0.6rem;
   border-left: 1px solid #cdd6dd;
   border-right: 1px solid #cdd6dd;
@@ -151,9 +137,8 @@ export const CardTitleWrap = styled(Wrap)`
   }
 `;
 
-export const CardTitle = styled.span`
+export const CardTitle = styled.h4`
   font-weight: 400;
-  font-size: 1rem;
   line-height: 1.3rem;
 `;
 

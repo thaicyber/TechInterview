@@ -11,8 +11,8 @@ export const PopularTagListWrapper = styled.div`
     grid-template-rows: 2fr repeat(1fr, 6);
     position: fixed;
     right: 203px;
-    top: 78px;
-    left: 54%;
+    top: 96px;
+    left: 57%;
   }
 `;
 

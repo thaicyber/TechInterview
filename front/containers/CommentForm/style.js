@@ -1,5 +1,5 @@
 import styled from "styled-components";
-
+import { device } from "../../styles/device";
 export const CommentFormWrapper = styled.form`
   display: grid;
   grid-template-columns: 16% auto;
@@ -8,6 +8,11 @@ export const CommentFormWrapper = styled.form`
   min-height: 30vh;
   margin-bottom: 0.1rem;
   z-index: 0;
+
+  @media ${device.tablet} {
+    margin-top: 8.5rem;
+    padding: 0 3rem;
+  }
 `;
 export const UserImgWrap = styled.div`
   width: 100%;

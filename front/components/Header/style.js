@@ -4,31 +4,34 @@ import { device } from "../../styles/device";
 
 export const HeaderContentWrapper = styled.div`
   display: grid;
-  /* grid-template-columns: 6.6fr 1.4fr 75px; */
-  grid-template-columns: ${props =>
-    props.isLogin ? "7fr 1.8fr 45px" : "6.6fr 1.4fr 75px;"}
+  grid-template-columns: 7fr 2fr 1fr;
+  /* grid-template-columns: ${props =>
+    props.isLogin ? "7fr 1.8fr 45px" : "6.6fr 1.4fr 75px;"} */
   position: fixed;
   z-index: 1;
-  width: 100%;
-  padding: 0 1rem;
+  width: 95%;
   top: 0;
+  padding-right : 1rem;
   background-color: white;
-  /* border-bottom: 1px solid lightgray; */
   height: 4rem;
-  @media ${device.mobileL} {
+
+  @media ${device.tablet} {
+    padding-right : 0rem;
+    grid-template-columns: 9fr 0.5fr 1fr;
+  }
+  @media ${device.laptop} {
+    width: 87.5%;
+    grid-template-columns: 9fr 0.5fr 0.5fr;
+  }
+  /* @media ${device.mobileL} {
     grid-template-columns: ${props =>
       props.isLogin ? "8.5fr 1.2fr 45px" : "8.5fr 1.2fr 75px;"}
-    width: 100vw;
-    padding-left: 2.2rem;
-    padding-right: 1.5rem;
   }
 
   @media ${device.tablet} {
     grid-template-columns: ${props =>
       props.isLogin ? "8fr 1.3fr 45px" : "8fr 1.3fr 75px;"}
     justify-content: center;
-    width: 600px;
-    padding-right: 1rem;
   }
 
   @media ${device.laptop} {
@@ -36,16 +39,10 @@ export const HeaderContentWrapper = styled.div`
       props.isLogin ? "8.7fr 0.3fr 45px" : "8.7fr 0.3fr 75px;"}
     grid-template-columns: 7.3fr 0.7fr 75px;
     justify-content: center;
-    width: 950px;
-    height: 4rem;
-    padding : 0 5.5rem;
-  }
+  } */
 `;
 
-export const HeaderWrapper = styled.div`
-  @media screen {
-  }
-`;
+export const HeaderWrapper = styled.header``;
 
 export const LogoWrapper = styled.div`
   width: 100%;

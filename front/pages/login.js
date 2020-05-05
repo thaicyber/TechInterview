@@ -62,7 +62,7 @@ const TopIntroWrap = styled.h1`
 `;
 const BottomIntroWrap = styled.h2`
   font-weight: 400;
-  font-size: 1rem;
+  font-size: 0.9rem;
 `;
 const IntroSignUpWrapper = styled.div`
   font-weight: 400;
@@ -146,9 +146,9 @@ const Login = () => {
       </TopWrap>
       <IntroWrap>
         <TopIntroWrap>기술면접 준비는 테크인터뷰!</TopIntroWrap>
-        <BottomIntroWrap>
-          테크인터뷰는 기술면접에 필요한 포스트들 중 엄선된 포스트만 선별해서
-          모은 서비스 입니다.
+        <BottomIntroWrap style={{ lineHeight: "1.8rem" }}>
+          테크인터뷰는 기술면접에 필요한 포스트들 중 <br />
+          엄선된 포스트만 선별해서 제공하는 서비스 입니다.
         </BottomIntroWrap>
       </IntroWrap>
       <LoginContent>

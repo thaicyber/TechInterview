@@ -18,21 +18,22 @@ import { ATag } from "../../styles/GlobalComponentStyles";
 import { AvatarWrap } from "./SearchBarForm/style";
 import Avatar from "../Util/Avatar";
 import UserSetting from "../../containers/UserSetting";
-const Header = () => {
+import SimpleHeader from "../SimpleHeader";
+const Header = ({ isShowLogo }) => {
+  console.log("isShowLogo", isShowLogo);
   const { me } = useSelector(state => state.user);
   const [avatarClick, setAvatarClick] = useState(false);
   const onClickAvatar = () => {
     setAvatarClick(true);
     document.body.style.overflowY = "hidden";
   };
-  return (
+  return isShowLogo ? (
     <HeaderWrapper>
       <HeaderContentWrapper isLogin={me ? true : false}>
         <LogoWrapper>
           <Link href="/" prefetch>
             <Title>
               <img src="/logo.jpg" width="180px" />
-              {/* TechInterview */}
             </Title>
           </Link>
         </LogoWrapper>
@@ -46,7 +47,7 @@ const Header = () => {
           </Link>
         </IconWrapper>
         {me ? (
-          <AvatarWrap style={{ display: "flex", justifyContent: "center" }}>
+          <AvatarWrap style={{ display: "flex", justifyContent: "flex-end" }}>
             <Avatar onClick={onClickAvatar} img={me.img} size="large"></Avatar>
           </AvatarWrap>
         ) : (
@@ -66,6 +67,8 @@ const Header = () => {
         />
       ) : null}
     </HeaderWrapper>
+  ) : (
+    <SimpleHeader />
   );
 };
 

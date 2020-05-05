@@ -1,17 +1,24 @@
 import styled from "styled-components";
 import Theme from "../../styles/Theme";
+import { device } from "../../styles/device";
 
 export const SimpleHeaderWrapper = styled.div`
   display: flex;
   align-items: center;
   height: 73px;
-  padding: 0 1rem;
   background-color: white;
   position: fixed;
   width: 100%;
   top: 0;
   border-bottom: 1px solid lightgray;
   z-index: 1;
+  padding: 0 1rem;
+  @media ${device.tablet} {
+  }
+
+  @media ${device.laptop} {
+    padding: 0 5rem;
+  }
 `;
 
 export const BackBtnWrap = styled.div`

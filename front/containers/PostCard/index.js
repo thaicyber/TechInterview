@@ -83,125 +83,140 @@ const PostCard = memo(props => {
       <PostCardWrapper>
         {post && (
           <PrimeWrap>
-            <AvatarWrap>
-              <>
-                <Link
-                  href={{ pathname: "/profile", query: { id: post.UserId } }}
-                  prefetch
-                  as={`/profile/${post.UserId}`}
+            <WriterInfoWrap>
+              <AvatarWrap>
+                <>
+                  <Link
+                    href={{
+                      pathname: "/profile",
+                      query: { id: post.UserId }
+                    }}
+                    prefetch
+                    as={`/profile/${post.UserId}`}
+                  >
+                    <Avatar
+                      size="small"
+                      img={post.User && post.User.img ? post.User.img : null}
+                    />
+                  </Link>
+                </>
+              </AvatarWrap>
+              <WriterName>
+                {/* <span
+                  style={{
+                    marginLeft: "0.3rem",
+                    marginRight: "0.3rem",
+                    color: "rgb(0,0,0,0.4)"
+                  }}
                 >
-                  <Avatar
-                    size="large"
-                    img={post.User && post.User.img ? post.User.img : null}
-                  />
-                </Link>
-              </>
-            </AvatarWrap>
-            <ContentWrap>
-              <WriterInfoWrap>
-                <WriterName>
-                  {post && post.User && post.User.nickname}
-                </WriterName>
-                <WriteDate>
-                  <span>
-                    {post &&
-                      moment(post.publishedTime).format("YYYY년 MM월 DD일")}
-                  </span>
-                </WriteDate>
-              </WriterInfoWrap>
-              <CardWrap onClick={onClickCard(post.link)}>
-                <CardImageWrap>
-                  <CardImage img={post.img}></CardImage>
-                </CardImageWrap>
-                <CardTitleWrap>
-                  <CardTitle>{post.title}</CardTitle>
-                </CardTitleWrap>
-                <CardContentWrap>
-                  <CardContent>{post.previewContent}</CardContent>
-                </CardContentWrap>
-                <CardLinkWrap>
-                  <CardLink>
-                    {post.link && urlRegEx.exec(String(post.link))[1]}
-                  </CardLink>
-                </CardLinkWrap>
-              </CardWrap>
-              <HashTagWrap>
-                <HashTag>
-                  {post.content.split(/(#[^\s]+)/g).map(v => {
-                    if (v.match(/(#[^\s]+)/g)) {
-                      return (
-                        <Link
-                          href={{
-                            pathname: "/hashtag",
-                            query: { tag: v.slice(1) }
-                          }}
-                          prefetch
-                          as={`/hashtag/${v.slice(1)}`}
-                          key={v}
-                        >
-                          <a style={{ color: Theme.themeColor }}>{v}</a>
-                        </Link>
-                      );
-                    } else {
-                      return v;
-                    }
-                  })}
-                </HashTag>
-              </HashTagWrap>
-              {showMenu ? (
-                <MenuWrap>
+                  by
+                </span> */}
+                {post && post.User && post.User.nickname}
+              </WriterName>
+              <WriteDate>
+                <span>
+                  {post &&
+                    moment(post.publishedTime).format("YYYY년 MM월 DD일")}
+                </span>
+              </WriteDate>
+            </WriterInfoWrap>
+            <CardWrap onClick={onClickCard(post.link)}>
+              <CardImageWrap>
+                <CardImage img={post.img}></CardImage>
+              </CardImageWrap>
+              <CardTitleWrap>
+                <CardTitle>{post.title}</CardTitle>
+              </CardTitleWrap>
+              <CardContentWrap>
+                <CardContent>{post.previewContent}</CardContent>
+              </CardContentWrap>
+              <CardLinkWrap>
+                <CardLink>
+                  {post.link && urlRegEx.exec(String(post.link))[1]}
+                </CardLink>
+              </CardLinkWrap>
+            </CardWrap>
+            <HashTagWrap>
+              <HashTag>
+                {post.content.split(/(#[^\s]+)/g).map(v => {
+                  if (v.match(/(#[^\s]+)/g)) {
+                    return (
+                      <Link
+                        href={{
+                          pathname: "/hashtag",
+                          query: { tag: v.slice(1) }
+                        }}
+                        prefetch
+                        as={`/hashtag/${v.slice(1)}`}
+                        key={v}
+                      >
+                        <a style={{ color: Theme.themeColor }}>{v}</a>
+                      </Link>
+                    );
+                  } else {
+                    return v;
+                  }
+                })}
+              </HashTag>
+            </HashTagWrap>
+            {showMenu ? (
+              <MenuWrap>
+                <CommentWrap>
                   <Link
                     href={{ pathname: "/comment", query: { id: post.id } }}
                     prefetch
                     as={`/comment/${post.id}`}
                   >
-                    <CommentWrap>
-                      <IconWrap>
+                    <IconWrap>
+                      <a>
                         <MessageOutlined style={{ cursor: "pointer" }} />
-                      </IconWrap>
-                      <CountWrap>
-                        <Count>
-                          {post.Comments ? post.Comments.length : 0}
-                        </Count>
-                      </CountWrap>
-                    </CommentWrap>
-                  </Link>
-                  <LikeWrap>
-                    <IconWrap onClick={onClickLike}>
-                      {likeChecked ? (
-                        <Icon
-                          type="heart"
-                          theme="filled"
-                          style={{ color: "#eb2f96", cursor: "pointer" }}
-                        />
-                      ) : (
-                        <HeartOutlined
-                          style={{
-                            cursor: "pointer"
-                          }}
-                        />
-                      )}
+                      </a>
                     </IconWrap>
-                    <Link
-                      href={{
-                        pathname: "/postLikers",
-                        query: { id: post.id }
-                      }}
-                      prefetch
-                      as={`/postLikers/${post.id}`}
-                    >
-                      <CountWrap>
-                        <Count>{post.Likers ? post.Likers.length : 0}</Count>
-                      </CountWrap>
-                    </Link>
-                  </LikeWrap>
-                </MenuWrap>
-              ) : null}
-            </ContentWrap>
+                  </Link>
+                  <Link
+                    href={{ pathname: "/comment", query: { id: post.id } }}
+                    prefetch
+                    as={`/comment/${post.id}`}
+                  >
+                    <CountWrap>
+                      <Count>{post.Comments ? post.Comments.length : 0}</Count>
+                    </CountWrap>
+                  </Link>
+                </CommentWrap>
+                <LikeWrap>
+                  <IconWrap onClick={onClickLike}>
+                    {likeChecked ? (
+                      <Icon
+                        type="heart"
+                        theme="filled"
+                        style={{ color: "#eb2f96", cursor: "pointer" }}
+                      />
+                    ) : (
+                      <HeartOutlined
+                        style={{
+                          cursor: "pointer"
+                        }}
+                      />
+                    )}
+                  </IconWrap>
+                  <Link
+                    href={{
+                      pathname: "/postLikers",
+                      query: { id: post.id }
+                    }}
+                    prefetch
+                    as={`/postLikers/${post.id}`}
+                  >
+                    <CountWrap>
+                      <Count>{post.Likers ? post.Likers.length : 0}</Count>
+                    </CountWrap>
+                  </Link>
+                </LikeWrap>
+              </MenuWrap>
+            ) : null}
           </PrimeWrap>
         )}
       </PostCardWrapper>
-      <Line />
     </>
   );
 });

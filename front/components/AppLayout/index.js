@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { AppLayoutWrapper, Wrap, SimpleWrap } from "./style";
+import { AppLayoutWrapper, Wrap, MainContentWrapper } from "./style";
 import Header from "../Header";
 import PopularTagList from "../PopularTagList";
 import Footer from "../Footer";
@@ -9,6 +9,7 @@ import { LOAD_USER_REQUEST } from "../../reducers/user";
 import router from "next/router";
 import LeftSideBar from "../LeftSideBar";
 import SimpleHeader from "../SimpleHeader";
+import SearchForm from "../../containers/SearchForm";
 const AppLayout = ({ children }) => {
   const { me } = useSelector(state => state.user);
   const getLayout = () => {
@@ -23,12 +24,15 @@ const AppLayout = ({ children }) => {
         return (
           // <>
           //   <SimpleHeader />
-          //   <SimpleWrap>{children}</SimpleWrap>
+          //   <MainContentWrapper>{children}</MainContentWrapper>
           // </>
           <AppLayoutWrapper>
             <div>
+              <Header isShowLogo={true} />
               <SimpleHeader />
-              <Wrap isLogined={me ? true : false}>{children}</Wrap>
+              <MainContentWrapper isLogined={me ? true : false}>
+                {children}
+              </MainContentWrapper>
             </div>
             <div>
               <PopularTagList />
@@ -42,7 +46,7 @@ const AppLayout = ({ children }) => {
         return (
           <>
             <SimpleHeader />
-            <SimpleWrap>{children}</SimpleWrap>
+            <MainContentWrapper>{children}</MainContentWrapper>
           </>
         );
       }
@@ -50,7 +54,7 @@ const AppLayout = ({ children }) => {
         return (
           <>
             <SimpleHeader />
-            <SimpleWrap>{children}</SimpleWrap>
+            <MainContentWrapper>{children}</MainContentWrapper>
           </>
         );
       }
@@ -58,7 +62,7 @@ const AppLayout = ({ children }) => {
         return (
           <>
             <SimpleHeader />
-            <SimpleWrap>{children}</SimpleWrap>
+            <MainContentWrapper>{children}</MainContentWrapper>
           </>
         );
       }
@@ -66,7 +70,7 @@ const AppLayout = ({ children }) => {
         return (
           <>
             <SimpleHeader />
-            <SimpleWrap>{children}</SimpleWrap>
+            <MainContentWrapper>{children}</MainContentWrapper>
           </>
         );
       }
@@ -74,7 +78,7 @@ const AppLayout = ({ children }) => {
         return (
           <>
             <SimpleHeader />
-            <SimpleWrap>{children}</SimpleWrap>
+            <MainContentWrapper>{children}</MainContentWrapper>
           </>
         );
       }
@@ -82,7 +86,7 @@ const AppLayout = ({ children }) => {
         return (
           <>
             <SimpleHeader />
-            <SimpleWrap>{children}</SimpleWrap>
+            <MainContentWrapper>{children}</MainContentWrapper>
           </>
         );
       }
@@ -91,48 +95,46 @@ const AppLayout = ({ children }) => {
         return (
           <>
             <SimpleHeader />
-            <SimpleWrap>{children}</SimpleWrap>
+            <MainContentWrapper>{children}</MainContentWrapper>
           </>
         );
       }
       case "/hashtag": {
         return (
-          <AppLayoutWrapper>
-            <SimpleHeader />
-            <SimpleWrap>{children}</SimpleWrap>
-            <PopularTagList />
-            {/* <Footer /> */}
-            <Nav />
-          </AppLayoutWrapper>
+          <>
+            <Header isShowLogo={false} />
+            <AppLayoutWrapper>
+              <MainContentWrapper>{children}</MainContentWrapper>
+              {/* <PopularTagList /> */}
+              <Nav />
+            </AppLayoutWrapper>
+          </>
         );
+      }
+
+      case "/admin": {
+        return <>{children}</>;
       }
 
       case "/search": {
         return (
-          // <AppLayoutWrapper>
-          //   <div>
-          //     <Header />
-          //     <Wrap isLogined={me ? true : false}>{children}</Wrap>
-          //   </div>
-          // </AppLayoutWrapper>
           <>
-            <SimpleHeader />
-            <SimpleWrap>{children}</SimpleWrap>
+            <Header isShowLogo={false} />
+            <AppLayoutWrapper>
+              <SearchForm />
+              <MainContentWrapper>{children}</MainContentWrapper>
+            </AppLayoutWrapper>
           </>
         );
       }
       default: {
         return (
           <AppLayoutWrapper>
-            <div>
-              <Header />
-              <Wrap isLogined={me ? true : false}>{children}</Wrap>
-            </div>
-            <div>
-              <PopularTagList />
-              {/* <Footer /> */}
-              <Nav />
-            </div>
+            <Header isShowLogo={true} />
+            <MainContentWrapper>{children}</MainContentWrapper>
+            {/* <PopularTagList /> */}
+            {/* <Footer /> */}
+            <Nav />
           </AppLayoutWrapper>
         );
       }
