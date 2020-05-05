@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import SearchBarForm from "./SearchBarForm";
-import LogInOutBtn from "./LogInOutBtn";
 import {
   HeaderWrapper,
   LogoWrapper,
