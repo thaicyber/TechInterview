@@ -29,7 +29,6 @@ const Comment = ({ id }) => {
     isLoadingComments,
     isLoadedComments
   } = useSelector(state => state.post);
-  const { me } = useSelector(state => state.user);
   const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
     dispatch({
@@ -81,17 +80,16 @@ const Comment = ({ id }) => {
           <LoadingOutlined />
         </LoadingWrapper>
       )}
-      {me && (
-        <CommentForm
-          postId={
-            id ||
-            (Router &&
-              Router.router &&
-              Router.router.query &&
-              Router.router.query.tag)
-          }
-        />
-      )}
+
+      <CommentForm
+        postId={
+          id ||
+          (Router &&
+            Router.router &&
+            Router.router.query &&
+            Router.router.query.tag)
+        }
+      />
       {comments &&
         !isLoading &&
         comments.map(comment => (

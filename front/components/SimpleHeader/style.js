@@ -36,6 +36,15 @@ export const BackBtnWrap = styled.div`
   &:active {
     background-color: ${Theme.hoverColor};
   }
+  @media ${device.tablet} {
+    height: 37px;
+  }
+  @media ${device.tablet} {
+    height: 37px;
+  }
+  @media ${device.laptop} {
+    height: 40px;
+  }
 `;
 
 export const TitleWrap = styled.div`

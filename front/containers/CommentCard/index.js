@@ -104,8 +104,8 @@ const CommentCard = props => {
       )}
       {editBtnClick && (
         <EditCommentWraper>
-          <TopWrap></TopWrap>
-          <BottomWrap>
+          <TopWrap style={{ marginLeft: "-1rem" }}></TopWrap>
+          <BottomWrap style={{ marginLeft: "-1rem" }}>
             <Link
               href={{ pathname: "/commentEdit", query: { id: comment.id } }}
               as={`/commentEdit/${comment.id}`}
@@ -138,23 +138,18 @@ const CommentCard = props => {
       <CommentCardWrapper>
         <CommentCardContentWrap>
           <AvatarWrap>
-            <Avatar size="small" />
+            <Avatar size="large" />
           </AvatarWrap>
           <CommentContent>
-            <CommentInfoWrap>
-              <CommentAuthorWrap>
-                <Author>{comment.User.nickname}</Author>
-              </CommentAuthorWrap>
-              <CommentCreatedWrap>
-                <CreatedTime>
-                  {comment.createdAt &&
-                    moment(comment.createdAt).format("YYYY년 MM월 DD일")}
-                </CreatedTime>
-              </CommentCreatedWrap>
-            </CommentInfoWrap>
-            <ContentWrap>
-              <CommentContentWrap>{comment.content}</CommentContentWrap>
-            </ContentWrap>
+            <CommentAuthorWrap>
+              <Author>{comment.User.nickname}</Author>
+            </CommentAuthorWrap>
+            <CommentCreatedWrap>
+              <CreatedTime>
+                {comment.createdAt &&
+                  moment(comment.createdAt).format("YYYY년 MM월 DD일")}
+              </CreatedTime>
+            </CommentCreatedWrap>
           </CommentContent>
           {comment && me && me.id === comment.UserId && (
             <Options onClick={onClickEditBtn}>
@@ -164,6 +159,18 @@ const CommentCard = props => {
             </Options>
           )}
         </CommentCardContentWrap>
+        <ContentWrap>
+          <CommentContentWrap>
+            {comment.content.split("<br>").map((item, idx) => {
+              return (
+                <span key={idx}>
+                  {item}
+                  <br />
+                </span>
+              );
+            })}
+          </CommentContentWrap>
+        </ContentWrap>
       </CommentCardWrapper>
     </>
   );

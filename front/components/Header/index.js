@@ -7,31 +7,39 @@ import {
   LogInWrapper,
   LogInButton,
   HoverWrapper,
-  HeaderContentWrapper
+  HeaderContentWrapper,
+  AvatarWrap
 } from "./style";
 import { useSelector } from "react-redux";
 import Link from "next/link";
 import { SearchOutlined } from "@ant-design/icons";
 import { ATag } from "../../styles/GlobalComponentStyles";
-import { AvatarWrap } from "./SearchBarForm/style";
 import Avatar from "../Util/Avatar";
 import UserSetting from "../../containers/UserSetting";
 import SimpleHeader from "../SimpleHeader";
+// import { isMobile } from "../Util/meta";
 const Header = ({ isShowLogo }) => {
   console.log("isShowLogo", isShowLogo);
   const { me } = useSelector(state => state.user);
   const [avatarClick, setAvatarClick] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const onClickAvatar = () => {
     setAvatarClick(true);
     document.body.style.overflowY = "hidden";
   };
+  // useEffect(() => {
+  //   if (navigator.userAgent.indexOf("Mobi") > -1) {
+  //     setIsMobile(true);
+  //   }
+  // }, [navigator.userAgent.indexOf("Mobi") > -1]);
+
   return isShowLogo ? (
     <HeaderWrapper>
       <HeaderContentWrapper isLogin={me ? true : false}>
         <LogoWrapper>
           <Link href="/" prefetch>
             <Title>
-              <img src="/logo.jpg" width="180px" />
+              <img src="/logo.jpg" width={"170px"} />
             </Title>
           </Link>
         </LogoWrapper>

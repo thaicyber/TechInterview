@@ -1,22 +1,39 @@
 import styled, { css } from "styled-components";
 import Theme from "../../styles/Theme";
+import { device } from "../../styles/device";
 
 export const CommentCardWrapper = styled.div`
-  padding: 1rem 1rem 1rem 1rem;
+  padding: 1rem 0rem 1rem 0rem;
   border-bottom: 1px solid lightgray;
-  min-height: 70px;
+  min-height: 10rem;
 `;
 export const CommentCardContentWrap = styled.div`
   display: grid;
   grid-template-columns: 16% 74% 10%;
+
+  @media ${device.mobileL} {
+    grid-template-columns: 10% 80% 10%;
+  }
+  @media ${device.tablet} {
+    grid-template-columns: 7% 83% 10%;
+  }
 `;
 export const CommentContent = styled.div`
   width: 100%;
   height: 100%;
   display: grid;
-  grid-template-rows: 3fr 7fr;
+  grid-template-rows: 5fr 5fr;
+
+  @media ${device.mobileL} {
+    margin-left: 0.5rem;
+  }
+  @media ${device.tablet} {
+    margin-left: 0.7rem;
+  }
 `;
-export const CommentContentWrap = styled.span``;
+export const CommentContentWrap = styled.p`
+  font-size: 1rem;
+`;
 export const Options = styled.div`
   display: flex;
   align-items: flex-start;
@@ -29,25 +46,25 @@ export const AvatarWrap = styled.div`
   display: flex;
   justify-content: center;
 `;
-export const CommentInfoWrap = styled.div`
-  display: flex;
-`;
+export const CommentInfoWrap = styled.div``;
 export const CommentAuthorWrap = styled.div`
   margin-right: 1rem;
+  margin-top: 0.4rem;
 `;
 export const CommentCreatedWrap = styled.div`
   width: 100%;
   display: flex;
-  justify-content: flex-end;
 `;
 export const Author = styled.span`
-  font-weight: 900;
+  font-weight: 600;
 `;
 export const CreatedTime = styled.span`
   font-size: 0.8rem;
-  font-weight: 400;
+  font-weight: 300;
 `;
-export const ContentWrap = styled.span``;
+export const ContentWrap = styled.div`
+  padding: 1rem 0.4rem;
+`;
 
 export const EditCommentWraper = styled.div`
   z-index: 1;

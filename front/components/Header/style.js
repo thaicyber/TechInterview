@@ -4,42 +4,31 @@ import { device } from "../../styles/device";
 
 export const HeaderContentWrapper = styled.div`
   display: grid;
-  grid-template-columns: 7fr 1fr 2fr;
-  /* grid-template-columns: ${props =>
-    props.isLogin ? "7fr 1.8fr 45px" : "6.6fr 1.4fr 75px;"} */
+  grid-template-columns: ${props =>
+    props.isLogin ? "7.4fr 1.2fr 1.4fr" : "5.7fr 1.2fr 3fr"};
   position: fixed;
   z-index: 1;
   width: 95%;
   top: 0;
-  padding-right : 1rem;
+  padding-right: 1rem;
   background-color: white;
   height: 4rem;
-
+  @media ${device.mobileL} {
+    padding-right: 0rem;
+    grid-template-columns: ${props =>
+      props.isLogin ? "7.8fr 1.2fr 1fr" : "6fr 1.5fr 2.5fr"};
+  }
   @media ${device.tablet} {
-    padding-right : 0rem;
-    grid-template-columns: 8.5fr 0.5fr 1.5fr;
+    padding-right: 0rem;
+    grid-template-columns: ${props =>
+      props.isLogin ? "8.5fr 1fr 0.5fr" : "7.7fr 0.8fr 1.5fr"};
+    width: 97%;
   }
   @media ${device.laptop} {
     width: 87.5%;
-    grid-template-columns: 9fr 0.5fr 1fr;
-  }
-  /* @media ${device.mobileL} {
     grid-template-columns: ${props =>
-      props.isLogin ? "8.5fr 1.2fr 45px" : "8.5fr 1.2fr 75px;"}
+      props.isLogin ? "8.9fr 0.6fr 0.5fr" : "8.4fr 0.6fr 1fr"};
   }
-
-  @media ${device.tablet} {
-    grid-template-columns: ${props =>
-      props.isLogin ? "8fr 1.3fr 45px" : "8fr 1.3fr 75px;"}
-    justify-content: center;
-  }
-
-  @media ${device.laptop} {
-    grid-template-columns: ${props =>
-      props.isLogin ? "8.7fr 0.3fr 45px" : "8.7fr 0.3fr 75px;"}
-    grid-template-columns: 7.3fr 0.7fr 75px;
-    justify-content: center;
-  } */
 `;
 
 export const HeaderWrapper = styled.header``;
@@ -101,4 +90,9 @@ export const LogInButton = styled.button`
   border-image: initial;
   outline: none;
   padding-top: 0.27rem;
+`;
+export const AvatarWrap = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 `;

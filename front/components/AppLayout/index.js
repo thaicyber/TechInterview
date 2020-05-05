@@ -1,17 +1,29 @@
-import React, { useEffect } from "react";
-import { AppLayoutWrapper, Wrap, MainContentWrapper } from "./style";
+import React, { useEffect, useLayoutEffect, useState } from "react";
+import {
+  AppLayoutWrapper,
+  Wrap,
+  MainContentWrapper,
+  TopWrapper,
+  MainContentNoneGridWrapper,
+  AppLayoutSmallViewWrapper
+} from "./style";
 import Header from "../Header";
 import PopularTagList from "../PopularTagList";
 import Footer from "../Footer";
 import Nav from "../Nav";
-import { useDispatch, useSelector } from "react-redux";
-import { LOAD_USER_REQUEST } from "../../reducers/user";
 import router from "next/router";
-import LeftSideBar from "../LeftSideBar";
 import SimpleHeader from "../SimpleHeader";
 import SearchForm from "../../containers/SearchForm";
 const AppLayout = ({ children }) => {
-  const { me } = useSelector(state => state.user);
+  const [width, setWidth] = useState([0, 0]);
+  useLayoutEffect(() => {
+    const updateSize = () => {
+      setWidth(window.innerWidth);
+    };
+    window.addEventListener("resize", updateSize);
+    updateSize();
+    return () => window.removeEventListener("resize", updateSize);
+  }, []);
   const getLayout = () => {
     switch (router && router.router && router.router.pathname) {
       case "/login": {
@@ -22,31 +34,25 @@ const AppLayout = ({ children }) => {
       }
       case "/comment": {
         return (
-          // <>
-          //   <SimpleHeader />
-          //   <MainContentWrapper>{children}</MainContentWrapper>
-          // </>
-          <AppLayoutWrapper>
-            <div>
-              <Header isShowLogo={true} />
-              <SimpleHeader />
-              <MainContentWrapper isLogined={me ? true : false}>
+          <>
+            <Header isShowLogo={false} />
+            <AppLayoutSmallViewWrapper>
+              <MainContentNoneGridWrapper>
                 {children}
-              </MainContentWrapper>
-            </div>
-            <div>
-              <PopularTagList />
-              {/* <Footer /> */}
-              <Nav />
-            </div>
-          </AppLayoutWrapper>
+              </MainContentNoneGridWrapper>
+              {/* <PopularTagList /> */}
+            </AppLayoutSmallViewWrapper>
+          </>
         );
       }
       case "/myPage": {
         return (
           <>
-            <SimpleHeader />
-            <MainContentWrapper>{children}</MainContentWrapper>
+            <Header isShowLogo={false} />
+            <AppLayoutWrapper>
+              <MainContentWrapper>{children}</MainContentWrapper>
+              <Nav />
+            </AppLayoutWrapper>
           </>
         );
       }
@@ -94,8 +100,11 @@ const AppLayout = ({ children }) => {
       case "/commentEdit": {
         return (
           <>
-            <SimpleHeader />
-            <MainContentWrapper>{children}</MainContentWrapper>
+            <Header isShowLogo={false} />
+            <AppLayoutWrapper>
+              <MainContentWrapper>{children}</MainContentWrapper>
+              {/* <PopularTagList /> */}
+            </AppLayoutWrapper>
           </>
         );
       }

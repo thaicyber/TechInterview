@@ -82,7 +82,7 @@ export const ContentWrap = styled.div`
 
 export const CardWrap = styled.div`
   display: grid;
-  grid-template-rows: 48% 14% 28% 10%;
+  grid-template-rows: 49% 14% 27% 10%;
   width: 100%;
   height: 100%;
   /* border: 1px solid #cdd6dd; */

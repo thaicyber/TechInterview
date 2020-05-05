@@ -2,16 +2,13 @@ import styled from "styled-components";
 import { device } from "../../styles/device";
 export const CommentFormWrapper = styled.form`
   display: grid;
-  grid-template-columns: 16% auto;
   width: 100%;
-  padding: 1rem 1rem 0rem 1rem;
+  padding: 1rem 0rem 0rem 0rem;
   min-height: 30vh;
   margin-bottom: 0.1rem;
   z-index: 0;
 
   @media ${device.tablet} {
-    margin-top: 8.5rem;
-    padding: 0 3rem;
   }
 `;
 export const UserImgWrap = styled.div`
@@ -31,7 +28,7 @@ export const FormWrap = styled.div`
 `;
 export const BtnWrap = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   width: 100%;
   height: 100%;

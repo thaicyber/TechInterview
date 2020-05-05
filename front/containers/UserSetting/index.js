@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   UserSettingWrapper,
   UserSettingContent,
@@ -25,6 +25,11 @@ const UserSetting = props => {
   const { setAvatarClick, setShowMyAccount } = props;
   const { me, isLoggingOut } = useSelector(state => state.user);
   const dispatch = useDispatch();
+  useEffect(() => {
+    return () => {
+      document.body.style.overflowY = "scroll";
+    };
+  }, []);
   const onClickCancel = () => {
     if (setAvatarClick) {
       setAvatarClick(false);
@@ -32,7 +37,6 @@ const UserSetting = props => {
     if (setShowMyAccount) {
       setShowMyAccount(false);
     }
-    document.body.style.overflowY = "scroll";
   };
   const onClickLogOut = () => {
     dispatch({
@@ -93,6 +97,7 @@ const UserSetting = props => {
                     <span
                       style={{
                         fontSize: "1rem",
+
                         color: "rgb(101, 119, 134)"
                       }}
                     >
@@ -115,7 +120,7 @@ const UserSetting = props => {
                       style={{
                         marginLeft: "0.7rem",
                         fontSize: "1rem",
-                        fontWeight: "500",
+                        fontWeight: "800",
                         marginRight: "0.2rem",
                         color: "black"
                       }}
