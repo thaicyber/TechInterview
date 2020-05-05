@@ -1,7 +1,6 @@
 import React, { useRef, useCallback } from "react";
 import styled from "styled-components";
 import Avatar from "../components/Util/Avatar";
-import { CameraOutlined } from "@ant-design/icons";
 import { useDispatch, useSelector } from "react-redux";
 import { UPLOAD_PROFILE_IMAGE_REQUEST } from "../reducers/user";
 const MyPageWrapper = styled.div`
@@ -14,7 +13,7 @@ const MyPageWrapper = styled.div`
 const IconWrap = styled.div`
   position: absolute;
   top: 43%;
-  right: 11rem;
+  right: 48.4%;
 `;
 const Form = styled.form``;
 const MyPage = () => {
@@ -50,11 +49,11 @@ const MyPage = () => {
             ref={imageInput}
             onChange={onChangeImages}
           />
-          <IconWrap>
-            <CameraOutlined style={{ color: "white", fontSize: "20px" }} />
-          </IconWrap>
         </Avatar>
       </MyPageWrapper>
+      <div>
+        <span>{me.nickname}</span>
+      </div>
     </Form>
   );
 };

@@ -33,6 +33,7 @@ export const CommentContent = styled.div`
 `;
 export const CommentContentWrap = styled.p`
   font-size: 1rem;
+  line-height: 1.8rem;
 `;
 export const Options = styled.div`
   display: flex;
@@ -80,6 +81,13 @@ export const TopWrap = styled.div`
   width: 100%;
   height: 100%;
   background-color: rgb(0, 0, 0, 0.4);
+  margin-left: -1rem;
+
+  @media ${device.laptop} {
+    margin-left: 0rem;
+    width: 0%;
+    height: 0%;
+  }
 `;
 export const BottomWrap = styled.div`
   width: 100%;
@@ -88,6 +96,18 @@ export const BottomWrap = styled.div`
   position: relative;
   bottom: -1px;
   padding: 0.8rem;
+  margin-left: -1rem;
+
+  @media ${device.laptop} {
+    width: 30%;
+    height: 30%;
+    margin-left: 0rem;
+    position: fixed;
+    bottom: 43%;
+    left: 36%;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+  }
 `;
 const BtnWrapStyles = css`
   width: 100%;
@@ -133,6 +153,10 @@ export const DeleteMsgWrapper = styled.div`
   width: 100%;
   height: 100%;
   background-color: rgb(0, 0, 0, 0.4);
+
+  @media ${device.laptop} {
+    margin-left: -16rem;
+  }
 `;
 
 export const MsgWrap = styled.div`

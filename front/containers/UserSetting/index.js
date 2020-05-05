@@ -66,14 +66,20 @@ const UserSetting = props => {
               <div style={{ display: "flex", alignItems: "center" }}>
                 <Avatar size="large" img={me.img} />
               </div>
-              <div style={{ display: "flex", alignItems: "center" }}>
-                <MyPageWrap onClick={onClickCancel}>
-                  <Link href="/myPage">
-                    <MyPage>MyPage</MyPage>
-                  </Link>
-                </MyPageWrap>
-              </div>
             </AvatarMyPageWrap>
+            <Link href="/myPage">
+              <LikeWrap>
+                <span
+                  style={{
+                    fontSize: "1rem",
+                    fontWeight: "400",
+                    color: "rgb(101, 119, 134)"
+                  }}
+                >
+                  프로필
+                </span>
+              </LikeWrap>
+            </Link>
             <div style={{ display: "flex", alignItems: "center" }}>
               <Link
                 href={{

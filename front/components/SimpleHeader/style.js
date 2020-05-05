@@ -17,7 +17,7 @@ export const SimpleHeaderWrapper = styled.div`
   }
 
   @media ${device.laptop} {
-    padding: 0 5rem;
+    padding: 0 18rem;
   }
 `;
 

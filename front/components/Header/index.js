@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
   HeaderWrapper,
   LogoWrapper,
@@ -17,9 +17,7 @@ import { ATag } from "../../styles/GlobalComponentStyles";
 import Avatar from "../Util/Avatar";
 import UserSetting from "../../containers/UserSetting";
 import SimpleHeader from "../SimpleHeader";
-// import { isMobile } from "../Util/meta";
 const Header = ({ isShowLogo }) => {
-  console.log("isShowLogo", isShowLogo);
   const { me } = useSelector(state => state.user);
   const [avatarClick, setAvatarClick] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
@@ -27,12 +25,7 @@ const Header = ({ isShowLogo }) => {
     setAvatarClick(true);
     document.body.style.overflowY = "hidden";
   };
-  // useEffect(() => {
-  //   if (navigator.userAgent.indexOf("Mobi") > -1) {
-  //     setIsMobile(true);
-  //   }
-  // }, [navigator.userAgent.indexOf("Mobi") > -1]);
-
+  // isShowLogo가 False 경우, 로고가 없는 간단한 SimpleHeader컴포넌트 보여줌.
   return isShowLogo ? (
     <HeaderWrapper>
       <HeaderContentWrapper isLogin={me ? true : false}>

@@ -40,7 +40,6 @@ const AppLayout = ({ children }) => {
               <MainContentNoneGridWrapper>
                 {children}
               </MainContentNoneGridWrapper>
-              {/* <PopularTagList /> */}
             </AppLayoutSmallViewWrapper>
           </>
         );
@@ -49,10 +48,11 @@ const AppLayout = ({ children }) => {
         return (
           <>
             <Header isShowLogo={false} />
-            <AppLayoutWrapper>
-              <MainContentWrapper>{children}</MainContentWrapper>
-              <Nav />
-            </AppLayoutWrapper>
+            <AppLayoutSmallViewWrapper>
+              <MainContentNoneGridWrapper>
+                {children}
+              </MainContentNoneGridWrapper>
+            </AppLayoutSmallViewWrapper>
           </>
         );
       }

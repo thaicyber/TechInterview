@@ -144,7 +144,7 @@ const Signup = () => {
         userId: email,
         password,
         img:
-          "https://abs.twimg.com/sticky/default_profile_images/default_profile_bigger.png",
+          "https://abs.twimg.com/sticky/default_profile_images/default_profile_400x400.png",
         level: "company"
       }
     });

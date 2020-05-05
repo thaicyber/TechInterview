@@ -104,8 +104,8 @@ const CommentCard = props => {
       )}
       {editBtnClick && (
         <EditCommentWraper>
-          <TopWrap style={{ marginLeft: "-1rem" }}></TopWrap>
-          <BottomWrap style={{ marginLeft: "-1rem" }}>
+          <TopWrap></TopWrap>
+          <BottomWrap>
             <Link
               href={{ pathname: "/commentEdit", query: { id: comment.id } }}
               as={`/commentEdit/${comment.id}`}

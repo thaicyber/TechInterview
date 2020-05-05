@@ -9,11 +9,12 @@ export const AppLayoutWrapper = styled.div`
   }
 `;
 
+// pc인 경우, 가운데 컨텐츠를 보여주는 wrapper
 export const AppLayoutSmallViewWrapper = styled.div`
   padding: 0 1rem;
 
   @media ${device.laptop} {
-    padding: 0 16rem;
+    padding: 0 18rem;
   }
 `;
 
@@ -36,6 +37,7 @@ export const Wrap = styled.main`
   }
 `;
 
+// 메인 컨텐츠를 담아서 보여주는 wrapper
 export const MainContentWrapper = styled.main`
   margin-top: 73px;
   display: grid;
@@ -49,7 +51,7 @@ export const MainContentWrapper = styled.main`
     margin-top: 85px;
   }
 `;
-
+// 메인 컨텐츠를 보여주는 곳이 grid를 원하지 않을 때 사용하는 wrapper
 export const MainContentNoneGridWrapper = styled.main`
   margin-top: 73px;
 `;
