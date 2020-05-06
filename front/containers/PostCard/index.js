@@ -102,18 +102,7 @@ const PostCard = memo(props => {
                   </Link>
                 </>
               </AvatarWrap>
-              <WriterName>
-                {/* <span
-                  style={{
-                    marginLeft: "0.3rem",
-                    marginRight: "0.3rem",
-                    color: "rgb(0,0,0,0.4)"
-                  }}
-                >
-                  by
-                </span> */}
-                {post && post.User && post.User.nickname}
-              </WriterName>
+              <WriterName>{post && post.User && post.User.nickname}</WriterName>
               <WriteDate>
                 <span>
                   {post &&

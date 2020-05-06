@@ -148,7 +148,7 @@ const Profile = memo(({ id }) => {
     },
     []
   );
-  console.log("userInfo", userInfo);
+  // console.log("userInfo", userInfo);
   // console.log("userPosts", userPosts);
   // console.log("me", me);
   const alreadyFollow =
@@ -182,8 +182,14 @@ const Profile = memo(({ id }) => {
             {
               property: "og:url",
               content: `techinterview/profile/${id}`
+            },
+            {
+              property: "og:image",
+              content:
+                userInfo && userInfo.img
+                  ? userInfo.img
+                  : "http://techinterview.kr/favicon.ico"
             }
-            // property og:image 추가
           ]}
         />
       )}

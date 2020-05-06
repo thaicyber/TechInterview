@@ -1,9 +1,7 @@
-import React, { useEffect, useLayoutEffect, useState } from "react";
+import React from "react";
 import {
   AppLayoutWrapper,
-  Wrap,
   MainContentWrapper,
-  TopWrapper,
   MainContentNoneGridWrapper,
   AppLayoutSmallViewWrapper,
   AppLayoutMediumViewWrapper
@@ -13,7 +11,6 @@ import PopularTagList from "../PopularTagList";
 import Footer from "../Footer";
 import Nav from "../Nav";
 import router from "next/router";
-import SimpleHeader from "../SimpleHeader";
 import SearchForm from "../../containers/SearchForm";
 const AppLayout = ({ children }) => {
   const getLayout = () => {

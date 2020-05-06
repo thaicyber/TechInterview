@@ -4,8 +4,6 @@ import { Atag } from "../../styles/GlobalComponentStyles";
 export const PostCardWrapper = styled.div`
   width: 100%;
   background-color: white;
-  /* background-color: #e6ecf0; */
-  /* border-bottom: 1px solid #cdd6dd; */
   cursor: pointer;
   @media ${device.tablet} {
     display: flex;
@@ -14,8 +12,6 @@ export const PostCardWrapper = styled.div`
 `;
 
 export const PrimeWrap = styled.div`
-  /* display: grid; */
-  /* grid-template-columns: 16% auto; */
   display: grid;
   grid-template-rows: 13% 66% 11% 10%;
   width: 100%;
@@ -30,16 +26,7 @@ export const PrimeWrap = styled.div`
 `;
 
 export const AvatarWrap = styled.div`
-  /* display: grid;
-  grid-template-rows: 15% 85%;
-  justify-content: center; */
   margin-top: 0.5rem;
-  /* @media ${device.tablet} {
-    margin-top: 0.6rem;
-  }
-  @media ${device.laptop} {
-    margin-top: 0.6rem;
-  } */
 `;
 
 export const WriterInfoWrap = styled.div`
@@ -68,15 +55,7 @@ export const WriteDate = styled.div`
 
 export const ContentWrap = styled.div`
   display: grid;
-  grid-template-rows:
-    13% 66% 11% 10%
-    /* border-bottom: 1px solid #cdd6dd; */
-    @media ${device.tablet} {
-    /* grid-template-rows: 12% 68% 8% 10%; */
-  }
-  @media ${device.laptop} {
-    /* grid-template-rows: 10% 68% 8% 10%; */
-  }
+  grid-template-rows: 13% 66% 11% 10%;
 `;
 // title , img & content , hastag , nav 순서
 
@@ -90,12 +69,6 @@ export const CardWrap = styled.div`
   border-top-right-radius: 10px;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
-  @media ${device.mobileL} {
-  }
-  @media ${device.tablet} {
-  }
-  @media ${device.laptop} {
-  }
 `;
 
 const Wrap = styled.div`
@@ -124,13 +97,6 @@ export const CardTitleWrap = styled(Wrap)`
   border-right: 1px solid #cdd6dd;
   padding-top: 0.2rem;
   padding-bottom: 0.2rem;
-  /* overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
-  word-wrap: break-word;
-  line-height: 1.2rem; */
 
   @media ${device.tablet} {
     padding-top: 0.4rem;
@@ -167,10 +133,7 @@ export const HashTagWrap = styled(Wrap)`
   padding-top: 0.8rem;
   display: flex;
   align-items: center;
-  padding-top: 0.3rem
-  /* @media ${device.tablet} {
-    padding-top: 1rem;
-  } */
+  padding-top: 0.3rem;
 `;
 
 export const HashTag = styled.span`
