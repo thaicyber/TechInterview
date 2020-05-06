@@ -5,7 +5,7 @@ import { device } from "../../styles/device";
 export const HeaderContentWrapper = styled.div`
   display: grid;
   grid-template-columns: ${props =>
-    props.isLogin ? "7.4fr 1.2fr 1.4fr" : "5.7fr 1.2fr 3fr"};
+    props.isLogin ? "6.9fr 1.7fr 1.4fr" : "5.7fr 1.2fr 3fr"};
   position: fixed;
   z-index: 1;
   width: 95%;

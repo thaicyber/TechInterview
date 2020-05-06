@@ -18,7 +18,7 @@ const Nav = () => {
             <a>좋아요</a>
           </NavIconWrapper>
         </Link>
-        <NavIconWrapper>인터뷰</NavIconWrapper>
+        <NavIconWrapper>면접</NavIconWrapper>
         <NavIconWrapper>채용</NavIconWrapper>
         {me ? (
           <NavIconWrapper onClick={onClickMyAccount}>
