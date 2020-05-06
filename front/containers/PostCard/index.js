@@ -40,6 +40,7 @@ import {
 } from "../../reducers/post";
 import { getRouteType } from "../../components/Util/meta";
 import moment from "moment";
+import { ATag } from "../../styles/GlobalComponentStyles";
 moment.locale("ko");
 const PostCard = memo(props => {
   const { post, showMenu, route } = props;
@@ -150,7 +151,7 @@ const PostCard = memo(props => {
                         as={`/hashtag/${v.slice(1)}`}
                         key={v}
                       >
-                        <a style={{ color: Theme.themeColor }}>{v}</a>
+                        <ATag style={{ color: Theme.themeColor }}>{v}</ATag>
                       </Link>
                     );
                   } else {
@@ -168,9 +169,9 @@ const PostCard = memo(props => {
                     as={`/comment/${post.id}`}
                   >
                     <IconWrap>
-                      <a>
+                      <ATag>
                         <MessageOutlined style={{ cursor: "pointer" }} />
-                      </a>
+                      </ATag>
                     </IconWrap>
                   </Link>
                   <Link

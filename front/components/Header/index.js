@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useLayoutEffect } from "react";
 import {
   HeaderWrapper,
   LogoWrapper,
@@ -18,6 +18,15 @@ import Avatar from "../Util/Avatar";
 import UserSetting from "../../containers/UserSetting";
 import SimpleHeader from "../SimpleHeader";
 const Header = ({ isShowLogo }) => {
+  const [width, setWidth] = useState(0);
+  useLayoutEffect(() => {
+    const updateSize = () => {
+      setWidth(window.innerWidth);
+    };
+    window.addEventListener("resize", updateSize);
+    updateSize();
+    return () => window.removeEventListener("resize", updateSize);
+  }, []);
   const { me } = useSelector(state => state.user);
   const [avatarClick, setAvatarClick] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
@@ -32,7 +41,12 @@ const Header = ({ isShowLogo }) => {
         <LogoWrapper>
           <Link href="/" prefetch>
             <Title>
-              <img src="/logo.jpg" width={"170px"} />
+              {width > 375 ? (
+                <img src="/logo.jpg" width={"150px"} />
+              ) : (
+                <img src="/logo.jpg" width={"150px"} />
+                // <img src="/favicon.ico" width={"40px"} />
+              )}
             </Title>
           </Link>
         </LogoWrapper>
@@ -52,9 +66,11 @@ const Header = ({ isShowLogo }) => {
         ) : (
           <Link href="/login" prefetch>
             <LogInWrapper>
-              <LogInButton>
-                <ATag>로그인 / 가입</ATag>
-              </LogInButton>
+              <a>
+                <LogInButton>
+                  <span>로그인 / 가입</span>
+                </LogInButton>
+              </a>
             </LogInWrapper>
           </Link>
         )}

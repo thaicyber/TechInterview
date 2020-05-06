@@ -22,4 +22,8 @@ export const NavIconWrapper = styled.div`
   width: 25%;
   text-align: center;
   cursor: pointer;
+
+  &:visted {
+    color: red;
+  }
 `;

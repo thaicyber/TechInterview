@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 import { device } from "../../styles/device";
-
+import { Atag } from "../../styles/GlobalComponentStyles";
 export const PostCardWrapper = styled.div`
   width: 100%;
   background-color: white;
@@ -217,6 +217,15 @@ export const Count = styled.a`
   text-decoration: none;
   font-size: 0.8rem;
   margin-bottom: 0.1rem;
+  &:link {
+    text-decoration: none;
+  }
+  &:visited {
+    text-decoration: none;
+  }
+  &:hover {
+    text-decoration: none;
+  }
 `;
 export const IconWrap = styled.div`
   display: flex;

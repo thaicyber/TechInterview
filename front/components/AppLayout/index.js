@@ -16,15 +16,6 @@ import router from "next/router";
 import SimpleHeader from "../SimpleHeader";
 import SearchForm from "../../containers/SearchForm";
 const AppLayout = ({ children }) => {
-  const [width, setWidth] = useState([0, 0]);
-  useLayoutEffect(() => {
-    const updateSize = () => {
-      setWidth(window.innerWidth);
-    };
-    window.addEventListener("resize", updateSize);
-    updateSize();
-    return () => window.removeEventListener("resize", updateSize);
-  }, []);
   const getLayout = () => {
     switch (router && router.router && router.router.pathname) {
       case "/login": {
@@ -134,7 +125,7 @@ const AppLayout = ({ children }) => {
             <Header isShowLogo={false} />
             <AppLayoutWrapper>
               <MainContentWrapper>{children}</MainContentWrapper>
-              <Nav />
+              {/* <Nav /> */}
             </AppLayoutWrapper>
           </>
         );
@@ -162,7 +153,7 @@ const AppLayout = ({ children }) => {
             <MainContentWrapper>{children}</MainContentWrapper>
             {/* <PopularTagList /> */}
             {/* <Footer /> */}
-            <Nav />
+            {/* <Nav /> */}
           </AppLayoutWrapper>
         );
       }
