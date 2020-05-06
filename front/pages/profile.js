@@ -13,24 +13,25 @@ import Theme from "../styles/Theme";
 import Link from "next/link";
 import Router from "next/router";
 import Helmet from "react-helmet";
+import { device } from "../styles/device";
 const ProfileWrapper = styled.div`
   display: grid;
   grid-template-rows: 182px 60px 1fr;
   min-height: 100vh;
 `;
-const UserInfoWrap = styled.div`
+const UserInfoWrap = styled.section`
   width: 100%;
   height: 100%;
   display: flex;
 `;
-const UserFollowPostInfoWrap = styled.div`
+const UserFollowPostInfoWrap = styled.section`
   width: 100%;
   height: 100%;
   border-top: 1px solid lightgray;
   border-bottom: 1px solid lightgray;
   display: flex;
 `;
-const UserPostsWrap = styled.div`
+const UserPostsWrap = styled.section`
   width: 100%;
   height: 100%;
 `;
@@ -55,6 +56,7 @@ const BoxWrap = css`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 `;
 const PostWrap = styled.div`
   ${BoxWrap}
@@ -78,6 +80,7 @@ const Number = styled.span`
 const FollowBtnWrapCss = css`
   position: absolute;
   top: 5.5rem;
+  padding-left: 0.2rem;
   right: 1.5rem;
   display: flex;
   justify-content: center;
@@ -85,6 +88,10 @@ const FollowBtnWrapCss = css`
   width: 100px;
   height: 40px;
   border-radius: 20px;
+  cursor: pointer;
+  @media ${device.laptop} {
+    right: 18rem;
+  }
 `;
 const UnFollowBtnWrap = styled.div`
   ${FollowBtnWrapCss}

@@ -59,8 +59,12 @@ const AppLayout = ({ children }) => {
       case "/profile": {
         return (
           <>
-            <SimpleHeader />
-            <MainContentWrapper>{children}</MainContentWrapper>
+            <Header isShowLogo={false} />
+            <AppLayoutSmallViewWrapper>
+              <MainContentNoneGridWrapper>
+                {children}
+              </MainContentNoneGridWrapper>
+            </AppLayoutSmallViewWrapper>
           </>
         );
       }
