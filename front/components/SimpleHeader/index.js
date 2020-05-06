@@ -20,7 +20,7 @@ const SimpleHeader = () => {
         return <Title>{post && post.title}</Title>;
       }
       case "/myPage": {
-        return <Title>계정정보 수정</Title>;
+        return <Title>프로필 수정</Title>;
       }
       case "/profile": {
         return <Title>프로필</Title>;

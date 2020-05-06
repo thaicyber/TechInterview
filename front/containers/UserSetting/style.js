@@ -94,6 +94,7 @@ export const Nickname = styled.span`
 export const FollowerWrap = styled.div`
   width: 100%;
   height: 100%;
+  cursor: pointer;
 `;
 
 export const LogOutWrap = styled.div`
@@ -121,5 +122,6 @@ export const MyPage = styled.a`
 export const LikeWrap = styled.div`
   display: flex;
   align-items: center;
+  cursor: pointer;
 `;
 export const IconWrap = styled.div``;

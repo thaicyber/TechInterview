@@ -33,9 +33,9 @@ const getColor = ({ color }) => {
 };
 
 const Button = styled.button`
-  width: ${props => getSize(props)};
+  width: ${props => getSize(props.size)};
   height: 30px;
-  background-color: ${props => getColor(props)};
+  background-color: ${props => getColor(props.color)};
   color: white;
   cursor: ${props => (props.color === "active" ? "pointer" : "null")};
   border-radius: ${props => (props.borderRadius ? props.borderRadius : "null")};

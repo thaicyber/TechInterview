@@ -3,21 +3,31 @@ import styled from "styled-components";
 import Avatar from "../components/Util/Avatar";
 import { useDispatch, useSelector } from "react-redux";
 import { UPLOAD_PROFILE_IMAGE_REQUEST } from "../reducers/user";
-const MyPageWrapper = styled.div`
+import Theme from "../styles/Theme";
+import { Button } from "antd";
+const ImageNicknameWrapper = styled.section`
+  display: flex;
+  flex-direction: column;
+  margin-top: 90px;
+  justify-content: center;
+`;
+const ButtonWrap = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 90px;
-  position: relative;
-`;
-const IconWrap = styled.div`
-  position: absolute;
-  top: 43%;
-  right: 48.4%;
+  width: 9rem;
+  height: 2.2rem;
+  background-color: ${Theme.themeColor};
+  color: white;
+  font-size: 1.1rem;
+  border-radius: 4px;
+  outline: none;
+  border-style: none;
+  font-weight: 600;
 `;
 const Form = styled.form``;
 const MyPage = () => {
-  const { me } = useSelector(state => state.user);
+  const { me, isUploadProfileImg } = useSelector(state => state.user);
   const dispatch = useDispatch();
   const imageInput = useRef();
   const onChangeImages = useCallback(e => {
@@ -35,22 +45,28 @@ const MyPage = () => {
   }, [imageInput.current]);
   return (
     <Form encType="multipart/form-data">
-      <MyPageWrapper>
-        <Avatar
-          size="superLarge"
-          onClick={onClickImgUpload}
-          img={me && me.img ? me.img : null}
-        >
-          <input
-            type="file"
-            accept="images/*"
-            multiple
-            hidden
-            ref={imageInput}
-            onChange={onChangeImages}
-          />
-        </Avatar>
-      </MyPageWrapper>
+      <ImageNicknameWrapper>
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          <Avatar size="superLarge" img={me && me.img ? me.img : null}></Avatar>
+        </div>
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          <Button
+            type="primary"
+            onClick={onClickImgUpload}
+            loading={isUploadProfileImg}
+          >
+            <span>이미지 업로드</span>
+            <input
+              type="file"
+              accept="images/*"
+              multiple
+              hidden
+              ref={imageInput}
+              onChange={onChangeImages}
+            />
+          </Button>
+        </div>
+      </ImageNicknameWrapper>
       <div>
         <span>{me.nickname}</span>
       </div>
