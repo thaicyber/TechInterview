@@ -90,6 +90,7 @@ export const reducer = (state = initialState, action) => {
       case SIGN_UP_SUCCESS: {
         draft.isSignedUp = true;
         draft.isSigningUp = false;
+        draft.me = action.data;
         break;
       }
       case SIGN_UP_FAILURE: {

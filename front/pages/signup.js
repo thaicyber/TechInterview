@@ -1,9 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import { Form, Button } from "antd";
-import useInput from "../customHooks/useInput";
 import { useSelector, useDispatch } from "react-redux";
-import { SIGN_UP_REQUEST, SIGN_UP_FAILURE_RESET } from "../reducers/user";
+import {
+  SIGN_UP_REQUEST,
+  SIGN_UP_FAILURE_RESET,
+  LOG_IN_REQUEST
+} from "../reducers/user";
 import Theme from "../styles/Theme";
 import { device } from "../styles/device";
 import Router from "next/router";
@@ -105,12 +108,6 @@ const Signup = () => {
   );
   const nicknameInput = useRef();
   useEffect(() => {
-    if (isSignedUp) {
-      alert("회원가입 성공! 로그인 페이지로 이동합니다.");
-      Router.push("/login");
-    }
-  }, [isSignedUp]);
-  useEffect(() => {
     if (signUpErrorReason) {
       alert("이미 존재하는 이메일 주소 입니다. 다시 입력해 주세요.");
       dispatch({
@@ -125,11 +122,17 @@ const Signup = () => {
   }, []);
   useEffect(() => {
     if (me) {
-      alert("현재 로그인 중 입니다. 메인페이지로 이동합니다.");
+      dispatch({
+        type: LOG_IN_REQUEST,
+        data: {
+          userId: email,
+          password
+        }
+      });
       Router.push("/");
     }
   }, [me]);
-  const onSubmitSignup = e => {
+  const onSubmitSignup = async e => {
     e.preventDefault();
     if (emailError) {
       return alert("유효한 이메일 주소를 입력해주세요.");
