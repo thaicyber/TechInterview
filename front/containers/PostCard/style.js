@@ -6,7 +6,7 @@ export const PostCardWrapper = styled.div`
   background-color: white;
   /* background-color: #e6ecf0; */
   /* border-bottom: 1px solid #cdd6dd; */
-
+  cursor: pointer;
   @media ${device.tablet} {
     display: flex;
     justify-content: center;

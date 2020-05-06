@@ -244,6 +244,8 @@ export const reducer = (state = initialState, action) => {
         draft.isUploadProfileImg = false;
         draft.isUploadedProfileImg = true;
         draft.me = action.data;
+        draft.followingList = [];
+        draft.followerList = [];
         break;
       }
       case UPLOAD_PROFILE_IMAGE_FAILURE: {
@@ -261,6 +263,8 @@ export const reducer = (state = initialState, action) => {
         draft.isDeleteProfileImg = false;
         draft.isDeletedProfileImg = true;
         draft.me.img = action.data;
+        draft.followingList = [];
+        draft.followerList = [];
         break;
       }
       case PROFILE_IMAGE_DELETE_FAILURE: {

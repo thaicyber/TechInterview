@@ -148,7 +148,7 @@ const Profile = memo(({ id }) => {
     },
     []
   );
-  // console.log("userInfo", userInfo);
+  console.log("userInfo", userInfo);
   // console.log("userPosts", userPosts);
   // console.log("me", me);
   const alreadyFollow =
@@ -205,7 +205,10 @@ const Profile = memo(({ id }) => {
             </FollowBtnWrap>
           )}
           <AvatarWrap>
-            <Avatar size="midLarge" />
+            <Avatar
+              size="midLarge"
+              img={userInfo && userInfo.img ? userInfo.img : false}
+            />
           </AvatarWrap>
           <NicknameWrap>
             <Nickname>{userInfo && userInfo.nickname}</Nickname>

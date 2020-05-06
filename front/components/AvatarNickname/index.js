@@ -16,9 +16,9 @@ const AvatarNickname = ({ userInfo }) => {
         prefetch
         as={`/profile/${userInfo.id}`}
       >
-        <a>
+        <a style={{ display: "flex", alignItems: "center" }}>
           <AvartarWrap>
-            <Avatar size="smallLarge" />
+            <Avatar size="smallLarge" img={userInfo.img} />
           </AvartarWrap>
         </a>
       </Link>

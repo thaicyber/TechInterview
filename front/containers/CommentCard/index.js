@@ -83,7 +83,7 @@ const CommentCard = props => {
     }
   }, [isDeletingComment]);
 
-  // console.log("comment", comment);
+  console.log("comment", comment);
   // console.log("@@@@@me@@@@@@@@@", me);
   return (
     <>
@@ -138,7 +138,7 @@ const CommentCard = props => {
       <CommentCardWrapper>
         <CommentCardContentWrap>
           <AvatarWrap>
-            <Avatar size="large" />
+            <Avatar size="large" img={comment.User.img} />
           </AvatarWrap>
           <CommentContent>
             <CommentAuthorWrap>

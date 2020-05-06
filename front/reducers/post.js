@@ -1,4 +1,8 @@
 import produce from "immer";
+import {
+  PROFILE_IMAGE_DELETE_SUCCESS,
+  UPLOAD_PROFILE_IMAGE_SUCCESS
+} from "./user";
 
 export const initialState = {
   addPostErrorReason: "", // 포스트 업로드 실패 사유
@@ -385,6 +389,15 @@ export const reducer = (state = initialState, action) => {
         break;
       }
       case LOAD_COUNT_POSTS_FAILURE: {
+        break;
+      }
+
+      case PROFILE_IMAGE_DELETE_SUCCESS: {
+        draft.mainPosts = [];
+        break;
+      }
+      case UPLOAD_PROFILE_IMAGE_SUCCESS: {
+        draft.mainPosts = [];
         break;
       }
 

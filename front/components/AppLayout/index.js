@@ -72,32 +72,48 @@ const AppLayout = ({ children }) => {
       case "/followers": {
         return (
           <>
-            <SimpleHeader />
-            <MainContentWrapper>{children}</MainContentWrapper>
+            <Header isShowLogo={false} />
+            <AppLayoutSmallViewWrapper>
+              <MainContentNoneGridWrapper>
+                {children}
+              </MainContentNoneGridWrapper>
+            </AppLayoutSmallViewWrapper>
           </>
         );
       }
       case "/followings": {
         return (
           <>
-            <SimpleHeader />
-            <MainContentWrapper>{children}</MainContentWrapper>
+            <Header isShowLogo={false} />
+            <AppLayoutSmallViewWrapper>
+              <MainContentNoneGridWrapper>
+                {children}
+              </MainContentNoneGridWrapper>
+            </AppLayoutSmallViewWrapper>
           </>
         );
       }
       case "/postLikers": {
         return (
           <>
-            <SimpleHeader />
-            <MainContentWrapper>{children}</MainContentWrapper>
+            <Header isShowLogo={false} />
+            <AppLayoutSmallViewWrapper>
+              <MainContentNoneGridWrapper>
+                {children}
+              </MainContentNoneGridWrapper>
+            </AppLayoutSmallViewWrapper>
           </>
         );
       }
       case "/likePosts": {
         return (
           <>
-            <SimpleHeader />
-            <MainContentWrapper>{children}</MainContentWrapper>
+            <Header isShowLogo={false} />
+            <AppLayoutSmallViewWrapper>
+              <MainContentNoneGridWrapper>
+                {children}
+              </MainContentNoneGridWrapper>
+            </AppLayoutSmallViewWrapper>
           </>
         );
       }
@@ -108,7 +124,6 @@ const AppLayout = ({ children }) => {
             <Header isShowLogo={false} />
             <AppLayoutWrapper>
               <MainContentWrapper>{children}</MainContentWrapper>
-              {/* <PopularTagList /> */}
             </AppLayoutWrapper>
           </>
         );
@@ -119,7 +134,6 @@ const AppLayout = ({ children }) => {
             <Header isShowLogo={false} />
             <AppLayoutWrapper>
               <MainContentWrapper>{children}</MainContentWrapper>
-              {/* <PopularTagList /> */}
               <Nav />
             </AppLayoutWrapper>
           </>
