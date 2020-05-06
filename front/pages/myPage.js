@@ -2,7 +2,10 @@ import React, { useRef, useCallback } from "react";
 import styled from "styled-components";
 import Avatar from "../components/Util/Avatar";
 import { useDispatch, useSelector } from "react-redux";
-import { UPLOAD_PROFILE_IMAGE_REQUEST } from "../reducers/user";
+import {
+  UPLOAD_PROFILE_IMAGE_REQUEST,
+  PROFILE_IMAGE_DELETE_REQUEST
+} from "../reducers/user";
 import Theme from "../styles/Theme";
 import { Button } from "antd";
 const ImageNicknameWrapper = styled.section`
@@ -11,7 +14,7 @@ const ImageNicknameWrapper = styled.section`
   margin-top: 90px;
   justify-content: center;
 `;
-const ButtonWrap = styled.div`
+const ButtonWrap = styled(Button)`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -23,11 +26,13 @@ const ButtonWrap = styled.div`
   border-radius: 4px;
   outline: none;
   border-style: none;
-  font-weight: 600;
+  font-weight: 500;
 `;
 const Form = styled.form``;
 const MyPage = () => {
-  const { me, isUploadProfileImg } = useSelector(state => state.user);
+  const { me, isUploadProfileImg, isDeleteProfileImg } = useSelector(
+    state => state.user
+  );
   const dispatch = useDispatch();
   const imageInput = useRef();
   const onChangeImages = useCallback(e => {
@@ -43,6 +48,13 @@ const MyPage = () => {
   const onClickImgUpload = useCallback(() => {
     imageInput.current.click();
   }, [imageInput.current]);
+  const onClickImgDelete = () => {
+    dispatch({
+      type: PROFILE_IMAGE_DELETE_REQUEST,
+      data:
+        "https://abs.twimg.com/sticky/default_profile_images/default_profile_400x400.png"
+    });
+  };
   return (
     <Form encType="multipart/form-data">
       <ImageNicknameWrapper>
@@ -50,7 +62,7 @@ const MyPage = () => {
           <Avatar size="superLarge" img={me && me.img ? me.img : null}></Avatar>
         </div>
         <div style={{ display: "flex", justifyContent: "center" }}>
-          <Button
+          <ButtonWrap
             type="primary"
             onClick={onClickImgUpload}
             loading={isUploadProfileImg}
@@ -64,12 +76,24 @@ const MyPage = () => {
               ref={imageInput}
               onChange={onChangeImages}
             />
-          </Button>
+          </ButtonWrap>
+        </div>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            marginTop: "0.5rem"
+          }}
+        >
+          <ButtonWrap
+            type="primary"
+            onClick={onClickImgDelete}
+            loading={isDeleteProfileImg}
+          >
+            <span>이미지 삭제</span>
+          </ButtonWrap>
         </div>
       </ImageNicknameWrapper>
-      <div>
-        <span>{me.nickname}</span>
-      </div>
     </Form>
   );
 };

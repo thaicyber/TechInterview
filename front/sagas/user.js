@@ -29,9 +29,41 @@ import {
   LOAD_FOLLOWERS_REQUEST,
   LOAD_FOLLOWINGS_SUCCESS,
   LOAD_FOLLOWINGS_FAILURE,
-  LOAD_FOLLOWINGS_REQUEST
+  LOAD_FOLLOWINGS_REQUEST,
+  PROFILE_IMAGE_DELETE_SUCCESS,
+  PROFILE_IMAGE_DELETE_FAILURE,
+  PROFILE_IMAGE_DELETE_REQUEST
 } from "../reducers/user";
 import axios from "axios";
+
+function profileImageDeleteAPI(img) {
+  return axios.patch(
+    `/user/profileImg`,
+    { img },
+    {
+      withCredentials: true
+    }
+  );
+}
+
+function* profileImageDelete(action) {
+  try {
+    const result = yield call(profileImageDeleteAPI, action.data);
+    yield put({
+      type: PROFILE_IMAGE_DELETE_SUCCESS,
+      data: result.data
+    });
+  } catch (e) {
+    console.error(e);
+    yield put({
+      type: PROFILE_IMAGE_DELETE_FAILURE,
+      error: e
+    });
+  }
+}
+function* watchProfileImageDelete() {
+  yield takeLatest(PROFILE_IMAGE_DELETE_REQUEST, profileImageDelete);
+}
 
 function loadFollowingsAPI(userId) {
   return axios.get(`/user/${userId}/followings`, { withCredentials: true });
@@ -269,6 +301,7 @@ export default function* userSaga() {
     fork(watchFollowUser),
     fork(watchUnFollowUser),
     fork(watchLoadFollowers),
-    fork(watchLoadFollowings)
+    fork(watchLoadFollowings),
+    fork(watchProfileImageDelete)
   ]);
 }

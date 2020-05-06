@@ -28,7 +28,10 @@ export const initialState = {
   isLoadFollowingsErrorReason: "", // 팔로잉 리스트 불러오기 실패 사유
   isUploadProfileImg: false, // 프로필 이미지 등록 시도 중
   isUploadedProfileImg: false, // 프로필 이미지 등록 성공 유무
-  isUploadProfileImgErrorReason: ""
+  isUploadProfileImgErrorReason: "", // 프로필 이미지 등록 실패 사유
+  isDeleteProfileImg: false, // 프로필 이미지 제거 시도 중
+  isDeletedProfileImg: false, // 프로필 이미지 제거 성공 유무
+  isDeleteProfileImgErrorReason: "" // 프로필 이미지 제거 실패 사유
 };
 
 export const SIGN_UP_REQUEST = "SIGN_UP_REQUEST";
@@ -56,6 +59,10 @@ export const LOAD_USER_FAILURE = "LOAD_USER_FAILURE";
 export const UPLOAD_PROFILE_IMAGE_REQUEST = "UPLOAD_PROFILE_IMAGE_REQUEST";
 export const UPLOAD_PROFILE_IMAGE_SUCCESS = "UPLOAD_PROFILE_IMAGE_SUCCESS";
 export const UPLOAD_PROFILE_IMAGE_FAILURE = "UPLOAD_PROFILE_IMAGE_FAILURE";
+
+export const PROFILE_IMAGE_DELETE_REQUEST = "PROFILE_IMAGE_DELETE_REQUEST";
+export const PROFILE_IMAGE_DELETE_SUCCESS = "PROFILE_IMAGE_DELETE_SUCCESS";
+export const PROFILE_IMAGE_DELETE_FAILURE = "PROFILE_IMAGE_DELETE_FAILURE";
 
 export const FOLLOW_USER_REQUEST = "FOLLOW_USER_REQUEST";
 export const FOLLOW_USER_SUCCESS = "FOLLOW_USER_SUCCESS";
@@ -243,6 +250,23 @@ export const reducer = (state = initialState, action) => {
         draft.isUploadProfileImgErrorReason = action.error;
         draft.isUploadProfileImg = false;
         draft.isUploadedProfileImg = false;
+        break;
+      }
+
+      case PROFILE_IMAGE_DELETE_REQUEST: {
+        draft.isDeleteProfileImg = true;
+        break;
+      }
+      case PROFILE_IMAGE_DELETE_SUCCESS: {
+        draft.isDeleteProfileImg = false;
+        draft.isDeletedProfileImg = true;
+        draft.me.img = action.data;
+        break;
+      }
+      case PROFILE_IMAGE_DELETE_FAILURE: {
+        draft.isDeleteProfileImgErrorReason = action.error;
+        draft.isDeleteProfileImg = false;
+        draft.isDeletedProfileImg = false;
         break;
       }
 
