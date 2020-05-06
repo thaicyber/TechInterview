@@ -219,6 +219,7 @@ const Signup = () => {
               placeholder="닉네임을 입력해 주세요."
               value={nickname}
               ref={nicknameInput}
+              font-family="Noto Sans KR"
             />
           </IdWrapper>
           <EmailWrapper>

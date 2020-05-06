@@ -5,7 +5,7 @@ import { device } from "../../styles/device";
 export const HeaderContentWrapper = styled.div`
   display: grid;
   grid-template-columns: ${props =>
-    props.isLogin ? "6.9fr 1.7fr 1.4fr" : "5.7fr 1.2fr 3fr"};
+    props.isLogin ? "6.9fr 1.7fr 1.4fr" : "5.7fr 1.5fr 2.7fr"};
   position: fixed;
   z-index: 1;
   width: 95%;
@@ -78,9 +78,10 @@ export const LogInButton = styled.button`
   width: 100%;
   height: 100%;
   background-color: ${Theme.themeColor};
-  font-size: 1rem;
+  font-size: 0.9rem;
   color: white;
   border-radius: 1rem;
+  padding-bottom: 0.3rem;
   font-weight: 600;
   word-break: keep-all;
   cursor: pointer;

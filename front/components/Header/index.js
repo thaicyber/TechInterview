@@ -52,9 +52,9 @@ const Header = ({ isShowLogo }) => {
         ) : (
           <Link href="/login" prefetch>
             <LogInWrapper>
-              <ATag>
-                <LogInButton>로그인 / 가입</LogInButton>
-              </ATag>
+              <LogInButton>
+                <ATag>로그인 / 가입</ATag>
+              </LogInButton>
             </LogInWrapper>
           </Link>
         )}

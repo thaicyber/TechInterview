@@ -105,6 +105,7 @@ const Wrap = styled.div`
 export const CardImageWrap = styled(Wrap)``;
 
 export const CardImage = styled.figure`
+  background-color: ${props => (props.img ? "none" : "lightgray")};
   background-image: url(${props => props.img});
   background-size: cover;
   background-repeat: no-repeat;
@@ -247,7 +248,7 @@ export const CardContent = styled.div`
   -webkit-box-orient: vertical;
   word-wrap: break-word;
   line-height: 1.2rem;
-  height: 3.7rem;
+  height: 3.5rem;
   font-size: 0.9rem;
   font-weight: 300;
   padding-left: 0.6rem;

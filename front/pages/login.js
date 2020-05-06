@@ -163,6 +163,7 @@ const Login = () => {
               placeholder="이메일을 입력해 주세요."
               onChange={setEmail}
               ref={emailInput}
+              font-family={"Noto Sans KR"}
             />
           </IdWrapper>
           <PasswordWrapper>

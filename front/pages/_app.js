@@ -61,6 +61,10 @@ const App = ({ Component, store, pageProps }) => {
               rel: "stylesheet",
               href:
                 "https://cdnjs.cloudflare.com/ajax/libs/antd/3.26.11/antd.css"
+            },
+            {
+              rel: "stylesheet",
+              href: "spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css"
             }
           ]}
           script={[
