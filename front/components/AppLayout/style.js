@@ -10,11 +10,20 @@ export const AppLayoutWrapper = styled.div`
 `;
 
 // pc인 경우, 가운데 컨텐츠를 보여주는 wrapper
+// padding 값을 통해 메인 컨텐츠 화면크기를 small으로
 export const AppLayoutSmallViewWrapper = styled.div`
-  padding: 0 1rem;
+  padding: 0rem 1rem;
 
   @media ${device.laptop} {
-    padding: 0 18rem;
+    padding: 0rem 25rem;
+  }
+`;
+// padding 값을 통해 메인 컨텐츠 화면크기를 medium으로
+export const AppLayoutMediumViewWrapper = styled.div`
+  padding: 0rem 1rem;
+
+  @media ${device.laptop} {
+    padding: 0rem 18rem;
   }
 `;
 

@@ -11,6 +11,11 @@ const SimpleHeader = () => {
   const onClickBackBtn = () => {
     window.history.back();
   };
+  const isCommentRoute =
+    Router && Router.router && Router.router.route === "/comment"
+      ? true
+      : false;
+  console.log("isCommentRoute", isCommentRoute);
   const getComponent = () => {
     switch (Router && Router.router && Router.router.route) {
       case "/comment": {
@@ -58,7 +63,7 @@ const SimpleHeader = () => {
     }
   };
   return (
-    <SimpleHeaderWrapper>
+    <SimpleHeaderWrapper isExtend={isCommentRoute}>
       <BackBtnWrap onClick={onClickBackBtn}>
         <ArrowLeftOutlined
           style={{ fontSize: "20px", color: Theme.themeColor }}

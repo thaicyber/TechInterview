@@ -21,10 +21,10 @@ export const UserSettingWrapper = styled.div`
   z-index: 3;
 
   @media ${device.mobileL} {
-    width: 40%;
+    width: 70%;
   }
   @media ${device.tablet} {
-    width: 30%;
+    width: 40%;
   }
 
   @media ${device.laptop} {

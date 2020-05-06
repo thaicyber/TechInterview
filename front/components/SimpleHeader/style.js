@@ -12,12 +12,12 @@ export const SimpleHeaderWrapper = styled.div`
   top: 0;
   border-bottom: 1px solid lightgray;
   z-index: 1;
-  padding: 0 1rem;
+  padding: 0rem 1rem;
   @media ${device.tablet} {
   }
-
+  /* isExtend가 true일 경우, 양 너비를 좁게 가져가면서 메인 컨텐츠 화면 width를 키운다. */
   @media ${device.laptop} {
-    padding: 0 18rem;
+    padding: ${props => (props.isExtend ? "0rem 18rem" : "0rem 25rem")};
   }
 `;
 

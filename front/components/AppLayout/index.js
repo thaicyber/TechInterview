@@ -5,7 +5,8 @@ import {
   MainContentWrapper,
   TopWrapper,
   MainContentNoneGridWrapper,
-  AppLayoutSmallViewWrapper
+  AppLayoutSmallViewWrapper,
+  AppLayoutMediumViewWrapper
 } from "./style";
 import Header from "../Header";
 import PopularTagList from "../PopularTagList";
@@ -36,11 +37,11 @@ const AppLayout = ({ children }) => {
         return (
           <>
             <Header isShowLogo={false} />
-            <AppLayoutSmallViewWrapper>
+            <AppLayoutMediumViewWrapper>
               <MainContentNoneGridWrapper>
                 {children}
               </MainContentNoneGridWrapper>
-            </AppLayoutSmallViewWrapper>
+            </AppLayoutMediumViewWrapper>
           </>
         );
       }
