@@ -10,7 +10,6 @@ export const CommentCardWrapper = styled.div`
 export const CommentCardContentWrap = styled.div`
   display: grid;
   grid-template-columns: 16% 74% 10%;
-
   @media ${device.mobileL} {
     grid-template-columns: 10% 80% 10%;
   }
@@ -24,7 +23,6 @@ export const CommentContent = styled.div`
   display: grid;
   grid-template-rows: 5fr 5fr;
   grid-auto-columns: 100%;
-
   @media ${device.mobileL} {
     margin-left: 0.5rem;
   }
@@ -84,7 +82,6 @@ export const TopWrap = styled.div`
   height: 100%;
   background-color: rgb(0, 0, 0, 0.4);
   margin-left: -1rem;
-
   @media ${device.laptop} {
     margin-left: 0rem;
     width: 0%;
@@ -99,14 +96,13 @@ export const BottomWrap = styled.div`
   bottom: -1px;
   padding: 0.8rem;
   margin-left: -1rem;
-
   @media ${device.laptop} {
-    width: 30%;
-    height: 30%;
+    width: 20%;
+    height: 20%;
     margin-left: 0rem;
     position: fixed;
     bottom: 43%;
-    left: 36%;
+    left: 40%;
     border: 1px solid lightgray;
     border-radius: 10px;
   }
@@ -122,12 +118,21 @@ export const CancelBtnWrap = styled.div`
   justify-content: center;
   background-color: ${Theme.cancelColor};
   border-radius: 50px;
+  @media ${device.laptop} {
+    margin-top: 0.5rem;
+  }
 `;
 export const CancelBtn = styled.div``;
 
 export const DeleteBtnWrap = styled.div`
-  ${BtnWrapStyles}
+  width: 100%;
+  height: 33%;
+  display: flex;
+  align-items: center;
   justify-content: flex-start;
+
+  @media ${device.laptop} {
+  }
 `;
 export const DeleteBtn = styled.div`
   display: flex;
@@ -135,6 +140,10 @@ export const DeleteBtn = styled.div`
 export const EditBtnWrap = styled.div`
   ${BtnWrapStyles}
   justify-content: flex-start;
+
+  @media ${device.laptop} {
+    margin-top: 0.2rem;
+  }
 `;
 export const EditBtn = styled.div`
   display: flex;
@@ -155,9 +164,17 @@ export const DeleteMsgWrapper = styled.div`
   width: 100%;
   height: 100%;
   background-color: rgb(0, 0, 0, 0.4);
-
+  @media ${device.tablet} {
+    margin-left: -21%;
+  }
   @media ${device.laptop} {
-    margin-left: -18rem;
+    margin-left: -26%;
+  }
+  @media ${device.laptopL} {
+    margin-left: -31%;
+  }
+  @media ${device.desktopS} {
+    margin-left: -36%;
   }
 `;
 

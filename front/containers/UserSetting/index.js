@@ -44,6 +44,7 @@ const UserSetting = props => {
     });
     onClickCancel();
   };
+  console.log("me", me);
   return (
     <BackgroundWrapper>
       <UserSettingWrapper>
@@ -64,7 +65,16 @@ const UserSetting = props => {
           <BottomContent>
             <AvatarMyPageWrap>
               <div style={{ display: "flex", alignItems: "center" }}>
-                <Avatar size="large" img={me.img} />
+                <Link
+                  href={{
+                    pathname: "/profile",
+                    query: { id: me.id }
+                  }}
+                  prefetch
+                  as={`/profile/${me.id}`}
+                >
+                  <Avatar size="large" img={me.img} />
+                </Link>
               </div>
             </AvatarMyPageWrap>
             <Link href="/myPage">

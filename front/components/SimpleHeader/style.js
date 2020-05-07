@@ -14,16 +14,16 @@ export const SimpleHeaderWrapper = styled.div`
   z-index: 1;
   padding: 0rem 1rem;
   @media ${device.tablet} {
-    padding: 0% 20%;
+    padding: ${props => (props.isExtend ? "0" : "0% 20")};
   }
   @media ${device.laptop} {
-    padding: 0% 25%;
+    padding: ${props => (props.isExtend ? "0% 6%" : "0% 25")};
   }
   @media ${device.laptopL} {
-    padding: 0% 30%;
+    padding: ${props => (props.isExtend ? "0% 11%" : "0% 30")};
   }
   @media ${device.desktopS} {
-    padding: 0% 35%;
+    padding: ${props => (props.isExtend ? "0% 15%" : "0% 35")};
   }
 `;
 

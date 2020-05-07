@@ -11,11 +11,11 @@ const SimpleHeader = () => {
   const onClickBackBtn = () => {
     window.history.back();
   };
-  const isCommentRoute =
-    Router && Router.router && Router.router.route === "/comment"
+  const isSearchHashRoute =
+    (Router && Router.router && Router.router.route === "/hashtag") ||
+    Router.router.route === "/search"
       ? true
       : false;
-  console.log("isCommentRoute", isCommentRoute);
   const getComponent = () => {
     switch (Router && Router.router && Router.router.route) {
       case "/comment": {
@@ -63,7 +63,7 @@ const SimpleHeader = () => {
     }
   };
   return (
-    <SimpleHeaderWrapper isExtend={isCommentRoute}>
+    <SimpleHeaderWrapper isExtend={isSearchHashRoute}>
       <BackBtnWrap onClick={onClickBackBtn}>
         <ArrowLeftOutlined
           style={{ fontSize: "1.25rem", color: Theme.themeColor }}

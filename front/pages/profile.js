@@ -82,7 +82,6 @@ const FollowBtnWrapCss = css`
   position: absolute;
   top: 5.5rem;
   padding-left: 0.2rem;
-  right: 1.5rem;
   display: flex;
   justify-content: center;
   align-items: center;

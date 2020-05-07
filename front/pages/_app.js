@@ -61,10 +61,6 @@ const App = ({ Component, store, pageProps }) => {
               rel: "stylesheet",
               href:
                 "https://cdnjs.cloudflare.com/ajax/libs/antd/3.26.11/antd.css"
-            },
-            {
-              rel: "stylesheet",
-              href: "spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css"
             }
           ]}
           script={[
@@ -89,8 +85,9 @@ App.getInitialProps = async context => {
   let pageProps = {};
   const state = ctx.store.getState();
   const cookie = ctx.isServer ? ctx.req.headers.cookie : ""; // csr일경우 cxt에 req가 없어서 error 방지
-  Axios.defaults.headers.Cookie = "";
-
+  if (ctx.isServer) {
+    Axios.defaults.headers.Cookie = "";
+  }
   if (ctx.isServer && cookie) {
     //csr일경우 굳이 할 필요 없음.
     Axios.defaults.headers.Cookie = cookie;

@@ -110,7 +110,7 @@ const CommentCard = props => {
               href={{ pathname: "/commentEdit", query: { id: comment.id } }}
               as={`/commentEdit/${comment.id}`}
             >
-              <a>
+              <a style={{ height: "30%", display: "block" }}>
                 <EditBtnWrap>
                   <EditBtn>
                     <EditOutlined />
@@ -137,9 +137,15 @@ const CommentCard = props => {
       )}
       <CommentCardWrapper>
         <CommentCardContentWrap>
-          <AvatarWrap>
-            <Avatar size="large" img={comment.User.img} />
-          </AvatarWrap>
+          <Link
+            href={{ pathname: "/profile", query: { id: comment.User.id } }}
+            prefetch
+            as={`/profile/${comment.User.id}`}
+          >
+            <AvatarWrap>
+              <Avatar size="large" img={comment.User.img} />
+            </AvatarWrap>
+          </Link>
           <CommentContent>
             <CommentAuthorWrap>
               <Author>{comment.User.nickname}</Author>

@@ -6,8 +6,8 @@ const GlobalStyles = createGlobalStyle`
         text-decoration : none;
         color : inherit;
     }
-    @font-face { font-family: 'GmarketSansMedium'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff'); font-weight: normal; font-style: normal; }
-    /* @import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css); <link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css' rel='stylesheet' type='text/css'> * { font-family: 'Spoqa Han Sans', 'Spoqa Han Sans JP', 'Sans-serif'; } */
+    @font-face { font-family: 'Arita-dotum-Medium'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Arita-dotum-Medium.woff') format('woff'); font-weight: normal; font-style: normal; }
+    /* @font-face { font-family: 'GmarketSansMedium'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff'); font-weight: normal; font-style: normal; } */
     * {
         box-sizing : border-box;
     }
@@ -28,7 +28,7 @@ const GlobalStyles = createGlobalStyle`
        padding: 0;
        border: 0;
        font-size: 14px;
-       font-family : 'GmarketSansMedium', sans-serif;
+       font-family : 'Arita-dotum-Medium', sans-serif;
        /* font: inherit; */
        vertical-align: baseline;
        /* mobile-s 14px */

@@ -106,7 +106,7 @@ export const CardTitleWrap = styled(Wrap)`
 `;
 
 export const CardTitle = styled.h2`
-  font-size: 1rem;
+  font-size: 1.1rem;
 `;
 
 export const CardLinkWrap = styled(Wrap)`
@@ -220,13 +220,12 @@ export const CardContent = styled.p`
   -webkit-box-orient: vertical;
   word-wrap: break-word;
   line-height: 1.2rem;
-  font-size: 1rem;
-  height: 3.5rem;
+  font-size: 0.9rem;
   font-weight: 300;
   padding-left: 0.6rem;
   padding-right: 0.6rem;
   @media ${device.mobileS} {
-    height: 3.6rem;
+    height: 3.7rem;
   }
   @media ${device.tablet} {
   }
