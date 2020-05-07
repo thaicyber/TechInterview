@@ -49,6 +49,7 @@ const CommentForm = props => {
         return;
       }
       if (content) {
+        console.log("content", content);
         dispatch({
           type: EDIT_COMMENT_REQUEST,
           data: {

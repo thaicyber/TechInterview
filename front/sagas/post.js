@@ -180,6 +180,7 @@ function* watchLikePost() {
 }
 
 function editCommentAPI(commentData) {
+  console.log("editCommentAPI", commentData);
   return axios.patch(
     `/comment/${commentData.commentId}`,
     { content: commentData.content },
