@@ -90,16 +90,16 @@ const FollowBtnWrapCss = css`
   border-radius: 20px;
   cursor: pointer;
   @media ${device.tablet} {
-    right: 0% 20%;
+    right: 20%;
   }
   @media ${device.laptop} {
-    right: 0% 25%;
+    right: 25%;
   }
   @media ${device.laptopL} {
-    right: 0% 30%;
+    right: 30%;
   }
   @media ${device.desktopS} {
-    right: 0% 35%;
+    right: 35%;
   }
 `;
 const UnFollowBtnWrap = styled.div`

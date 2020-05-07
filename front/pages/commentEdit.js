@@ -3,7 +3,8 @@ import { useSelector } from "react-redux";
 import CommentForm from "../containers/CommentForm";
 const CommentEdit = ({ id }) => {
   const { comments } = useSelector(state => state.post);
-  const comment = comments.find(v => v.id === Number(id));
+  const comment =
+    comments && comments.length > 0 && comments.find(v => v.id === Number(id));
   return (
     <CommentForm
       content={comment.content}
