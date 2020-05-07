@@ -12,7 +12,7 @@ import { isMobile } from "../components/Util/meta";
 const LoginWrapper = styled.div`
   display: grid;
   height: 100vh;
-  grid-template-rows: 9% 28% 57% 6%;
+  grid-template-rows: 37% 57% 6%;
 
   @media ${device.tablet} {
     width: 60%;
@@ -135,7 +135,7 @@ const Login = () => {
   }, [me]);
   return (
     <LoginWrapper>
-      <TopWrap>
+      {/* <TopWrap>
         <Link href="/">
           <LogoWrap>
             <a>
@@ -143,7 +143,7 @@ const Login = () => {
             </a>
           </LogoWrap>
         </Link>
-      </TopWrap>
+      </TopWrap> */}
       <IntroWrap>
         <TopIntroWrap>기술면접 준비는 테크인터뷰!</TopIntroWrap>
         <BottomIntroWrap style={{ lineHeight: "1.8rem" }}>

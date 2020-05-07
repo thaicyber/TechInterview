@@ -15,7 +15,7 @@ import { isMobile } from "../components/Util/meta";
 const SignupWrapper = styled.div`
   display: grid;
   height: 100vh;
-  grid-template-rows: 9% 28% 63%;
+  grid-template-rows: 37% 63%;
 
   @media ${device.tablet} {
     width: 50%;
@@ -191,15 +191,15 @@ const Signup = () => {
   }
   return (
     <SignupWrapper>
-      <TopWrap>
+      {/* <TopWrap>
         <Link href="/">
           <LogoWrap>
             <a>
-              <img src="/logoCenterBlue.jpg" width="100px" height="50px" />
+              <img src="/logoCenterBlue.jpg" width="50px" height="25px" />
             </a>
           </LogoWrap>
         </Link>
-      </TopWrap>
+      </TopWrap> */}
       <IntroWrap>
         <TopIntroWrap>기술면접 준비는 테크인터뷰!</TopIntroWrap>
         <BottomIntroWrap style={{ lineHeight: "1.8rem" }}>
