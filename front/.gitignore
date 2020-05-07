@@ -83,3 +83,5 @@ package-lock.json
 
 * linguist-vendored
 *.js linguist-vendored=false
+
+static/* linguist-vendored

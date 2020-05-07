@@ -81,6 +81,7 @@ const Number = styled.span`
 const FollowBtnWrapCss = css`
   position: absolute;
   top: 5.5rem;
+  right: 1rem;
   padding-left: 0.2rem;
   display: flex;
   justify-content: center;

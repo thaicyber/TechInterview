@@ -44,7 +44,7 @@ export const WriterName = styled.span`
 
 export const WriteDate = styled.div`
   background-color: white;
-  min-width: 15rem;
+  min-width: 7rem;
   display: flex;
   justify-content: flex-end;
 
