@@ -73,7 +73,7 @@ const CommentForm = props => {
     [text]
   );
   return (
-    <CommentFormWrapper onSubmit={onSubmitComment}>
+    <CommentFormWrapper>
       <InputWrap>
         <FormWrap>
           <Input.TextArea

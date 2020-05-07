@@ -91,6 +91,7 @@ const Comment = ({ id }) => {
         }
       />
       {comments &&
+        comments.length > 0 &&
         !isLoading &&
         comments.map(comment => (
           <CommentCard key={comment.id} comment={comment} />
