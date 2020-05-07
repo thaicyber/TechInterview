@@ -31,7 +31,21 @@ export const MainContentWrapper = styled.main`
     grid-gap: 2.5rem;
     margin-top: 5.31rem;
   }
+
+  @media ${device.laptop} {
+    padding: 0% 6%;
+  }
+  @media ${device.laptopL} {
+    padding: 0% 11%;
+  }
+  @media (min-width: "1600px") {
+    padding: 0% 12%;
+  }
+  @media ${device.desktopS} {
+    padding: 0% 15%;
+  }
 `;
+
 // 메인 컨텐츠를 보여주는 곳이 grid를 원하지 않을 때 사용하는 wrapper
 export const MainContentNoneGridWrapper = styled.main`
   margin-top: 4.56rem;

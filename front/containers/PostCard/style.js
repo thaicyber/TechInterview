@@ -106,7 +106,7 @@ export const CardTitleWrap = styled(Wrap)`
 `;
 
 export const CardTitle = styled.h2`
-  font-size: 1.3rem;
+  font-size: 1rem;
 `;
 
 export const CardLinkWrap = styled(Wrap)`
@@ -220,9 +220,33 @@ export const CardContent = styled.p`
   -webkit-box-orient: vertical;
   word-wrap: break-word;
   line-height: 1.2rem;
-  height: 3.6rem;
-  font-size: 1.1rem;
+  font-size: 1rem;
+  height: 3.5rem;
   font-weight: 300;
   padding-left: 0.6rem;
   padding-right: 0.6rem;
+  @media ${device.mobileS} {
+    height: 3.6rem;
+  }
+  @media ${device.tablet} {
+  }
+  @media ${device.laptop} {
+  }
+  @media ${device.laptopL} {
+  }
+  @media ${device.desktopS} {
+  }
+`;
+
+export const hashTagContent = styled.a`
+  font-size: 1.3rem;
+  &:link {
+    text-decoration: none;
+  }
+  &:visited {
+    text-decoration: none;
+  }
+  &:hover {
+    text-decoration: none;
+  }
 `;

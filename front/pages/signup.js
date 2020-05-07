@@ -15,7 +15,7 @@ import { isMobile } from "../components/Util/meta";
 const SignupWrapper = styled.div`
   display: grid;
   height: 100vh;
-  grid-template-rows: 37% 63%;
+  grid-template-rows: 33% 67%;
   grid-auto-columns: 100%;
 
   @media ${device.tablet} {

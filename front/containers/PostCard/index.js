@@ -1,4 +1,4 @@
-import React, { useCallback, memo, useRef, useEffect } from "react";
+import React, { useCallback, memo, useLayoutEffect, useState } from "react";
 import {
   PostCardWrapper,
   PrimeWrap,
@@ -46,6 +46,16 @@ const PostCard = memo(props => {
   const { post, showMenu, route } = props;
   const dispatch = useDispatch();
   const { me } = useSelector(state => state.user);
+  const [width, setWidth] = useState(0);
+  useLayoutEffect(() => {
+    const updateSize = () => {
+      setWidth(window.innerWidth);
+    };
+    window.addEventListener("resize", updateSize);
+    updateSize();
+    return () => window.removeEventListener("resize", updateSize);
+  }, []);
+
   // console.log("post", post);
   // console.log("me", me);
   // console.log("route", route);
@@ -142,8 +152,7 @@ const PostCard = memo(props => {
                       >
                         <ATag
                           style={{
-                            color: Theme.themeColor,
-                            fontSize: "1.3rem"
+                            color: Theme.themeColor
                           }}
                         >
                           {v}
@@ -221,6 +230,7 @@ const PostCard = memo(props => {
           </PrimeWrap>
         )}
       </PostCardWrapper>
+      {width <= 425 ? <Line /> : null}
     </>
   );
 });

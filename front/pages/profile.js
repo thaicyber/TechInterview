@@ -90,8 +90,17 @@ const FollowBtnWrapCss = css`
   height: 40px;
   border-radius: 20px;
   cursor: pointer;
+  @media ${device.tablet} {
+    right: 0% 20%;
+  }
   @media ${device.laptop} {
-    right: 25rem;
+    right: 0% 25%;
+  }
+  @media ${device.laptopL} {
+    right: 0% 30%;
+  }
+  @media ${device.desktopS} {
+    right: 0% 35%;
   }
 `;
 const UnFollowBtnWrap = styled.div`

@@ -9,7 +9,6 @@ export const HeaderContentWrapper = styled.div`
   position: fixed;
   z-index: 1;
   top: 0;
-  padding-right: 1rem;
   background-color: white;
   height: 4rem;
   /* mobileS: "320px",
@@ -21,37 +20,37 @@ export const HeaderContentWrapper = styled.div`
   desktopS: "1920px",
   desktop: "2560px" */
   @media ${device.mobileS} {
-    width: calc(320px - 2rem);
+    width: calc(100% - 2rem);
   }
 
   @media ${device.mobileM} {
-    width: calc(375px - 2rem);
+    width: calc(100% - 2rem);
+    grid-template-columns: ${props =>
+      props.isLogin ? "7.8fr 1.2fr 1fr" : "5.5fr 1.5fr 3fr"};
   }
 
   @media ${device.mobileL} {
-    width: calc(425px - 2rem);
-    padding-right: 0rem;
+    width: calc(100% - 2rem);
     grid-template-columns: ${props =>
       props.isLogin ? "7.8fr 1.2fr 1fr" : "6fr 1.5fr 2.5fr"};
   }
   @media ${device.tablet} {
-    width: calc(768px - 2rem);
-    padding-right: 0rem;
+    width: calc(100% - 2rem);
     grid-template-columns: ${props =>
       props.isLogin ? "8.5fr 1fr 0.5fr" : "7.7fr 0.8fr 1.5fr"};
   }
   @media ${device.laptop} {
-    width: calc(1024px - 2rem);
+    width: calc(100% - 2rem);
     grid-template-columns: ${props =>
       props.isLogin ? "8.9fr 0.6fr 0.5fr" : "8.4fr 0.6fr 1fr"};
   }
   @media ${device.laptopL} {
-    width: calc(1440px - 2rem);
+    width: calc(100% - 2rem);
     grid-template-columns: ${props =>
       props.isLogin ? "9fr 0.5fr 0.5fr" : "8.5fr 0.5fr 1fr"};
   }
   @media ${device.desktopS} {
-    width: calc(1920px - 2rem);
+    width: calc(100% - 2rem);
     grid-template-columns: ${props =>
       props.isLogin ? "9.2fr 0.4fr 0.4fr" : "8.6fr 0.4fr 1fr"};
   }
