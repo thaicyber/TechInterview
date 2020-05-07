@@ -7,11 +7,11 @@ const GlobalStyles = createGlobalStyle`
         color : inherit;
     }
     /* font-family : 'Noto Sans KR', sans-serif; */
-    @font-face { font-family: 'Arita-dotum-Medium'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Arita-dotum-Medium.woff') format('woff'); font-weight: normal; font-style: normal; }
+    /* @font-face { font-family: 'Arita-dotum-Medium'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Arita-dotum-Medium.woff') format('woff'); font-weight: normal; font-style: normal; } */
     /* @font-face { font-family: 'GmarketSansMedium'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff'); font-weight: normal; font-style: normal; } */
     * {
         box-sizing : border-box;
-        font-family: 'Arita-dotum-Medium'; 
+        font-family: 'Noto Sans KR', sans-serif;
     }
     html, body, div, span, applet, object, iframe,
     h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -30,7 +30,7 @@ const GlobalStyles = createGlobalStyle`
        padding: 0;
        border: 0;
        font-size: 14px;
-       font-family : 'Arita-dotum-Medium', sans-serif;
+       font-family : 'Noto Sans KR', sans-serif;
        /* font: inherit; */
        vertical-align: baseline;
        /* mobile-s 14px */
