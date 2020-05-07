@@ -13,6 +13,7 @@ const LoginWrapper = styled.div`
   display: grid;
   height: 100vh;
   grid-template-rows: 37% 57% 6%;
+  grid-auto-columns: 100%;
 
   @media ${device.tablet} {
     width: 60%;

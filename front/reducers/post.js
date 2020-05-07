@@ -273,6 +273,7 @@ export const reducer = (state = initialState, action) => {
       case EDIT_COMMENT_SUCCESS: {
         draft.isEditingComment = false;
         draft.editedComment = true;
+        draft.comments = [];
         break;
       }
       case EDIT_COMMENT_FAILURE: {

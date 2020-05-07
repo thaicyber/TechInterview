@@ -8,34 +8,50 @@ export const HeaderContentWrapper = styled.div`
     props.isLogin ? "6.9fr 1.7fr 1.4fr" : "5.7fr 1.5fr 2.7fr"};
   position: fixed;
   z-index: 1;
-  width: 95%;
   top: 0;
   padding-right: 1rem;
   background-color: white;
   height: 4rem;
+  /* mobileS: "320px",
+  mobileM: "375px",
+  mobileL: "425px",
+  tablet: "768px",
+  laptop: "1024px",
+  laptopL: "1440px",
+  desktopS: "1920px",
+  desktop: "2560px" */
+  @media ${device.mobileS} {
+    width: calc(320px - 2rem);
+  }
+
+  @media ${device.mobileM} {
+    width: calc(375px - 2rem);
+  }
+
   @media ${device.mobileL} {
+    width: calc(425px - 2rem);
     padding-right: 0rem;
     grid-template-columns: ${props =>
       props.isLogin ? "7.8fr 1.2fr 1fr" : "6fr 1.5fr 2.5fr"};
   }
   @media ${device.tablet} {
+    width: calc(768px - 2rem);
     padding-right: 0rem;
     grid-template-columns: ${props =>
       props.isLogin ? "8.5fr 1fr 0.5fr" : "7.7fr 0.8fr 1.5fr"};
-    width: 97%;
   }
   @media ${device.laptop} {
-    width: 87.5%;
+    width: calc(1024px - 2rem);
     grid-template-columns: ${props =>
       props.isLogin ? "8.9fr 0.6fr 0.5fr" : "8.4fr 0.6fr 1fr"};
   }
   @media ${device.laptopL} {
-    width: 90%;
+    width: calc(1440px - 2rem);
     grid-template-columns: ${props =>
       props.isLogin ? "9fr 0.5fr 0.5fr" : "8.5fr 0.5fr 1fr"};
   }
   @media ${device.desktopS} {
-    width: 92%;
+    width: calc(1920px - 2rem);
     grid-template-columns: ${props =>
       props.isLogin ? "9.2fr 0.4fr 0.4fr" : "8.6fr 0.4fr 1fr"};
   }

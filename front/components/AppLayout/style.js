@@ -3,28 +3,16 @@ import { device } from "../../styles/device";
 
 export const AppLayoutWrapper = styled.div`
   padding: 0 1rem;
-
-  @media ${device.laptop} {
-    padding: 0 5rem;
-  }
 `;
 
 // pc인 경우, 가운데 컨텐츠를 보여주는 wrapper
 // padding 값을 통해 메인 컨텐츠 화면크기를 small으로
 export const AppLayoutSmallViewWrapper = styled.div`
   padding: 0rem 1rem;
-
-  @media ${device.laptop} {
-    padding: 0rem 25rem;
-  }
 `;
 // padding 값을 통해 메인 컨텐츠 화면크기를 medium으로
 export const AppLayoutMediumViewWrapper = styled.div`
   padding: 0rem 1rem;
-
-  @media ${device.laptop} {
-    padding: 0rem 18rem;
-  }
 `;
 
 // 메인 컨텐츠를 담아서 보여주는 wrapper
@@ -47,4 +35,16 @@ export const MainContentWrapper = styled.main`
 // 메인 컨텐츠를 보여주는 곳이 grid를 원하지 않을 때 사용하는 wrapper
 export const MainContentNoneGridWrapper = styled.main`
   margin-top: 4.56rem;
+  @media ${device.tablet} {
+    padding: 0% 20%;
+  }
+  @media ${device.laptop} {
+    padding: 0% 25%;
+  }
+  @media ${device.laptopL} {
+    padding: 0% 30%;
+  }
+  @media ${device.desktopS} {
+    padding: 0% 35%;
+  }
 `;

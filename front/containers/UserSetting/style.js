@@ -35,6 +35,7 @@ export const UserSettingWrapper = styled.div`
 export const UserSettingContent = styled.div`
   display: grid;
   grid-template-rows: 8vh 50vh auto;
+  grid-auto-columns: 100%;
   width: 100%;
   height: 100%;
   background-color: white;
@@ -52,6 +53,7 @@ export const TopContent = styled.div`
 export const BottomContent = styled.div`
   display: grid;
   grid-template-rows: 0.8fr 0.8fr 0.8fr 1fr 1fr 1fr;
+  grid-auto-columns: 100%;
   width: 100%;
   height: 100%;
   background-color: white;

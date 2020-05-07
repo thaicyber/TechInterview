@@ -17,6 +17,7 @@ import { device } from "../styles/device";
 const ProfileWrapper = styled.div`
   display: grid;
   grid-template-rows: 182px 60px 1fr;
+  grid-auto-columns: 100%;
   min-height: 100vh;
 `;
 const UserInfoWrap = styled.section`

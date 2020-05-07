@@ -23,6 +23,7 @@ export const CommentContent = styled.div`
   height: 100%;
   display: grid;
   grid-template-rows: 5fr 5fr;
+  grid-auto-columns: 100%;
 
   @media ${device.mobileL} {
     margin-left: 0.5rem;
@@ -71,6 +72,7 @@ export const EditCommentWraper = styled.div`
   z-index: 1;
   display: grid;
   grid-template-rows: 78% 22%;
+  grid-auto-columns: 100%;
   position: fixed;
   width: 100%;
   height: 100%;

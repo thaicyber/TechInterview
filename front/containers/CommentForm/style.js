@@ -20,6 +20,7 @@ export const UserImgWrap = styled.div`
 export const InputWrap = styled.div`
   display: grid;
   grid-template-rows: 70% auto;
+  grid-auto-columns: 100%;
 `;
 export const FormWrap = styled.div`
   width: 100%;

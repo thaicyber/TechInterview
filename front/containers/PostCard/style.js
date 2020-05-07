@@ -212,7 +212,7 @@ export const CardContentWrap = styled.div`
   display: flex;
   align-items: center;
 `;
-export const CardContent = styled.div`
+export const CardContent = styled.p`
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;

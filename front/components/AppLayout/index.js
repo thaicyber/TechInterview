@@ -25,11 +25,11 @@ const AppLayout = ({ children }) => {
         return (
           <>
             <Header isShowLogo={false} />
-            <AppLayoutMediumViewWrapper>
+            <AppLayoutWrapper>
               <MainContentNoneGridWrapper>
                 {children}
               </MainContentNoneGridWrapper>
-            </AppLayoutMediumViewWrapper>
+            </AppLayoutWrapper>
           </>
         );
       }
@@ -37,11 +37,11 @@ const AppLayout = ({ children }) => {
         return (
           <>
             <Header isShowLogo={false} />
-            <AppLayoutSmallViewWrapper>
+            <AppLayoutWrapper>
               <MainContentNoneGridWrapper>
                 {children}
               </MainContentNoneGridWrapper>
-            </AppLayoutSmallViewWrapper>
+            </AppLayoutWrapper>
           </>
         );
       }
@@ -49,11 +49,11 @@ const AppLayout = ({ children }) => {
         return (
           <>
             <Header isShowLogo={false} />
-            <AppLayoutSmallViewWrapper>
+            <AppLayoutWrapper>
               <MainContentNoneGridWrapper>
                 {children}
               </MainContentNoneGridWrapper>
-            </AppLayoutSmallViewWrapper>
+            </AppLayoutWrapper>
           </>
         );
       }
@@ -61,11 +61,11 @@ const AppLayout = ({ children }) => {
         return (
           <>
             <Header isShowLogo={false} />
-            <AppLayoutSmallViewWrapper>
+            <AppLayoutWrapper>
               <MainContentNoneGridWrapper>
                 {children}
               </MainContentNoneGridWrapper>
-            </AppLayoutSmallViewWrapper>
+            </AppLayoutWrapper>
           </>
         );
       }
@@ -73,11 +73,11 @@ const AppLayout = ({ children }) => {
         return (
           <>
             <Header isShowLogo={false} />
-            <AppLayoutSmallViewWrapper>
+            <AppLayoutWrapper>
               <MainContentNoneGridWrapper>
                 {children}
               </MainContentNoneGridWrapper>
-            </AppLayoutSmallViewWrapper>
+            </AppLayoutWrapper>
           </>
         );
       }
@@ -85,11 +85,11 @@ const AppLayout = ({ children }) => {
         return (
           <>
             <Header isShowLogo={false} />
-            <AppLayoutSmallViewWrapper>
+            <AppLayoutWrapper>
               <MainContentNoneGridWrapper>
                 {children}
               </MainContentNoneGridWrapper>
-            </AppLayoutSmallViewWrapper>
+            </AppLayoutWrapper>
           </>
         );
       }
@@ -97,11 +97,11 @@ const AppLayout = ({ children }) => {
         return (
           <>
             <Header isShowLogo={false} />
-            <AppLayoutSmallViewWrapper>
+            <AppLayoutWrapper>
               <MainContentNoneGridWrapper>
                 {children}
               </MainContentNoneGridWrapper>
-            </AppLayoutSmallViewWrapper>
+            </AppLayoutWrapper>
           </>
         );
       }
@@ -110,11 +110,11 @@ const AppLayout = ({ children }) => {
         return (
           <>
             <Header isShowLogo={false} />
-            <AppLayoutSmallViewWrapper>
+            <AppLayoutWrapper>
               <MainContentNoneGridWrapper>
                 {children}
               </MainContentNoneGridWrapper>
-            </AppLayoutSmallViewWrapper>
+            </AppLayoutWrapper>
           </>
         );
       }

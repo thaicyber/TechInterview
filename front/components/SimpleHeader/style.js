@@ -14,10 +14,16 @@ export const SimpleHeaderWrapper = styled.div`
   z-index: 1;
   padding: 0rem 1rem;
   @media ${device.tablet} {
+    padding: 0% 20%;
   }
-  /* isExtend가 true일 경우, 양 너비를 좁게 가져가면서 메인 컨텐츠 화면 width를 키운다. */
   @media ${device.laptop} {
-    padding: ${props => (props.isExtend ? "0rem 25rem" : "0rem 18rem")};
+    padding: 0% 25%;
+  }
+  @media ${device.laptopL} {
+    padding: 0% 30%;
+  }
+  @media ${device.desktopS} {
+    padding: 0% 35%;
   }
 `;
 
