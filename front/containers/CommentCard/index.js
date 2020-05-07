@@ -167,13 +167,14 @@ const CommentCard = props => {
         </CommentCardContentWrap>
         <ContentWrap>
           <CommentContentWrap>
-            {comment.content &&
-              comment.content.split("<br>").map((item, idx) => {
+            {comment &&
+              comment.content &&
+              comment.content.split("\n").map((item, idx) => {
                 return (
-                  <span key={idx}>
+                  <p key={idx}>
                     {item}
                     <br />
-                  </span>
+                  </p>
                 );
               })}
           </CommentContentWrap>

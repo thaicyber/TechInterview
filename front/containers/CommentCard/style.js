@@ -30,7 +30,7 @@ export const CommentContent = styled.div`
     margin-left: 0.7rem;
   }
 `;
-export const CommentContentWrap = styled.p`
+export const CommentContentWrap = styled.div`
   font-size: 1rem;
   line-height: 1.8rem;
 `;

@@ -5,11 +5,12 @@ const CommentEdit = ({ id }) => {
   const { comments } = useSelector(state => state.post);
   const comment =
     comments && comments.length > 0 && comments.find(v => v.id === Number(id));
+  console.log("CommentEdit comment", comment);
   return (
     <CommentForm
-      content={comment.content}
-      commentId={id}
-      postId={comment.PostId}
+      content={comment && comment.content}
+      commentId={comment && comment.id}
+      postId={comment && comment.PostId}
     />
   );
 };
