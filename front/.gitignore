@@ -80,3 +80,6 @@ package-lock.json
 .DS_Store
 .idea/
 *.iml
+
+* linguist-vendored
+*.js linguist-vendored=false
