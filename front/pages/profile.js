@@ -19,6 +19,7 @@ const ProfileWrapper = styled.div`
   grid-template-rows: 182px 60px 1fr;
   grid-auto-columns: 100%;
   min-height: 100vh;
+  margin-top: 4.56rem;
 `;
 const UserInfoWrap = styled.section`
   width: 100%;
