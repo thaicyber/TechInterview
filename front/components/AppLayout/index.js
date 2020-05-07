@@ -110,9 +110,11 @@ const AppLayout = ({ children }) => {
         return (
           <>
             <Header isShowLogo={false} />
-            <AppLayoutWrapper>
-              <MainContentWrapper>{children}</MainContentWrapper>
-            </AppLayoutWrapper>
+            <AppLayoutSmallViewWrapper>
+              <MainContentNoneGridWrapper>
+                {children}
+              </MainContentNoneGridWrapper>
+            </AppLayoutSmallViewWrapper>
           </>
         );
       }

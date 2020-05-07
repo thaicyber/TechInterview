@@ -66,7 +66,7 @@ const SimpleHeader = () => {
     <SimpleHeaderWrapper isExtend={isCommentRoute}>
       <BackBtnWrap onClick={onClickBackBtn}>
         <ArrowLeftOutlined
-          style={{ fontSize: "20px", color: Theme.themeColor }}
+          style={{ fontSize: "1.25rem", color: Theme.themeColor }}
         />
       </BackBtnWrap>
       <TitleWrap>{getComponent()}</TitleWrap>

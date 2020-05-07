@@ -13,7 +13,7 @@ const Announce = ({ message }) => {
     <AnnounceWrap>
       <IconWrapper>
         <InfoCircleOutlined
-          style={{ fontSize: "20px", color: Theme.themeColor }}
+          style={{ fontSize: "3.3rem", color: Theme.themeColor }}
         />
       </IconWrapper>
       <DescWrap>

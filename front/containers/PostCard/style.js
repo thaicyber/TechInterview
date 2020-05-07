@@ -14,6 +14,7 @@ export const PostCardWrapper = styled.div`
 export const PrimeWrap = styled.div`
   display: grid;
   grid-template-rows: 13% 66% 11% 10%;
+  grid-auto-columns: 100%;
   width: 100%;
   min-height: 63vh;
   margin-bottom: 0.1rem;
@@ -43,7 +44,7 @@ export const WriterName = styled.span`
 
 export const WriteDate = styled.div`
   background-color: white;
-  width: 240px;
+  min-width: 15rem;
   display: flex;
   justify-content: flex-end;
 
@@ -56,12 +57,14 @@ export const WriteDate = styled.div`
 export const ContentWrap = styled.div`
   display: grid;
   grid-template-rows: 13% 66% 11% 10%;
+  grid-auto-columns: 100%;
 `;
 // title , img & content , hastag , nav 순서
 
 export const CardWrap = styled.div`
   display: grid;
   grid-template-rows: 49% 14% 27% 10%;
+  grid-auto-columns: 100%;
   width: 100%;
   height: 100%;
   /* border: 1px solid #cdd6dd; */
@@ -91,12 +94,10 @@ export const CardImage = styled.figure`
 
 export const CardTitleWrap = styled(Wrap)`
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   padding-left: 0.6rem;
   border-left: 1px solid #cdd6dd;
   border-right: 1px solid #cdd6dd;
-  padding-top: 0.2rem;
-  padding-bottom: 0.2rem;
 
   @media ${device.tablet} {
     padding-top: 0.4rem;
@@ -104,9 +105,8 @@ export const CardTitleWrap = styled(Wrap)`
   }
 `;
 
-export const CardTitle = styled.h4`
-  font-weight: 400;
-  line-height: 1.3rem;
+export const CardTitle = styled.h2`
+  font-size: 1.3rem;
 `;
 
 export const CardLinkWrap = styled(Wrap)`
@@ -173,12 +173,12 @@ export const CountWrap = styled.div`
   margin-top: 0.2rem;
 
   @media ${device.laptop} {
-    margin-left: 0.4rem;
+    margin-left: 0.9rem;
   }
 `;
 export const Count = styled.a`
   text-decoration: none;
-  font-size: 0.8rem;
+  font-size: 1.1rem;
   margin-bottom: 0.1rem;
   &:link {
     text-decoration: none;
@@ -220,8 +220,8 @@ export const CardContent = styled.div`
   -webkit-box-orient: vertical;
   word-wrap: break-word;
   line-height: 1.2rem;
-  height: 3.5rem;
-  font-size: 0.9rem;
+  height: 3.6rem;
+  font-size: 1.1rem;
   font-weight: 300;
   padding-left: 0.6rem;
   padding-right: 0.6rem;

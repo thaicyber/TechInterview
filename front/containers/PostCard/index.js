@@ -140,7 +140,14 @@ const PostCard = memo(props => {
                         as={`/hashtag/${v.slice(1)}`}
                         key={v}
                       >
-                        <ATag style={{ color: Theme.themeColor }}>{v}</ATag>
+                        <ATag
+                          style={{
+                            color: Theme.themeColor,
+                            fontSize: "1.3rem"
+                          }}
+                        >
+                          {v}
+                        </ATag>
                       </Link>
                     );
                   } else {
@@ -159,7 +166,9 @@ const PostCard = memo(props => {
                   >
                     <IconWrap>
                       <ATag>
-                        <MessageOutlined style={{ cursor: "pointer" }} />
+                        <MessageOutlined
+                          style={{ cursor: "pointer", fontSize: "1.3rem" }}
+                        />
                       </ATag>
                     </IconWrap>
                   </Link>
@@ -179,12 +188,17 @@ const PostCard = memo(props => {
                       <Icon
                         type="heart"
                         theme="filled"
-                        style={{ color: "#eb2f96", cursor: "pointer" }}
+                        style={{
+                          color: "#eb2f96",
+                          cursor: "pointer",
+                          fontSize: "1.3rem"
+                        }}
                       />
                     ) : (
                       <HeartOutlined
                         style={{
-                          cursor: "pointer"
+                          cursor: "pointer",
+                          fontSize: "1.3rem"
                         }}
                       />
                     )}

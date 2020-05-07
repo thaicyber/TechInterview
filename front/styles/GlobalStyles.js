@@ -1,5 +1,5 @@
 import { createGlobalStyle } from "styled-components";
-
+import { device } from "./device";
 const GlobalStyles = createGlobalStyle`
 
     a {
@@ -27,10 +27,15 @@ const GlobalStyles = createGlobalStyle`
        margin: 0;
        padding: 0;
        border: 0;
-       font-size: 100%;
+       font-size: 14px;
        font-family : 'Spoqa Han Sans', sans-serif;
        /* font: inherit; */
        vertical-align: baseline;
+       /* mobile-s 14px */
+       /* mobile-m 16px */
+       @media ${device.mobileM} {
+         font-size: 16px;
+       }
 }
 /* HTML5 display-role reset for older browsers */
     article, aside, details, figcaption, figure, 

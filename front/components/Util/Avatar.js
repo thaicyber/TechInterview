@@ -3,50 +3,50 @@ import styled from "styled-components";
 const handlerHeight = size => {
   switch (size) {
     case "small": {
-      return "30px";
+      return "1.87rem";
     }
     case "medium": {
-      return "37px";
+      return "2.31rem";
     }
     case "large": {
-      return "45px";
+      return "2.81rem";
     }
     case "smallLarge": {
-      return "60px";
+      return "3.75rem";
     }
     case "midLarge": {
-      return "75px";
+      return "4.68rem";
     }
     case "superLarge": {
-      return "150px";
+      return "9.37rem";
     }
     default: {
-      return "30px";
+      return "1.875rem";
     }
   }
 };
 const handlerWidth = size => {
   switch (size) {
     case "small": {
-      return "30px";
+      return "1.87rem";
     }
     case "medium": {
-      return "37px";
+      return "2.31rem";
     }
     case "large": {
-      return "45px";
+      return "2.81rem";
     }
     case "smallLarge": {
-      return "60px";
+      return "3.75rem";
     }
     case "midLarge": {
-      return "75px";
+      return "4.68rem";
     }
     case "superLarge": {
-      return "150px";
+      return "9.37rem";
     }
     default: {
-      return "30px";
+      return "1.875rem";
     }
   }
 };

@@ -4,7 +4,7 @@ import { device } from "../../styles/device";
 export const FollowerWrap = styled.div`
   display: grid;
   grid-template-columns: 30% 70%;
-  grid-auto-rows: 80px;
+  grid-auto-rows: 5rem;
   border-bottom: 1px solid lightgray;
 
   @media ${device.mobileL} {
