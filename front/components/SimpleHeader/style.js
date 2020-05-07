@@ -17,7 +17,7 @@ export const SimpleHeaderWrapper = styled.div`
   }
   /* isExtend가 true일 경우, 양 너비를 좁게 가져가면서 메인 컨텐츠 화면 width를 키운다. */
   @media ${device.laptop} {
-    padding: ${props => (props.isExtend ? "0rem 18rem" : "0rem 25rem")};
+    padding: ${props => (props.isExtend ? "0rem 25rem" : "0rem 18rem")};
   }
 `;
 

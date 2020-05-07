@@ -87,13 +87,16 @@ const App = ({ Component, store, pageProps }) => {
 App.getInitialProps = async context => {
   const { ctx, Component } = context;
   let pageProps = {};
+  const state = ctx.store.getState();
   const cookie = ctx.isServer ? ctx.req.headers.cookie : ""; // csr일경우 cxt에 req가 없어서 error 방지
+  Axios.defaults.headers.Cookie = "";
+
   if (ctx.isServer && cookie) {
     //csr일경우 굳이 할 필요 없음.
     Axios.defaults.headers.Cookie = cookie;
     // defaults 모든 axios요청에 공통적으로 들어감.
   }
-  const state = ctx.store.getState();
+
   if (!state.user.me) {
     ctx.store.dispatch({
       type: LOAD_USER_REQUEST

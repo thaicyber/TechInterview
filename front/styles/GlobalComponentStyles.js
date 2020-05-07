@@ -17,6 +17,7 @@ export const Desc = styled.span`
 `;
 
 export const ATag = styled.a`
+  font-size: 1.3rem;
   &:link {
     text-decoration: none;
   }

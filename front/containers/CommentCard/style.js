@@ -155,7 +155,7 @@ export const DeleteMsgWrapper = styled.div`
   background-color: rgb(0, 0, 0, 0.4);
 
   @media ${device.laptop} {
-    margin-left: -16rem;
+    margin-left: -18rem;
   }
 `;
 

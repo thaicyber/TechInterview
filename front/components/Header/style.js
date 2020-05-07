@@ -29,6 +29,16 @@ export const HeaderContentWrapper = styled.div`
     grid-template-columns: ${props =>
       props.isLogin ? "8.9fr 0.6fr 0.5fr" : "8.4fr 0.6fr 1fr"};
   }
+  @media ${device.laptopL} {
+    width: 90%;
+    grid-template-columns: ${props =>
+      props.isLogin ? "9fr 0.5fr 0.5fr" : "8.5fr 0.5fr 1fr"};
+  }
+  @media ${device.desktopS} {
+    width: 92%;
+    grid-template-columns: ${props =>
+      props.isLogin ? "9.2fr 0.4fr 0.4fr" : "8.6fr 0.4fr 1fr"};
+  }
 `;
 
 export const HeaderWrapper = styled.header``;
