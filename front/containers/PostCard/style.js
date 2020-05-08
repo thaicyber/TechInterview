@@ -16,11 +16,11 @@ export const PrimeWrap = styled.div`
   grid-template-rows: 13% 66% 11% 10%;
   grid-auto-columns: 100%;
   width: 100%;
-  min-height: 63vh;
+  /* min-height: 63vh; */
+  min-height: 480px;
   margin-bottom: 0.1rem;
 
   @media ${device.mobileL} {
-    min-height: 73vh;
   }
   @media ${device.tablet} {
   }

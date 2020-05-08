@@ -55,7 +55,7 @@ const CommentForm = props => {
         dispatch({
           type: EDIT_COMMENT_REQUEST,
           data: {
-            content: text,
+            content: text.replace(/(\n|\r\n)/g, "<br>"),
             commentId,
             img: ""
           }

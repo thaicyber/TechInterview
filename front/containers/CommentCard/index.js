@@ -169,7 +169,7 @@ const CommentCard = props => {
           <CommentContentWrap>
             {comment &&
               comment.content &&
-              comment.content.split("\n").map((item, idx) => {
+              comment.content.split("<br>").map((item, idx) => {
                 return (
                   <p key={idx}>
                     {item}
