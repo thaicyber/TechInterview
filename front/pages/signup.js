@@ -12,10 +12,12 @@ import { device } from "../styles/device";
 import Router from "next/router";
 import Link from "next/link";
 import { isMobile } from "../components/Util/meta";
+import { CloseOutlined } from "@ant-design/icons";
+import { CancelWrap } from "./login";
 const SignupWrapper = styled.div`
   display: grid;
   height: 100vh;
-  grid-template-rows: 33% 67%;
+  grid-template-rows: 6% 30% 64%;
   grid-auto-columns: 100%;
 
   @media ${device.tablet} {
@@ -58,6 +60,7 @@ const NotificationContent = styled.span`
 
 const TopWrap = styled.div`
   display: flex;
+  margin-top: 2rem;
 `;
 const LogoWrap = styled.div`
   display: flex;
@@ -192,15 +195,22 @@ const Signup = () => {
   }
   return (
     <SignupWrapper>
-      {/* <TopWrap>
+      <CancelWrap>
+        <Link href="/">
+          <a>
+            <CloseOutlined style={{ fontSize: "1.2rem" }} />
+          </a>
+        </Link>
+      </CancelWrap>
+      <TopWrap>
         <Link href="/">
           <LogoWrap>
             <a>
-              <img src="/logoCenterBlue.jpg" width="50px" height="25px" />
+              <img src="/logoCenterBlue.jpg" width="100px" height="50px" />
             </a>
           </LogoWrap>
         </Link>
-      </TopWrap> */}
+      </TopWrap>
       <IntroWrap>
         <TopIntroWrap>기술면접 준비는 테크인터뷰!</TopIntroWrap>
         <BottomIntroWrap style={{ lineHeight: "1.8rem" }}>

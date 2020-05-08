@@ -44,7 +44,7 @@ const UserSetting = props => {
     });
     onClickCancel();
   };
-  console.log("me", me);
+  // console.log("me", me);
   return (
     <BackgroundWrapper>
       <UserSettingWrapper>

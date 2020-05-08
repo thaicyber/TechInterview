@@ -30,9 +30,7 @@ const CommentForm = props => {
   };
   const inputEl = useRef();
   useEffect(() => {
-    console.log("useEffect content", content);
     if (content) {
-      console.log("useEffect content", content);
       setText(content);
       inputEl.current.focus();
     }
@@ -51,7 +49,6 @@ const CommentForm = props => {
         return;
       }
       if (content) {
-        console.log("onSubmitComment content", content);
         dispatch({
           type: EDIT_COMMENT_REQUEST,
           data: {

@@ -9,6 +9,7 @@ import Theme from "../styles/Theme";
 import { device } from "../styles/device";
 import Link from "next/link";
 import { isMobile } from "../components/Util/meta";
+import { CloseOutlined } from "@ant-design/icons";
 const LoginWrapper = styled.div`
   display: grid;
   grid-template-rows: 6% 30% 58% 6%;
@@ -100,7 +101,15 @@ const UserInput = styled.input`
     border-radius: 0.3rem;
   }
 `;
-
+export const CancelWrap = styled.div`
+  position: fixed;
+  right: 1rem;
+  top: 1rem;
+  display: block;
+  @media ${device.tablet} {
+    display: none;
+  }
+`;
 const Login = () => {
   const [email, setEmail] = useInput("");
   const [password, setPassword] = useInput("");
@@ -139,6 +148,13 @@ const Login = () => {
   }, [me]);
   return (
     <LoginWrapper>
+      <CancelWrap>
+        <Link href="/">
+          <a>
+            <CloseOutlined style={{ fontSize: "1.2rem" }} />
+          </a>
+        </Link>
+      </CancelWrap>
       <TopWrap>
         <Link href="/">
           <LogoWrap>

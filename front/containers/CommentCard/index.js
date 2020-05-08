@@ -83,7 +83,7 @@ const CommentCard = props => {
     }
   }, [isDeletingComment]);
 
-  console.log("comment", comment);
+  // console.log("comment", comment);
   // console.log("@@@@@me@@@@@@@@@", me);
   return (
     <>
