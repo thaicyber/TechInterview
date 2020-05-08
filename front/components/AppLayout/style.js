@@ -17,7 +17,7 @@ export const AppLayoutMediumViewWrapper = styled.div`
 
 // 메인 컨텐츠를 담아서 보여주는 wrapper
 export const MainContentWrapper = styled.main`
-  margin-top: 4.56rem;
+  margin-top: ${props => (props.isSearch ? "0px" : "4.56rem")};
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, auto));
   @media ${device.mobileM} {

@@ -16,7 +16,7 @@ export const PrimeWrap = styled.div`
   grid-template-rows: 13% 66% 11% 10%;
   grid-auto-columns: 100%;
   width: 100%;
-  /* min-height: 63vh; */
+  /* min-height: 63vh; vh 사용금지 */
   min-height: 480px;
   margin-bottom: 0.1rem;
 
@@ -225,7 +225,7 @@ export const CardContent = styled.p`
   padding-left: 0.6rem;
   padding-right: 0.6rem;
   @media ${device.mobileS} {
-    height: 3.7rem;
+    height: 3.6rem;
   }
   @media ${device.tablet} {
   }

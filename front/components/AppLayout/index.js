@@ -140,7 +140,9 @@ const AppLayout = ({ children }) => {
             <Header isShowLogo={false} />
             <AppLayoutWrapper>
               <SearchForm />
-              <MainContentWrapper>{children}</MainContentWrapper>
+              <MainContentWrapper isSearch={true}>
+                {children}
+              </MainContentWrapper>
             </AppLayoutWrapper>
           </>
         );

@@ -11,16 +11,18 @@ import Link from "next/link";
 import { isMobile } from "../components/Util/meta";
 const LoginWrapper = styled.div`
   display: grid;
-  height: 100vh;
-  grid-template-rows: 33% 61% 6%;
+  grid-template-rows: 6% 30% 58% 6%;
   grid-auto-columns: 100%;
-
+  @media ${device.mobileS} {
+    height: 600px;
+  }
   @media ${device.tablet} {
     width: 60%;
     margin: 0 auto;
   }
   @media ${device.laptop} {
     width: 35%;
+    height: 100%;
     margin: 0 auto;
   }
 `;
@@ -44,6 +46,7 @@ const AtdButton = styled(Button)`
 `;
 const TopWrap = styled.div`
   display: flex;
+  margin-top: 2rem;
 `;
 const LogoWrap = styled.div`
   display: flex;
@@ -136,7 +139,7 @@ const Login = () => {
   }, [me]);
   return (
     <LoginWrapper>
-      {/* <TopWrap>
+      <TopWrap>
         <Link href="/">
           <LogoWrap>
             <a>
@@ -144,7 +147,7 @@ const Login = () => {
             </a>
           </LogoWrap>
         </Link>
-      </TopWrap> */}
+      </TopWrap>
       <IntroWrap>
         <TopIntroWrap>기술면접 준비는 테크인터뷰!</TopIntroWrap>
         <BottomIntroWrap style={{ lineHeight: "1.8rem" }}>
