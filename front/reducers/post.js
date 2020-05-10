@@ -255,7 +255,7 @@ export const reducer = (state = initialState, action) => {
       case ADD_COMMENT_SUCCESS: {
         draft.isAddingComment = false;
         draft.commentAdded = true;
-        draft.comments.unshift(action.data);
+        draft.comments.push(action.data);
 
         if (state.mainPosts.length > 0) {
           const index = draft.mainPosts.findIndex(

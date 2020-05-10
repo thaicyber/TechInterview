@@ -30,7 +30,8 @@ const Comment = ({ id }) => {
     isDeletingComment,
     isLoadingComments,
     isLoadedComments,
-    editedComment
+    editedComment,
+    commentAdded
   } = useSelector(state => state.post);
   const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
@@ -55,7 +56,12 @@ const Comment = ({ id }) => {
           Router.router.query &&
           Router.router.query.tag)
     });
-  }, [editedComment]);
+    // 댓글 등록 성공시, 자신의 댓글이 보이도록 스크롤 이동
+    if (commentAdded) {
+      console.log("?", document.body.scrollHeight);
+      window.scrollTo(0, document.body.scrollHeight);
+    }
+  }, [editedComment, commentAdded]);
   useEffect(() => {
     if (isLoadedComments) {
       return;
