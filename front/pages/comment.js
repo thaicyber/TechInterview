@@ -24,13 +24,13 @@ const LoadingWrapper = styled.div`
 const Comment = ({ id }) => {
   const dispatch = useDispatch();
   const {
-    post,
     comments,
     isEditingComment,
     isAddingComment,
     isDeletingComment,
     isLoadingComments,
-    isLoadedComments
+    isLoadedComments,
+    editedComment
   } = useSelector(state => state.post);
   const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
@@ -55,7 +55,7 @@ const Comment = ({ id }) => {
           Router.router.query &&
           Router.router.query.tag)
     });
-  }, []);
+  }, [editedComment]);
   useEffect(() => {
     if (isLoadedComments) {
       return;
@@ -96,9 +96,9 @@ const Comment = ({ id }) => {
             Router.router.query.tag)
         }
       />
-      {!isLoading &&
-        comments &&
+      {comments &&
         comments.length > 0 &&
+        !isLoading &&
         comments.map(comment => (
           <CommentCard key={comment.id} comment={comment} />
         ))}
