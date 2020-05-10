@@ -11,14 +11,6 @@ export const HeaderContentWrapper = styled.div`
   top: 0;
   background-color: white;
   height: 4rem;
-  /* mobileS: "320px",
-  mobileM: "375px",
-  mobileL: "425px",
-  tablet: "768px",
-  laptop: "1024px",
-  laptopL: "1440px",
-  desktopS: "1920px",
-  desktop: "2560px" */
   @media ${device.mobileS} {
     width: calc(100% - 2rem);
   }

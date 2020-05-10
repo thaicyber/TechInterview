@@ -102,17 +102,6 @@ const Admin = () => {
           type
         }
       });
-      // console.log({
-      //   companyId,
-      //   text,
-      //   img,
-      //   link,
-      //   date,
-      //   date,
-      //   title,
-      //   previewContent,
-      //   type
-      // });
       setDate("");
       setImg("");
       setText("");

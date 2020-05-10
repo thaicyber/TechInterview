@@ -4,7 +4,6 @@ import { SimpleHeaderWrapper, BackBtnWrap, TitleWrap, Title } from "./style";
 import Theme from "../../styles/Theme";
 import { useSelector } from "react-redux";
 import Router from "next/router";
-import Header from "../Header";
 const SimpleHeader = () => {
   const { post } = useSelector(state => state.post);
   const { me, userInfo } = useSelector(state => state.user);

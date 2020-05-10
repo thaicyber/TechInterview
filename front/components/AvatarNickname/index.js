@@ -8,7 +8,6 @@ import {
 import Avatar from "../Util/Avatar";
 import Link from "next/link";
 const AvatarNickname = ({ userInfo }) => {
-  //   console.log("userInfo", userInfo);
   return (
     <FollowerWrap>
       <Link

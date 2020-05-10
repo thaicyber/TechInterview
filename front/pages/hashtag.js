@@ -9,7 +9,6 @@ import Announce from "../components/Announce";
 const Hashtag = ({ tag }) => {
   const dispatch = useDispatch();
   const { hashtagPosts } = useSelector(state => state.post);
-  // console.log("hashtagPosts", hashtagPosts);
   useEffect(() => {
     // componentWillUnmount시, 리덕스에 있는 hashtagPosts 초기화
     return () => {

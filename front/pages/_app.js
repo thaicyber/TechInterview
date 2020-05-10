@@ -122,7 +122,5 @@ const configureStore = (initialState, options) => {
   return store;
 };
 export default withRedux(configureStore)(withReduxSaga(App));
-
-// 이렇게 감싸주면 기존 App컴포넌트의 기능을 왼쪾의 withRedux기능도 생기면서 확장해주는 개념임.
 // withRedux는 App컴포넌트에게 props로 store를 넣어주는 역할을 할거임.
 // withReduxSaga

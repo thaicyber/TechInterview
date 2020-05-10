@@ -3,7 +3,6 @@ import {
   PostCardWrapper,
   PrimeWrap,
   AvatarWrap,
-  ContentWrap,
   WriterInfoWrap,
   WriterName,
   WriteDate,
@@ -33,11 +32,7 @@ import Link from "next/link";
 import Router from "next/router";
 import Theme from "../../styles/Theme";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  LIKE_POST_REQUEST,
-  UNLIKE_POST_REQUEST,
-  LOAD_POST_LIKERS_REQUEST
-} from "../../reducers/post";
+import { LIKE_POST_REQUEST, UNLIKE_POST_REQUEST } from "../../reducers/post";
 import { getRouteType } from "../../components/Util/meta";
 import moment from "moment";
 import { ATag } from "../../styles/GlobalComponentStyles";
@@ -55,10 +50,6 @@ const PostCard = memo(props => {
     updateSize();
     return () => window.removeEventListener("resize", updateSize);
   }, []);
-
-  // console.log("post", post);
-  // console.log("me", me);
-  // console.log("route", route);
   const urlRegEx = /^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n?]+)/;
   const likeChecked =
     post && me && post.Likers && post.Likers.find(v => v.id === me.id);

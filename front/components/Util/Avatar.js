@@ -67,4 +67,3 @@ const Avatar = styled.figure`
 `;
 
 export default Avatar;
-// https://abs.twimg.com/sticky/default_profile_images/default_profile_bigger.png

@@ -17,16 +17,6 @@ const CommentEdit = ({ id }) => {
           Router.router.query.tag)
     });
   }, []);
-  // const comment =
-  //   comments &&
-  //   comments.length > 0 &&
-  //   comments.find(v => {
-  //     console.log("v.id", v.id, "Numberid", Number(id));
-  //     return v.id === Number(id);
-  //   });
-  // console.log("찾은 comment", comment);
-  // 의존성 문제로 서버에서 id로 comment 요청하고, 그걸로 받아서 commentForm에 뿌려주기
-  // api만들어야함.
   return (
     comment && (
       <CommentForm
@@ -36,13 +26,6 @@ const CommentEdit = ({ id }) => {
       />
     )
   );
-  // return comment ? (
-  // <CommentForm
-  //   content={comment && comment.content}
-  //   commentId={comment && comment.id}
-  //   postId={comment && comment.PostId}
-  // />
-  // ) : null;
 };
 
 CommentEdit.getInitialProps = async context => {

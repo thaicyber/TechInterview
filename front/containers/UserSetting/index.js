@@ -10,8 +10,6 @@ import {
   AvatarMyPageWrap,
   FollowerWrap,
   LogOutWrap,
-  MyPageWrap,
-  MyPage,
   BackgroundWrapper,
   LikeWrap
 } from "./style";
@@ -23,7 +21,7 @@ import Avatar from "../../components/Util/Avatar";
 import Theme from "../../styles/Theme";
 const UserSetting = props => {
   const { setAvatarClick, setShowMyAccount } = props;
-  const { me, isLoggingOut } = useSelector(state => state.user);
+  const { me } = useSelector(state => state.user);
   const dispatch = useDispatch();
   useEffect(() => {
     return () => {
@@ -44,7 +42,6 @@ const UserSetting = props => {
     });
     onClickCancel();
   };
-  // console.log("me", me);
   return (
     <BackgroundWrapper>
       <UserSettingWrapper>

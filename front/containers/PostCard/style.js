@@ -1,6 +1,5 @@
 import styled, { css } from "styled-components";
 import { device } from "../../styles/device";
-import { Atag } from "../../styles/GlobalComponentStyles";
 export const PostCardWrapper = styled.div`
   width: 100%;
   background-color: white;
@@ -67,7 +66,6 @@ export const CardWrap = styled.div`
   grid-auto-columns: 100%;
   width: 100%;
   height: 100%;
-  /* border: 1px solid #cdd6dd; */
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   border-bottom-left-radius: 10px;

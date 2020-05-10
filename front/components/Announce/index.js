@@ -8,7 +8,6 @@ import {
 import { InfoCircleOutlined } from "@ant-design/icons";
 import Theme from "../../styles/Theme";
 const Announce = ({ message }) => {
-  // console.log("message", message);
   return (
     <AnnounceWrap>
       <IconWrapper>

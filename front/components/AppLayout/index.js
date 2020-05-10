@@ -2,14 +2,9 @@ import React from "react";
 import {
   AppLayoutWrapper,
   MainContentWrapper,
-  MainContentNoneGridWrapper,
-  AppLayoutSmallViewWrapper,
-  AppLayoutMediumViewWrapper
+  MainContentNoneGridWrapper
 } from "./style";
 import Header from "../Header";
-import PopularTagList from "../PopularTagList";
-import Footer from "../Footer";
-import Nav from "../Nav";
 import router from "next/router";
 import SearchForm from "../../containers/SearchForm";
 const AppLayout = ({ children }) => {
@@ -111,7 +106,7 @@ const AppLayout = ({ children }) => {
           <>
             <Header isShowLogo={false} />
             <AppLayoutWrapper>
-              <MainContentNoneGridWrapper>
+              <MainContentNoneGridWrapper isExtend={true}>
                 {children}
               </MainContentNoneGridWrapper>
             </AppLayoutWrapper>

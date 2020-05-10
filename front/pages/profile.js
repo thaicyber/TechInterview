@@ -120,8 +120,6 @@ const Profile = memo(({ id }) => {
   const dispatch = useDispatch();
   const { userInfo, me } = useSelector(state => state.user);
   const { userPosts } = useSelector(state => state.post);
-  // console.log("userInfo", userInfo);
-  // console.log("me", me);
   useEffect(() => {
     document.body.style.overflowY = "scroll";
     if (!userInfo) {

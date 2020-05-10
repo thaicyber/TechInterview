@@ -7,7 +7,6 @@ import {
   AvatarWrap,
   CommentAuthorWrap,
   CommentCreatedWrap,
-  CommentInfoWrap,
   CreatedTime,
   Author,
   ContentWrap,
@@ -32,12 +31,7 @@ import {
   CommentContentWrap
 } from "./style";
 import Avatar from "../../components/Util/Avatar";
-import {
-  MoreOutlined,
-  DeleteOutlined,
-  EditOutlined,
-  LoadingOutlined
-} from "@ant-design/icons";
+import { MoreOutlined, DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import Theme from "../../styles/Theme";
 import { useDispatch, useSelector } from "react-redux";
 import { DELETE_COMMENT_REQUEST } from "../../reducers/post";
@@ -83,8 +77,6 @@ const CommentCard = props => {
     }
   }, [isDeletingComment]);
 
-  // console.log("comment", comment);
-  // console.log("@@@@@me@@@@@@@@@", me);
   return (
     <>
       {deleteBtnClick && (

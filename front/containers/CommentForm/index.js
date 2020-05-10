@@ -1,17 +1,12 @@
 import React, { useState, useCallback, useRef, useEffect } from "react";
 import {
   CommentFormWrapper,
-  UserImgWrap,
   InputWrap,
   FormWrap,
   BtnWrap,
-  ImgUploadIconWrap,
   SubmitBtnWrap
 } from "./style";
-import Avatar from "../../components/Util/Avatar";
 import { Input } from "antd";
-import { FileImageOutlined } from "@ant-design/icons";
-import Theme from "../../styles/Theme";
 import { useDispatch } from "react-redux";
 import { ADD_COMMENT_REQUEST, EDIT_COMMENT_REQUEST } from "../../reducers/post";
 import Button from "../../components/Util/Button";
@@ -87,11 +82,6 @@ const CommentForm = props => {
           ></Input.TextArea>
         </FormWrap>
         <BtnWrap>
-          {/* <ImgUploadIconWrap>
-            <FileImageOutlined
-              style={{ color: Theme.themeColor, fontSize: "1.3rem" }}
-            />
-          </ImgUploadIconWrap> */}
           <SubmitBtnWrap>
             {content || text ? (
               <Button
@@ -107,7 +97,18 @@ const CommentForm = props => {
                   prefetch
                   as={`/comment/${postId}`}
                 >
-                  <a>등록</a>
+                  <div style={{ display: "flex" }}>
+                    <a
+                      style={{
+                        width: "70px",
+                        height: "30px",
+                        display: "block",
+                        marginTop: "0.4rem"
+                      }}
+                    >
+                      등록
+                    </a>
+                  </div>
                 </Link>
               </Button>
             ) : (

@@ -22,7 +22,6 @@ const SearchForm = () => {
         type: LOAD_HASHTAG_POSTS_REQUEST,
         data: e.target.value.length === 0 ? null : e.target.value
       });
-      // console.log("e.target.value", e.target.value);
     },
     [searchTag]
   );
