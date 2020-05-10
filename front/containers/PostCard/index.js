@@ -23,7 +23,8 @@ import {
   Count,
   Line,
   CardContentWrap,
-  CardContent
+  CardContent,
+  ATagWrap
 } from "./style";
 import Avatar from "../../components/Util/Avatar";
 import { MessageOutlined, HeartOutlined } from "@ant-design/icons";
@@ -165,11 +166,11 @@ const PostCard = memo(props => {
                     as={`/comment/${post.id}`}
                   >
                     <IconWrap>
-                      <ATag>
+                      <ATagWrap>
                         <MessageOutlined
                           style={{ cursor: "pointer", fontSize: "1.3rem" }}
                         />
-                      </ATag>
+                      </ATagWrap>
                     </IconWrap>
                   </Link>
                   <Link

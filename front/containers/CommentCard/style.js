@@ -165,6 +165,7 @@ export const DeleteMsgWrapper = styled.div`
   align-items: center;
   width: 100%;
   height: 100%;
+  margin-left: -1rem;
   background-color: rgb(0, 0, 0, 0.4);
   @media ${device.tablet} {
     margin-left: -21%;
@@ -196,7 +197,7 @@ export const BtnWrap = styled.div`
   width: 280px;
   padding: 0.8rem;
   position: relative;
-  top: 65px;
+  top: 75px;
 `;
 export const DeleteCancelBtn = styled.div`
   width: 100%;

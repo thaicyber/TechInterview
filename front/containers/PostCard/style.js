@@ -174,18 +174,37 @@ export const CountWrap = styled.div`
     margin-left: 0.9rem;
   }
 `;
+
+export const ATagWrap = styled.a`
+  font-size: 1.3rem;
+  &:link {
+    text-decoration: none;
+    color: #595959;
+  }
+  &:visited {
+    text-decoration: none;
+    color: #595959;
+  }
+  &:hover {
+    text-decoration: none;
+    color: #595959;
+  }
+`;
 export const Count = styled.a`
   text-decoration: none;
   font-size: 1.1rem;
   margin-bottom: 0.1rem;
   &:link {
     text-decoration: none;
+    color: #595959;
   }
   &:visited {
     text-decoration: none;
+    color: #595959;
   }
   &:hover {
     text-decoration: none;
+    color: #595959;
   }
 `;
 export const IconWrap = styled.div`
