@@ -121,6 +121,7 @@ export const CancelBtnWrap = styled.div`
   @media ${device.laptop} {
     margin-top: 0.5rem;
   }
+  cursor: pointer;
 `;
 export const CancelBtn = styled.div``;
 
@@ -151,6 +152,7 @@ export const EditBtn = styled.div`
 
 export const IconTitleWrap = styled.div`
   margin-left: 0.4rem;
+  cursor: pointer;
 `;
 export const IconTitle = styled.span``;
 

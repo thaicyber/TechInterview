@@ -26,7 +26,7 @@ const AppLayout = ({ children }) => {
           <>
             <Header isShowLogo={false} />
             <AppLayoutWrapper>
-              <MainContentNoneGridWrapper>
+              <MainContentNoneGridWrapper isExtend={true}>
                 {children}
               </MainContentNoneGridWrapper>
             </AppLayoutWrapper>

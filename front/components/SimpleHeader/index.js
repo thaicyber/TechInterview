@@ -9,7 +9,12 @@ const SimpleHeader = () => {
   const { post } = useSelector(state => state.post);
   const { me, userInfo } = useSelector(state => state.user);
   const onClickBackBtn = () => {
-    window.history.back();
+    //댓글 수정 후, 댓글창에서 뒤로가기 누르면 메인으로 이동 (사용자 ux 측면 향상)
+    if (Router && Router.router && Router.router.route === "/comment") {
+      Router.push("/");
+    } else {
+      window.history.back();
+    }
   };
   const isSearchHashRoute =
     (Router && Router.router && Router.router.route === "/hashtag") ||

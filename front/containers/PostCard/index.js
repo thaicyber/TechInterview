@@ -198,7 +198,7 @@ const PostCard = memo(props => {
                         type="heart"
                         theme="filled"
                         style={{
-                          color: "#eb2f96",
+                          color: "#ff415c",
                           cursor: "pointer",
                           fontSize: "1.3rem"
                         }}

@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { LOAD_POST_REQUEST, LOAD_COMMENTS_REQUEST } from "../reducers/post";
-import PostCard from "../containers/PostCard";
+import {
+  LOAD_POST_REQUEST,
+  LOAD_COMMENTS_REQUEST,
+  LOAD_COMMENT_INITIAL
+} from "../reducers/post";
 import Router from "next/router";
 import CommentForm from "../containers/CommentForm";
 import CommentCard from "../containers/CommentCard";
@@ -31,6 +34,9 @@ const Comment = ({ id }) => {
   } = useSelector(state => state.post);
   const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
+    dispatch({
+      type: LOAD_COMMENT_INITIAL
+    });
     dispatch({
       type: LOAD_COMMENTS_REQUEST,
       data:
@@ -90,9 +96,9 @@ const Comment = ({ id }) => {
             Router.router.query.tag)
         }
       />
-      {comments &&
+      {!isLoading &&
+        comments &&
         comments.length > 0 &&
-        !isLoading &&
         comments.map(comment => (
           <CommentCard key={comment.id} comment={comment} />
         ))}

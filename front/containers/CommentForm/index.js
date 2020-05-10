@@ -24,14 +24,12 @@ const CommentForm = props => {
   const dispatch = useDispatch();
   const { me } = useSelector(state => state.user);
   const onChangeText = e => {
-    // const text = e.target.value;
-    // const result = text.replace(/(\n|\r\n)/g, "<br>");
     setText(e.target.value);
   };
   const inputEl = useRef();
   useEffect(() => {
     if (content) {
-      setText(content);
+      setText(content.replace(/(<br>|<br\/>|<br \/>)/g, "\r\n"));
       inputEl.current.focus();
     }
   }, []);
@@ -95,33 +93,29 @@ const CommentForm = props => {
             />
           </ImgUploadIconWrap> */}
           <SubmitBtnWrap>
-            {text ? (
-              content ? (
-                <Button
-                  onClick={onSubmitComment}
-                  color="active"
-                  size="small"
-                  borderRadius="50px"
+            {content || text ? (
+              <Button
+                style={{ backgroundColor: "#1da1f2", cursor: "pointer" }}
+                onClick={onSubmitComment}
+                htmlType="submit"
+                color="active"
+                size="small"
+                borderRadius="50px"
+              >
+                <Link
+                  href={{ pathname: "/comment", query: { id: postId } }}
+                  prefetch
+                  as={`/comment/${postId}`}
                 >
-                  <Link
-                    href={{ pathname: "/comment", query: { id: postId } }}
-                    as={`/comment/${postId}`}
-                  >
-                    <a>등록</a>
-                  </Link>
-                </Button>
-              ) : (
-                <Button
-                  color="active"
-                  size="small"
-                  htmlType="submit"
-                  borderRadius="50px"
-                >
-                  등록
-                </Button>
-              )
+                  <a>등록</a>
+                </Link>
+              </Button>
             ) : (
-              <Button color="inActive" size="small" borderRadius="50px">
+              <Button
+                style={{ backgroundColor: "#9dd5f9" }}
+                size="small"
+                borderRadius="50px"
+              >
                 등록
               </Button>
             )}

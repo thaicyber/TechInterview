@@ -38,7 +38,10 @@ import {
   LOAD_POST_LIKERS_REQUEST,
   LOAD_COUNT_POSTS_SUCCESS,
   LOAD_COUNT_POSTS_FAILURE,
-  LOAD_COUNT_POSTS_REQUEST
+  LOAD_COUNT_POSTS_REQUEST,
+  LOAD_COMMENT_SUCCESS,
+  LOAD_COMMENT_FAILURE,
+  LOAD_COMMENT_REQUEST
 } from "../reducers/post";
 import axios from "axios";
 
@@ -180,7 +183,6 @@ function* watchLikePost() {
 }
 
 function editCommentAPI(commentData) {
-  console.log("editCommentAPI", commentData);
   return axios.patch(
     `/comment/${commentData.commentId}`,
     { content: commentData.content },
@@ -284,6 +286,29 @@ function* loadPost(action) {
 }
 function* watchLoadPost() {
   yield throttle(400, LOAD_POST_REQUEST, loadPost);
+}
+
+function loadCommentAPI(id) {
+  return axios.get(`/comment/${id}`);
+}
+
+function* loadComment(action) {
+  try {
+    const result = yield call(loadCommentAPI, action.data);
+    yield put({
+      type: LOAD_COMMENT_SUCCESS,
+      data: result.data
+    });
+  } catch (e) {
+    console.error(e);
+    yield put({
+      type: LOAD_COMMENT_FAILURE,
+      error: e
+    });
+  }
+}
+function* watchLoadComment() {
+  yield takeLatest(LOAD_COMMENT_REQUEST, loadComment);
 }
 
 function loadCommentsAPI(id) {
@@ -391,6 +416,7 @@ export default function* postSaga() {
     fork(watchUnlikePost),
     fork(watchLoadUserPosts),
     fork(watchLoadPostLikers),
-    fork(watchLoadCountPosts)
+    fork(watchLoadCountPosts),
+    fork(watchLoadComment)
   ]);
 }

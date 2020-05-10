@@ -53,12 +53,15 @@ export const MainContentNoneGridWrapper = styled.main`
     padding: 0% 20%;
   }
   @media ${device.laptop} {
-    padding: 0% 25%;
+    /* padding: 0% 35%; */
+    padding: ${props => (props.isExtend ? "0% 25%" : "0% 35%;")};
   }
   @media ${device.laptopL} {
-    padding: 0% 30%;
+    /* padding: 0% 40%; */
+    padding: ${props => (props.isExtend ? "0% 30%" : "0% 40%;")};
   }
   @media ${device.desktopS} {
-    padding: 0% 35%;
+    /* padding: 0% 45%; */
+    padding: ${props => (props.isExtend ? "0% 35%" : "0% 45%;")};
   }
 `;

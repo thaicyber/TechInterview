@@ -26,21 +26,15 @@ const getColor = ({ color }) => {
     case "inActive": {
       return Theme.inActiveColor;
     }
-    default: {
-      return Theme.activeColor;
-    }
   }
 };
 
 const Button = styled.button`
   width: ${props => getSize(props.size)};
   height: 30px;
-  background-color: ${props => getColor(props.color)};
   color: white;
-  cursor: ${props => (props.color === "active" ? "pointer" : "null")};
   border-radius: ${props => (props.borderRadius ? props.borderRadius : "null")};
   border: white;
-  font-family: "Noto Sans KR", sans-serif;
   outline: 0;
 `;
 

@@ -137,7 +137,13 @@ const Profile = memo(({ id }) => {
     }
     if (!me) {
       dispatch({
-        type: LOAD_USER_REQUEST
+        type: LOAD_USER_REQUEST,
+        data:
+          id ||
+          (Router &&
+            Router.router &&
+            Router.router.query &&
+            Router.router.query.id)
       });
     }
   }, []);

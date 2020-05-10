@@ -30,7 +30,7 @@ export const initialState = {
   isAddCommentErrorReason: "", // 댓글 업로드 실패 사유
   isLoadingComments: false, // 댓글들 로드중
   isLoadedComments: false, // 댓글들 로딩 성공
-  isLoadCommentsErrorReason: "", // 댓글 업로드 실패 사유
+  isLoadCommentsErrorReason: "", // 댓글 로드 실패 사유
   isDeletingComment: false, // 댓글 삭제 시도 중
   deletedComment: false, // 댓글 삭제 성공
   deleteCommentErrorReason: "", // 댓글 삭제 실패 사유
@@ -45,7 +45,11 @@ export const initialState = {
   postLikers: false, // 게시물에 좋아요한 사람들 불러오기 성공
   isLoadPostLikersErrorReason: "", // 게시물에 좋아요한 사람들 불러오기 실패 사유
   hasMorePost: false,
-  postsCount: 0
+  postsCount: 0,
+  isLoadingComment: false, // 댓글 로드중
+  isLoadedComment: false, // 댓글 로딩 성공
+  isLoadCommentErrorReason: "", // 댓글 로드 실패 사유
+  comment: null
 };
 
 export const ADD_POST_REQUEST = "ADD_POST_REQUEST";
@@ -68,6 +72,11 @@ export const LOAD_POST_FAILURE = "LOAD_POST_FAILURE";
 export const LOAD_COMMENTS_REQUEST = "LOAD_COMMENTS_REQUEST";
 export const LOAD_COMMENTS_SUCCESS = "LOAD_COMMENTS_SUCCESS";
 export const LOAD_COMMENTS_FAILURE = "LOAD_COMMENTS_FAILURE";
+
+export const LOAD_COMMENT_REQUEST = "LOAD_COMMENT_REQUEST";
+export const LOAD_COMMENT_SUCCESS = "LOAD_COMMENT_SUCCESS";
+export const LOAD_COMMENT_FAILURE = "LOAD_COMMENT_FAILURE";
+export const LOAD_COMMENT_INITIAL = "LOAD_COMMENT_INITIAL";
 
 export const ADD_COMMENT_REQUEST = "ADD_COMMENT_REQUEST";
 export const ADD_COMMENT_SUCCESS = "ADD_COMMENT_SUCCESS";
@@ -214,6 +223,31 @@ export const reducer = (state = initialState, action) => {
         draft.isLoadCommentsErrorReason = action.error;
         break;
       }
+
+      case LOAD_COMMENT_REQUEST: {
+        draft.isLoadingComment = true;
+        break;
+      }
+      case LOAD_COMMENT_SUCCESS: {
+        draft.isLoadingComment = false;
+        draft.isLoadedComment = true;
+        draft.comment = action.data;
+        break;
+      }
+      case LOAD_COMMENT_FAILURE: {
+        draft.isLoadingComment = false;
+        draft.isLoadedComment = false;
+        draft.comment = null;
+        draft.isLoadCommentErrorReason = action.error;
+        break;
+      }
+      case LOAD_COMMENT_INITIAL: {
+        draft.isLoadingComment = false;
+        draft.isLoadedComment = false;
+        draft.comment = null;
+        draft.isLoadCommentErrorReason = "";
+        break;
+      }
       case ADD_COMMENT_REQUEST: {
         draft.isAddingComment = true;
         break;
@@ -221,13 +255,13 @@ export const reducer = (state = initialState, action) => {
       case ADD_COMMENT_SUCCESS: {
         draft.isAddingComment = false;
         draft.commentAdded = true;
-        draft.comments.push(action.data);
+        draft.comments.unshift(action.data);
 
         if (state.mainPosts.length > 0) {
           const index = draft.mainPosts.findIndex(
             v => v.id === action.data.PostId
           );
-          draft.mainPosts[index].Comments.push({ id: action.data.id });
+          draft.mainPosts[index].Comments.unshift({ id: action.data.id });
         }
         break;
       }
