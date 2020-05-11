@@ -122,11 +122,7 @@ const Profile = memo(({ id }) => {
   const { userPosts } = useSelector(state => state.post);
   useEffect(() => {
     document.body.style.overflowY = "scroll";
-    if (!me) {
-      alert("로그인 후 가능합니다.");
-      Router.push("/login");
-      return;
-    } else {
+    if (!userInfo) {
       dispatch({
         type: LOAD_USER_REQUEST,
         data:
@@ -151,16 +147,25 @@ const Profile = memo(({ id }) => {
   }, []);
   const onClickFollow = useCallback(
     userId => () => {
-      if (!userId)
-        dispatch({
-          type: FOLLOW_USER_REQUEST,
-          data: userId
-        });
+      if (!me) {
+        alert("로그인 후 이용 가능합니다.");
+        Router.push("/login");
+        return;
+      }
+      dispatch({
+        type: FOLLOW_USER_REQUEST,
+        data: userId
+      });
     },
     []
   );
   const onClickUnFollow = useCallback(
     userId => () => {
+      if (!me) {
+        alert("로그인 후 이용 가능합니다.");
+        Router.push("/login");
+        return;
+      }
       dispatch({
         type: UNFOLLOW_USER_REQUEST,
         data: userId
