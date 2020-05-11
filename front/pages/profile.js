@@ -95,13 +95,13 @@ const FollowBtnWrapCss = css`
     right: 20%;
   }
   @media ${device.laptop} {
-    right: 25%;
+    right: 35%;
   }
   @media ${device.laptopL} {
-    right: 30%;
+    right: 40%;
   }
   @media ${device.desktopS} {
-    right: 35%;
+    right: 45%;
   }
 `;
 const UnFollowBtnWrap = styled.div`
@@ -163,9 +163,6 @@ const Profile = memo(({ id }) => {
     },
     []
   );
-  // console.log("userInfo", userInfo);
-  // console.log("userPosts", userPosts);
-  // console.log("me", me);
   const alreadyFollow =
     me &&
     userInfo &&
@@ -174,7 +171,6 @@ const Profile = memo(({ id }) => {
     me.Followings.find(f => f.id === userInfo.id)
       ? true
       : false;
-  // console.log("alreadyFollow", alreadyFollow);
   return (
     <>
       {userInfo && (
@@ -285,14 +281,6 @@ const Profile = memo(({ id }) => {
 
 Profile.getInitialProps = async context => {
   const id = context.query.id;
-  // console.log("getInitialProps id", id);
-  // const state = context.store.getState();
-  // if (state.post.userPosts.length === 0) {
-  //   context.store.dispatch({
-  //     type: LOAD_USER_POSTS_REQUEST,
-  //     data: id
-  //   });
-  // }
   context.store.dispatch({
     type: LOAD_USER_REQUEST,
     data: id
