@@ -42,9 +42,9 @@ const Header = ({ isShowLogo }) => {
           <Link href="/" prefetch>
             <Title>
               {width > 375 ? (
-                <img src="/logo.jpg" width={"150px"} />
+                <img src="/logo.jpg" width={"150px"} alt="logo" />
               ) : (
-                <img src="/logo.jpg" width={"150px"} />
+                <img src="/logo.jpg" width={"150px"} alt="logo" />
                 // <img src="/favicon.ico" width={"40px"} />
               )}
             </Title>

@@ -4,6 +4,7 @@ import { Input, Form, Select, Button } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import { LOAD_COMPANIES_REQUEST } from "../reducers/user";
 import { ADD_POST_REQUEST } from "../reducers/post";
+import Router from "next/router";
 const AdminWrapper = styled.div`
   width: 100%;
   height: 100vh;
@@ -45,12 +46,22 @@ const ButtonWrap = styled.div`
 `;
 const Admin = () => {
   const dispatch = useDispatch();
-  const { companies } = useSelector(state => state.user);
+  const { companies, me } = useSelector(state => state.user);
+
   useEffect(() => {
+    if (!me) {
+      Router.push("/");
+      return;
+    }
+    if (me && me.level !== "admin") {
+      alert("관리자용 페이지 입니다. 어서 나가주세요!");
+      Router.push("/");
+      return;
+    }
     dispatch({
       type: LOAD_COMPANIES_REQUEST
     });
-  }, []);
+  }, [me]);
   const [companyId, setCompanyId] = useState("");
   const [text, setText] = useState("");
   const [img, setImg] = useState("");
@@ -112,7 +123,7 @@ const Admin = () => {
     },
     [companyId, text, img, link, date, title, type, previewContent]
   );
-  return (
+  return me && me.level === "admin" ? (
     <AdminWrapper>
       <AdmimContent>
         <AtdForm onSubmit={onSubmitPost}>
@@ -191,7 +202,7 @@ const Admin = () => {
         </AtdForm>
       </AdmimContent>
     </AdminWrapper>
-  );
+  ) : null;
 };
 
 export default Admin;

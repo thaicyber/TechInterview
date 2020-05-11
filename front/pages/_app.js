@@ -9,7 +9,7 @@ import reducer from "../reducers/index";
 import rootSaga from "../sagas";
 import { ThemeProvider } from "styled-components";
 import Theme from "../styles/Theme";
-import AppLayout from "../components/AppLayout";
+import AppLayout from "../components/AppLayout/index";
 import Axios from "axios";
 import { LOAD_USER_REQUEST } from "../reducers/user";
 import Helmet from "react-helmet";

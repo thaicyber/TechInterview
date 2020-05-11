@@ -106,8 +106,19 @@ export const CancelWrap = styled.div`
   right: 1rem;
   top: 1rem;
   display: block;
+
   @media ${device.tablet} {
-    display: none;
+    padding: 0% 20%;
+  }
+  @media ${device.laptop} {
+    padding: 0% 35%;
+    right: 0;
+  }
+  @media ${device.laptopL} {
+    padding: 0% 40%;
+  }
+  @media ${device.desktopS} {
+    padding: 0% 45%;
   }
 `;
 const Login = () => {
@@ -159,7 +170,12 @@ const Login = () => {
         <Link href="/">
           <LogoWrap>
             <a>
-              <img src="/logoCenterBlue.jpg" width="100px" height="50px" />
+              <img
+                src="/logoCenterBlue.jpg"
+                width="100px"
+                height="50px"
+                alt="logo"
+              />
             </a>
           </LogoWrap>
         </Link>

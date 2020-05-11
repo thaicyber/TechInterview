@@ -206,7 +206,12 @@ const Signup = () => {
         <Link href="/">
           <LogoWrap>
             <a>
-              <img src="/logoCenterBlue.jpg" width="100px" height="50px" />
+              <img
+                src="/logoCenterBlue.jpg"
+                width="100px"
+                height="50px"
+                alt="logo"
+              />
             </a>
           </LogoWrap>
         </Link>

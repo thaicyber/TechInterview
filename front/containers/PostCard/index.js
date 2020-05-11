@@ -57,7 +57,9 @@ const PostCard = memo(props => {
   const type = getRouteType(route);
   const onClickLike = useCallback(() => {
     if (!me) {
-      return alert("로그인이 필요한 서비스입니다.");
+      alert("로그인이 필요한 서비스입니다.");
+      Router.push("/login");
+      return;
     }
     if (!likeChecked) {
       // 좋아요를 누르지 않은 상태
